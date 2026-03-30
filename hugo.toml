@@ -1,0 +1,13 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-us"
+title = "My Hugo Site"
+theme = "ananke"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+
+  [[menu.main]]
+    name = "Posts"
+    url = "/posts/"
