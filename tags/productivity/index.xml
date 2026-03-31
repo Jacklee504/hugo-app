@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Productivity on My Hugo Site</title>
+    <link>https://Jacklee504.github.io/hugo-app/tags/productivity/</link>
+    <description>Recent content in Productivity on My Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 Mar 2026 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://Jacklee504.github.io/hugo-app/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compact mechanical keyboard</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</link>
+      <pubDate>Wed, 25 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</guid>
+      <description>Hot-swappable 65% board with RGB and silent switches.</description>
+    </item>
+  </channel>
+</rss>

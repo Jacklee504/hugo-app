@@ -2,18 +2,74 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My Hugo Site</title>
-    <link>http://localhost:1313/</link>
+    <link>https://Jacklee504.github.io/hugo-app/</link>
     <description>Recent content on My Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://Jacklee504.github.io/hugo-app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://Jacklee504.github.io/hugo-app/about/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/about/</guid>
+      <description>&lt;p&gt;We track discounted products and highlight the best value we find. Pages are updated periodically and built as a static site for fast browsing.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Disclosure</title>
+      <link>https://Jacklee504.github.io/hugo-app/disclosure/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/disclosure/</guid>
+      <description>&lt;p&gt;Some links on this site are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Prices and availability can change; check the retailer for the latest details.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Noise-cancelling over-ears</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</link>
+      <pubDate>Mon, 30 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</guid>
+      <description>Wireless ANC headphones with 30h battery and quick charge.</description>
+    </item>
     <item>
       <title>Post 1</title>
-      <link>http://localhost:1313/posts/post-1/</link>
+      <link>https://Jacklee504.github.io/hugo-app/posts/post-1/</link>
       <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/post-1/</guid>
-      <description>&lt;p&gt;This is my post.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/example.jpg&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;</description>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/post-1/</guid>
+      <description>&lt;p&gt;This is my post.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://Jacklee504.github.io/hugo-app/images/example.jpg&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Runner&#39;s GPS smartwatch</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/smartwatch-runner/</link>
+      <pubDate>Sat, 28 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/smartwatch-runner/</guid>
+      <description>Built-in GPS, heart-rate, and week-long battery for training.</description>
+    </item>
+    <item>
+      <title>4K streaming stick</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/4k-streaming-stick/</link>
+      <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/4k-streaming-stick/</guid>
+      <description>Dolby Vision streaming with voice remote and Wi‑Fi 6.</description>
+    </item>
+    <item>
+      <title>Compact mechanical keyboard</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</link>
+      <pubDate>Wed, 25 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</guid>
+      <description>Hot-swappable 65% board with RGB and silent switches.</description>
+    </item>
+    <item>
+      <title>Waterproof Bluetooth speaker</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</link>
+      <pubDate>Sun, 22 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</guid>
+      <description>Rugged IPX7 speaker with 12h battery and USB-C.</description>
+    </item>
+    <item>
+      <title>Adjustable dumbbell set</title>
+      <link>https://Jacklee504.github.io/hugo-app/deals/home-dumbbell-set/</link>
+      <pubDate>Fri, 20 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/home-dumbbell-set/</guid>
+      <description>Space-saving weights adjustable from 5–50 lbs per hand.</description>
     </item>
   </channel>
 </rss>
