@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://Jacklee504.github.io/hugo-app/</loc>
-    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://Jacklee504.github.io/hugo-app/about/</loc>
     <lastmod>2026-03-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://Jacklee504.github.io/hugo-app/contact/</loc>
+    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://Jacklee504.github.io/hugo-app/disclosure/</loc>
+    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://Jacklee504.github.io/hugo-app/</loc>
+    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://Jacklee504.github.io/hugo-app/privacy/</loc>
     <lastmod>2026-03-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://Jacklee504.github.io/hugo-app/tags/audio/</loc>

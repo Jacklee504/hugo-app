@@ -35,3 +35,12 @@ theme = "ananke"
   [[menu.main]]
     name = "Disclosure"
     url = "/disclosure/"
+
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+
+  [[menu.main]]
+    name = "Privacy"
+    url = "/privacy/"
+
