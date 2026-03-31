@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
 
 jobs:
   build-deploy:
@@ -18,6 +21,22 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install fetch deps
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch deals (PA-API)
+        env:
+          AMZ_PAAPI_ACCESS_KEY: ${{ secrets.AMZ_PAAPI_ACCESS_KEY }}
+          AMZ_PAAPI_SECRET_KEY: ${{ secrets.AMZ_PAAPI_SECRET_KEY }}
+          AMZ_PARTNER_TAG: ${{ secrets.AMZ_PARTNER_TAG }}
+          AMZ_MARKETPLACE: ${{ secrets.AMZ_MARKETPLACE }}
+        run: python scripts/fetch_deals.py
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

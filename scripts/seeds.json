@@ -1,0 +1,9 @@
+{
+  "marketplace": "www.amazon.co.uk",
+  "asins": ["EDIT_ME_ASIN1", "EDIT_ME_ASIN2"],
+  "tags": {
+    "EDIT_ME_ASIN1": ["example", "tag"],
+    "EDIT_ME_ASIN2": ["example", "tag"]
+  }
+}
+
