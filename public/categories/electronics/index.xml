@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Electronics on Deal Ledger</title>
-    <link>http://localhost:1313/hugo-app/categories/electronics/</link>
+    <link>https://Jacklee504.github.io/hugo-app/categories/electronics/</link>
     <description>Recent content in Electronics on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 Mar 2026 12:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/hugo-app/categories/electronics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Jacklee504.github.io/hugo-app/categories/electronics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Noise-cancelling over-ears</title>
-      <link>http://localhost:1313/hugo-app/deals/noise-cancelling-headphones/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</link>
       <pubDate>Mon, 30 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/noise-cancelling-headphones/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</guid>
       <description>Wireless ANC headphones with 30h battery and quick charge.</description>
     </item>
     <item>
       <title>4K streaming stick</title>
-      <link>http://localhost:1313/hugo-app/deals/4k-streaming-stick/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/4k-streaming-stick/</link>
       <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/4k-streaming-stick/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/4k-streaming-stick/</guid>
       <description>Dolby Vision streaming with voice remote and Wi‑Fi 6.</description>
     </item>
     <item>
       <title>Compact mechanical keyboard</title>
-      <link>http://localhost:1313/hugo-app/deals/mechanical-keyboard/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</link>
       <pubDate>Wed, 25 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/mechanical-keyboard/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</guid>
       <description>Hot-swappable 65% board with RGB and silent switches.</description>
     </item>
     <item>
       <title>Waterproof Bluetooth speaker</title>
-      <link>http://localhost:1313/hugo-app/deals/bluetooth-speaker/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</link>
       <pubDate>Sun, 22 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/bluetooth-speaker/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</guid>
       <description>Rugged IPX7 speaker with 12h battery and USB-C.</description>
     </item>
   </channel>

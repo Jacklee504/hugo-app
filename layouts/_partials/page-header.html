@@ -1,0 +1,19 @@
+{{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
+{{ $description := .Params.description | default .Site.Params.description }}
+<header class="site-top site-top--section{{ if $featured_image }} site-top--with-image{{ end }}">
+  <div class="site-top__backdrop{{ if $featured_image }} site-top__backdrop--image{{ end }}"{{ if $featured_image }} style="background-image: linear-gradient(135deg, rgba(13, 78, 70, 0.88), rgba(20, 43, 36, 0.86)), url('{{ $featured_image }}');"{{ end }}>
+    {{ partials.Include "site-navigation.html" . }}
+    {{ if not .Params.omit_header_text }}
+      <div class="site-top__intro">
+        <h1 class="site-top__title">
+          {{ .Title | compare.Default .Site.Title }}
+        </h1>
+        {{ with $description }}
+          <p class="site-top__description">
+            {{ . }}
+          </p>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</header>

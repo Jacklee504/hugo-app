@@ -21,6 +21,10 @@ body {
   font-family: var(--font-sans);
 }
 
+main.pb7 {
+  padding-bottom: 1rem;
+}
+
 .site-top {
   position: relative;
 }
@@ -29,6 +33,11 @@ body {
   background:
     linear-gradient(135deg, rgba(13, 78, 70, 0.96), rgba(20, 43, 36, 0.94)),
     linear-gradient(135deg, #136f63, #0d4e46);
+}
+
+.site-top__backdrop--image {
+  background-size: cover;
+  background-position: center;
 }
 
 .site-top--home .site-top__backdrop {
@@ -44,6 +53,25 @@ body {
 .site-top__intro {
   width: min(1120px, calc(100% - 2.75rem));
   margin: 0 auto;
+  padding: 1.35rem 0 0.2rem;
+  text-align: center;
+}
+
+.site-top__title {
+  margin: 0;
+  color: rgba(255, 253, 249, 0.96);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.site-top__description {
+  margin: 0.7rem auto 0;
+  max-width: 44rem;
+  color: rgba(255, 253, 249, 0.78);
+  font-size: clamp(0.98rem, 1.5vw, 1.15rem);
+  line-height: 1.65;
 }
 
 .nav-shell {
@@ -108,12 +136,12 @@ body {
 .list-shell,
 .taxonomy-shell {
   width: min(1120px, calc(100% - 2.75rem));
-  margin: 0 auto 2rem;
+  margin: 0.45rem auto 1.35rem;
 }
 
 .hero-band {
   width: min(1120px, calc(100% - 2.75rem));
-  margin: 2rem auto;
+  margin: 1.7rem auto 2rem;
   padding: 2rem;
   border-radius: 28px;
   background:
@@ -221,12 +249,12 @@ body {
 }
 
 .home-section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .home-section__intro,
 .list-shell__intro {
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   max-width: 42rem;
 }
 
@@ -259,13 +287,13 @@ body {
 .list-shell,
 .alerts-shell,
 .deal-single {
-  padding: 1.4rem;
+  padding: 1.35rem 1.4rem 1.05rem;
 }
 
 main > article[class^="page-"] {
   width: min(960px, calc(100% - 2.75rem));
-  margin: 2rem auto;
-  padding: 1.5rem 1.6rem 1.8rem;
+  margin: 1.7rem auto;
+  padding: 1.35rem 1.45rem 1.6rem;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -274,6 +302,7 @@ main > article[class^="page-"] {
 
 main > article[class^="page-"] header {
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 main > article[class^="page-"] .nested-copy-line-height {
@@ -509,7 +538,7 @@ main > article[class^="page-"] .ananke-socials {
 
 .deal-single__content {
   padding: 0;
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .deal-single__content p,
@@ -544,6 +573,10 @@ main > article[class^="page-"] .ananke-socials {
   .alerts-shell,
   .deal-single,
   main > article[class^="page-"] {
-    padding: 1.1rem;
+    padding: 1rem 1.05rem 0.9rem;
+  }
+
+  .site-top__intro {
+    padding-top: 1rem;
   }
 }

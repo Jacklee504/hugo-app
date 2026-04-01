@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Best discounts on Deal Ledger</title>
-    <link>http://localhost:1313/hugo-app/best-deals/</link>
+    <link>https://Jacklee504.github.io/hugo-app/best-deals/</link>
     <description>Recent content in Best discounts on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/hugo-app/best-deals/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Jacklee504.github.io/hugo-app/best-deals/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

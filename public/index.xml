@@ -2,101 +2,101 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deal Ledger</title>
-    <link>http://localhost:1313/hugo-app/</link>
+    <link>https://Jacklee504.github.io/hugo-app/</link>
     <description>Recent content on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/hugo-app/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Jacklee504.github.io/hugo-app/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>http://localhost:1313/hugo-app/about/</link>
+      <link>https://Jacklee504.github.io/hugo-app/about/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/about/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/about/</guid>
       <description>&lt;p&gt;Deal Ledger is a pre-launch sample site built around a simple idea: a deals website should be useful even before a reader clicks out to a retailer.&lt;/p&gt;&#xA;&lt;p&gt;The project is being designed to focus on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;curated product picks instead of giant dumps of coupons&lt;/li&gt;&#xA;&lt;li&gt;clear price context, including reference pricing and discount depth&lt;/li&gt;&#xA;&lt;li&gt;category-specific email alerts so readers can follow the topics they actually care about&lt;/li&gt;&#xA;&lt;li&gt;lightweight editorial guides that explain why a product or category is worth watching&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This version of the site exists to demonstrate structure, tone, and user experience before live retailer integrations are connected. The core goal is to launch with enough depth and clarity to be a trustworthy recommendation property, not just an empty affiliate shell.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Contact</title>
-      <link>http://localhost:1313/hugo-app/contact/</link>
+      <link>https://Jacklee504.github.io/hugo-app/contact/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/contact/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/contact/</guid>
       <description>&lt;p&gt;Contact details will be finalized before launch. For the pre-launch sample, this page exists to show the intended site structure and to reserve space for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;a public inbox for reader questions&lt;/li&gt;&#xA;&lt;li&gt;partnership or press outreach&lt;/li&gt;&#xA;&lt;li&gt;feedback about deal categories and alert preferences&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Before applying or going live, replace this page with a real email address or a working contact form.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Disclosure</title>
-      <link>http://localhost:1313/hugo-app/disclosure/</link>
+      <link>https://Jacklee504.github.io/hugo-app/disclosure/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/disclosure/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/disclosure/</guid>
       <description>&lt;p&gt;Deal Ledger is currently a pre-launch sample site. Live retailer integrations and affiliate relationships have not been turned on yet.&lt;/p&gt;&#xA;&lt;p&gt;After launch, some outbound product links may become affiliate links. If that happens, the site will clearly disclose that it may earn a commission from qualifying purchases at no additional cost to the reader.&lt;/p&gt;&#xA;&lt;p&gt;Prices, availability, and deal timing can change quickly. When live links are added, readers should always confirm the current details on the retailer&amp;rsquo;s website before buying.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Privacy</title>
-      <link>http://localhost:1313/hugo-app/privacy/</link>
+      <link>https://Jacklee504.github.io/hugo-app/privacy/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/privacy/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/privacy/</guid>
       <description>&lt;p&gt;Deal Ledger is currently a pre-launch sample site and does not yet run a live email program or a live affiliate integration.&lt;/p&gt;&#xA;&lt;p&gt;At the moment, the site does not intentionally collect personal information beyond anything a visitor might choose to send through future contact or signup features once they are connected.&lt;/p&gt;&#xA;&lt;p&gt;When category alerts are launched, this policy should be updated to explain:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;what email information is collected&lt;/li&gt;&#xA;&lt;li&gt;which mailing provider stores it&lt;/li&gt;&#xA;&lt;li&gt;how readers can unsubscribe or update preferences&lt;/li&gt;&#xA;&lt;li&gt;what tracking or analytics are used on alert emails and outbound retailer links&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;If and when outbound retailer links are enabled, those retailers may use their own cookies or tracking according to their own privacy policies.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Noise-cancelling over-ears</title>
-      <link>http://localhost:1313/hugo-app/deals/noise-cancelling-headphones/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</link>
       <pubDate>Mon, 30 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/noise-cancelling-headphones/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</guid>
       <description>Wireless ANC headphones with 30h battery and quick charge.</description>
     </item>
     <item>
       <title>How we decide a discount is worth featuring</title>
-      <link>http://localhost:1313/hugo-app/posts/post-1/</link>
+      <link>https://Jacklee504.github.io/hugo-app/posts/post-1/</link>
       <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/posts/post-1/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/post-1/</guid>
       <description>A short look at the editorial rules behind Deal Ledger&amp;rsquo;s product picks.</description>
     </item>
     <item>
       <title>Best home office upgrades under $150</title>
-      <link>http://localhost:1313/hugo-app/posts/best-home-office-upgrades-under-150/</link>
+      <link>https://Jacklee504.github.io/hugo-app/posts/best-home-office-upgrades-under-150/</link>
       <pubDate>Sun, 29 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/posts/best-home-office-upgrades-under-150/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/best-home-office-upgrades-under-150/</guid>
       <description>A sample roundup showing the kind of editorial content that can support the deals pages.</description>
     </item>
     <item>
       <title>Runner&#39;s GPS smartwatch</title>
-      <link>http://localhost:1313/hugo-app/deals/smartwatch-runner/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/smartwatch-runner/</link>
       <pubDate>Sat, 28 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/smartwatch-runner/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/smartwatch-runner/</guid>
       <description>Built-in GPS, heart-rate, and week-long battery for training.</description>
     </item>
     <item>
       <title>Why category alerts matter more than a generic newsletter</title>
-      <link>http://localhost:1313/hugo-app/posts/why-category-alerts-matter/</link>
+      <link>https://Jacklee504.github.io/hugo-app/posts/why-category-alerts-matter/</link>
       <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/posts/why-category-alerts-matter/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/why-category-alerts-matter/</guid>
       <description>A sample strategy note on why readers should be able to subscribe to specific product categories.</description>
     </item>
     <item>
       <title>4K streaming stick</title>
-      <link>http://localhost:1313/hugo-app/deals/4k-streaming-stick/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/4k-streaming-stick/</link>
       <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/4k-streaming-stick/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/4k-streaming-stick/</guid>
       <description>Dolby Vision streaming with voice remote and Wi‑Fi 6.</description>
     </item>
     <item>
       <title>Compact mechanical keyboard</title>
-      <link>http://localhost:1313/hugo-app/deals/mechanical-keyboard/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</link>
       <pubDate>Wed, 25 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/mechanical-keyboard/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/mechanical-keyboard/</guid>
       <description>Hot-swappable 65% board with RGB and silent switches.</description>
     </item>
     <item>
       <title>Waterproof Bluetooth speaker</title>
-      <link>http://localhost:1313/hugo-app/deals/bluetooth-speaker/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</link>
       <pubDate>Sun, 22 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/bluetooth-speaker/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</guid>
       <description>Rugged IPX7 speaker with 12h battery and USB-C.</description>
     </item>
     <item>
       <title>Adjustable dumbbell set</title>
-      <link>http://localhost:1313/hugo-app/deals/home-dumbbell-set/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/home-dumbbell-set/</link>
       <pubDate>Fri, 20 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/home-dumbbell-set/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/home-dumbbell-set/</guid>
       <description>Space-saving weights adjustable from 5–50 lbs per hand.</description>
     </item>
   </channel>

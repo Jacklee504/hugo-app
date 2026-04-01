@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Music on Deal Ledger</title>
-    <link>http://localhost:1313/hugo-app/tags/music/</link>
+    <link>https://Jacklee504.github.io/hugo-app/tags/music/</link>
     <description>Recent content in Music on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 Mar 2026 12:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/hugo-app/tags/music/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://Jacklee504.github.io/hugo-app/tags/music/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Noise-cancelling over-ears</title>
-      <link>http://localhost:1313/hugo-app/deals/noise-cancelling-headphones/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</link>
       <pubDate>Mon, 30 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/noise-cancelling-headphones/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/noise-cancelling-headphones/</guid>
       <description>Wireless ANC headphones with 30h battery and quick charge.</description>
     </item>
     <item>
       <title>Waterproof Bluetooth speaker</title>
-      <link>http://localhost:1313/hugo-app/deals/bluetooth-speaker/</link>
+      <link>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</link>
       <pubDate>Sun, 22 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/hugo-app/deals/bluetooth-speaker/</guid>
+      <guid>https://Jacklee504.github.io/hugo-app/deals/bluetooth-speaker/</guid>
       <description>Rugged IPX7 speaker with 12h battery and USB-C.</description>
     </item>
   </channel>
