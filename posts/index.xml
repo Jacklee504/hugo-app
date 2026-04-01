@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My Hugo Site</title>
+    <title>Posts on Deal Ledger</title>
     <link>https://Jacklee504.github.io/hugo-app/posts/</link>
-    <description>Recent content in Posts on My Hugo Site</description>
+    <description>Recent content in Posts on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://Jacklee504.github.io/hugo-app/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Post 1</title>
+      <title>How we decide a discount is worth featuring</title>
       <link>https://Jacklee504.github.io/hugo-app/posts/post-1/</link>
       <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/posts/post-1/</guid>
-      <description>&lt;p&gt;This is my post.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://Jacklee504.github.io/hugo-app/images/example.jpg&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;</description>
+      <description>A short look at the editorial rules behind Deal Ledger&amp;rsquo;s product picks.</description>
+    </item>
+    <item>
+      <title>Best home office upgrades under $150</title>
+      <link>https://Jacklee504.github.io/hugo-app/posts/best-home-office-upgrades-under-150/</link>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/best-home-office-upgrades-under-150/</guid>
+      <description>A sample roundup showing the kind of editorial content that can support the deals pages.</description>
+    </item>
+    <item>
+      <title>Why category alerts matter more than a generic newsletter</title>
+      <link>https://Jacklee504.github.io/hugo-app/posts/why-category-alerts-matter/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/why-category-alerts-matter/</guid>
+      <description>A sample strategy note on why readers should be able to subscribe to specific product categories.</description>
     </item>
   </channel>
 </rss>

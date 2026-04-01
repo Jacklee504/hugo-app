@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>Deal Ledger</title>
+    <title>Category Alerts | Deal Ledger</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="A pre-launch sample deals site focused on useful product picks, price context, and category-based alerts.">
+    <meta name="description" content="A pre-launch preview of the future email signup flow.">
     <meta name="generator" content="Hugo 0.159.2">
     
     
@@ -31,38 +31,37 @@
 
     
     
-      <link href="/hugo-app/tags/gaming/index.xml" rel="alternate" type="application/rss+xml" title="Deal Ledger" />
-      <link href="/hugo-app/tags/gaming/index.xml" rel="feed" type="application/rss+xml" title="Deal Ledger" />
+      <link href="/hugo-app/alerts/index.xml" rel="alternate" type="application/rss+xml" title="Deal Ledger" />
+      <link href="/hugo-app/alerts/index.xml" rel="feed" type="application/rss+xml" title="Deal Ledger" />
       
     
 
     
-      <link rel="canonical" href="https://Jacklee504.github.io/hugo-app/tags/gaming/">
+      <link rel="canonical" href="https://Jacklee504.github.io/hugo-app/alerts/">
     
 
     
     
-    <meta property="og:url" content="https://Jacklee504.github.io/hugo-app/tags/gaming/">
+    <meta property="og:url" content="https://Jacklee504.github.io/hugo-app/alerts/">
   <meta property="og:site_name" content="Deal Ledger">
-  <meta property="og:title" content="Gaming">
-  <meta property="og:description" content="A pre-launch sample deals site focused on useful product picks, price context, and category-based alerts.">
+  <meta property="og:title" content="Category Alerts">
+  <meta property="og:description" content="A pre-launch preview of the future email signup flow.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Gaming">
-  <meta itemprop="description" content="A pre-launch sample deals site focused on useful product picks, price context, and category-based alerts.">
-  <meta itemprop="datePublished" content="2026-03-25T12:00:00+00:00">
-  <meta itemprop="dateModified" content="2026-03-25T12:00:00+00:00">
+  <meta itemprop="name" content="Category Alerts">
+  <meta itemprop="description" content="A pre-launch preview of the future email signup flow.">
+  <meta itemprop="wordCount" content="22">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Gaming">
-  <meta name="twitter:description" content="A pre-launch sample deals site focused on useful product picks, price context, and category-based alerts.">
+  <meta name="twitter:title" content="Category Alerts">
+  <meta name="twitter:description" content="A pre-launch preview of the future email signup flow.">
 
       
       
     
 	<link rel="stylesheet" href="/hugo-app/styles/site.css">
 
-  </head><body class="ma0 avenir bg-near-white production is-term">
+  </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
 
   <header>
@@ -156,8 +155,12 @@
 
       <div class="tc-l pv3 ph3 ph4-ns">
         <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Gaming
+          Category Alerts
         </h1>
+        
+          <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+            A pre-launch preview of the future email signup flow.
+          </h2>
         
       </div>
     </div>
@@ -166,30 +169,60 @@
 
     <main class="pb7" role="main">
       
-  <article class="pa3 pa4-ns nested-copy-line-height">
-    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
-    <section class="flex-ns mt5 flex-wrap justify-around">
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Deals</span>
-    <h1 class="f3 near-black">
-      <a href="/hugo-app/deals/mechanical-keyboard/" class="link black dim">
-        Compact mechanical keyboard
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Hot-swappable 65% board with RGB and silent switches.
-    </div>
-    <a href="/hugo-app/deals/mechanical-keyboard/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
+<section class="alerts-shell">
+  <span class="pill">Pre-launch preview</span>
+  <h1>Category email alerts</h1>
+  <p class="page-copy">This page shows the intended signup experience for the future email feature. It is designed around reader choice: pick a category, pick a cadence, and only receive relevant updates.</p>
 
-        </div>
-      
-    </section>
+  <div class="info-grid">
+    <article class="info-card">
+      <h3>Specific categories</h3>
+      <p>Readers should be able to follow focused topics like audio, running gear, or home office upgrades instead of joining one generic newsletter.</p>
     </article>
+    <article class="info-card">
+      <h3>Simple cadence</h3>
+      <p>The goal is to let readers choose between a faster "send me good picks quickly" mode and a lower-noise weekly digest.</p>
+    </article>
+    <article class="info-card">
+      <h3>Easy opt-out</h3>
+      <p>When the live version launches, every email flow should include clear unsubscribe and preference-management controls.</p>
+    </article>
+  </div>
+
+  <form class="alert-form">
+    <div>
+      <label for="alert-email">Email address</label>
+      <input id="alert-email" name="email" type="email" placeholder="you@example.com">
+    </div>
+
+    <div>
+      <p>Categories to follow</p>
+      <div class="alert-options">
+        <label><span><input type="checkbox" name="categories" value="audio"> Audio and headphones</span><small>Travel headphones, desktop audio, and portable speakers.</small></label>
+        <label><span><input type="checkbox" name="categories" value="running"> Running tech</span><small>GPS watches, earbuds, and training accessories.</small></label>
+        <label><span><input type="checkbox" name="categories" value="productivity"> Home office</span><small>Keyboards, productivity gear, and workstation upgrades.</small></label>
+        <label><span><input type="checkbox" name="categories" value="fitness"> Home gym</span><small>Dumbbells, compact fitness gear, and training basics.</small></label>
+      </div>
+    </div>
+
+    <div>
+      <label for="cadence">How often</label>
+      <select id="cadence" name="cadence">
+        <option>As new picks are added</option>
+        <option>Weekly digest</option>
+        <option>Only the strongest deals</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="notes">Optional notes</label>
+      <textarea id="notes" name="notes" rows="4" placeholder="Examples: over-ear headphones, compact keyboards, adjustable dumbbells"></textarea>
+    </div>
+
+    <button type="button">Sample signup UI</button>
+    <p class="alert-form__note">This form is intentionally a UX preview only. Connect a mailing provider before launch, then update the privacy page and disclosure language to match the real data flow.</p>
+  </form>
+</section>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">

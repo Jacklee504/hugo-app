@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Latest deals on My Hugo Site</title>
+    <title>Deal Ledger</title>
     <link>https://Jacklee504.github.io/hugo-app/</link>
-    <description>Recent content in Latest deals on My Hugo Site</description>
+    <description>Recent content on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
@@ -13,28 +13,28 @@
       <link>https://Jacklee504.github.io/hugo-app/about/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/about/</guid>
-      <description>&lt;p&gt;We track discounted products and highlight the best value we find. Pages are updated periodically and built as a static site for fast browsing.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Deal Ledger is a pre-launch sample site built around a simple idea: a deals website should be useful even before a reader clicks out to a retailer.&lt;/p&gt;&#xA;&lt;p&gt;The project is being designed to focus on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;curated product picks instead of giant dumps of coupons&lt;/li&gt;&#xA;&lt;li&gt;clear price context, including reference pricing and discount depth&lt;/li&gt;&#xA;&lt;li&gt;category-specific email alerts so readers can follow the topics they actually care about&lt;/li&gt;&#xA;&lt;li&gt;lightweight editorial guides that explain why a product or category is worth watching&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This version of the site exists to demonstrate structure, tone, and user experience before live retailer integrations are connected. The core goal is to launch with enough depth and clarity to be a trustworthy recommendation property, not just an empty affiliate shell.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Contact</title>
       <link>https://Jacklee504.github.io/hugo-app/contact/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/contact/</guid>
-      <description>&lt;p&gt;Questions or suggestions? Reach out at &lt;a href=&#34;mailto:youremail@example.com&#34;&gt;youremail@example.com&lt;/a&gt;. Replace this address with your preferred contact email or form link before launch.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Contact details will be finalized before launch. For the pre-launch sample, this page exists to show the intended site structure and to reserve space for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;a public inbox for reader questions&lt;/li&gt;&#xA;&lt;li&gt;partnership or press outreach&lt;/li&gt;&#xA;&lt;li&gt;feedback about deal categories and alert preferences&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Before applying or going live, replace this page with a real email address or a working contact form.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Disclosure</title>
       <link>https://Jacklee504.github.io/hugo-app/disclosure/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/disclosure/</guid>
-      <description>&lt;p&gt;As an Amazon Associate I earn from qualifying purchases. Some links on this site are affiliate links; if you buy through them, we may earn a commission at no extra cost to you. Prices and availability can change; check the retailer for the latest details.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Deal Ledger is currently a pre-launch sample site. Live retailer integrations and affiliate relationships have not been turned on yet.&lt;/p&gt;&#xA;&lt;p&gt;After launch, some outbound product links may become affiliate links. If that happens, the site will clearly disclose that it may earn a commission from qualifying purchases at no additional cost to the reader.&lt;/p&gt;&#xA;&lt;p&gt;Prices, availability, and deal timing can change quickly. When live links are added, readers should always confirm the current details on the retailer&amp;rsquo;s website before buying.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Privacy</title>
       <link>https://Jacklee504.github.io/hugo-app/privacy/</link>
       <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/privacy/</guid>
-      <description>&lt;p&gt;We do not collect personal information unless you choose to share it (for example, by contacting us). Links to retailers are affiliate links; retailers may use their own cookies and tracking per their policies. If you follow a link, review the retailer’s privacy terms. This site is static and does not run server-side code.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Deal Ledger is currently a pre-launch sample site and does not yet run a live email program or a live affiliate integration.&lt;/p&gt;&#xA;&lt;p&gt;At the moment, the site does not intentionally collect personal information beyond anything a visitor might choose to send through future contact or signup features once they are connected.&lt;/p&gt;&#xA;&lt;p&gt;When category alerts are launched, this policy should be updated to explain:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;what email information is collected&lt;/li&gt;&#xA;&lt;li&gt;which mailing provider stores it&lt;/li&gt;&#xA;&lt;li&gt;how readers can unsubscribe or update preferences&lt;/li&gt;&#xA;&lt;li&gt;what tracking or analytics are used on alert emails and outbound retailer links&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;If and when outbound retailer links are enabled, those retailers may use their own cookies or tracking according to their own privacy policies.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Noise-cancelling over-ears</title>
@@ -44,11 +44,18 @@
       <description>Wireless ANC headphones with 30h battery and quick charge.</description>
     </item>
     <item>
-      <title>Post 1</title>
+      <title>How we decide a discount is worth featuring</title>
       <link>https://Jacklee504.github.io/hugo-app/posts/post-1/</link>
       <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/posts/post-1/</guid>
-      <description>&lt;p&gt;This is my post.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://Jacklee504.github.io/hugo-app/images/example.jpg&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;</description>
+      <description>A short look at the editorial rules behind Deal Ledger&amp;rsquo;s product picks.</description>
+    </item>
+    <item>
+      <title>Best home office upgrades under $150</title>
+      <link>https://Jacklee504.github.io/hugo-app/posts/best-home-office-upgrades-under-150/</link>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/best-home-office-upgrades-under-150/</guid>
+      <description>A sample roundup showing the kind of editorial content that can support the deals pages.</description>
     </item>
     <item>
       <title>Runner&#39;s GPS smartwatch</title>
@@ -56,6 +63,13 @@
       <pubDate>Sat, 28 Mar 2026 12:00:00 +0000</pubDate>
       <guid>https://Jacklee504.github.io/hugo-app/deals/smartwatch-runner/</guid>
       <description>Built-in GPS, heart-rate, and week-long battery for training.</description>
+    </item>
+    <item>
+      <title>Why category alerts matter more than a generic newsletter</title>
+      <link>https://Jacklee504.github.io/hugo-app/posts/why-category-alerts-matter/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://Jacklee504.github.io/hugo-app/posts/why-category-alerts-matter/</guid>
+      <description>A sample strategy note on why readers should be able to subscribe to specific product categories.</description>
     </item>
     <item>
       <title>4K streaming stick</title>
