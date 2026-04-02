@@ -2,7 +2,7 @@
 <section class="list-shell">
   <div class="list-shell__intro">
     <h1>Top savings</h1>
-    <p>The strongest sample pages by discount depth, useful for readers who want the best-value picks first.</p>
+    <p>The strongest pages by discount depth, useful for readers who want the best-value picks first.</p>
   </div>
   {{ $deals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
   {{ $sorted := sort $deals "Params.discount_pct" "desc" }}

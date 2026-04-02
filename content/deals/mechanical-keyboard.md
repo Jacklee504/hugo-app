@@ -13,4 +13,4 @@ summary = "Hot-swappable 65% board with RGB and silent switches."
 
 Keyboard pages help show that the site is not limited to broad consumer gadgets. A niche like home office gear gives the project more editorial shape and makes category alerts more compelling.
 
-For a live version, this page would likely sit alongside a roundup guide and a productivity-focused alert stream.
+This page can sit alongside a roundup guide and a productivity-focused alert stream.

@@ -1,6 +1,6 @@
 +++
 title = "Category Alerts"
-description = "A pre-launch preview of the future email signup flow."
+description = "Join the waitlist for focused email alerts by category."
 +++
 
-Category alerts are planned as an opt-in feature so readers can subscribe only to the kinds of products they want to track.
+Category alerts are being designed as an opt-in feature so readers can subscribe only to the kinds of products they want to track.

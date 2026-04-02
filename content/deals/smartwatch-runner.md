@@ -13,7 +13,7 @@ summary = "Built-in GPS, heart-rate, and week-long battery for training."
 
 Running-tech pages work well because the audience is intent-driven. Readers usually know what they want to track: pace, distance, routes, or recovery.
 
-This sample page demonstrates the kind of information the site should surface quickly:
+This page demonstrates the kind of information the site should surface quickly:
 
 - what training problem the watch solves
 - whether the discount is large enough to matter

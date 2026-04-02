@@ -3,8 +3,10 @@ title = "Disclosure"
 date = 2026-03-31T00:00:00Z
 +++
 
-Deal Ledger is currently a pre-launch sample site. Live retailer integrations and affiliate relationships have not been turned on yet.
+Deal Ledger may use affiliate links on some pages. That means the site may earn a commission from qualifying purchases at no additional cost to the reader.
 
-After launch, some outbound product links may become affiliate links. If that happens, the site will clearly disclose that it may earn a commission from qualifying purchases at no additional cost to the reader.
+Editorial coverage is intended to be based on relevance, value, and product fit for the categories covered on the site. A potential commission does not change the goal of publishing useful, selective recommendations with clear pricing context.
 
-Prices, availability, and deal timing can change quickly. When live links are added, readers should always confirm the current details on the retailer's website before buying.
+Prices, availability, and deal timing can change quickly. Readers should always confirm the current details on the retailer's website before buying.
+
+If Deal Ledger joins specific affiliate programs with their own disclosure language requirements, this page and any relevant site notices will be updated accordingly.

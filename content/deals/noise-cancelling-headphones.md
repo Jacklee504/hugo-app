@@ -19,4 +19,4 @@ Why it belongs on the page:
 - the reference price gives shoppers instant context
 - battery life and quick charge are easy value hooks
 
-In the live version of the site, a reader interested in this page should be able to join alerts for audio deals specifically, rather than receiving a general newsletter.
+A reader interested in this page should be able to join alerts for audio deals specifically, rather than receiving a general newsletter.

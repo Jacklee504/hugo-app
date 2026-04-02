@@ -13,4 +13,4 @@ summary = "Rugged IPX7 speaker with 12h battery and USB-C."
 
 Portable audio picks are useful because they give the site a lighter, giftable category alongside more research-heavy products like headphones or fitness tech.
 
-This sample write-up is intentionally short and skimmable, which is often the right format for a deals page: enough detail to build confidence without turning every listing into a full review.
+This write-up is intentionally short and skimmable, which is often the right format for a deals page: enough detail to build confidence without turning every listing into a full review.

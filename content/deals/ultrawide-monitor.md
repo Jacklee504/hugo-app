@@ -19,4 +19,4 @@ Why this listing works well:
 - USB-C and an adjustable stand are practical features shoppers actually look for
 - the discount is large enough to justify featuring it rather than burying it in a roundup
 
-In a live version of the site, this page would fit naturally beside home-office guides and productivity-focused alerts.
+This page fits naturally beside home-office guides and productivity-focused alerts.

@@ -3,19 +3,18 @@
 {{ $posts := where .Site.RegularPages "Section" "posts" }}
 {{ $alertTopics := slice "Audio" "Running gear" "Home office" "Home gym" }}
 {{ $featured := where $deals ".Params.featured" true | first 4 }}
-{{ $best := sort $deals "Params.discount_pct" "desc" | first 4 }}
 {{ $recent := first 4 (sort (where $deals "Draft" false) "Date" "desc") }}
 {{ $guides := first 3 (sort $posts "Date" "desc") }}
 
 <section class="hero-band">
-  <div class="hero-band__eyebrow">Pre-launch sample site</div>
+  <div class="hero-band__eyebrow">Curated deal picks</div>
   <div class="hero-band__grid">
     <div>
       <h1>Useful deals, not deal spam.</h1>
       <p>Deal Ledger is a curated product-discovery site built around a simple promise: fewer picks, better context, and alerts shaped by reader intent. The goal is not to cover everything. It is to help people track practical products and understand why a deal is worth their attention.</p>
       <div class="hero-band__actions">
         <a class="button-link button-link--primary" href="{{ "deals/" | relURL }}">Browse deal picks</a>
-        <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">See alert signup flow</a>
+        <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">Join alert waitlist</a>
       </div>
     </div>
     <div class="hero-band__stats">
@@ -37,56 +36,8 @@
 
 <section class="home-section">
   <div class="home-section__intro">
-    <h2>Featured picks</h2>
-    <p>These are the kinds of products the site would highlight on the front page: practical categories, clear price context, and just enough editorial framing to be useful before a click ever happens.</p>
-  </div>
-  {{ if gt (len $featured) 0 }}
-    <div class="deal-grid">
-      {{ range $featured }}
-        {{ partial "deal-card.html" (dict "page" . "compact" true) }}
-      {{ end }}
-    </div>
-  {{ else }}
-    <p>No featured deals yet. Check back soon.</p>
-  {{ end }}
-</section>
-
-<section class="home-section">
-  <div class="home-section__intro">
-    <h2>Best sample discounts</h2>
-    <p>Each deal page shows a reference price, current price, and short rationale so the site feels selective and useful rather than noisy or generic.</p>
-  </div>
-  {{ if gt (len $best) 0 }}
-    <div class="deal-grid">
-      {{ range $best }}
-        {{ partial "deal-card.html" (dict "page" . "compact" true) }}
-      {{ end }}
-    </div>
-  {{ else }}
-    <p>Discount history will appear here once deals are added.</p>
-  {{ end }}
-</section>
-
-<section class="home-section">
-  <div class="home-section__intro">
-    <h2>Recent additions</h2>
-    <p>New picks, fresh categories, and updated notes land here first. This keeps the homepage active without turning it into a constant stream of low-signal offers.</p>
-  </div>
-  {{ if gt (len $recent) 0 }}
-    <div class="deal-grid">
-      {{ range $recent }}
-        {{ partial "deal-card.html" (dict "page" . "compact" true) }}
-      {{ end }}
-    </div>
-  {{ else }}
-    <p>New deals will appear once published.</p>
-  {{ end }}
-</section>
-
-<section class="home-section">
-  <div class="home-section__intro">
     <h2>Categories people can subscribe to</h2>
-    <p>The future email feature is aimed at reader intent, not inbox noise: readers choose a category, add keywords if needed, and only hear about the products they actually care about.</p>
+    <p>The email strategy is aimed at reader intent, not inbox noise: readers choose a category, add keywords if needed, and only hear about the products they actually care about.</p>
   </div>
   <div class="category-strip">
     <a href="{{ "tags/audio/" | relURL }}">Audio</a>
@@ -108,13 +59,42 @@
       <article class="guide-card">
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         <p>{{ with .Summary }}{{ . | plainify | truncate 150 }}{{ else }}Read the full guide.{{ end }}</p>
+        <a class="guide-card__link" href="{{ .RelPermalink }}">Read guide</a>
       </article>
     {{ end }}
   </div>
 </section>
 {{ end }}
 
-<div class="home-section disclosure-note">
-  <p>This pre-launch sample does not yet use live affiliate links or a retailer API. The current product pages and alerts exist to demonstrate the intended experience: fewer deals, clearer context, and more relevant tracking.</p>
-</div>
+<section class="home-section">
+  <div class="home-section__intro">
+    <h2>Featured picks</h2>
+    <p>These are the kinds of products the site would highlight on the front page: practical categories, clear price context, and just enough editorial framing to be useful before a click ever happens.</p>
+  </div>
+  {{ if gt (len $featured) 0 }}
+    <div class="deal-grid deal-grid--browse">
+      {{ range $featured }}
+        {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>No featured deals yet. Check back soon.</p>
+  {{ end }}
+</section>
+
+<section class="home-section">
+  <div class="home-section__intro">
+    <h2>Recent additions</h2>
+    <p>New picks, fresh categories, and updated notes land here first. This keeps the homepage active without turning it into a constant stream of low-signal offers.</p>
+  </div>
+  {{ if gt (len $recent) 0 }}
+    <div class="deal-grid deal-grid--browse">
+      {{ range $recent }}
+        {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>New deals will appear once published.</p>
+  {{ end }}
+</section>
 {{ end }}

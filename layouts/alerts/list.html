@@ -1,18 +1,18 @@
 {{ define "main" }}
 <section class="alerts-shell">
-  <span class="pill">Pre-launch preview</span>
+  <span class="pill">Join the waitlist</span>
   <h1>Category email alerts</h1>
-  <p class="page-copy">This page shows the intended signup experience for the future email feature. The better long-term model is a mix of quick category picks and keyword-based intent, so readers can save exactly the kinds of products they want to hear about.</p>
+  <p class="page-copy">The goal is a focused email experience built around category picks and keyword-based intent, so readers can save exactly the kinds of products they want to hear about.</p>
   <div class="info-bar">
-    Start with a category, add a few keywords if needed, and choose how often you want updates. The goal is a calmer, more relevant alert flow than a generic newsletter.
+    Readers can send a category alert request now. Choose a category, add a few keywords if needed, and submit the details so the preferences are easy to review.
   </div>
 
-  <form class="alert-form">
+  <form class="alert-form" id="alert-request-form">
     <section class="alert-form__section alert-form__split">
+      <h2 class="alert-form__heading alert-form__heading--span">Where should we send updates?</h2>
       <div class="alert-form__field">
-        <h2 class="alert-form__heading">Where should we send updates?</h2>
         <label for="alert-email">Email address</label>
-        <input id="alert-email" name="email" type="email" placeholder="you@example.com">
+        <input id="alert-email" name="email" type="email" placeholder="you@example.com" required>
       </div>
 
       <div class="alert-form__field">
@@ -42,9 +42,9 @@
         <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor, adjustable dumbbells">
         <p class="alert-field__hint">Use commas to describe the products, features, or use cases you want to track.</p>
         <div class="keyword-suggestions" aria-label="Suggested keywords">
-          <span>noise cancelling</span>
-          <span>running watch</span>
-          <span>usb-c monitor</span>
+          <button type="button" data-keyword="noise cancelling">noise cancelling</button>
+          <button type="button" data-keyword="running watch">running watch</button>
+          <button type="button" data-keyword="usb-c monitor">usb-c monitor</button>
         </div>
       </div>
 
@@ -54,8 +54,99 @@
       </div>
     </section>
 
-    <button type="button">Sample saved-alert UI</button>
-    <p class="alert-form__note">This form is intentionally a UX preview only. Connect a mailing provider before launch, then update the privacy page and disclosure language to match the real data flow.</p>
+    <button type="submit">Send alert request</button>
+    <p class="alert-form__note">Submitting saves the request in this browser so the preferences can be reviewed and connected to a live mailing workflow later.</p>
+    <p class="alert-form__status" id="alert-form-status" aria-live="polite"></p>
   </form>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('alert-request-form');
+    if (!form) return;
+
+    const emailInput = document.getElementById('alert-email');
+    const cadenceSelect = document.getElementById('cadence');
+    const keywordsInput = document.getElementById('keywords');
+    const notesInput = document.getElementById('notes');
+    const status = document.getElementById('alert-form-status');
+    const chips = form.querySelectorAll('.keyword-suggestions button');
+    const storageKey = 'deal-ledger-alert-requests';
+
+    const setStatus = (message) => {
+      if (status) status.textContent = message;
+    };
+
+    emailInput.addEventListener('invalid', () => {
+      if (emailInput.validity.valueMissing) {
+        emailInput.setCustomValidity('Please enter your email address.');
+      } else if (emailInput.validity.typeMismatch) {
+        emailInput.setCustomValidity('Please enter a valid email address.');
+      } else {
+        emailInput.setCustomValidity('');
+      }
+    });
+
+    emailInput.addEventListener('input', () => {
+      emailInput.setCustomValidity('');
+    });
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const keyword = chip.dataset.keyword;
+        const current = keywordsInput.value
+          .split(',')
+          .map((value) => value.trim())
+          .filter(Boolean);
+
+        if (!current.includes(keyword)) {
+          current.push(keyword);
+          keywordsInput.value = current.join(', ');
+        }
+
+        keywordsInput.focus();
+        setStatus('Keyword added to the request.');
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'))
+        .map((input) => input.parentElement.textContent.trim());
+      const keywords = keywordsInput.value.trim();
+      const notes = notesInput.value.trim();
+
+      if (selectedCategories.length === 0 && !keywords) {
+        setStatus('Choose at least one category or add a keyword before sending.');
+        return;
+      }
+
+      const lines = [
+        emailInput.value.trim(),
+        cadenceSelect.value,
+        selectedCategories.length ? selectedCategories.join(', ') : 'None selected',
+        keywords || 'None provided',
+        notes || 'None provided'
+      ];
+
+      const request = {
+        email: lines[0],
+        cadence: lines[1],
+        categories: lines[2],
+        keywords: lines[3],
+        notes: lines[4],
+        createdAt: new Date().toISOString()
+      };
+
+      const existing = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
+      existing.push(request);
+      window.localStorage.setItem(storageKey, JSON.stringify(existing));
+
+      form.reset();
+      setStatus('Alert request saved on this device.');
+    });
+  });
+</script>
 {{ end }}

@@ -20,7 +20,7 @@
         <p><a class="deal-single__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a></p>
       {{ else }}
         <p><a class="deal-single__cta deal-single__cta--soft" href="{{ "alerts/" | relURL }}">Join category alerts</a></p>
-        <p class="deal-single__note">This pre-launch sample keeps retailer links disabled until launch and approval work is complete.</p>
+        <p class="deal-single__note">Retailer links are added selectively as listings are finalized.</p>
       {{ end }}
     </div>
 
@@ -39,7 +39,7 @@
 
   {{ with .Params.tags }}
     <div class="deal-single__tags">
-      {{ range . }}<a class="tag" href="{{ relURL (printf "tags/%s/" .) }}">#{{ . }}</a>{{ end }}
+      {{ range . }}<a class="tag" href="{{ relURL (printf "tags/%s/" (urlize .)) }}">#{{ . }}</a>{{ end }}
     </div>
   {{ end }}
 

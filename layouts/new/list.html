@@ -2,7 +2,7 @@
 <section class="list-shell">
   <div class="list-shell__intro">
     <h1>New arrivals</h1>
-    <p>The newest sample deal pages and product notes added to the site.</p>
+    <p>The newest deal pages and product notes added to the site.</p>
   </div>
   {{ $deals := sort (where (where .Site.RegularPages "Section" "deals") "Draft" false) "Date" "desc" }}
   {{ if gt (len $deals) 0 }}
