@@ -22,7 +22,7 @@ body {
 }
 
 main.pb7 {
-  padding-bottom: 1rem;
+  padding-bottom: 0;
 }
 
 .site-top {
@@ -111,22 +111,90 @@ main.pb7 {
   margin: 0;
 }
 
-.nav-links__anchor {
+.nav-links__anchor,
+.site-footer__nav a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.55rem 0.9rem;
   border-radius: 999px;
+  line-height: 1;
   color: rgba(255, 253, 249, 0.9);
+  text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
   transition: background 140ms ease, color 140ms ease, transform 140ms ease;
 }
 
-.nav-links__anchor:hover {
+.nav-links__anchor:hover,
+.site-footer__nav a:hover {
   background: rgba(255, 255, 255, 0.12);
   color: #fffdf9;
   transform: translateY(-1px);
+}
+
+.site-footer {
+  width: min(1120px, calc(100% - 2.75rem));
+  margin: 0.45rem auto;
+  padding: 1.2rem 1.4rem;
+  background: linear-gradient(180deg, rgba(13, 78, 70, 0.96), rgba(20, 43, 36, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.site-footer__inner,
+.site-footer__nav,
+.site-footer__meta {
+  display: flex;
+  gap: 1rem;
+}
+
+.site-footer__inner {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.site-footer__brand {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.site-footer__title {
+  color: #fffdf9;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.site-footer__tag,
+.site-footer__meta {
+  color: rgba(255, 253, 249, 0.72);
+  font-size: 0.92rem;
+}
+
+.site-footer__tag {
+  margin: 0;
+}
+
+.site-footer__nav {
+  flex-wrap: wrap;
+}
+
+.site-footer__meta a {
+  color: rgba(255, 253, 249, 0.88);
+  text-decoration: none;
+}
+
+.site-footer__meta {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-footer__social {
+  display: inline-flex;
+  align-items: center;
 }
 
 .home-section,
@@ -136,7 +204,7 @@ main.pb7 {
 .list-shell,
 .taxonomy-shell {
   width: min(1120px, calc(100% - 2.75rem));
-  margin: 0.45rem auto 1.35rem;
+  margin: 0.45rem auto;
 }
 
 .hero-band {
@@ -477,7 +545,8 @@ main > article[class^="page-"] .ananke-socials {
 
 .info-grid,
 .guide-grid,
-.alert-options {
+.alert-options,
+.posts-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -501,6 +570,73 @@ main > article[class^="page-"] .ananke-socials {
   text-decoration: none;
 }
 
+.posts-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.post-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 100%;
+  padding: 1.4rem;
+  background:
+    linear-gradient(180deg, rgba(216, 239, 233, 0.55), rgba(255, 253, 249, 0.96) 42%),
+    var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.post-card__meta {
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.post-card__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.1;
+}
+
+.post-card__title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-card__excerpt {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.post-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(13, 78, 70, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 253, 249, 0.9);
+  color: var(--accent-dark);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.post-card__link:hover {
+  transform: translateY(-1px);
+  background: #fff;
+  border-color: rgba(13, 78, 70, 0.24);
+}
+
 .alert-form {
   margin-top: 1.5rem;
   display: grid;
@@ -515,6 +651,10 @@ main > article[class^="page-"] .ananke-socials {
   border-radius: 16px;
   background: #fff;
   padding: 0.9rem 1rem;
+}
+
+.alert-form textarea {
+  resize: none;
 }
 
 .alert-options label {
@@ -569,11 +709,16 @@ main > article[class^="page-"] .ananke-socials {
     font-size: 0.72rem;
   }
 
+  .site-footer,
   .list-shell,
   .alerts-shell,
   .deal-single,
   main > article[class^="page-"] {
     padding: 1rem 1.05rem 0.9rem;
+  }
+
+  .site-footer__inner {
+    align-items: flex-start;
   }
 
   .site-top__intro {
