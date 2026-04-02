@@ -83,12 +83,6 @@
           </li>
           
           <li class="list dib nav-links__item">
-            <a class="nav-links__anchor no-underline" href="/hugo-app/best-deals/">
-              Top Savings
-            </a>
-          </li>
-          
-          <li class="list dib nav-links__item">
             <a class="nav-links__anchor no-underline" href="/hugo-app/new/">
               Latest
             </a>
@@ -140,54 +134,59 @@
 <section class="alerts-shell">
   <span class="pill">Pre-launch preview</span>
   <h1>Category email alerts</h1>
-  <p class="page-copy">This page shows the intended signup experience for the future email feature. It is designed around reader choice: pick a category, pick a cadence, and only receive relevant updates.</p>
-
-  <div class="info-grid">
-    <article class="info-card">
-      <h3>Specific categories</h3>
-      <p>Readers should be able to follow focused topics like audio, running gear, or home office upgrades instead of joining one generic newsletter.</p>
-    </article>
-    <article class="info-card">
-      <h3>Simple cadence</h3>
-      <p>The goal is to let readers choose between a faster "send me good picks quickly" mode and a lower-noise weekly digest.</p>
-    </article>
-    <article class="info-card">
-      <h3>Easy opt-out</h3>
-      <p>When the live version launches, every email flow should include clear unsubscribe and preference-management controls.</p>
-    </article>
+  <p class="page-copy">This page shows the intended signup experience for the future email feature. The better long-term model is a mix of quick category picks and keyword-based intent, so readers can save exactly the kinds of products they want to hear about.</p>
+  <div class="info-bar">
+    Start with a category, add a few keywords if needed, and choose how often you want updates. The goal is a calmer, more relevant alert flow than a generic newsletter.
   </div>
 
   <form class="alert-form">
-    <div>
-      <label for="alert-email">Email address</label>
-      <input id="alert-email" name="email" type="email" placeholder="you@example.com">
-    </div>
-
-    <div>
-      <p>Categories to follow</p>
-      <div class="alert-options">
-        <label><span><input type="checkbox" name="categories" value="audio"> Audio and headphones</span><small>Travel headphones, desktop audio, and portable speakers.</small></label>
-        <label><span><input type="checkbox" name="categories" value="running"> Running tech</span><small>GPS watches, earbuds, and training accessories.</small></label>
-        <label><span><input type="checkbox" name="categories" value="productivity"> Home office</span><small>Keyboards, productivity gear, and workstation upgrades.</small></label>
-        <label><span><input type="checkbox" name="categories" value="fitness"> Home gym</span><small>Dumbbells, compact fitness gear, and training basics.</small></label>
+    <section class="alert-form__section alert-form__split">
+      <div class="alert-form__field">
+        <h2 class="alert-form__heading">Where should we send updates?</h2>
+        <label for="alert-email">Email address</label>
+        <input id="alert-email" name="email" type="email" placeholder="you@example.com">
       </div>
-    </div>
 
-    <div>
-      <label for="cadence">How often</label>
-      <select id="cadence" name="cadence">
-        <option>As new picks are added</option>
-        <option>Weekly digest</option>
-        <option>Only the strongest deals</option>
-      </select>
-    </div>
+      <div class="alert-form__field">
+        <label for="cadence">How often</label>
+        <select id="cadence" name="cadence">
+          <option>As new picks are added</option>
+          <option>Weekly digest</option>
+          <option>Only the strongest deals</option>
+        </select>
+      </div>
+    </section>
 
-    <div>
-      <label for="notes">Optional notes</label>
-      <textarea id="notes" name="notes" rows="4" placeholder="Examples: over-ear headphones, compact keyboards, adjustable dumbbells"></textarea>
-    </div>
+    <section class="alert-form__section">
+      <h2 class="alert-form__heading">What should we watch?</h2>
+      <div class="alert-form__field">
+        <p class="alert-form__label">Quick categories</p>
+        <div class="alert-options">
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> Audio and headphones</span><small>Travel, desk, and portable listening.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="running"> Running tech</span><small>Watches, earbuds, and training gear.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="productivity"> Home office</span><small>Keyboards, monitors, and desk upgrades.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="fitness"> Home gym</span><small>Compact equipment and strength basics.</small></label>
+        </div>
+      </div>
 
-    <button type="button">Sample signup UI</button>
+      <div class="alert-form__field">
+        <label for="keywords">Keywords or saved-search terms</label>
+        <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor, adjustable dumbbells">
+        <p class="alert-field__hint">Use commas to describe the products, features, or use cases you want to track.</p>
+        <div class="keyword-suggestions" aria-label="Suggested keywords">
+          <span>noise cancelling</span>
+          <span>running watch</span>
+          <span>usb-c monitor</span>
+        </div>
+      </div>
+
+      <div class="alert-form__field">
+        <label for="notes">Optional notes</label>
+        <textarea class="alert-form__notes" id="notes" name="notes" rows="3" placeholder="Examples: under $200, compact setup, travel-friendly"></textarea>
+      </div>
+    </section>
+
+    <button type="button">Sample saved-alert UI</button>
     <p class="alert-form__note">This form is intentionally a UX preview only. Connect a mailing provider before launch, then update the privacy page and disclosure language to match the real data flow.</p>
   </form>
 </section>
@@ -197,7 +196,7 @@
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       <a class="site-footer__title" href="/hugo-app/">Deal Ledger</a>
-      <p class="site-footer__tag">Curated deals, category alerts, and buying guides.</p>
+      <p class="site-footer__tag">Fewer deals, better context, more relevant alerts.</p>
     </div>
     <nav class="site-footer__nav" aria-label="Footer">
       <a href="/hugo-app/about/">About</a>
