@@ -111,6 +111,28 @@ main.pb7 {
   margin: 0;
 }
 
+.nav-actions {
+  gap: 0.85rem;
+}
+
+.nav-menu {
+  position: relative;
+}
+
+.nav-menu__toggle {
+  display: none;
+  list-style: none;
+}
+
+.nav-menu__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.nav-social {
+  display: inline-flex;
+  align-items: center;
+}
+
 .nav-links__anchor,
 .site-footer__nav a {
   display: inline-flex;
@@ -1182,11 +1204,14 @@ main > article[class^="page-"] .ananke-socials {
 
   .hero-band__actions,
   .hero-band__stats,
-  .deal-grid,
-  .deal-grid--browse,
   .guide-grid,
   .category-strip {
     grid-template-columns: 1fr;
+  }
+
+  .deal-grid,
+  .deal-grid--browse {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .button-link,
@@ -1203,6 +1228,7 @@ main > article[class^="page-"] .ananke-socials {
 
   .nav-shell {
     gap: 0.9rem;
+    align-items: center;
   }
 
   .nav-brand__name {
@@ -1210,13 +1236,57 @@ main > article[class^="page-"] .ananke-socials {
   }
 
   .nav-brand__tag {
-    max-width: 14rem;
-    line-height: 1.35;
+    display: none;
   }
 
-  .nav-links {
+  .nav-actions {
+    margin-left: auto;
+  }
+
+  .nav-menu {
+    width: auto;
+  }
+
+  .nav-menu__toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.22rem;
+    width: 2.7rem;
+    height: 2.7rem;
+    padding: 0.65rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+  }
+
+  .nav-menu__toggle span {
+    display: block;
     width: 100%;
-    gap: 0.45rem;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 253, 249, 0.95);
+  }
+
+  .nav-menu .nav-links {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0;
+    z-index: 10;
+    display: none;
+    width: min(16rem, calc(100vw - 1.5rem));
+    margin: 0;
+    padding: 0.45rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    background: rgba(15, 34, 29, 0.96);
+    box-shadow: 0 18px 34px rgba(8, 17, 15, 0.26);
+    gap: 0.35rem;
+  }
+
+  .nav-menu[open] .nav-links {
+    display: grid;
   }
 
   .nav-links__item {
@@ -1227,6 +1297,10 @@ main > article[class^="page-"] .ananke-socials {
   .site-footer__nav a {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .nav-social {
+    display: none;
   }
 
   .site-top__intro {
@@ -1272,6 +1346,7 @@ main > article[class^="page-"] .ananke-socials {
 
   .deal-card--list .deal-card__title {
     min-height: 0;
+    font-size: 1rem;
   }
 
   .deal-card__price-row,
@@ -1279,6 +1354,22 @@ main > article[class^="page-"] .ananke-socials {
   .deal-single__pricing,
   .deal-card__pricing {
     gap: 0.5rem;
+  }
+
+  .deal-card--list .deal-card__body {
+    padding: 0.85rem;
+  }
+
+  .deal-card__sale,
+  .deal-single .sale {
+    font-size: 1.02rem;
+  }
+
+  .deal-card__list,
+  .deal-single .list,
+  .deal-card__badge,
+  .deal-card__timer {
+    font-size: 0.78rem;
   }
 
   .category-strip a {
@@ -1306,8 +1397,9 @@ main > article[class^="page-"] .ananke-socials {
   }
 
   .site-footer__nav {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .site-footer__meta {
