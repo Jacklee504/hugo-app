@@ -59,7 +59,7 @@
       
       
     
-	<link rel="stylesheet" href="/deal-ledger/styles/site.css?v=1775138435">
+	<link rel="stylesheet" href="/deal-ledger/styles/site.css?v=1775144123">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -176,7 +176,6 @@
 
     <button type="submit">Send alert request</button>
     <p class="alert-form__note">Submitting saves the request in this browser so the preferences can be reviewed and connected to a live mailing workflow later.</p>
-    <p class="alert-form__status" id="alert-form-status" aria-live="polite"></p>
   </form>
 </section>
 <script>
@@ -188,13 +187,8 @@
     const cadenceSelect = document.getElementById('cadence');
     const keywordsInput = document.getElementById('keywords');
     const notesInput = document.getElementById('notes');
-    const status = document.getElementById('alert-form-status');
     const chips = form.querySelectorAll('.keyword-suggestions button');
     const storageKey = 'deal-ledger-alert-requests';
-
-    const setStatus = (message) => {
-      if (status) status.textContent = message;
-    };
 
     emailInput.addEventListener('invalid', () => {
       if (emailInput.validity.valueMissing) {
@@ -224,7 +218,6 @@
         }
 
         keywordsInput.focus();
-        setStatus('Keyword added to the request.');
       });
     });
 
@@ -239,7 +232,6 @@
       const notes = notesInput.value.trim();
 
       if (selectedCategories.length === 0 && !keywords) {
-        setStatus('Choose at least one category or add a keyword before sending.');
         return;
       }
 
@@ -265,7 +257,6 @@
       window.localStorage.setItem(storageKey, JSON.stringify(existing));
 
       form.reset();
-      setStatus('Alert request saved on this device.');
     });
   });
 </script>
