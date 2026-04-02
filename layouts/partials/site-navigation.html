@@ -6,13 +6,16 @@
     </a>
     <div class="flex-l items-center nav-actions">
       {{ if .Site.Menus.main }}
-        <details class="nav-menu">
-          <summary class="nav-menu__toggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </summary>
-          <ul class="pl0 mr3 nav-links">
+        <div class="nav-menu" data-nav-menu>
+          <button class="nav-menu__toggle" type="button" aria-label="Toggle navigation" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav-links">
+            <span class="nav-menu__icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="nav-menu__label">Menu</span>
+          </button>
+          <ul class="pl0 nav-links" id="site-nav-links">
             {{ range .Site.Menus.main.ByWeight }}
             <li class="list dib nav-links__item">
               <a class="nav-links__anchor no-underline" href="{{ .URL }}">
@@ -21,9 +24,45 @@
             </li>
             {{ end }}
           </ul>
-        </details>
+        </div>
       {{ end }}
       <div class="nav-social">{{ partials.IncludeCached "social/follow.html" . }}</div>
     </div>
   </div>
 </nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('[data-nav-menu]');
+    if (!menu) return;
+
+    const toggle = menu.querySelector('.nav-menu__toggle');
+    const links = menu.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    const closeMenu = () => {
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960) closeMenu();
+    });
+  });
+</script>

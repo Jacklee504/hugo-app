@@ -3,16 +3,13 @@
   <span class="pill">Join the waitlist</span>
   <h1>Category email alerts</h1>
   <p class="page-copy">The goal is a focused email experience built around category picks and keyword-based intent, so readers can save exactly the kinds of products they want to hear about.</p>
-  <div class="info-bar">
-    Readers can send a category alert request now. Choose a category, add a few keywords if needed, and submit the details so the preferences are easy to review.
-  </div>
 
   <form class="alert-form" id="alert-request-form">
     <section class="alert-form__section alert-form__split">
       <h2 class="alert-form__heading alert-form__heading--span">Where should we send updates?</h2>
       <div class="alert-form__field">
         <label for="alert-email">Email address</label>
-        <input id="alert-email" name="email" type="email" placeholder="you@example.com" required>
+        <input id="alert-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
       </div>
 
       <div class="alert-form__field">
@@ -38,14 +35,9 @@
       </div>
 
       <div class="alert-form__field">
-        <label for="keywords">Keywords or saved-search terms</label>
-        <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor, adjustable dumbbells">
+        <label for="keywords">Keywords or terms</label>
+        <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor">
         <p class="alert-field__hint">Use commas to describe the products, features, or use cases you want to track.</p>
-        <div class="keyword-suggestions" aria-label="Suggested keywords">
-          <button type="button" data-keyword="noise cancelling">noise cancelling</button>
-          <button type="button" data-keyword="running watch">running watch</button>
-          <button type="button" data-keyword="usb-c monitor">usb-c monitor</button>
-        </div>
       </div>
 
       <div class="alert-form__field">
@@ -67,7 +59,6 @@
     const cadenceSelect = document.getElementById('cadence');
     const keywordsInput = document.getElementById('keywords');
     const notesInput = document.getElementById('notes');
-    const chips = form.querySelectorAll('.keyword-suggestions button');
     const storageKey = 'deal-ledger-alert-requests';
 
     emailInput.addEventListener('invalid', () => {
@@ -82,23 +73,6 @@
 
     emailInput.addEventListener('input', () => {
       emailInput.setCustomValidity('');
-    });
-
-    chips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        const keyword = chip.dataset.keyword;
-        const current = keywordsInput.value
-          .split(',')
-          .map((value) => value.trim())
-          .filter(Boolean);
-
-        if (!current.includes(keyword)) {
-          current.push(keyword);
-          keywordsInput.value = current.join(', ');
-        }
-
-        keywordsInput.focus();
-      });
     });
 
     form.addEventListener('submit', (event) => {
