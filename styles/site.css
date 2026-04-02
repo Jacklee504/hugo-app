@@ -294,7 +294,8 @@ main.pb7 {
   padding: 0.85rem 1.2rem;
   text-decoration: none;
   font-weight: 700;
-  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  box-shadow: 0 14px 28px rgba(20, 43, 36, 0.12);
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
 }
 
 .button-link:hover,
@@ -302,6 +303,7 @@ main.pb7 {
 .deal-single__cta:hover,
 .alert-form button:hover {
   transform: translateY(-1px);
+  box-shadow: 0 18px 32px rgba(20, 43, 36, 0.16);
 }
 
 .button-link--primary,
@@ -316,6 +318,11 @@ main.pb7 {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.24);
   color: #fffdf9;
+}
+
+.button-link--secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.34);
 }
 
 .home-section {
@@ -723,6 +730,56 @@ main > article[class^="page-"] .ananke-socials {
   text-decoration: none;
 }
 
+.guide-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 100%;
+  border: 1px solid rgba(29, 43, 36, 0.08);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(250, 247, 240, 0.98), rgba(255, 255, 255, 0.98) 48%),
+    #fff;
+  box-shadow: 0 18px 34px rgba(20, 43, 36, 0.08);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.guide-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(19, 111, 99, 0.16);
+  box-shadow: 0 24px 40px rgba(20, 43, 36, 0.12);
+}
+
+.guide-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.guide-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(13, 78, 70, 0.12);
+  border-radius: 999px;
+  background: rgba(244, 251, 248, 0.9);
+  color: var(--accent-dark);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 18px rgba(19, 111, 99, 0.08);
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.guide-card__link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(13, 78, 70, 0.22);
+  background: #fff;
+  box-shadow: 0 14px 22px rgba(19, 111, 99, 0.12);
+}
+
 .posts-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
@@ -813,6 +870,10 @@ main > article[class^="page-"] .ananke-socials {
   line-height: 1.15;
 }
 
+.alert-form__heading--span {
+  grid-column: 1 / -1;
+}
+
 .alert-form__label {
   margin: 0;
   color: var(--ink);
@@ -845,6 +906,20 @@ main > article[class^="page-"] .ananke-socials {
   background: rgba(255, 255, 255, 0.96);
   padding: 0.85rem 0.95rem;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.alert-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(29, 43, 36, 0.7) 50%),
+    linear-gradient(135deg, rgba(29, 43, 36, 0.7) 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.45rem) calc(50% - 0.16rem),
+    calc(100% - 1.1rem) calc(50% - 0.16rem);
+  background-size: 0.42rem 0.42rem, 0.42rem 0.42rem;
+  background-repeat: no-repeat;
+  padding-right: 2.7rem;
 }
 
 .alert-form textarea {
@@ -883,7 +958,7 @@ main > article[class^="page-"] .ananke-socials {
   margin-top: 0.45rem;
 }
 
-.keyword-suggestions span {
+.keyword-suggestions button {
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 0.7rem;
@@ -894,6 +969,20 @@ main > article[class^="page-"] .ananke-socials {
   font-size: 0.82rem;
   font-weight: 600;
   line-height: 1;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.keyword-suggestions button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(19, 111, 99, 0.24);
+  background: rgba(19, 111, 99, 0.12);
+}
+
+.keyword-suggestions button:focus-visible {
+  outline: none;
+  border-color: rgba(19, 111, 99, 0.3);
+  box-shadow: 0 0 0 3px rgba(19, 111, 99, 0.1);
 }
 
 .alert-form .alert-options {
@@ -909,6 +998,25 @@ main > article[class^="page-"] .ananke-socials {
   border-radius: 18px;
   background: #fff;
   font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.alert-options label:hover {
+  transform: translateY(-1px);
+  border-color: rgba(19, 111, 99, 0.2);
+  background: rgba(244, 251, 248, 0.96);
+}
+
+.alert-options label:has(input[type="checkbox"]:checked) {
+  border-color: rgba(19, 111, 99, 0.34);
+  background: linear-gradient(180deg, rgba(221, 244, 239, 0.95), rgba(255, 255, 255, 0.98));
+  box-shadow: 0 12px 24px rgba(19, 111, 99, 0.08);
+}
+
+.alert-options label:has(input[type="checkbox"]:focus-visible) {
+  border-color: rgba(19, 111, 99, 0.28);
+  box-shadow: 0 0 0 4px rgba(19, 111, 99, 0.08);
 }
 
 .alert-option__row {
@@ -923,44 +1031,60 @@ main > article[class^="page-"] .ananke-socials {
   line-height: 1.5;
 }
 
-.alert-options input {
+.alert-options input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-  width: 0.72rem;
-  height: 0.72rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  min-width: 0.9rem;
   margin: 0;
+  padding: 0;
   flex: 0 0 auto;
   border: 1.25px solid rgba(19, 111, 99, 0.38);
-  border-radius: 0.2rem;
+  border-radius: 0.22rem;
   background: #fff;
   display: inline-grid;
   place-content: center;
   box-shadow: none;
   cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease, transform 120ms ease, box-shadow 120ms ease;
 }
 
-.alert-options input::after {
+.alert-options input[type="checkbox"]::after {
   content: "";
-  width: 0.28rem;
-  height: 0.28rem;
+  width: 0.38rem;
+  height: 0.38rem;
   border-radius: 0.08rem;
   background: var(--accent-dark);
   transform: scale(0);
   transition: transform 120ms ease;
 }
 
-.alert-options input:checked {
+.alert-options input[type="checkbox"]:checked {
   border-color: var(--accent-dark);
   background: rgba(19, 111, 99, 0.08);
 }
 
-.alert-options input:checked::after {
+.alert-options input[type="checkbox"]:checked::after {
   transform: scale(1);
 }
 
-.alert-options input:focus-visible {
+.alert-options input[type="checkbox"]:hover {
+  transform: scale(1.04);
+  border-color: rgba(19, 111, 99, 0.5);
+}
+
+.alert-options input[type="checkbox"]:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(19, 111, 99, 0.12);
+}
+
+.alert-form__status {
+  min-height: 1.4rem;
+  margin: -0.15rem 0 0;
+  color: var(--accent-dark);
+  font-size: 0.88rem;
+  font-weight: 600;
 }
 
 .deal-single__hero {
@@ -991,7 +1115,7 @@ main > article[class^="page-"] .ananke-socials {
   }
 
   .alert-form__section.alert-form__split {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
 }
