@@ -2,25 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://dealledger.eu/about/</loc>
-    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dealledger.eu/contact/</loc>
-    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dealledger.eu/</loc>
-    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dealledger.eu/disclosure/</loc>
-    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://dealledger.eu/privacy/</loc>
-    <lastmod>2026-03-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://dealledger.eu/tags/audio/</loc>
     <lastmod>2026-03-30T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://dealledger.eu/categories/</loc>
+    <lastmod>2026-03-30T12:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://dealledger.eu/</loc>
     <lastmod>2026-03-30T12:00:00+00:00</lastmod>
   </url><url>
     <loc>https://dealledger.eu/deals/</loc>
@@ -41,10 +29,10 @@
     <loc>https://dealledger.eu/tags/travel/</loc>
     <lastmod>2026-03-30T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://dealledger.eu/posts/post-1/</loc>
+    <loc>https://dealledger.eu/posts/</loc>
     <lastmod>2026-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://dealledger.eu/posts/</loc>
+    <loc>https://dealledger.eu/posts/post-1/</loc>
     <lastmod>2026-03-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://dealledger.eu/posts/best-home-office-upgrades-under-150/</loc>
@@ -125,11 +113,17 @@
     <loc>https://dealledger.eu/tags/strength/</loc>
     <lastmod>2026-03-20T12:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://dealledger.eu/about/</loc>
+  </url><url>
     <loc>https://dealledger.eu/alerts/</loc>
+  </url><url>
+    <loc>https://dealledger.eu/disclosure/</loc>
   </url><url>
     <loc>https://dealledger.eu/expiring/</loc>
   </url><url>
     <loc>https://dealledger.eu/new/</loc>
+  </url><url>
+    <loc>https://dealledger.eu/privacy/</loc>
   </url><url>
     <loc>https://dealledger.eu/best-deals/</loc>
   </url>

@@ -6,36 +6,8 @@
     <description>Recent content on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://dealledger.eu/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About</title>
-      <link>https://dealledger.eu/about/</link>
-      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/about/</guid>
-      <description>&lt;p&gt;Deal Ledger is a curated deals site built around a simple idea: a deal recommendation should be useful before a reader clicks out to a retailer.&lt;/p&gt;&#xA;&lt;p&gt;The project focuses on:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;curated product picks instead of giant dumps of coupons&lt;/li&gt;&#xA;&lt;li&gt;clear price context, including reference pricing and discount depth&lt;/li&gt;&#xA;&lt;li&gt;category-specific email alerts so readers can follow the topics they actually care about&lt;/li&gt;&#xA;&lt;li&gt;lightweight editorial guides that explain why a product or category is worth watching&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The goal is to publish a focused stream of practical product picks with enough context to help readers decide whether a deal is worth their attention. Deal Ledger aims to feel selective, readable, and trustworthy rather than like a generic affiliate feed.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Contact</title>
-      <link>https://dealledger.eu/contact/</link>
-      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/contact/</guid>
-      <description>&lt;p&gt;Deal Ledger welcomes reader questions, correction requests, and business inquiries.&lt;/p&gt;&#xA;&lt;p&gt;You can use the site’s request flows for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;feedback about deal listings or pricing notes&lt;/li&gt;&#xA;&lt;li&gt;partnership or press outreach&lt;/li&gt;&#xA;&lt;li&gt;questions about category alerts or site policies&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Direct contact details are being finalized and will be added in a dedicated contact workflow.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Disclosure</title>
-      <link>https://dealledger.eu/disclosure/</link>
-      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/disclosure/</guid>
-      <description>&lt;p&gt;Deal Ledger may use affiliate links on some pages. That means the site may earn a commission from qualifying purchases at no additional cost to the reader.&lt;/p&gt;&#xA;&lt;p&gt;As an Amazon Associate I earn from qualifying purchases.&lt;/p&gt;&#xA;&lt;p&gt;Editorial coverage is intended to be based on relevance, value, and product fit for the categories covered on the site. A potential commission does not change the goal of publishing useful, selective recommendations with clear pricing context.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Privacy</title>
-      <link>https://dealledger.eu/privacy/</link>
-      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/privacy/</guid>
-      <description>&lt;p&gt;Deal Ledger is an editorial deals website. This page explains what information may be collected when you visit the site or contact us.&lt;/p&gt;&#xA;&lt;p&gt;Information you may provide directly:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;If you email Deal Ledger, we may receive your name, email address, and any information you include in your message.&lt;/li&gt;&#xA;&lt;li&gt;If email alerts are enabled in the future, we may receive the information you submit through the signup form, such as your email address and category preferences.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Information collected automatically:&lt;/p&gt;</description>
-    </item>
     <item>
       <title>Noise-cancelling over-ears</title>
       <link>https://dealledger.eu/deals/noise-cancelling-headphones/</link>
@@ -133,6 +105,27 @@
       <pubDate>Fri, 20 Mar 2026 12:00:00 +0000</pubDate>
       <guid>https://dealledger.eu/deals/home-dumbbell-set/</guid>
       <description>Space-saving weights adjustable from 5–50 lbs per hand.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://dealledger.eu/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/about/</guid>
+      <description>&lt;p&gt;Deal Ledger is a curated deals site focused on practical product picks with clear price context.&lt;/p&gt;&#xA;&lt;p&gt;The goal is simple: publish fewer, better deals so readers can decide quickly and confidently.&lt;/p&gt;&#xA;&lt;p&gt;Each listing is selected to be useful on its own, not just as another outbound link.&#xA;We prioritize clear context over volume so the site stays focused and readable.&lt;/p&gt;&#xA;&lt;p&gt;For questions, corrections, or business inquiries: &lt;a href=&#34;mailto:contact@dealledger.eu&#34;&gt;contact@dealledger.eu&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Disclosure</title>
+      <link>https://dealledger.eu/disclosure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/disclosure/</guid>
+      <description>&lt;p&gt;Deal Ledger may include affiliate links. If you buy through those links, we may earn a commission at no extra cost to you.&lt;/p&gt;&#xA;&lt;p&gt;As an Amazon Associate I earn from qualifying purchases.&lt;/p&gt;&#xA;&lt;p&gt;Affiliate relationships do not change our editorial intent.&#xA;We aim to feature deals based on practical value, relevance, and clarity for readers.&lt;/p&gt;&#xA;&lt;p&gt;Prices and availability can change quickly. Please confirm details on the retailer site before buying.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Privacy</title>
+      <link>https://dealledger.eu/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/privacy/</guid>
+      <description>&lt;p&gt;Deal Ledger may collect limited information when you visit the site or contact us, including email messages you send and basic analytics or server data.&lt;/p&gt;&#xA;&lt;p&gt;This information is used to operate and improve the site, and to respond to inquiries.&lt;/p&gt;&#xA;&lt;p&gt;Deal Ledger does not sell personal information. Third-party services (such as hosting, analytics, or retailers you click to) may process data under their own policies.&lt;/p&gt;&#xA;&lt;p&gt;Questions about this policy: &lt;a href=&#34;mailto:contact@dealledger.eu&#34;&gt;contact@dealledger.eu&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
