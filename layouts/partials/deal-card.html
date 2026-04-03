@@ -20,6 +20,11 @@
 {{ $expires := $params.expires_at }}
 {{ $tags := $params.tags }}
 {{ $url := or $params.product_url $params.affiliate_url }}
+{{ $normalizedURL := lower (printf "%v" $url) }}
+{{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
+{{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
+{{ $isAffiliateLink := or $params.affiliate_url $hasAmazonTag }}
+{{ $canShowLocalPrice := not $isAmazonURL }}
 {{ $currency := $page.Site.Params.currency_symbol | default "$" }}
 {{ $timeLeft := "" }}
   {{ if $expires }}
@@ -56,15 +61,15 @@
         <h3 class="deal-card__title"><a href="{{ $page.RelPermalink }}">{{ $title }}</a></h3>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row">
-          {{ if gt $sale 0 }}
+          {{ if and $canShowLocalPrice (gt $sale 0) }}
             <span class="deal-card__sale">{{ printf "%s%.2f" $currency $sale }}</span>
           {{ end }}
-          {{ if gt $list 0 }}
+          {{ if and $canShowLocalPrice (gt $list 0) }}
             <span class="deal-card__list">{{ printf "%s%.2f" $currency $list }}</span>
           {{ end }}
         </div>
         <div class="deal-card__divider"></div>
-        {{ if gt $discount 0 }}
+        {{ if and $canShowLocalPrice (gt $discount 0) }}
           <div class="deal-card__signal-row">
             <span class="deal-card__badge">-{{ printf "%.0f" (mul $discount 100) }}%</span>
             {{ if $timeLeft }}
@@ -79,13 +84,13 @@
       <h3 class="deal-card__title"><a href="{{ $page.RelPermalink }}">{{ $title }}</a></h3>
       <p class="deal-card__excerpt">{{ with $page.Summary }}{{ . | plainify | truncate (cond $compact 92 140) }}{{ else }}Great pick for this category.{{ end }}</p>
       <div class="deal-card__pricing">
-        {{ if gt $sale 0 }}
+        {{ if and $canShowLocalPrice (gt $sale 0) }}
           <span class="deal-card__sale">{{ printf "%s%.2f" $currency $sale }}</span>
         {{ end }}
-        {{ if gt $list 0 }}
+        {{ if and $canShowLocalPrice (gt $list 0) }}
           <span class="deal-card__list">{{ printf "%s%.2f" $currency $list }}</span>
         {{ end }}
-        {{ if gt $discount 0 }}
+        {{ if and $canShowLocalPrice (gt $discount 0) }}
           <span class="deal-card__badge">-{{ printf "%.0f" (mul $discount 100) }}%</span>
         {{ end }}
         {{ if $timeLeft }}
@@ -102,6 +107,13 @@
       {{ end }}
       {{ if $url }}
         <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a>
+        {{ if $isAffiliateLink }}
+          {{ if $isAmazonURL }}
+            <div class="deal-card__pending">As an Amazon Associate I earn from qualifying purchases.</div>
+          {{ else }}
+            <div class="deal-card__pending">Disclosure: this page may include affiliate links and Deal Ledger may earn a commission from qualifying purchases.</div>
+          {{ end }}
+        {{ end }}
       {{ else }}
         <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get category alerts</a>
         {{ if and (not $compact) (not $listCard) }}
