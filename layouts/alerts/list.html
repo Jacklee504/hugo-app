@@ -4,7 +4,7 @@
   <h1>Category email alerts</h1>
   <p class="page-copy">Share what you want to track and how often. Your request is submitted directly from this page.</p>
 
-  <form class="alert-form" id="alert-request-form" name="alert-request" action="/alerts/" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
+  <form class="alert-form" id="alert-request-form" name="alert-request" action="/" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="alert-request">
     <p hidden>
       <label>
@@ -56,5 +56,81 @@
 
     <button type="submit">Send alert request</button>
   </form>
+  <p class="alert-toast" id="alert-toast" role="status" aria-live="polite"></p>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('alert-request-form');
+    if (!form) return;
+
+    const emailInput = document.getElementById('alert-email');
+    const keywordsInput = document.getElementById('keywords');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const toast = document.getElementById('alert-toast');
+
+    let toastTimer;
+    const showToast = (message, isError = false) => {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.toggle('is-error', isError);
+      toast.classList.add('is-visible');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toast.classList.remove('is-visible', 'is-error');
+      }, 2800);
+    };
+
+    emailInput.addEventListener('invalid', () => {
+      if (emailInput.validity.valueMissing) {
+        emailInput.setCustomValidity('Please enter your email address.');
+      } else if (emailInput.validity.typeMismatch) {
+        emailInput.setCustomValidity('Please enter a valid email address.');
+      } else {
+        emailInput.setCustomValidity('');
+      }
+    });
+
+    emailInput.addEventListener('input', () => {
+      emailInput.setCustomValidity('');
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
+      const keywords = keywordsInput.value.trim();
+      if (selectedCategories.length === 0 && !keywords) {
+        showToast('Choose at least one category or add keywords.', true);
+        return;
+      }
+
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const payload = new URLSearchParams(new FormData(form)).toString();
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: payload
+        });
+
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
+
+        form.reset();
+        showToast('Your response was saved.');
+      } catch (error) {
+        console.error(error);
+        showToast('Could not save right now. Please try again.', true);
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  });
+</script>
 {{ end }}

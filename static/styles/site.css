@@ -469,6 +469,36 @@ main.pb7 {
   box-shadow: 0 12px 24px rgba(20, 43, 36, 0.14);
 }
 
+.alert-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.2rem;
+  z-index: 50;
+  margin: 0;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(19, 111, 99, 0.24);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 600;
+  box-shadow: 0 14px 28px rgba(20, 43, 36, 0.14);
+  opacity: 0;
+  transform: translate(-50%, 10px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.alert-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.alert-toast.is-error {
+  border-color: rgba(179, 62, 54, 0.28);
+  color: #5f221f;
+}
+
 .home-section {
   margin-bottom: 2rem;
 }
