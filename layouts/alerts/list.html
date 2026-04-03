@@ -4,7 +4,7 @@
   <h1>Category email alerts</h1>
   <p class="page-copy">Share what you want to track and how often. Your request is submitted directly from this page.</p>
 
-  <form class="alert-form" id="alert-request-form" name="alert-request" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <form class="alert-form" id="alert-request-form" name="alert-request" action="/alerts/" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="alert-request">
     <p hidden>
       <label>
@@ -57,74 +57,4 @@
     <button type="submit">Send alert request</button>
   </form>
 </section>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('alert-request-form');
-    if (!form) return;
-
-    const emailInput = document.getElementById('alert-email');
-    const keywordsInput = document.getElementById('keywords');
-    const submitButton = form.querySelector('button[type="submit"]');
-
-    emailInput.addEventListener('invalid', () => {
-      if (emailInput.validity.valueMissing) {
-        emailInput.setCustomValidity('Please enter your email address.');
-      } else if (emailInput.validity.typeMismatch) {
-        emailInput.setCustomValidity('Please enter a valid email address.');
-      } else {
-        emailInput.setCustomValidity('');
-      }
-    });
-
-    emailInput.addEventListener('input', () => {
-      emailInput.setCustomValidity('');
-    });
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      if (!form.reportValidity()) return;
-
-      const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'))
-        .map((input) => input.parentElement.textContent.trim());
-      const keywords = keywordsInput.value.trim();
-
-      if (selectedCategories.length === 0 && !keywords) {
-        return;
-      }
-
-      const endpoint = (form.action || '').trim();
-      if (!endpoint) {
-        return;
-      }
-      if (submitButton) {
-        submitButton.disabled = true;
-      }
-
-      try {
-        const payload = new URLSearchParams(new FormData(form)).toString();
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Accept: 'application/json'
-          },
-          body: payload
-        });
-
-        if (!response.ok) {
-          throw new Error('Submission failed');
-        }
-
-        form.reset();
-      } catch (error) {
-        console.error(error);
-      } finally {
-        if (submitButton) {
-          submitButton.disabled = false;
-        }
-      }
-    });
-  });
-</script>
 {{ end }}
