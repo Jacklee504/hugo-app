@@ -4,7 +4,7 @@
   <h1>Category email alerts</h1>
   <p class="page-copy">Share what you want to track and how often. Your request is submitted directly from this page.</p>
 
-  <form class="alert-form" id="alert-request-form" name="alert-request" action="/alerts/?submitted=1" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
+  <form class="alert-form" id="alert-request-form" name="alert-request" action="/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="alert-request">
     <p hidden>
       <label>
@@ -94,27 +94,43 @@
       emailInput.setCustomValidity('');
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
       if (!form.reportValidity()) return;
 
       const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
       const keywords = keywordsInput.value.trim();
       if (selectedCategories.length === 0 && !keywords) {
-        event.preventDefault();
         showToast('Choose at least one category or add keywords.', true);
         return;
       }
 
       if (submitButton) submitButton.disabled = true;
-    });
 
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('submitted') === '1') {
-      form.reset();
-      showToast('Your response was saved.');
-      const cleanUrl = `${window.location.origin}${window.location.pathname}`;
-      window.history.replaceState({}, '', cleanUrl);
-    }
+      try {
+        const payload = new URLSearchParams(new FormData(form)).toString();
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          body: payload
+        });
+
+        if (!response.ok) {
+          throw new Error(`Submission failed (${response.status})`);
+        }
+
+        form.reset();
+        showToast('Your response was saved.');
+      } catch (error) {
+        console.error(error);
+        showToast('Could not save right now. Please try again.', true);
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
   });
 </script>
 {{ end }}
