@@ -448,6 +448,27 @@ main.pb7 {
   border-color: rgba(255, 255, 255, 0.34);
 }
 
+.alert-form button {
+  cursor: pointer;
+  border-color: rgba(19, 111, 99, 0.12);
+}
+
+.alert-form button:hover {
+  border-color: rgba(19, 111, 99, 0.24);
+  box-shadow: 0 18px 32px rgba(20, 43, 36, 0.16);
+}
+
+.alert-form button:focus-visible {
+  outline: none;
+  border-color: rgba(19, 111, 99, 0.28);
+  box-shadow: 0 0 0 4px rgba(19, 111, 99, 0.1), 0 18px 32px rgba(20, 43, 36, 0.16);
+}
+
+.alert-form button:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: 0 12px 24px rgba(20, 43, 36, 0.14);
+}
+
 .home-section {
   margin-bottom: 2rem;
 }

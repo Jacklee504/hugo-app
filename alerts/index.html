@@ -61,7 +61,7 @@
     
 	<link rel="icon" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%3Crect width="64" height="64" rx="14" fill="%230d4e46"/%3E%3Ctext x="50%25" y="54%25" text-anchor="middle" font-size="28" font-family="Arial, sans-serif" fill="%23fffdf9"%3EDL%3C/text%3E%3C/svg%3E'>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<link rel="stylesheet" href="/styles/site.css?v=1775234360">
+<link rel="stylesheet" href="/styles/site.css?v=1775238961">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -168,11 +168,19 @@
     <main class="pb7" role="main">
       
 <section class="alerts-shell">
-  <span class="pill">Join the waitlist</span>
+  <span class="pill">Request alerts</span>
   <h1>Category email alerts</h1>
-  <p class="page-copy">The goal is a focused email experience built around category picks and keyword-based intent, so readers can save exactly the kinds of products they want to hear about.</p>
+  <p class="page-copy">Share what you want to track and how often. Your request is submitted directly from this page.</p>
 
-  <form class="alert-form" id="alert-request-form">
+  <form class="alert-form" id="alert-request-form" name="alert-request" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="alert-request">
+    <p hidden>
+      <label>
+        Don’t fill this out if you’re human:
+        <input name="bot-field">
+      </label>
+    </p>
+
     <section class="alert-form__section alert-form__split">
       <h2 class="alert-form__heading alert-form__heading--span">Where should we send updates?</h2>
       <div class="alert-form__field">
@@ -215,7 +223,6 @@
     </section>
 
     <button type="submit">Send alert request</button>
-    <p class="alert-form__note">Submitting saves the request in this browser so the preferences can be reviewed and connected to a live mailing workflow later.</p>
   </form>
 </section>
 <script>
@@ -224,10 +231,8 @@
     if (!form) return;
 
     const emailInput = document.getElementById('alert-email');
-    const cadenceSelect = document.getElementById('cadence');
     const keywordsInput = document.getElementById('keywords');
-    const notesInput = document.getElementById('notes');
-    const storageKey = 'deal-ledger-alert-requests';
+    const submitButton = form.querySelector('button[type="submit"]');
 
     emailInput.addEventListener('invalid', () => {
       if (emailInput.validity.valueMissing) {
@@ -243,7 +248,7 @@
       emailInput.setCustomValidity('');
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       if (!form.reportValidity()) return;
@@ -251,34 +256,42 @@
       const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'))
         .map((input) => input.parentElement.textContent.trim());
       const keywords = keywordsInput.value.trim();
-      const notes = notesInput.value.trim();
 
       if (selectedCategories.length === 0 && !keywords) {
         return;
       }
 
-      const lines = [
-        emailInput.value.trim(),
-        cadenceSelect.value,
-        selectedCategories.length ? selectedCategories.join(', ') : 'None selected',
-        keywords || 'None provided',
-        notes || 'None provided'
-      ];
+      const endpoint = (form.action || '').trim();
+      if (!endpoint) {
+        return;
+      }
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
 
-      const request = {
-        email: lines[0],
-        cadence: lines[1],
-        categories: lines[2],
-        keywords: lines[3],
-        notes: lines[4],
-        createdAt: new Date().toISOString()
-      };
+      try {
+        const payload = new URLSearchParams(new FormData(form)).toString();
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Accept: 'application/json'
+          },
+          body: payload
+        });
 
-      const existing = JSON.parse(window.localStorage.getItem(storageKey) || '[]');
-      existing.push(request);
-      window.localStorage.setItem(storageKey, JSON.stringify(existing));
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
 
-      form.reset();
+        form.reset();
+      } catch (error) {
+        console.error(error);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
     });
   });
 </script>
