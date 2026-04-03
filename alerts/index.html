@@ -61,7 +61,7 @@
     
 	<link rel="icon" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%3Crect width="64" height="64" rx="14" fill="%230d4e46"/%3E%3Ctext x="50%25" y="54%25" text-anchor="middle" font-size="28" font-family="Arial, sans-serif" fill="%23fffdf9"%3EDL%3C/text%3E%3C/svg%3E'>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<link rel="stylesheet" href="/styles/site.css?v=1775241306">
+<link rel="stylesheet" href="/styles/site.css?v=1775241663">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -172,7 +172,7 @@
   <h1>Category email alerts</h1>
   <p class="page-copy">Share what you want to track and how often. Your request is submitted directly from this page.</p>
 
-  <form class="alert-form" id="alert-request-form" name="alert-request" action="/" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
+  <form class="alert-form" id="alert-request-form" name="alert-request" action="/alerts/?submitted=1" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="alert-request">
     <p hidden>
       <label>
@@ -262,43 +262,27 @@
       emailInput.setCustomValidity('');
     });
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
+    form.addEventListener('submit', (event) => {
       if (!form.reportValidity()) return;
 
       const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
       const keywords = keywordsInput.value.trim();
       if (selectedCategories.length === 0 && !keywords) {
+        event.preventDefault();
         showToast('Choose at least one category or add keywords.', true);
         return;
       }
 
       if (submitButton) submitButton.disabled = true;
-
-      try {
-        const payload = new URLSearchParams(new FormData(form)).toString();
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: payload
-        });
-
-        if (!response.ok) {
-          throw new Error('Submission failed');
-        }
-
-        form.reset();
-        showToast('Your response was saved.');
-      } catch (error) {
-        console.error(error);
-        showToast('Could not save right now. Please try again.', true);
-      } finally {
-        if (submitButton) submitButton.disabled = false;
-      }
     });
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('submitted') === '1') {
+      form.reset();
+      showToast('Your response was saved.');
+      const cleanUrl = `${window.location.origin}${window.location.pathname}`;
+      window.history.replaceState({}, '', cleanUrl);
+    }
   });
 </script>
 
