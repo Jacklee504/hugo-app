@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deal Ledger Logo Options</title>
+  <style>
+    :root {
+      --bg: #102a25;
+      --card: #173933;
+      --text: #fffdf9;
+      --muted: #b9d8d1;
+      --line: rgba(255, 255, 255, 0.14);
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: linear-gradient(140deg, #0f2823, #1a4b42);
+      color: var(--text);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+    p {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(23, 57, 51, 0.85);
+      padding: 14px;
+    }
+    .logo {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #14584f, #0f322d);
+      display: block;
+    }
+    .meta {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .num {
+      font-weight: 800;
+      font-size: 15px;
+    }
+    .fav {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #0f322d;
+      padding: 4px;
+    }
+    code {
+      color: #f1c57a;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Logo Options</h1>
+  <p>Pick any option number and I will apply that logo and matching favicon across the site.</p>
+  <div class="grid">
+    <article class="card">
+      <img class="logo" src="/images/brand/options/logo-option-1.svg" alt="Logo option 1">
+      <div class="meta">
+        <span class="num">Option 1</span>
+        <img class="fav" src="/images/brand/options/favicon-option-1.svg" alt="Favicon option 1">
+      </div>
+      <code>logo-option-1.svg / favicon-option-1.svg</code>
+    </article>
+    <article class="card">
+      <img class="logo" src="/images/brand/options/logo-option-2.svg" alt="Logo option 2">
+      <div class="meta">
+        <span class="num">Option 2</span>
+        <img class="fav" src="/images/brand/options/favicon-option-2.svg" alt="Favicon option 2">
+      </div>
+      <code>logo-option-2.svg / favicon-option-2.svg</code>
+    </article>
+    <article class="card">
+      <img class="logo" src="/images/brand/options/logo-option-3.svg" alt="Logo option 3">
+      <div class="meta">
+        <span class="num">Option 3</span>
+        <img class="fav" src="/images/brand/options/favicon-option-3.svg" alt="Favicon option 3">
+      </div>
+      <code>logo-option-3.svg / favicon-option-3.svg</code>
+    </article>
+    <article class="card">
+      <img class="logo" src="/images/brand/options/logo-option-4.svg" alt="Logo option 4">
+      <div class="meta">
+        <span class="num">Option 4</span>
+        <img class="fav" src="/images/brand/options/favicon-option-4.svg" alt="Favicon option 4">
+      </div>
+      <code>logo-option-4.svg / favicon-option-4.svg</code>
+    </article>
+    <article class="card">
+      <img class="logo" src="/images/brand/options/logo-option-5.svg" alt="Logo option 5">
+      <div class="meta">
+        <span class="num">Option 5</span>
+        <img class="fav" src="/images/brand/options/favicon-option-5.svg" alt="Favicon option 5">
+      </div>
+      <code>logo-option-5.svg / favicon-option-5.svg</code>
+    </article>
+  </div>
+</body>
+</html>

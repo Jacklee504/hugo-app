@@ -1,8 +1,9 @@
 <footer class="site-footer" role="contentinfo">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <a class="site-footer__title" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
-      <p class="site-footer__tag">Fewer deals, better context, more relevant alerts.</p>
+      <a class="site-footer__title" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
+        <img class="site-footer__logo" src="{{ "images/brand/deal-ledger-logo.svg" | relURL }}" alt="{{ .Site.Title }}" width="186" height="48" loading="lazy" decoding="async">
+      </a>
     </div>
     <nav class="site-footer__nav" aria-label="Footer">
       <a href="{{ "about/" | relURL }}">About</a>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Deal Ledger Icon Option 4</title>
+  <path d="M6 10h52v14a5 5 0 0 1 0 10v20H6V34a5 5 0 0 1 0-10z" fill="#0d4e46"/>
+  <path d="M12 16h40v32H12z" fill="#1b8b79"/>
+  <text x="14" y="40" fill="#fffdf9" font-family="'Avenir Next', Avenir, sans-serif" font-size="21" font-weight="900" letter-spacing="-1">DL</text>
+</svg>

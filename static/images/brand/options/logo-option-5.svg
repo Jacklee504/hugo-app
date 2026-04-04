@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title desc">
+  <title id="title">Deal Ledger Option 5</title>
+  <desc id="desc">Soft capsule icon with split-tone DL and refined title style.</desc>
+  <rect x="10" y="16" width="104" height="88" rx="44" fill="#fffdf9" opacity="0.16"/>
+  <rect x="16" y="22" width="92" height="76" rx="38" fill="#0f3a34"/>
+  <text x="34" y="71" fill="#fffdf9" font-family="'Avenir Next', Avenir, sans-serif" font-size="38" font-weight="900" letter-spacing="-1.2">D</text>
+  <text x="57" y="71" fill="#f1c57a" font-family="'Avenir Next', Avenir, sans-serif" font-size="38" font-weight="900" letter-spacing="-1.2">L</text>
+  <text x="136" y="57" fill="#fffdf9" font-family="'Iowan Old Style', 'Palatino Linotype', serif" font-size="44" font-weight="700" letter-spacing="-0.4">Deal Ledger</text>
+  <text x="136" y="92" fill="#dff4ef" font-family="'Avenir Next', Avenir, sans-serif" font-size="18" font-weight="650" letter-spacing="3">CLARITY OVER HYPE</text>
+</svg>
