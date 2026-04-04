@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title desc">
+  <title id="title">Deal Ledger Option 4</title>
+  <desc id="desc">Ticket-style icon with cut corners and heavy DL lettering.</desc>
+  <path d="M16 20h88v24a8 8 0 0 1 0 16v24H16V60a8 8 0 0 1 0-16z" fill="#0d4e46"/>
+  <path d="M26 30h68v44H26z" fill="#1b8b79"/>
+  <text x="31" y="66" fill="#fffdf9" font-family="'Avenir Next', Avenir, sans-serif" font-size="31" font-weight="900" letter-spacing="-1">DL</text>
+  <text x="136" y="58" fill="#fffdf9" font-family="'Avenir Next', Avenir, sans-serif" font-size="42" font-weight="850">Deal Ledger</text>
+  <text x="136" y="92" fill="#f1c57a" font-family="'Avenir Next', Avenir, sans-serif" font-size="20" font-weight="700" letter-spacing="2.6">LOW NOISE. HIGH VALUE.</text>
+</svg>
