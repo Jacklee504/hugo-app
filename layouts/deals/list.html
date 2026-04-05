@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="list-shell">
   <div class="list-shell__intro">
-    <p>Search and filter the current deal pages by what matters most: strongest savings, newest additions, or items with expiring windows.</p>
+    <p>Search and filter the current deal pages by what matters most: strongest savings, newest additions, or items with expiring windows. Retailer links are added selectively as listings are finalized.</p>
   </div>
   {{ $deals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
   {{ if gt (len $deals) 0 }}
@@ -58,7 +58,6 @@
           ) }}
         {{ end }}
       </div>
-      <p class="muted-note">Retailer links are added selectively as listings are finalized.</p>
     </section>
     <script>
       document.addEventListener('DOMContentLoaded', () => {

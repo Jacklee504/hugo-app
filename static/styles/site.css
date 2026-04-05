@@ -53,7 +53,7 @@ main.pb7 {
 .site-top__intro {
   width: min(1120px, calc(100% - 2.75rem));
   margin: 0 auto;
-  padding: 1.35rem 0;
+  padding: 1rem 0;
   text-align: center;
 }
 
@@ -1159,6 +1159,7 @@ main > article[class^="page-"] .ananke-socials {
 
 .alert-form__label {
   margin: 0;
+  padding-left: 0.4rem;
   color: var(--ink);
   font-weight: 700;
   font-size: 0.95rem;
@@ -1468,12 +1469,17 @@ main > article[class^="page-"] .ananke-socials {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.45rem;
+    gap: 0;
   }
 
   .site-footer__meta--sub {
     margin-top: 0.08rem;
     justify-content: flex-start;
+  }
+
+  .site-footer__nav,
+  .site-footer__meta {
+    padding-left: 0.3rem;
   }
 
   .site-top__intro {
@@ -1594,6 +1600,10 @@ main > article[class^="page-"] .ananke-socials {
   .alert-form input#keywords {
     font-size: 0.9rem;
     line-height: 1.35;
+  }
+
+  .alert-form__label {
+    padding-left: 0.3rem;
   }
 
   .alert-form input#keywords::placeholder {
