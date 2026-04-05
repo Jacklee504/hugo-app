@@ -8,9 +8,11 @@ expires_at = 2026-04-12T23:59:00Z
 featured = false
 tags = ["productivity", "gaming", "accessories"]
 categories = ["electronics"]
-summary = "Hot-swappable 65% board with RGB and silent switches."
+summary = "Hot-swappable 65% keyboard with quiet switches."
 +++
 
-Keyboard pages help show that the site is not limited to broad consumer gadgets. A niche like home office gear gives the project more editorial shape and makes category alerts more compelling.
+Compact 65% mechanical keyboard for work-and-gaming desks.
 
-This page can sit alongside a roundup guide and a productivity-focused alert stream.
+- hot-swappable switches
+- RGB backlighting
+- quieter switch profile for shared spaces

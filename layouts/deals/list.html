@@ -65,7 +65,12 @@
         if (!root) return;
         const search = root.querySelector('[data-deal-search]');
         const tabs = Array.from(root.querySelectorAll('[data-filter]'));
-        const cards = Array.from(root.parentElement.querySelectorAll('[data-filter-card="true"]'));
+        const grid = root.parentElement.querySelector('.deal-grid--browse');
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll('[data-filter-card="true"]'));
+        cards.forEach((card, index) => {
+          card.dataset.originalIndex = String(index);
+        });
         let activeFilter = 'all';
 
         const matchesFilter = (card) => {
@@ -83,9 +88,30 @@
         };
 
         const update = () => {
+          const visibleCards = [];
+
           cards.forEach((card) => {
             const visible = matchesFilter(card) && matchesSearch(card);
             card.classList.toggle('is-hidden', !visible);
+            if (visible) visibleCards.push(card);
+          });
+
+          const sortedVisible = visibleCards.slice().sort((a, b) => {
+            if (activeFilter === 'top-savings') {
+              return parseFloat(b.dataset.discount || '0') - parseFloat(a.dataset.discount || '0');
+            }
+            if (activeFilter === 'latest') {
+              return parseInt(b.dataset.date || '0', 10) - parseInt(a.dataset.date || '0', 10);
+            }
+            return parseInt(a.dataset.originalIndex || '0', 10) - parseInt(b.dataset.originalIndex || '0', 10);
+          });
+
+          cards.forEach((card) => {
+            if (!card.classList.contains('is-hidden')) return;
+            grid.appendChild(card);
+          });
+          sortedVisible.forEach((card) => {
+            grid.appendChild(card);
           });
         };
 

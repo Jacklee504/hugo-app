@@ -1,0 +1,74 @@
+{{ define "main" }}
+{{ $url := or .Params.product_url .Params.affiliate_url }}
+{{ $normalizedURL := lower (printf "%v" $url) }}
+{{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
+{{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
+{{ $isAffiliateLink := or .Params.affiliate_url $hasAmazonTag }}
+{{ $canShowLocalPrice := not $isAmazonURL }}
+{{ $currency := .Site.Params.currency_symbol | default "$" }}
+<article class="deal-single">
+  <div class="deal-single__hero">
+    <div>
+      <header>
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.summary }}<p class="lead">{{ . }}</p>{{ end }}
+      </header>
+
+      <div class="deal-single__pricing">
+        {{ if $canShowLocalPrice }}
+          {{ with .Params.sale_price }}{{ if gt . 0 }}<span class="sale">{{ printf "%s%.2f" $currency . }}</span>{{ end }}{{ end }}
+          {{ with .Params.list_price }}{{ if gt . 0 }}<span class="list">{{ printf "%s%.2f" $currency . }}</span>{{ end }}{{ end }}
+          {{ with .Params.discount_pct }}{{ if gt . 0 }}<span class="badge">-{{ printf "%.0f" (mul . 100) }}%</span>{{ end }}{{ end }}
+        {{ else }}
+          <div class="meta">See Amazon for current price and availability.</div>
+        {{ end }}
+        {{ with .Params.expires_at }}<div class="meta">Expires {{ time.Format "Jan 2, 2006" (time .) }}</div>{{ end }}
+      </div>
+
+      {{ if $url }}
+        <p><a class="deal-single__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a></p>
+        {{ if $isAffiliateLink }}
+          {{ if $isAmazonURL }}
+            <p class="deal-single__note">As an Amazon Associate I earn from qualifying purchases.</p>
+          {{ else }}
+            <p class="deal-single__note">Disclosure: this page may include affiliate links and Deal Ledger may earn a commission from qualifying purchases.</p>
+          {{ end }}
+        {{ end }}
+      {{ else }}
+        <p><a class="deal-single__cta deal-single__cta--soft" href="{{ "alerts/" | relURL }}">Join category alerts</a></p>
+        <p class="deal-single__note">Retailer links are added selectively as listings are finalized.</p>
+      {{ end }}
+    </div>
+
+    {{ if .Params.image }}
+      <div class="deal-single__image">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+      </div>
+    {{ else }}
+      <div class="deal-single__placeholder">Product page preview</div>
+    {{ end }}
+  </div>
+
+  <div class="deal-single__content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+    <div class="deal-single__tags">
+      {{ range . }}<a class="tag" href="{{ relURL (printf "tags/%s/" (urlize .)) }}">#{{ . }}</a>{{ end }}
+    </div>
+  {{ end }}
+
+  {{ $related := first 3 (where (where .Site.RegularPages "Section" "deals") "Permalink" "ne" .Permalink) }}
+  {{ if gt (len $related) 0 }}
+    <section class="related">
+      <h2>More deals</h2>
+      <div class="deal-grid">
+        {{ range $related }}
+          {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+</article>
+{{ end }}

@@ -47,7 +47,7 @@
   {{ with .latest }}{{ $latest = . }}{{ end }}
   {{ with .expiring_soon }}{{ $expiringSoon = . }}{{ end }}
 {{ end }}
-<article class="deal-card{{ if $compact }} deal-card--compact{{ end }}{{ if $listCard }} deal-card--list{{ end }}"{{ if $listCard }} data-filter-card="true" data-title="{{ lower $title }}" data-summary="{{ with $page.Summary }}{{ . | plainify | lower }}{{ end }}" data-tags="{{ delimit $tags " " | lower }}" data-top-savings="{{ if $topSavings }}true{{ else }}false{{ end }}" data-latest="{{ if $latest }}true{{ else }}false{{ end }}" data-expiring-soon="{{ if $expiringSoon }}true{{ else }}false{{ end }}"{{ end }}>
+<article class="deal-card{{ if $compact }} deal-card--compact{{ end }}{{ if $listCard }} deal-card--list{{ end }}"{{ if $listCard }} data-filter-card="true" data-title="{{ lower $title }}" data-summary="{{ with $page.Summary }}{{ . | plainify | lower }}{{ end }}" data-tags="{{ delimit $tags " " | lower }}" data-top-savings="{{ if $topSavings }}true{{ else }}false{{ end }}" data-latest="{{ if $latest }}true{{ else }}false{{ end }}" data-expiring-soon="{{ if $expiringSoon }}true{{ else }}false{{ end }}" data-discount="{{ printf "%.6f" (or $discount 0) }}" data-date="{{ $page.Date.Unix }}"{{ end }}>
   {{ if $img }}
     <div class="deal-card__image">
       <img src="{{ $img }}" alt="{{ $title }}" loading="lazy">
@@ -58,7 +58,8 @@
   <div class="deal-card__body">
     {{ if $listCard }}
       <div class="deal-card__stack">
-        <h3 class="deal-card__title"><a href="{{ $page.RelPermalink }}">{{ $title }}</a></h3>
+        <h3 class="deal-card__title">{{ $title }}</h3>
+        <p class="deal-card__excerpt">{{ with $page.Summary }}{{ . | plainify }}{{ else }}Quick deal snapshot. Expand for details.{{ end }}</p>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row">
           {{ if and $canShowLocalPrice (gt $sale 0) }}
@@ -78,10 +79,43 @@
           </div>
         {{ end }}
         <div class="deal-card__divider"></div>
-        <a class="deal-card__cta deal-card__cta--soft" href="{{ $page.RelPermalink }}">View details</a>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            {{ with $page.Summary }}
+              <p class="deal-card__details-summary">{{ . | plainify }}</p>
+            {{ end }}
+            {{ with $page.Content }}
+              <div class="deal-card__details-rich">{{ . }}</div>
+            {{ else }}
+              {{ with $params.summary }}<p>{{ . }}</p>{{ end }}
+            {{ end }}
+            {{ if and (not $compact) $expires }}
+              <div class="deal-card__meta">Expires: {{ time.Format "Jan 2" (time $expires) }}</div>
+            {{ end }}
+            {{ if and (not $compact) $tags }}
+              <div class="deal-card__tags">
+                {{ range first 3 $tags }}<span class="deal-card__tag">#{{ . }}</span>{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        </details>
+        {{ if $url }}
+          <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a>
+          {{ if $isAffiliateLink }}
+            {{ if $isAmazonURL }}
+              <div class="deal-card__pending">As an Amazon Associate I earn from qualifying purchases.</div>
+            {{ else }}
+              <div class="deal-card__pending">Disclosure: this page may include affiliate links and Deal Ledger may earn a commission from qualifying purchases.</div>
+            {{ end }}
+          {{ end }}
+        {{ else }}
+          <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get alerts</a>
+          <div class="deal-card__pending">Retailer links are added selectively as listings are finalized.</div>
+        {{ end }}
       </div>
     {{ else }}
-      <h3 class="deal-card__title"><a href="{{ $page.RelPermalink }}">{{ $title }}</a></h3>
+      <h3 class="deal-card__title">{{ $title }}</h3>
       <p class="deal-card__excerpt">{{ with $page.Summary }}{{ . | plainify | truncate (cond $compact 92 140) }}{{ else }}Great pick for this category.{{ end }}</p>
       <div class="deal-card__pricing">
         {{ if and $canShowLocalPrice (gt $sale 0) }}
@@ -115,7 +149,7 @@
           {{ end }}
         {{ end }}
       {{ else }}
-        <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get category alerts</a>
+        <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get alerts</a>
         {{ if and (not $compact) (not $listCard) }}
           <div class="deal-card__pending">Retailer links are added selectively as listings are finalized.</div>
         {{ end }}
