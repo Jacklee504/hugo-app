@@ -1,7 +1,6 @@
 {{ define "main" }}
 {{ $deals := where .Site.RegularPages "Section" "deals" }}
 {{ $posts := where .Site.RegularPages "Section" "posts" }}
-{{ $alertTopics := slice "Audio" "Running gear" "Home office" "Home gym" }}
 {{ $featured := where $deals ".Params.featured" true | first 4 }}
 {{ $recent := first 4 (sort (where $deals "Draft" false) "Date" "desc") }}
 {{ $guides := first 3 (sort $posts "Date" "desc") }}
@@ -9,26 +8,12 @@
 <section class="hero-band">
   <div class="hero-band__eyebrow">Curated deal picks</div>
   <div class="hero-band__grid">
-    <div>
-      <h1>Useful deals, not deal spam.</h1>
-      <p>Deal Ledger is a curated product-discovery site built around a simple promise: fewer picks, better context, and alerts shaped by reader intent. The goal is not to cover everything. It is to help people track practical products and understand why a deal is worth their attention.</p>
+    <div class="hero-band__content">
+      <h1 class="hero-band__headline">Useful deals, not deal spam.</h1>
+      <p class="hero-band__copy">Deal Ledger is a curated product-discovery site built around a simple promise: fewer picks, better context, and alerts shaped by reader intent. The goal is not to cover everything. It is to help people track practical products and understand why a deal is worth their attention.</p>
       <div class="hero-band__actions">
         <a class="button-link button-link--primary" href="{{ "deals/" | relURL }}">Browse deal picks</a>
         <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">Join alert waitlist</a>
-      </div>
-    </div>
-    <div class="hero-band__stats">
-      <div class="hero-band__stat">
-        <strong>{{ len $deals }}</strong>
-        <span>Live deal pages with price context and quick buyer notes.</span>
-      </div>
-      <div class="hero-band__stat">
-        <strong>{{ len $posts }}</strong>
-        <span>Guides that explain how Deal Ledger thinks about value.</span>
-      </div>
-      <div class="hero-band__stat">
-        <strong>{{ len $alertTopics }}</strong>
-        <span>Suggested alert topics readers can follow and refine with keywords.</span>
       </div>
     </div>
   </div>

@@ -104,9 +104,11 @@ main.pb7 {
 
 .nav-brand__tag {
   font-size: 0.78rem;
-  color: rgba(255, 253, 249, 0.72);
+  color: #f1c57a;
+  font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
 }
 
 .nav-links {
@@ -369,8 +371,8 @@ main.pb7 {
 .hero-band {
   width: min(1120px, calc(100% - 2.75rem));
   margin: 1.7rem auto 2rem;
-  padding: 2rem;
-  border-radius: 28px;
+  padding: 3rem;
+  border-radius: 35px;
   background:
     linear-gradient(135deg, rgba(19, 111, 99, 0.95), rgba(13, 78, 70, 0.92)),
     linear-gradient(135deg, #136f63, #0d4e46);
@@ -390,6 +392,15 @@ main.pb7 {
   display: grid;
   gap: 2rem;
   align-items: start;
+  grid-template-columns: 1fr;
+}
+
+.hero-band__headline {
+  max-width: 13ch;
+}
+
+.hero-band__copy {
+  max-width: 58ch;
 }
 
 .hero-band h1 {
@@ -401,13 +412,12 @@ main.pb7 {
 
 .hero-band p {
   margin: 0 0 1rem;
-  max-width: 42rem;
+  max-width: 50rem;
   font-size: 1.05rem;
   line-height: 1.65;
 }
 
 .hero-band__actions,
-.hero-band__stats,
 .category-strip,
 .deal-grid,
 .alert-options {
@@ -423,26 +433,6 @@ main.pb7 {
 .hero-band__actions {
   grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
   margin-top: 1.5rem;
-}
-
-.hero-band__stats {
-  grid-template-columns: 1fr;
-  align-self: stretch;
-}
-
-.hero-band__stat {
-  padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.08);
-  min-height: 100%;
-}
-
-.hero-band__stat strong {
-  display: block;
-  font-size: 1.6rem;
-  line-height: 1;
-  margin-bottom: 0.4rem;
 }
 
 .button-link,
@@ -1398,14 +1388,8 @@ main > article[class^="page-"] .ananke-socials {
 }
 
 @media (min-width: 60rem) {
-  .hero-band__grid,
   .deal-single__hero {
     grid-template-columns: 1.3fr 0.9fr;
-  }
-
-  .hero-band__stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-self: end;
   }
 
   .alert-form__section.alert-form__split {
@@ -1493,7 +1477,7 @@ main > article[class^="page-"] .ananke-socials {
   }
 
   .site-top__intro {
-    padding-top: 1rem;
+    padding-top: 0;
   }
 
   main > article.page-about,
@@ -1560,7 +1544,6 @@ main > article[class^="page-"] .ananke-socials {
   }
 
   .hero-band__actions,
-  .hero-band__stats,
   .guide-grid,
   .category-strip {
     grid-template-columns: 1fr;
@@ -1630,7 +1613,7 @@ main > article[class^="page-"] .ananke-socials {
 
   .site-top__intro {
     width: min(100% - 2rem, 1120px);
-    padding: 1rem 0 1.1rem;
+    padding: 0;
   }
 
   .site-top__title {
