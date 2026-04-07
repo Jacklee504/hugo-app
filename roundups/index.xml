@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deal Roundups on Deal Ledger</title>
+    <link>https://dealledger.eu/roundups/</link>
+    <description>Recent content in Deal Roundups on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://dealledger.eu/roundups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Best Audio Deals Under €100 This Week</title>
+      <link>https://dealledger.eu/roundups/audio-deals-under-100-this-week/</link>
+      <pubDate>Tue, 07 Apr 2026 09:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/roundups/audio-deals-under-100-this-week/</guid>
+      <description>This week’s best audio picks under €100, with a focus on practical value.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Retailer Policy Notes on Deal Ledger</title>
+    <link>https://dealledger.eu/retailer-policies/</link>
+    <description>Recent content in Retailer Policy Notes on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://dealledger.eu/retailer-policies/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amazon Shipping and Returns: Quick Notes</title>
+      <link>https://dealledger.eu/retailer-policies/amazon-shipping-returns/</link>
+      <pubDate>Tue, 07 Apr 2026 09:20:00 +0000</pubDate>
+      <guid>https://dealledger.eu/retailer-policies/amazon-shipping-returns/</guid>
+      <description>A short reference page for Amazon shipping and returns.</description>
+    </item>
+  </channel>
+</rss>

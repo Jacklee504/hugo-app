@@ -35,6 +35,13 @@ main.pb7 {
     linear-gradient(135deg, #136f63, #0d4e46);
 }
 
+.site-top--guide {
+  background:
+    linear-gradient(135deg, rgba(13, 78, 70, 0.96), rgba(20, 43, 36, 0.94)),
+    linear-gradient(135deg, #136f63, #0d4e46);
+  box-shadow: 0 18px 40px rgba(20, 43, 36, 0.12);
+}
+
 .site-top__backdrop--image {
   background-size: cover;
   background-position: center;
@@ -532,6 +539,26 @@ main.pb7 {
 
 .home-section {
   margin-bottom: 2rem;
+}
+
+.home-value-strip {
+  width: min(1120px, calc(100% - 2.75rem));
+  margin: 0.45rem auto 0.65rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(241, 197, 122, 0.32);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(19, 111, 99, 0.1), rgba(13, 78, 70, 0.08));
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.home-value-strip p {
+  margin: 0;
 }
 
 .home-section__intro,
@@ -1135,6 +1162,10 @@ main > article[class^="page-"] .ananke-socials {
   border-color: rgba(13, 78, 70, 0.24);
 }
 
+main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
+  display: none;
+}
+
 .alert-form {
   margin-top: 1.5rem;
   display: grid;
@@ -1519,6 +1550,7 @@ main > article[class^="page-"] .ananke-socials {
   }
 
   .hero-band,
+  .home-value-strip,
   .home-section,
   .list-shell,
   .alerts-shell,
@@ -1642,6 +1674,13 @@ main > article[class^="page-"] .ananke-socials {
   main > article[class^="page-"],
   .site-footer {
     margin: 0.4rem auto;
+  }
+
+  .home-value-strip {
+    margin-bottom: 0.55rem;
+    padding: 0.46rem 0.68rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
   }
 
   .home-section h2,

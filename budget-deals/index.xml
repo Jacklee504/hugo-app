@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Budget Deal Collections on Deal Ledger</title>
+    <link>https://dealledger.eu/budget-deals/</link>
+    <description>Recent content in Budget Deal Collections on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://dealledger.eu/budget-deals/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Home Office Deals Under €150</title>
+      <link>https://dealledger.eu/budget-deals/home-office-under-150/</link>
+      <pubDate>Tue, 07 Apr 2026 09:10:00 +0000</pubDate>
+      <guid>https://dealledger.eu/budget-deals/home-office-under-150/</guid>
+      <description>A budget-focused page for home office deals under €150.</description>
+    </item>
+  </channel>
+</rss>

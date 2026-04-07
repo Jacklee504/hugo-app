@@ -6,8 +6,28 @@
     <description>Recent content on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Mar 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://dealledger.eu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amazon Shipping and Returns: Quick Notes</title>
+      <link>https://dealledger.eu/retailer-policies/amazon-shipping-returns/</link>
+      <pubDate>Tue, 07 Apr 2026 09:20:00 +0000</pubDate>
+      <guid>https://dealledger.eu/retailer-policies/amazon-shipping-returns/</guid>
+      <description>A short reference page for Amazon shipping and returns.</description>
+    </item>
+    <item>
+      <title>Home Office Deals Under €150</title>
+      <link>https://dealledger.eu/budget-deals/home-office-under-150/</link>
+      <pubDate>Tue, 07 Apr 2026 09:10:00 +0000</pubDate>
+      <guid>https://dealledger.eu/budget-deals/home-office-under-150/</guid>
+      <description>A budget-focused page for home office deals under €150.</description>
+    </item>
+    <item>
+      <title>Best Audio Deals Under €100 This Week</title>
+      <link>https://dealledger.eu/roundups/audio-deals-under-100-this-week/</link>
+      <pubDate>Tue, 07 Apr 2026 09:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/roundups/audio-deals-under-100-this-week/</guid>
+      <description>This week’s best audio picks under €100, with a focus on practical value.</description>
+    </item>
     <item>
       <title>Noise-cancelling over-ears</title>
       <link>https://dealledger.eu/deals/noise-cancelling-headphones/</link>
