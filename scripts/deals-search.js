@@ -83,12 +83,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const matchesFilter = (card) => {
     if (activeFilter === 'all') return true;
-    if (activeFilter === 'top-savings') return card.dataset.topSavings === 'true';
-    if (activeFilter === 'latest') return card.dataset.latest === 'true';
+    if (activeFilter === 'top-savings') return true;
+    if (activeFilter === 'latest') return true;
     return true;
   };
 
   const affiliateRank = (el) => (el.dataset.affiliate === 'true' ? 1 : 0);
+  const todaySeed = new Date().toISOString().slice(0, 10);
+  const stableNoise = (value) => {
+    const text = String(value || '');
+    let hash = 0;
+    for (let i = 0; i < text.length; i += 1) {
+      hash = (hash * 31 + text.charCodeAt(i)) >>> 0;
+    }
+    return (hash % 1000) / 1000;
+  };
+  const allScore = (el) => {
+    const date = parseInt(el.dataset.date || '0', 10) || 0;
+    const recency = date / 2000000000; // normalize Unix seconds to ~0..1 range
+    const noise = stableNoise(`${todaySeed}-${el.dataset.title}`);
+    const affiliateBoost = affiliateRank(el) * 0.03;
+    return (noise * 0.9) + (recency * 0.07) + affiliateBoost;
+  };
 
   const buildSearchScores = (rawQuery) => {
     const query = normalize(rawQuery);
@@ -105,8 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return quick.size > 0 ? quick : null;
     }
 
-    const terms = expandTokens(tokenize(query));
-    const requiredTerms = terms.filter((term) => term.length >= 3);
+    const queryTokens = tokenize(query);
+    const terms = expandTokens(queryTokens);
+    const requiredTerms = queryTokens.filter((term) => term.length >= 3);
     const queries = [query, ...terms.filter((term) => term !== query)];
     const resultScores = new Map();
 
@@ -153,10 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
       if (visible) visibleCards.push(card);
     });
 
+    const directMatchCount = visibleCards.length;
     let usingFallbackTopSavings = false;
-    if (hasQuery && visibleCards.length === 0) {
+    if (hasQuery && directMatchCount === 0) {
+      const fallbackCards = cards
+        .slice()
+        .sort((a, b) => parseFloat(b.dataset.discount || '0') - parseFloat(a.dataset.discount || '0'))
+        .slice(0, 4);
+      const fallbackSet = new Set(fallbackCards);
+
       cards.forEach((card) => {
-        const showFallback = card.dataset.topSavings === 'true';
+        const showFallback = fallbackSet.has(card);
         card.classList.toggle('is-hidden', !showFallback);
         if (showFallback) visibleCards.push(card);
       });
@@ -164,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (noResults) {
-      const showNoResults = hasQuery && usingFallbackTopSavings;
+      const showNoResults = hasQuery && directMatchCount === 0 && usingFallbackTopSavings;
       noResults.classList.toggle('is-hidden', !showNoResults);
       if (noResultsHint) noResultsHint.classList.toggle('is-hidden', !showNoResults);
       if (showNoResults && noResultsQuery) {
@@ -195,8 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return affiliateRank(b) - affiliateRank(a);
       }
 
-      const byDiscount = parseFloat(b.dataset.discount || '0') - parseFloat(a.dataset.discount || '0');
-      if (byDiscount !== 0) return byDiscount;
+      const byAllScore = allScore(b) - allScore(a);
+      if (Math.abs(byAllScore) > 0.0001) return byAllScore;
       const byDate = parseInt(b.dataset.date || '0', 10) - parseInt(a.dataset.date || '0', 10);
       if (byDate !== 0) return byDate;
       const byAffiliate = affiliateRank(b) - affiliateRank(a);

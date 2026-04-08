@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Apr 2026 20:41:36 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 16:51:07 +0100</lastBuildDate>
     <atom:link href="https://dealledger.eu/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Audio</title>
@@ -30,45 +30,17 @@
       <description></description>
     </item>
     <item>
-      <title>Fitness</title>
-      <link>https://dealledger.eu/tags/fitness/</link>
+      <title>Wireless</title>
+      <link>https://dealledger.eu/tags/wireless/</link>
       <pubDate>Sat, 28 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/fitness/</guid>
+      <guid>https://dealledger.eu/tags/wireless/</guid>
       <description></description>
     </item>
     <item>
-      <title>Running</title>
-      <link>https://dealledger.eu/tags/running/</link>
-      <pubDate>Sat, 28 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/running/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Wearables</title>
-      <link>https://dealledger.eu/tags/wearables/</link>
-      <pubDate>Sat, 28 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/wearables/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Home Theater</title>
-      <link>https://dealledger.eu/tags/home-theater/</link>
+      <title>Gaming</title>
+      <link>https://dealledger.eu/tags/gaming/</link>
       <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/home-theater/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Streaming</title>
-      <link>https://dealledger.eu/tags/streaming/</link>
-      <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/streaming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tv</title>
-      <link>https://dealledger.eu/tags/tv/</link>
-      <pubDate>Fri, 27 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/tv/</guid>
+      <guid>https://dealledger.eu/tags/gaming/</guid>
       <description></description>
     </item>
     <item>
@@ -79,24 +51,38 @@
       <description></description>
     </item>
     <item>
+      <title>Home Theater</title>
+      <link>https://dealledger.eu/tags/home-theater/</link>
+      <pubDate>Thu, 26 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/tags/home-theater/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tv</title>
+      <link>https://dealledger.eu/tags/tv/</link>
+      <pubDate>Thu, 26 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/tags/tv/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Productivity</title>
       <link>https://dealledger.eu/tags/productivity/</link>
-      <pubDate>Thu, 26 Mar 2026 12:00:00 +0000</pubDate>
+      <pubDate>Wed, 25 Mar 2026 12:00:00 +0000</pubDate>
       <guid>https://dealledger.eu/tags/productivity/</guid>
       <description></description>
     </item>
     <item>
-      <title>Gaming</title>
-      <link>https://dealledger.eu/tags/gaming/</link>
-      <pubDate>Wed, 25 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/gaming/</guid>
+      <title>Charging</title>
+      <link>https://dealledger.eu/tags/charging/</link>
+      <pubDate>Tue, 24 Mar 2026 12:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/tags/charging/</guid>
       <description></description>
     </item>
     <item>
-      <title>Home-Gym</title>
-      <link>https://dealledger.eu/tags/home-gym/</link>
+      <title>Mobile</title>
+      <link>https://dealledger.eu/tags/mobile/</link>
       <pubDate>Tue, 24 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/home-gym/</guid>
+      <guid>https://dealledger.eu/tags/mobile/</guid>
       <description></description>
     </item>
     <item>
@@ -107,17 +93,10 @@
       <description></description>
     </item>
     <item>
-      <title>Outdoors</title>
-      <link>https://dealledger.eu/tags/outdoors/</link>
+      <title>Soundbar</title>
+      <link>https://dealledger.eu/tags/soundbar/</link>
       <pubDate>Sun, 22 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/outdoors/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Strength</title>
-      <link>https://dealledger.eu/tags/strength/</link>
-      <pubDate>Fri, 20 Mar 2026 12:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/tags/strength/</guid>
+      <guid>https://dealledger.eu/tags/soundbar/</guid>
       <description></description>
     </item>
   </channel>
