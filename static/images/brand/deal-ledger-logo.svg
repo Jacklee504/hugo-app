@@ -8,5 +8,5 @@
     <path d="M72 36h10v30h16v8H72z" fill="#f1c57a"/>
   </g>
   <text x="136" y="60" fill="#fffdf9" font-family="'Avenir Next', Avenir, sans-serif" font-size="40" font-weight="800" letter-spacing="0.2">DEAL LEDGER</text>
-  <text x="136" y="91" fill="#f1c57a" font-family="'Avenir Next', Avenir, sans-serif" font-size="20.5" font-weight="700" letter-spacing="3.2">FEWER ALERTS, BETTER DEALS</text>
+  <text x="136" y="91" fill="#f1c57a" font-family="'Avenir Next', Avenir, sans-serif" font-size="23" font-weight="700" letter-spacing="3.2">FEWER ALERTS, BETTER DEALS</text>
 </svg>

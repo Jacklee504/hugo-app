@@ -42,6 +42,8 @@
         <label class="alert-form__label" for="keywords">Keywords or terms</label>
         <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor">
         <p class="alert-field__hint">Use commas to describe the products, features, or use cases you want to track.</p>
+        <input type="hidden" name="inferred_categories" id="inferred-categories" value="">
+        <input type="hidden" name="effective_categories" id="effective-categories" value="">
       </div>
 
       <div class="alert-form__field">
@@ -61,8 +63,84 @@
 
     const emailInput = document.getElementById('alert-email');
     const keywordsInput = document.getElementById('keywords');
+    const notesInput = document.getElementById('notes');
+    const inferredCategoriesInput = document.getElementById('inferred-categories');
+    const effectiveCategoriesInput = document.getElementById('effective-categories');
+    const categoryInputs = Array.from(form.querySelectorAll('input[name="categories"]'));
     const submitButton = form.querySelector('button[type="submit"]');
     const toast = document.getElementById('alert-toast');
+
+    const categoryMeta = {
+      audio: {
+        label: 'Audio and headphones',
+        terms: ['audio', 'headphones', 'earbuds', 'earphones', 'speaker', 'speakers', 'bluetooth', 'noise', 'anc', 'music', 'technology', 'tech', 'electronics', 'devices', 'gadget']
+      },
+      running: {
+        label: 'Running tech',
+        terms: ['running', 'runner', 'run', 'gps', 'watch', 'smartwatch', 'wearables', 'training', 'pace', 'cardio', 'technology', 'tech', 'electronics', 'devices']
+      },
+      productivity: {
+        label: 'Home office',
+        terms: ['office', 'desk', 'productivity', 'keyboard', 'monitor', 'ultrawide', 'display', 'mouse', 'workspace', 'technology', 'tech', 'electronics', 'devices', 'gadget']
+      },
+      fitness: {
+        label: 'Home gym',
+        terms: ['fitness', 'gym', 'weights', 'dumbbell', 'strength', 'workout', 'training', 'resistance', 'home gym', 'active', 'health']
+      }
+    };
+
+    const normalize = (value) => String(value || '')
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const tokenize = (value) => normalize(value).split(' ').filter(Boolean);
+
+    const levenshtein = (a, b) => {
+      const matrix = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+      for (let i = 0; i <= a.length; i += 1) matrix[i][0] = i;
+      for (let j = 0; j <= b.length; j += 1) matrix[0][j] = j;
+      for (let i = 1; i <= a.length; i += 1) {
+        for (let j = 1; j <= b.length; j += 1) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j - 1] + cost
+          );
+        }
+      }
+      return matrix[a.length][b.length];
+    };
+
+    const fuzzyMatch = (token, term) => {
+      if (!token || !term) return false;
+      if (token === term) return true;
+      if (token.includes(term) || term.includes(token)) return true;
+      if (token.length >= 5 && term.length >= 5 && levenshtein(token, term) <= 1) return true;
+      return false;
+    };
+
+    const inferCategoryKeys = () => {
+      const sourceText = `${keywordsInput ? keywordsInput.value : ''} ${notesInput ? notesInput.value : ''}`;
+      const tokens = tokenize(sourceText);
+      if (tokens.length === 0) return [];
+
+      const scored = Object.entries(categoryMeta)
+        .map(([key, meta]) => {
+          let score = 0;
+          meta.terms.forEach((term) => {
+            if (tokens.some((token) => fuzzyMatch(token, term))) score += 1;
+          });
+          return { key, score };
+        })
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score);
+
+      return scored.slice(0, 4).map((entry) => entry.key);
+    };
 
     let toastTimer;
     const showToast = (message, isError = false) => {
@@ -107,6 +185,19 @@
         showToast('Choose at least one category or add keywords.', true);
         return;
       }
+
+      const selectedKeys = selectedCategories.map((input) => input.value);
+      const inferredKeys = inferCategoryKeys().filter((key) => !selectedKeys.includes(key));
+      const inferredLabels = inferredKeys.map((key) => categoryMeta[key].label);
+      const effectiveLabels = Array.from(
+        new Set([
+          ...selectedKeys.map((key) => (categoryMeta[key] ? categoryMeta[key].label : key)),
+          ...inferredLabels
+        ])
+      );
+
+      if (inferredCategoriesInput) inferredCategoriesInput.value = inferredLabels.join(', ');
+      if (effectiveCategoriesInput) effectiveCategoriesInput.value = effectiveLabels.join(', ');
 
       if (submitButton) submitButton.disabled = true;
 

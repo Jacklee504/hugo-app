@@ -98,6 +98,12 @@
           <button class="deal-filters__tab" type="button" data-filter="latest">Latest</button>
         </div>
       </div>
+      <p class="list-shell__count deal-no-results is-hidden" data-no-results>
+        No items found for "<span data-no-results-query></span>".
+      </p>
+      <p class="list-shell__count deal-no-results deal-no-results__hint is-hidden" data-no-results-hint>
+        Other items you may like:
+      </p>
       <div class="deal-grid deal-grid--browse">
         {{ range $orderedDeals }}
           {{ $path := .RelPermalink }}
@@ -111,101 +117,7 @@
         {{ end }}
       </div>
     </section>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const root = document.querySelector('[data-deal-filters]');
-        if (!root) return;
-        const search = root.querySelector('[data-deal-search]');
-        const tabs = Array.from(root.querySelectorAll('[data-filter]'));
-        const grid = root.parentElement.querySelector('.deal-grid--browse');
-        if (!grid) return;
-        const cards = Array.from(grid.querySelectorAll('[data-filter-card="true"]'));
-        cards.forEach((card, index) => {
-          card.dataset.originalIndex = String(index);
-        });
-        let activeFilter = 'all';
-
-        const matchesFilter = (card) => {
-          if (activeFilter === 'all') return true;
-          if (activeFilter === 'top-savings') return card.dataset.topSavings === 'true';
-          if (activeFilter === 'latest') return card.dataset.latest === 'true';
-          return true;
-        };
-
-        const matchesSearch = (card) => {
-          const query = (search.value || '').trim().toLowerCase();
-          if (!query) return true;
-          const haystack = [card.dataset.title, card.dataset.summary, card.dataset.tags].join(' ');
-          return haystack.includes(query);
-        };
-
-        const update = () => {
-          const query = (search.value || '').trim();
-          if (query) {
-            cards.forEach((card) => {
-              card.querySelectorAll('details[open]').forEach((detailsEl) => {
-                detailsEl.removeAttribute('open');
-              });
-            });
-          }
-
-          const visibleCards = [];
-
-          cards.forEach((card) => {
-            const visible = matchesFilter(card) && matchesSearch(card);
-            card.classList.toggle('is-hidden', !visible);
-            if (visible) visibleCards.push(card);
-          });
-
-          const sortedVisible = visibleCards.slice().sort((a, b) => {
-            const affiliateRank = (el) => (el.dataset.affiliate === 'true' ? 1 : 0);
-            if (activeFilter === 'top-savings') {
-              const byDiscount = parseFloat(b.dataset.discount || '0') - parseFloat(a.dataset.discount || '0');
-              if (byDiscount !== 0) return byDiscount;
-              return affiliateRank(b) - affiliateRank(a);
-            }
-            if (activeFilter === 'latest') {
-              const byDate = parseInt(b.dataset.date || '0', 10) - parseInt(a.dataset.date || '0', 10);
-              if (byDate !== 0) return byDate;
-              return affiliateRank(b) - affiliateRank(a);
-            }
-            const byDiscount = parseFloat(b.dataset.discount || '0') - parseFloat(a.dataset.discount || '0');
-            if (byDiscount !== 0) return byDiscount;
-            const byDate = parseInt(b.dataset.date || '0', 10) - parseInt(a.dataset.date || '0', 10);
-            if (byDate !== 0) return byDate;
-            const byAffiliate = affiliateRank(b) - affiliateRank(a);
-            if (byAffiliate !== 0) return byAffiliate;
-            return parseInt(a.dataset.originalIndex || '0', 10) - parseInt(b.dataset.originalIndex || '0', 10);
-          });
-
-          cards.forEach((card) => {
-            if (!card.classList.contains('is-hidden')) return;
-            grid.appendChild(card);
-          });
-          sortedVisible.forEach((card) => {
-            grid.appendChild(card);
-          });
-        };
-
-        tabs.forEach((tab) => {
-          tab.addEventListener('click', () => {
-            activeFilter = tab.dataset.filter;
-            tabs.forEach((item) => item.classList.toggle('is-active', item === tab));
-            update();
-          });
-        });
-
-        search.addEventListener('input', () => {
-          cards.forEach((card) => {
-            card.querySelectorAll('details[open]').forEach((detailsEl) => {
-              detailsEl.removeAttribute('open');
-            });
-          });
-          update();
-        });
-        update();
-      });
-    </script>
+    <script type="module" src="{{ "scripts/deals-search.js" | relURL }}?v={{ now.Unix }}"></script>
   {{ else }}
     <p>No deals available yet.</p>
   {{ end }}

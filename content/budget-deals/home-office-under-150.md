@@ -15,7 +15,7 @@ Common product types in this range:
 
 Useful starting links:
 
-- [Home office tag]({{< relref "/tags/productivity/" >}})
+- [Home office deals](/deals/?q=home+office)
 - [Top savings]({{< relref "/best-deals/_index.md" >}})
 - [New arrivals]({{< relref "/new/_index.md" >}})
 

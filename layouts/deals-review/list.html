@@ -1,0 +1,22 @@
+{{ define "main" }}
+<section class="list-shell">
+  <div class="list-shell__intro">
+    <h1>Deals Approval Queue</h1>
+    <p>These draft candidates are generated outside Hugo content and stay off the live site until you promote them.</p>
+    <p class="list-shell__count">Load local preview data with <code>python scripts/sync_review_preview.py</code>.</p>
+    <p class="list-shell__count">{{ len (where (where .Site.RegularPages "Section" "deals-review") "Draft" true) }} pending candidate{{ if ne (len (where (where .Site.RegularPages "Section" "deals-review") "Draft" true)) 1 }}s{{ end }}</p>
+    <p class="list-shell__count">Approve with <code>python scripts/promote_deals.py --asin &lt;ASIN&gt;</code> or <code>--all</code>.</p>
+  </div>
+
+  {{ $pending := sort (where (where .Site.RegularPages "Section" "deals-review") "Draft" true) "Params.discount_pct" "desc" }}
+  {{ if gt (len $pending) 0 }}
+    <div class="deal-grid deal-grid--browse">
+      {{ range $pending }}
+        {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>No pending deal candidates.</p>
+  {{ end }}
+</section>
+{{ end }}

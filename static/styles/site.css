@@ -53,14 +53,14 @@ main.pb7 {
 }
 
 .site-top--section .site-top__backdrop {
-  padding-bottom: 1.25rem;
+  padding-bottom: 2.5rem;
   box-shadow: 0 18px 40px rgba(20, 43, 36, 0.12);
 }
 
 .site-top__intro {
   width: min(1120px, calc(100% - 2.75rem));
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -98,7 +98,7 @@ main.pb7 {
 
 .nav-brand__logo {
   display: block;
-  width: clamp(150px, 19vw, 220px);
+  width: clamp(195px, 25vw, 290px);
   max-width: 100%;
   height: auto;
 }
@@ -254,7 +254,7 @@ main.pb7 {
   line-height: 1;
   color: rgba(255, 253, 249, 0.9);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 600;
   transition: background 140ms ease, color 140ms ease, transform 140ms ease;
 }
@@ -566,6 +566,7 @@ main.pb7 {
 .list-subsection__intro {
   margin-bottom: 1.1rem;
   max-width: 54rem;
+  padding-left: 1rem;
 }
 
 .list-shell__count {
@@ -575,6 +576,14 @@ main.pb7 {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.deal-no-results {
+  padding-bottom: 0.75rem;
+}
+
+.deal-no-results.is-hidden {
+  display: none;
 }
 
 .home-section h2,
@@ -989,6 +998,10 @@ main > article[class^="page-"] .ananke-socials {
   gap: 0.5rem;
 }
 
+.category-strip {
+  padding-left: 1rem;
+}
+
 .deal-card__tag,
 .deal-single__tags a,
 .category-strip a {
@@ -1269,6 +1282,11 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   color: var(--muted);
   font-size: 0.88rem;
   line-height: 1.5;
+}
+
+.alert-field__hint.is-hidden,
+.keyword-suggestions.is-hidden {
+  display: none;
 }
 
 .keyword-suggestions {
@@ -1623,7 +1641,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   }
 
   .nav-brand__logo {
-    width: clamp(132px, 42vw, 180px);
+    width: clamp(150px, 46vw, 200px);
   }
 
   .nav-brand__tag {
@@ -1864,7 +1882,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   }
 
   .site-footer__logo {
-    width: clamp(170px, 48vw, 210px);
+    width: clamp(182px, 52vw, 225px);
   }
 
   .site-footer__tag,

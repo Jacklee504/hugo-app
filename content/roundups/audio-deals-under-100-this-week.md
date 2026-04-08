@@ -15,7 +15,7 @@ What we prioritize:
 
 Recommended places to start:
 
-- [Audio deals tag]({{< relref "/tags/audio/" >}})
+- [Audio deals](/deals/?q=audio)
 - [All deals]({{< relref "/deals/_index.md" >}})
 - [Get alerts]({{< relref "/alerts/_index.md" >}})
 
