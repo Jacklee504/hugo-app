@@ -37,6 +37,14 @@ Promotion moves files into `content/deals/` and sets:
 - `draft = false`
 - `review_status = "approved"`
 
+### 4) Sync live listing fields
+Update listing-backed metadata for existing live deals:
+```bash
+python scripts/sync_listing_from_urls.py
+```
+
+This upserts `listing_*` fields (title, summary, image, URL, prices, discount, sync time) by reading each deal's retailer URL.
+
 ## Setup
 
 ### Required repo secrets
@@ -69,6 +77,7 @@ hugo server -D
   - `inferred_categories`
   - `effective_categories`
   This is backend-facing only (no visible suggestion UI).
+- Deal cards/single pages prefer `listing_*` fields when present, then fall back to manual front matter values.
 
 ## Deploy
 - `.github/workflows/hugo.yml` builds and deploys to `gh-pages`.

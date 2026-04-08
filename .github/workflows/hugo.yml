@@ -45,6 +45,9 @@ jobs:
           AMZ_MARKETPLACE: ${{ secrets.AMZ_MARKETPLACE }}
         run: python scripts/fetch_deals.py
 
+      - name: Sync listing details (from URLs)
+        run: python scripts/sync_listing_from_urls.py
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:

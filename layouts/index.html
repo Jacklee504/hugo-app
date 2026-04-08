@@ -2,7 +2,54 @@
 {{ $deals := where .Site.RegularPages "Section" "deals" }}
 {{ $liveDeals := where $deals "Draft" false }}
 {{ $featured := first 4 (sort $liveDeals "Params.discount_pct" "desc") }}
-{{ $recent := first 4 (sort $liveDeals "Lastmod" "desc") }}
+{{ $now := now }}
+{{ $expiringDeals := sort (where $liveDeals "Params.expires_at" "ne" nil) "Params.expires_at" "asc" }}
+{{ $expiringPaths := slice }}
+{{ range $expiringDeals }}
+  {{ if ge .Params.expires_at $now }}
+    {{ $expiringPaths = $expiringPaths | append .RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ $orderedDeals := slice }}
+{{ range $expiringDeals }}
+  {{ if ge .Params.expires_at $now }}
+    {{ $orderedDeals = $orderedDeals | append . }}
+  {{ end }}
+{{ end }}
+{{ range sort $liveDeals "Lastmod" "desc" }}
+  {{ if not (in $expiringPaths .RelPermalink) }}
+    {{ $orderedDeals = $orderedDeals | append . }}
+  {{ end }}
+{{ end }}
+{{ $affiliateOrdered := slice }}
+{{ $nonAffiliateOrdered := slice }}
+{{ range $orderedDeals }}
+  {{ $candidateURL := lower (printf "%v" (or .Params.affiliate_url .Params.product_url)) }}
+  {{ $isAffiliate := or .Params.affiliate_url (in $candidateURL "tag=") }}
+  {{ if $isAffiliate }}
+    {{ $affiliateOrdered = $affiliateOrdered | append . }}
+  {{ else }}
+    {{ $nonAffiliateOrdered = $nonAffiliateOrdered | append . }}
+  {{ end }}
+{{ end }}
+{{ $interleavedDeals := slice }}
+{{ $maxLen := len $affiliateOrdered }}
+{{ if gt (len $nonAffiliateOrdered) $maxLen }}
+  {{ $maxLen = len $nonAffiliateOrdered }}
+{{ end }}
+{{ if gt $maxLen 0 }}
+  {{ range seq 0 (sub $maxLen 1) }}
+    {{ $i := . }}
+    {{ if lt $i (len $affiliateOrdered) }}
+      {{ $interleavedDeals = $interleavedDeals | append (index $affiliateOrdered $i) }}
+    {{ end }}
+    {{ if lt $i (len $nonAffiliateOrdered) }}
+      {{ $interleavedDeals = $interleavedDeals | append (index $nonAffiliateOrdered $i) }}
+    {{ end }}
+  {{ end }}
+  {{ $orderedDeals = $interleavedDeals }}
+{{ end }}
+{{ $recent := first 4 (sort $orderedDeals "Lastmod" "desc") }}
 {{ $featuredListItems := slice }}
 {{ range $index, $deal := $featured }}
   {{ $featuredListItems = $featuredListItems | append (dict

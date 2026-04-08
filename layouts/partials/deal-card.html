@@ -11,16 +11,18 @@
 {{ end }}
 {{ $compact := eq $variant "compact" }}
 {{ $listCard := eq $variant "list" }}
-{{ $title := $page.Title }}
 {{ $params := $page.Params }}
-{{ $img := $params.image }}
-{{ $list := $params.list_price }}
-{{ $sale := $params.sale_price }}
-{{ $discount := $params.discount_pct }}
+{{ $title := or $page.Title $params.listing_title }}
+{{ $img := or $params.listing_image $params.image }}
+{{ $list := or $params.listing_list_price $params.list_price }}
+{{ $sale := or $params.listing_sale_price $params.sale_price }}
+{{ $discount := or $params.listing_discount_pct $params.discount_pct }}
 {{ $expires := $params.expires_at }}
 {{ $timeLeft := $params.time_left | default "" }}
 {{ $tags := $params.tags }}
-{{ $url := or $params.product_url $params.affiliate_url }}
+{{ $url := or $params.listing_url $params.product_url $params.affiliate_url }}
+{{ $summary := or $params.listing_summary $params.summary ($page.Summary | plainify) }}
+{{ $showExpiryMeta := not $url }}
 {{ $normalizedURL := lower (printf "%v" $url) }}
 {{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
 {{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
@@ -47,7 +49,7 @@
   {{ with .latest }}{{ $latest = . }}{{ end }}
   {{ with .expiring_soon }}{{ $expiringSoon = . }}{{ end }}
 {{ end }}
-<article class="deal-card{{ if $compact }} deal-card--compact{{ end }}{{ if $listCard }} deal-card--list{{ end }}"{{ if $listCard }} data-filter-card="true" data-title="{{ lower $title }}" data-summary="{{ with $page.Summary }}{{ . | plainify | lower }}{{ end }}" data-tags="{{ delimit $tags " " | lower }}" data-top-savings="{{ if $topSavings }}true{{ else }}false{{ end }}" data-latest="{{ if $latest }}true{{ else }}false{{ end }}" data-expiring-soon="{{ if $expiringSoon }}true{{ else }}false{{ end }}" data-discount="{{ printf "%.6f" (or $discount 0) }}" data-date="{{ $page.Lastmod.Unix }}" data-affiliate="{{ if $isAffiliateLink }}true{{ else }}false{{ end }}"{{ end }}>
+<article class="deal-card{{ if $compact }} deal-card--compact{{ end }}{{ if $listCard }} deal-card--list{{ end }}"{{ if $listCard }} data-filter-card="true" data-title="{{ lower $title }}" data-summary="{{ lower $summary }}" data-tags="{{ delimit $tags " " | lower }}" data-top-savings="{{ if $topSavings }}true{{ else }}false{{ end }}" data-latest="{{ if $latest }}true{{ else }}false{{ end }}" data-expiring-soon="{{ if $expiringSoon }}true{{ else }}false{{ end }}" data-discount="{{ printf "%.6f" (or $discount 0) }}" data-date="{{ $page.Lastmod.Unix }}" data-affiliate="{{ if $isAffiliateLink }}true{{ else }}false{{ end }}"{{ end }}>
   {{ if $img }}
     <div class="deal-card__image">
       {{ partial "responsive-image.html" (dict
@@ -65,7 +67,6 @@
     {{ if $listCard }}
       <div class="deal-card__stack">
         <h3 class="deal-card__title">{{ $title }}</h3>
-        <p class="deal-card__excerpt">{{ with $page.Summary }}{{ . | plainify }}{{ else }}Quick deal snapshot. Expand for details.{{ end }}</p>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row">
           {{ if and $canShowLocalPrice (gt $sale 0) }}
@@ -79,7 +80,7 @@
         {{ if and $canShowLocalPrice (gt $discount 0) }}
           <div class="deal-card__signal-row">
             <span class="deal-card__badge">-{{ printf "%.0f" (mul $discount 100) }}%</span>
-            {{ if $timeLeft }}
+            {{ if and $showExpiryMeta $timeLeft }}
               <span class="deal-card__timer">{{ $timeLeft }}</span>
             {{ end }}
           </div>
@@ -88,15 +89,15 @@
         <details class="deal-card__details">
           <summary class="deal-card__details-toggle">More details</summary>
           <div class="deal-card__details-body">
-            {{ with $page.Summary }}
-              <p class="deal-card__details-summary">{{ . | plainify }}</p>
+            {{ if $summary }}
+              <p class="deal-card__details-summary">{{ $summary }}</p>
             {{ end }}
             {{ with $page.Content }}
               <div class="deal-card__details-rich">{{ . }}</div>
             {{ else }}
               {{ with $params.summary }}<p>{{ . }}</p>{{ end }}
             {{ end }}
-            {{ if and (not $compact) $expires }}
+            {{ if and (not $compact) $showExpiryMeta $expires }}
               <div class="deal-card__meta">Expires: {{ time.Format "Jan 2" (time $expires) }}</div>
             {{ end }}
             {{ if and (not $compact) $tags }}
@@ -107,21 +108,13 @@
           </div>
         </details>
         {{ if $url }}
-          <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a>
-          {{ if $isAffiliateLink }}
-            {{ if $isAmazonURL }}
-              <div class="deal-card__pending">As an Amazon Associate I earn from qualifying purchases.</div>
-            {{ else }}
-              <div class="deal-card__pending">Disclosure: this page may include affiliate links and Deal Ledger may earn a commission from qualifying purchases.</div>
-            {{ end }}
-          {{ end }}
+          <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer&nbsp;page</a>
         {{ else }}
           <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get alerts</a>
         {{ end }}
       </div>
     {{ else }}
       <h3 class="deal-card__title">{{ $title }}</h3>
-      <p class="deal-card__excerpt">{{ with $page.Summary }}{{ . | plainify | truncate (cond $compact 92 140) }}{{ else }}Great pick for this category.{{ end }}</p>
       <div class="deal-card__pricing">
         {{ if and $canShowLocalPrice (gt $sale 0) }}
           <span class="deal-card__sale">{{ printf "%s%.2f" $currency $sale }}</span>
@@ -132,11 +125,11 @@
         {{ if and $canShowLocalPrice (gt $discount 0) }}
           <span class="deal-card__badge">-{{ printf "%.0f" (mul $discount 100) }}%</span>
         {{ end }}
-        {{ if $timeLeft }}
+        {{ if and $showExpiryMeta $timeLeft }}
           <span class="deal-card__timer">{{ $timeLeft }}</span>
         {{ end }}
       </div>
-      {{ if and (not $compact) $expires }}
+      {{ if and (not $compact) $showExpiryMeta $expires }}
         <div class="deal-card__meta">Expires: {{ time.Format "Jan 2" (time $expires) }}</div>
       {{ end }}
       {{ if and (not $compact) $tags }}
@@ -145,14 +138,7 @@
         </div>
       {{ end }}
       {{ if $url }}
-        <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a>
-        {{ if $isAffiliateLink }}
-          {{ if $isAmazonURL }}
-            <div class="deal-card__pending">As an Amazon Associate I earn from qualifying purchases.</div>
-          {{ else }}
-            <div class="deal-card__pending">Disclosure: this page may include affiliate links and Deal Ledger may earn a commission from qualifying purchases.</div>
-          {{ end }}
-        {{ end }}
+        <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer&nbsp;page</a>
       {{ else }}
         <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get alerts</a>
       {{ end }}

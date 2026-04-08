@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $url := or .Params.product_url .Params.affiliate_url }}
+{{ $url := or .Params.listing_url .Params.product_url .Params.affiliate_url }}
 {{ $normalizedURL := lower (printf "%v" $url) }}
 {{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
 {{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
@@ -8,12 +8,17 @@
 {{ $currency := .Site.Params.currency_symbol | default "€" }}
 {{ $currencyCode := .Site.Params.currency_code | default "EUR" }}
 {{ $timeLeft := .Params.time_left | default "" }}
-{{ $description := .Params.summary | default (.Summary | plainify) }}
-{{ $dealImage := .Params.image }}
+{{ $displayTitle := or .Title .Params.listing_title }}
+{{ $description := or .Params.listing_summary .Params.summary (.Summary | plainify) }}
+{{ $dealImage := or .Params.listing_image .Params.image }}
+{{ $salePrice := or .Params.listing_sale_price .Params.sale_price }}
+{{ $listPrice := or .Params.listing_list_price .Params.list_price }}
+{{ $discountPct := or .Params.listing_discount_pct .Params.discount_pct }}
+{{ $showExpiryMeta := not $url }}
 {{ $schema := dict
   "@context" "https://schema.org"
   "@type" "Product"
-  "name" .Title
+  "name" $displayTitle
   "description" $description
   "url" .Permalink
   "mainEntityOfPage" .Permalink
@@ -22,12 +27,12 @@
 {{ if $dealImage }}
   {{ $schema = merge $schema (dict "image" (slice (absURL $dealImage))) }}
 {{ end }}
-{{ if and $canShowLocalPrice (gt (.Params.sale_price | default 0) 0) }}
+{{ if and $canShowLocalPrice (gt ($salePrice | default 0) 0) }}
   {{ $offer := dict
     "@type" "Offer"
     "url" (or $url .Permalink)
     "priceCurrency" $currencyCode
-    "price" (printf "%.2f" (.Params.sale_price | default 0))
+    "price" (printf "%.2f" ($salePrice | default 0))
     "availability" "https://schema.org/InStock"
   }}
   {{ with .Params.expires_at }}
@@ -54,45 +59,40 @@
   <div class="deal-single__hero">
     <div>
       <header>
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.summary }}<p class="lead">{{ . }}</p>{{ end }}
+        <h1>{{ $displayTitle }}</h1>
+        {{ with $description }}<p class="lead">{{ . }}</p>{{ end }}
       </header>
 
       <div class="deal-single__pricing">
         {{ if $canShowLocalPrice }}
-          {{ with .Params.sale_price }}{{ if gt . 0 }}<span class="sale">{{ printf "%s%.2f" $currency . }}</span>{{ end }}{{ end }}
-          {{ with .Params.list_price }}{{ if gt . 0 }}<span class="list">{{ printf "%s%.2f" $currency . }}</span>{{ end }}{{ end }}
-          {{ with .Params.discount_pct }}{{ if gt . 0 }}<span class="badge">-{{ printf "%.0f" (mul . 100) }}%</span>{{ end }}{{ end }}
+          {{ with $salePrice }}{{ if gt . 0 }}<span class="sale">{{ printf "%s%.2f" $currency . }}</span>{{ end }}{{ end }}
+          {{ with $listPrice }}{{ if gt . 0 }}<span class="list">{{ printf "%s%.2f" $currency . }}</span>{{ end }}{{ end }}
+          {{ with $discountPct }}{{ if gt . 0 }}<span class="badge">-{{ printf "%.0f" (mul . 100) }}%</span>{{ end }}{{ end }}
         {{ else }}
           <div class="meta">See Amazon for current price and availability.</div>
         {{ end }}
-        {{ if $timeLeft }}
+        {{ if and $showExpiryMeta $timeLeft }}
           <div class="meta">Ends in {{ $timeLeft }}</div>
         {{ else }}
-          {{ with .Params.expires_at }}<div class="meta">Expires {{ time.Format "Jan 2, 2006" (time .) }}</div>{{ end }}
+          {{ if $showExpiryMeta }}
+            {{ with .Params.expires_at }}<div class="meta">Expires {{ time.Format "Jan 2, 2006" (time .) }}</div>{{ end }}
+          {{ end }}
         {{ end }}
       </div>
 
       {{ if $url }}
         <p><a class="deal-single__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">View retailer page</a></p>
-        {{ if $isAffiliateLink }}
-          {{ if $isAmazonURL }}
-            <p class="deal-single__note">As an Amazon Associate I earn from qualifying purchases.</p>
-          {{ else }}
-            <p class="deal-single__note">Disclosure: this page may include affiliate links and Deal Ledger may earn a commission from qualifying purchases.</p>
-          {{ end }}
-        {{ end }}
       {{ else }}
         <p><a class="deal-single__cta deal-single__cta--soft" href="{{ "alerts/" | relURL }}">Join category alerts</a></p>
         <p class="deal-single__note">Retailer links are added selectively as listings are finalized.</p>
       {{ end }}
     </div>
 
-    {{ if .Params.image }}
+    {{ if $dealImage }}
       <div class="deal-single__image">
         {{ partial "responsive-image.html" (dict
-          "src" .Params.image
-          "alt" .Title
+          "src" $dealImage
+          "alt" $displayTitle
           "sizes" "(max-width: 60rem) 100vw, 40vw"
           "loading" "lazy"
           "decoding" "async"

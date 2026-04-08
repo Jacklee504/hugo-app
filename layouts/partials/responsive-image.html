@@ -7,7 +7,7 @@
 {{ $fetchpriority := .fetchpriority | default "auto" }}
 
 {{ $isRemote := or (hasPrefix $src "http://") (hasPrefix $src "https://") }}
-{{ $resource := nil }}
+{{ $resource := "" }}
 {{ if and $src (not $isRemote) }}
   {{ $clean := strings.TrimPrefix "/" $src }}
   {{ $resource = resources.Get $clean }}
@@ -26,8 +26,6 @@
     loading="{{ $loading }}"
     decoding="{{ $decoding }}"
     fetchpriority="{{ $fetchpriority }}"
-    width="{{ $medium.Width }}"
-    height="{{ $medium.Height }}"
   >
 {{ else }}
   <img
@@ -37,8 +35,6 @@
     loading="{{ $loading }}"
     decoding="{{ $decoding }}"
     fetchpriority="{{ $fetchpriority }}"
-    width="960"
-    height="540"
     sizes="{{ $sizes }}"
   >
 {{ end }}
