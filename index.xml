@@ -182,12 +182,5 @@
       <guid>https://dealledger.eu/privacy/</guid>
       <description>&lt;p&gt;Deal Ledger may collect limited information when you visit the site or contact us, including email messages you send and basic analytics or server data.&lt;/p&gt;&#xA;&lt;p&gt;This information is used to operate and improve the site, and to respond to inquiries.&lt;/p&gt;&#xA;&lt;p&gt;Deal Ledger does not sell personal information. Third-party services (such as hosting, analytics, or retailers you click to) may process data under their own policies.&lt;/p&gt;&#xA;&lt;p&gt;If you subscribe to alerts or contact us directly, we retain only the information needed to deliver that service and handle support. We aim to keep this data limited, secure, and relevant to the original request.&lt;/p&gt;</description>
     </item>
-    <item>
-      <title>US Deals</title>
-      <link>https://dealledger.eu/us/deals/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://dealledger.eu/us/deals/</guid>
-      <description>&lt;p&gt;This page is the US market entry point for deal browsing.&lt;/p&gt;&#xA;&lt;p&gt;For now, browse all live deals here:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://dealledger.eu/deals/&#34;&gt;Open deals list&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;As US link coverage grows, this page will surface US-first selections directly.&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
