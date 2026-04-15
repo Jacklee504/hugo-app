@@ -13,11 +13,11 @@ categories = ["electronics"]
 summary = "5.1 soundbar system with subwoofer and rear speakers."
 listing_url = "https://www.amazon.ie/dp/B0FMRFNKNL"
 listing_title = "ULTIMEA 5.1 Soundbar with Subwoofer, Soundbar for TV with Dolby Atmos, Home Cinema System with 2 Rear Speakers, Surround Sound, App Control, Adjustable Bass, HDMI, Bluetooth, Poseidon D60 : Amazon.ie: Electronics"
-listing_summary = "5.1 soundbar system with subwoofer and rear speakers."
+listing_summary = "ULTIMEA 5.1 Soundbar with Subwoofer, Soundbar for TV with Dolby Atmos, Home Cinema System with 2 Rear Speakers, Surround Sound, App Control, Adjustable Bass, HDMI, Bluetooth, Poseidon D60 : Amazon.ie: Electronics"
 listing_sale_price = 177.07
 listing_list_price = 199.99
 listing_discount_pct = 0.1146
-listing_synced_at = "2026-04-08T15:01:32.685426+00:00"
+listing_synced_at = "2026-04-15T10:57:46.175654+00:00"
 listing_image = "https://m.media-amazon.com/images/I/610iptZZxYL._AC_SL1500_.jpg"
 +++
 

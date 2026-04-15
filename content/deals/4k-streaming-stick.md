@@ -13,11 +13,11 @@ categories = ["electronics"]
 summary = "Wireless Dolby Atmos headset for console and PC."
 listing_url = "https://www.amazon.ie/dp/B09TTMBTY5"
 listing_title = "CORSAIR HS80 RGB Over ear WIRELESS Multiplatform Gaming Headset – Dolby Atmos – Omni-Directional Microphone – iCUE Compatible – PC, Mac, PS5, PS4 – White : Amazon.ie: Videogames"
-listing_summary = "Wireless Dolby Atmos headset for console and PC."
+listing_summary = "CORSAIR HS80 RGB Over ear WIRELESS Multiplatform Gaming Headset – Dolby Atmos – Omni-Directional Microphone – iCUE Compatible – PC, Mac, PS5, PS4 – White : Amazon.ie: Videogames"
 listing_sale_price = 108.88
 listing_list_price = 149.99
 listing_discount_pct = 0.2741
-listing_synced_at = "2026-04-08T15:01:32.685426+00:00"
+listing_synced_at = "2026-04-15T10:57:46.175654+00:00"
 listing_image = "https://m.media-amazon.com/images/I/5197B5MV2TL._AC_SL1200_.jpg"
 +++
 

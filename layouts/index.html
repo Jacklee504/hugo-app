@@ -50,6 +50,21 @@
   {{ $orderedDeals = $interleavedDeals }}
 {{ end }}
 {{ $recent := first 4 (sort $orderedDeals "Lastmod" "desc") }}
+{{ $homeKeywords := slice "home" "house" "kitchen" "bathroom" "living" "furniture" "decor" "appliance" "cleaning" }}
+{{ $homeDeals := slice }}
+{{ range $liveDeals }}
+  {{ $pool := lower (printf "%s %s %s %s %s" .Title (.Params.summary | default "") (delimit (.Params.tags | default (slice)) " ") (delimit (.Params.categories | default (slice)) " ") (.Params.listing_title | default "")) }}
+  {{ $isHome := false }}
+  {{ range $homeKeywords }}
+    {{ if in $pool . }}
+      {{ $isHome = true }}
+    {{ end }}
+  {{ end }}
+  {{ if $isHome }}
+    {{ $homeDeals = $homeDeals | append . }}
+  {{ end }}
+{{ end }}
+{{ $homeDeals = first 4 (sort $homeDeals "Params.discount_pct" "desc") }}
 {{ $featuredListItems := slice }}
 {{ range $index, $deal := $featured }}
   {{ $featuredListItems = $featuredListItems | append (dict
@@ -113,10 +128,27 @@
 
 <section class="home-section">
   <div class="home-section__intro">
+    <h2>Home deals</h2>
+    <p>Top home picks with strong savings right now.</p>
+  </div>
+  {{ if gt (len $homeDeals) 0 }}
+    <div class="deal-grid deal-grid--browse">
+      {{ range $homeDeals }}
+        {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>Home deals will appear here as listings are added.</p>
+  {{ end }}
+</section>
+
+<section class="home-section">
+  <div class="home-section__intro">
     <h2>Quick categories</h2>
     <p>Jump straight into deals for what you need.</p>
   </div>
   <div class="category-strip">
+    <a href="{{ "deals/?q=home+deals" | relURL }}">Home deals</a>
     <a href="{{ "deals/?q=audio" | relURL }}">Audio</a>
     <a href="{{ "deals/?q=running+gear" | relURL }}">Running gear</a>
     <a href="{{ "deals/?q=home+office" | relURL }}">Home office</a>

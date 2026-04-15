@@ -45,6 +45,17 @@ python scripts/sync_listing_from_urls.py
 
 This upserts `listing_*` fields (title, summary, image, URL, prices, discount, sync time) by reading each deal's retailer URL.
 
+### 5) Validate discount freshness
+Check whether stored `listing_*` prices/discounts still match live listing pages:
+```bash
+python scripts/validate_discount_freshness.py
+```
+
+Auto-apply stale listing price/discount updates:
+```bash
+python scripts/validate_discount_freshness.py --apply
+```
+
 ## Setup
 
 ### Required repo secrets

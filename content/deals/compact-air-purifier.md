@@ -13,11 +13,11 @@ categories = ["electronics"]
 summary = "Magnetic 5,000mAh power bank for iPhone top-ups."
 listing_url = "https://www.amazon.ie/dp/B099284SRR"
 listing_title = "Anker 621 Magnetic Portable Charger (MagGo), 5,000mAh Wireless Power Bank with USB-C Cable, Magsafe-Compatible Battery Pack for iPhone 16/15/14/13/12 Series : Amazon.ie"
-listing_summary = "Magnetic 5,000mAh power bank for iPhone top-ups."
+listing_summary = "Anker 621 Magnetic Portable Charger (MagGo), 5,000mAh Wireless Power Bank with USB-C Cable, Magsafe-Compatible Battery Pack for iPhone 16/15/14/13/12 Series : Amazon.ie"
 listing_sale_price = 25.90
 listing_list_price = 34.90
 listing_discount_pct = 0.2579
-listing_synced_at = "2026-04-08T15:01:32.685426+00:00"
+listing_synced_at = "2026-04-15T10:57:46.175654+00:00"
 listing_image = "https://m.media-amazon.com/images/I/61BgnPuSS2L._AC_SL1500_.jpg"
 +++
 

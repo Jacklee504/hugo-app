@@ -31,6 +31,7 @@
       <div class="alert-form__field">
         <p class="alert-form__label">Quick categories</p>
         <div class="alert-options">
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="home"> Home essentials</span><small>Kitchen, cleaning, and everyday household picks.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> Audio and headphones</span><small>Travel, desk, and portable listening.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="running"> Running tech</span><small>Watches, earbuds, and training gear.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="productivity"> Home office</span><small>Keyboards, monitors, and desk upgrades.</small></label>
@@ -71,6 +72,10 @@
     const toast = document.getElementById('alert-toast');
 
     const categoryMeta = {
+      home: {
+        label: 'Home essentials',
+        terms: ['home', 'house', 'household', 'kitchen', 'appliance', 'cleaning', 'vacuum', 'storage', 'living room', 'bathroom']
+      },
       audio: {
         label: 'Audio and headphones',
         terms: ['audio', 'headphones', 'earbuds', 'earphones', 'speaker', 'speakers', 'bluetooth', 'noise', 'anc', 'music', 'technology', 'tech', 'electronics', 'devices', 'gadget']
