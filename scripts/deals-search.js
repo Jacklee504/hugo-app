@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const synonymMap = {
+    home: ['household', 'kitchen', 'living', 'appliance', 'cleaning', 'decor'],
+    household: ['home', 'kitchen', 'cleaning', 'utility'],
+    kitchen: ['home', 'appliance', 'cookware'],
+    appliance: ['home', 'kitchen', 'household'],
+    vacuum: ['cleaning', 'home'],
     tv: ['television', 'streaming', 'stick'],
     television: ['tv', 'streaming'],
     headphones: ['headphone', 'earphones', 'earbuds', 'audio'],

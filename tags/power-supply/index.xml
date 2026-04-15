@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Power Supply on Deal Ledger</title>
+    <link>https://dealledger.eu/tags/power-supply/</link>
+    <description>Recent content in Power Supply on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Apr 2026 12:54:26 +0100</lastBuildDate>
+    <atom:link href="https://dealledger.eu/tags/power-supply/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Corsair RM1000e Power Supply</title>
+      <link>https://dealledger.eu/deals/corsair-rm1000e-psu/</link>
+      <pubDate>Tue, 14 Apr 2026 15:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/deals/corsair-rm1000e-psu/</guid>
+      <description>1000W fully modular ATX power supply for high-performance PC builds.</description>
+    </item>
+  </channel>
+</rss>
