@@ -56,6 +56,41 @@ Auto-apply stale listing price/discount updates:
 python scripts/validate_discount_freshness.py --apply
 ```
 
+### 6) Parse Discord alert submissions
+If Formspree is connected to a Discord webhook channel, parse incoming messages into a clean queue:
+```bash
+DISCORD_BOT_TOKEN=xxx DISCORD_CHANNEL_ID=123 python scripts/parse_discord_alerts.py --output review-queue/alerts.json
+```
+
+CSV output:
+```bash
+DISCORD_BOT_TOKEN=xxx DISCORD_CHANNEL_ID=123 python scripts/parse_discord_alerts.py --format csv --output review-queue/alerts.csv
+```
+
+Incremental mode (only fetch messages after the last processed message ID):
+```bash
+DISCORD_BOT_TOKEN=xxx DISCORD_CHANNEL_ID=123 python scripts/parse_discord_alerts.py --incremental --output review-queue/alerts.json
+```
+
+### 7) Exact-item instant email alerts
+Send email alerts when deals matching `exact_items` requests are discounted:
+```bash
+SMTP_HOST=smtp.example.com SMTP_PORT=587 SMTP_USERNAME=user SMTP_PASSWORD=pass SMTP_FROM=alerts@dealledger.eu python scripts/send_exact_item_alerts.py
+```
+
+Dry run:
+```bash
+python scripts/send_exact_item_alerts.py --dry-run
+```
+
+State files used:
+- `.state/exact-item-subscriptions.json` (request registry)
+- `.state/exact-item-alert-state.json` (dedupe / last sent discount)
+
+Automation:
+- `.github/workflows/exact-item-alerts.yml` runs every 30 minutes.
+- It parses new Discord submissions, sends exact-item alert emails, and commits state updates.
+
 ## Setup
 
 ### Required repo secrets
@@ -64,6 +99,13 @@ Set in `Settings -> Secrets and variables -> Actions`:
 - `AMZ_PAAPI_SECRET_KEY`
 - `AMZ_PARTNER_TAG`
 - `AMZ_MARKETPLACE` (example: `www.amazon.co.uk`)
+- `DISCORD_BOT_TOKEN`
+- `DISCORD_CHANNEL_ID`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_USERNAME`
+- `SMTP_PASSWORD`
+- `SMTP_FROM`
 
 ### Seed ASINs
 Edit:
@@ -87,6 +129,7 @@ hugo server -D
 - Alerts form supports hidden inferred categories on submit:
   - `inferred_categories`
   - `effective_categories`
+  - `exact_items`
   This is backend-facing only (no visible suggestion UI).
 - Deal cards/single pages prefer `listing_*` fields when present, then fall back to manual front matter values.
 

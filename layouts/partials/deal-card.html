@@ -21,7 +21,7 @@
 {{ $timeLeft := $params.time_left | default "" }}
 {{ $tags := $params.tags }}
 {{ $url := or $params.listing_url $params.product_url $params.affiliate_url }}
-{{ $summary := or $params.listing_summary $params.summary ($page.Summary | plainify) }}
+{{ $summary := or $params.summary $params.listing_summary ($page.Summary | plainify) }}
 {{ $showExpiryMeta := not $url }}
 {{ $normalizedURL := lower (printf "%v" $url) }}
 {{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
