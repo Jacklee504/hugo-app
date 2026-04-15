@@ -80,7 +80,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776254419">
+<link rel="stylesheet" href="/styles/site.css?v=1776267401">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -213,7 +213,6 @@
       <div class="alert-form__field">
         <p class="alert-form__label">Quick categories</p>
         <div class="alert-options">
-          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="home"> Home essentials</span><small>Kitchen, cleaning, and everyday household picks.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> Audio and headphones</span><small>Travel, desk, and portable listening.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="running"> Running tech</span><small>Watches, earbuds, and training gear.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="productivity"> Home office</span><small>Keyboards, monitors, and desk upgrades.</small></label>
@@ -227,6 +226,12 @@
         <p class="alert-field__hint">Use commas to describe the products, features, or use cases you want to track.</p>
         <input type="hidden" name="inferred_categories" id="inferred-categories" value="">
         <input type="hidden" name="effective_categories" id="effective-categories" value="">
+      </div>
+
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="exact-items">Exact items to track</label>
+        <textarea class="alert-form__notes" id="exact-items" name="exact_items" rows="3" placeholder="Add an exact item name or product URL (you’ll get an instant email when a discount appears)"></textarea>
+        <p class="alert-field__hint">Add exact product names, model numbers, ASINs, or URLs for targeted instant discount alerts.</p>
       </div>
 
       <div class="alert-form__field">
@@ -246,6 +251,7 @@
 
     const emailInput = document.getElementById('alert-email');
     const keywordsInput = document.getElementById('keywords');
+    const exactItemsInput = document.getElementById('exact-items');
     const notesInput = document.getElementById('notes');
     const inferredCategoriesInput = document.getElementById('inferred-categories');
     const effectiveCategoriesInput = document.getElementById('effective-categories');
@@ -368,8 +374,9 @@
 
       const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
       const keywords = keywordsInput.value.trim();
-      if (selectedCategories.length === 0 && !keywords) {
-        showToast('Choose at least one category or add keywords.', true);
+      const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
+      if (selectedCategories.length === 0 && !keywords && !exactItems) {
+        showToast('Choose a category, add keywords, or add exact items.', true);
         return;
       }
 
