@@ -34,6 +34,16 @@ def ensure_state_dir(path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
 
+def canonical_key(key: str) -> str:
+    k = key.strip().lower()
+    # Strip common Discord markdown / quote markers.
+    k = k.replace("**", "").replace("`", "")
+    k = re.sub(r"^[>\-\s]+", "", k)
+    k = re.sub(r"[^a-z0-9\s_]", "", k)
+    k = re.sub(r"\s+", "_", k).strip("_")
+    return k
+
+
 def parse_kv_lines(content: str) -> dict[str, str]:
     parsed: dict[str, str] = {}
     for line in content.splitlines():
@@ -41,16 +51,48 @@ def parse_kv_lines(content: str) -> dict[str, str]:
         if not line or ":" not in line:
             continue
         key, value = line.split(":", 1)
-        parsed[key.strip().lower()] = value.strip()
+        ckey = canonical_key(key)
+        if not ckey:
+            continue
+        parsed[ckey] = value.strip()
+    return parsed
+
+
+def parse_embed_fields(msg: dict[str, Any]) -> dict[str, str]:
+    parsed: dict[str, str] = {}
+    embeds = msg.get("embeds") or []
+    for embed in embeds:
+        title = str(embed.get("title", "")).strip()
+        if title and canonical_key(title) not in parsed:
+            parsed[canonical_key(title)] = str(embed.get("description", "")).strip()
+        for field in embed.get("fields") or []:
+            name = canonical_key(str(field.get("name", "")))
+            value = str(field.get("value", "")).strip()
+            if name:
+                parsed[name] = value
     return parsed
 
 
 def parse_message(msg: dict[str, Any]) -> dict[str, Any] | None:
     content = str(msg.get("content", "")).strip()
-    if ALERT_PREFIX.lower() not in content.lower():
+    embeds = msg.get("embeds") or []
+    has_alert_marker = ALERT_PREFIX.lower() in content.lower()
+    if not has_alert_marker:
+        for embed in embeds:
+            title = str(embed.get("title", "")).lower()
+            desc = str(embed.get("description", "")).lower()
+            if ALERT_PREFIX.lower() in title or ALERT_PREFIX.lower() in desc:
+                has_alert_marker = True
+                break
+    if not has_alert_marker:
         return None
 
     kv = parse_kv_lines(content)
+    embed_kv = parse_embed_fields(msg)
+    for k, v in embed_kv.items():
+        if k not in kv and v:
+            kv[k] = v
+
     return {
         "message_id": msg.get("id", ""),
         "created_at": msg.get("timestamp", ""),
@@ -59,7 +101,7 @@ def parse_message(msg: dict[str, Any]) -> dict[str, Any] | None:
         "cadence": kv.get("cadence", ""),
         "categories": kv.get("categories", ""),
         "keywords": kv.get("keywords", ""),
-        "exact_items": kv.get("exact_items", kv.get("exact items", "")),
+        "exact_items": kv.get("exact_items", ""),
         "inferred_categories": kv.get("inferred_categories", ""),
         "effective_categories": kv.get("effective_categories", ""),
         "notes": kv.get("notes", ""),

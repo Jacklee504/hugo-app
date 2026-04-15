@@ -290,6 +290,7 @@ def main() -> None:
     requests_path = Path(args.requests)
 
     requests_payload = read_json(requests_path, {"records": []})
+    print(f"[send_exact_item_alerts] loaded_request_records={len(requests_payload.get('records', []))}")
     subscriptions = read_json(SUBS_PATH, {})
     notify_state = read_json(STATE_PATH, {"last_sent": {}})
     notify_map = notify_state.setdefault("last_sent", {})
