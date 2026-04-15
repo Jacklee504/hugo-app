@@ -107,7 +107,7 @@ def normalize(value: str) -> str:
 
 
 def extract_asin(value: str) -> str | None:
-    m = re.search(r"/(?:dp|gp/product)/([A-Z0-9]{10})(?:[/?]|$)", value.upper())
+    m = re.search(r"/(?:dp|gp/product)/([A-Z0-9]{10})(?:[/?]|$)", value, re.IGNORECASE)
     return m.group(1) if m else None
 
 
@@ -173,7 +173,8 @@ def load_deals() -> list[Deal]:
 def deal_matches_exact_item(deal: Deal, item: str) -> bool:
     asin = extract_asin(item)
     if asin:
-        return asin in (deal.product_url.upper() + " " + deal.listing_url.upper())
+        hay = (deal.product_url + " " + deal.listing_url).upper()
+        return asin.upper() in hay
 
     n_item = normalize(item)
     if len(n_item) < 3:
