@@ -17,7 +17,7 @@ listing_summary = "ULTIMEA 5.1 Soundbar with Subwoofer, Soundbar for TV with Dol
 listing_sale_price = 177.07
 listing_list_price = 199.99
 listing_discount_pct = 0.1146
-listing_synced_at = "2026-04-15T11:55:20.053772+00:00"
+listing_synced_at = "2026-04-15T15:48:24.358931+00:00"
 listing_image = "https://m.media-amazon.com/images/I/610iptZZxYL._AC_SL1500_.jpg"
 +++
 

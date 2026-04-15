@@ -18,7 +18,7 @@ listing_sale_price = 20.99
 listing_list_price = 27.99
 listing_discount_pct = 0.25
 listing_image = "https://m.media-amazon.com/images/I/81FTNi+XjrL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-15T11:55:20.053772+00:00"
+listing_synced_at = "2026-04-15T15:48:24.358931+00:00"
 +++
 
 Compact LEGO car set with strong shelf appeal and quick build time.

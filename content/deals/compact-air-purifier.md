@@ -17,7 +17,7 @@ listing_summary = "Anker 621 Magnetic Portable Charger (MagGo), 5,000mAh Wireles
 listing_sale_price = 25.90
 listing_list_price = 34.90
 listing_discount_pct = 0.2579
-listing_synced_at = "2026-04-15T11:55:20.053772+00:00"
+listing_synced_at = "2026-04-15T15:48:24.358931+00:00"
 listing_image = "https://m.media-amazon.com/images/I/61BgnPuSS2L._AC_SL1500_.jpg"
 +++
 

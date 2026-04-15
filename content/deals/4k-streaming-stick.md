@@ -17,7 +17,7 @@ listing_summary = "CORSAIR HS80 RGB Over ear WIRELESS Multiplatform Gaming Heads
 listing_sale_price = 108.88
 listing_list_price = 149.99
 listing_discount_pct = 0.2741
-listing_synced_at = "2026-04-15T11:55:20.053772+00:00"
+listing_synced_at = "2026-04-15T15:48:24.358931+00:00"
 listing_image = "https://m.media-amazon.com/images/I/5197B5MV2TL._AC_SL1200_.jpg"
 +++
 
