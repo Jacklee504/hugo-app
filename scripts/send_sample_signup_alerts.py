@@ -4,7 +4,6 @@ Usage:
   python scripts/send_sample_signup_alerts.py --to you@example.com --type category --query audio
   python scripts/send_sample_signup_alerts.py --to you@example.com --type keyword --query keyboard
   python scripts/send_sample_signup_alerts.py --to you@example.com --type weekly_digest
-  python scripts/send_sample_signup_alerts.py --to you@example.com --type strongest
 
 Required env:
   SMTP_HOST, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD, SMTP_FROM
@@ -119,8 +118,6 @@ def pick_deals(deals: list[Deal], sample_type: str, query: str) -> list[Deal]:
     q = normalize(query)
     if sample_type == "weekly_digest":
         return sorted(deals, key=lambda d: d.discount_pct, reverse=True)[:4]
-    if sample_type == "strongest":
-        return sorted([d for d in deals if d.discount_pct > 0], key=lambda d: d.discount_pct, reverse=True)[:4]
 
     # category / keyword
     matched = []
@@ -140,8 +137,6 @@ def build_subject(sample_type: str, query: str) -> str:
         return f"Deal Ledger sample: keyword alerts ({query or 'keyword'})"
     if sample_type == "weekly_digest":
         return "Deal Ledger sample: weekly digest"
-    if sample_type == "strongest":
-        return "Deal Ledger sample: strongest deals"
     return "Deal Ledger sample alert"
 
 
@@ -261,7 +256,7 @@ def send_email(to_email: str, subject: str, text_body: str, html_body: str) -> N
 def main() -> None:
     parser = argparse.ArgumentParser(description="Send sample signup-option email.")
     parser.add_argument("--to", required=True, help="Recipient email")
-    parser.add_argument("--type", required=True, choices=["category", "keyword", "weekly_digest", "strongest"])
+    parser.add_argument("--type", required=True, choices=["category", "keyword", "weekly_digest"])
     parser.add_argument("--query", default="", help="Category/keyword query for category/keyword sample types")
     args = parser.parse_args()
 

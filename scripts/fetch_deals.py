@@ -31,10 +31,12 @@ except ModuleNotFoundError:
 ROOT = Path(__file__).resolve().parents[1]
 SEEDS_PATH = ROOT / "scripts" / "seeds.json"
 QUALITY_POLICY_PATH = ROOT / "scripts" / "quality_policy.json"
+EXACT_SUBSCRIPTIONS_PATH = ROOT / ".state" / "exact-item-subscriptions.json"
 OUTPUT_DIR = ROOT / "review-queue" / "deals"
 
 REQUIRED_ENVS = ["AMZ_PAAPI_ACCESS_KEY", "AMZ_PAAPI_SECRET_KEY", "AMZ_PARTNER_TAG"]
-MIN_DISCOUNT = 0.05
+MIN_DISCOUNT = 0.20
+MIN_SALE_PRICE = 25.0
 
 
 DEFAULT_QUALITY_POLICY = {
@@ -69,6 +71,15 @@ def load_seeds():
     marketplace = os.getenv("AMZ_MARKETPLACE") or data.get("marketplace") or "www.amazon.com"
     tags_map = data.get("tags", {})
     return marketplace, asins, tags_map
+
+
+def load_json(path: Path, default: Any) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text())
+    except json.JSONDecodeError:
+        return default
 
 
 def load_quality_policy() -> dict:
@@ -148,6 +159,101 @@ def is_affiliate_ready(url: str) -> bool:
     return "tag=" in normalized or "amzn.to" in normalized
 
 
+def extract_asin(value: str) -> str | None:
+    m = re.search(r"/(?:dp|gp/product)/([A-Z0-9]{10})(?:[/?]|$)", value, re.IGNORECASE)
+    if m:
+        return m.group(1).upper()
+    m = re.search(r"\b([A-Z0-9]{10})\b", value or "", re.IGNORECASE)
+    if m:
+        return m.group(1).upper()
+    return None
+
+
+def dedupe_keep_order(values: List[str]) -> List[str]:
+    seen: set[str] = set()
+    ordered: List[str] = []
+    for value in values:
+        key = (value or "").strip().upper()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        ordered.append(key)
+    return ordered
+
+
+def parse_exact_item_inputs(raw_items: Any) -> List[str]:
+    if isinstance(raw_items, list):
+        values = raw_items
+    else:
+        values = re.split(r"[\n,;]+", str(raw_items or ""))
+    parsed: List[str] = []
+    seen: set[str] = set()
+    for value in values:
+        item = str(value or "").strip()
+        if not item:
+            continue
+        key = item.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        parsed.append(item)
+    return parsed
+
+
+def load_exact_item_requests(path: Path = EXACT_SUBSCRIPTIONS_PATH) -> tuple[List[str], List[str]]:
+    payload = load_json(path, {})
+    if not isinstance(payload, dict):
+        return [], []
+
+    direct_asins: List[str] = []
+    queries: List[str] = []
+    for _, record in payload.items():
+        if not isinstance(record, dict):
+            continue
+        for item in parse_exact_item_inputs(record.get("exact_items", [])):
+            asin = extract_asin(item)
+            if asin:
+                direct_asins.append(asin)
+            elif len(item.strip()) >= 3:
+                queries.append(item.strip())
+
+    return dedupe_keep_order(direct_asins), dedupe_keep_order(queries)
+
+
+def search_asins_for_queries(api: AmazonApi, queries: List[str], max_queries: int = 12) -> List[str]:
+    resolved: List[str] = []
+
+    for query in queries[:max_queries]:
+        products = None
+        attempts = [
+            {"keywords": query, "search_index": "All", "item_count": 5},
+            {"keywords": query, "search_index": "All"},
+            {"keywords": query},
+        ]
+        for kwargs in attempts:
+            try:
+                products = api.search_items(**kwargs)
+                if products:
+                    break
+            except TypeError:
+                continue
+            except AmazonException as exc:
+                print(f"[fetch_deals] exact-item search failed for '{query}': {exc}")
+                products = []
+                break
+            except Exception as exc:  # noqa: BLE001
+                print(f"[fetch_deals] exact-item search error for '{query}': {exc}")
+                products = []
+                break
+
+        for product in products or []:
+            asin = str(getattr(product, "asin", "") or "").strip().upper()
+            if asin:
+                resolved.append(asin)
+
+    return dedupe_keep_order(resolved)
+
+
 def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s]", " ", (value or "").lower())).strip()
 
@@ -225,8 +331,16 @@ def write_deal(asin: str, payload: dict, tags: List[str]) -> bool:
     if price and list_price and list_price > 0:
         discount = max(0.0, min(1.0, 1 - (price / list_price)))
 
-    if discount < MIN_DISCOUNT:
-        print(f"[fetch_deals] skip {asin}: discount below {MIN_DISCOUNT:.0%}")
+    if discount <= MIN_DISCOUNT:
+        print(f"[fetch_deals] skip {asin}: discount is not above {MIN_DISCOUNT:.0%}")
+        return False
+
+    if not isinstance(price, (int, float)):
+        print(f"[fetch_deals] skip {asin}: missing sale price")
+        return False
+
+    if price <= MIN_SALE_PRICE:
+        print(f"[fetch_deals] skip {asin}: sale price is not above €{MIN_SALE_PRICE:.2f}")
         return False
 
     featured = discount >= 0.3
@@ -290,6 +404,21 @@ def main():
     country = host_to_country(marketplace)
     api = client(country)
 
+    exact_asins, exact_queries = load_exact_item_requests()
+    searched_asins = search_asins_for_queries(api, exact_queries) if exact_queries else []
+    prioritized_exact_asins = dedupe_keep_order(exact_asins + searched_asins)
+
+    if prioritized_exact_asins:
+        print(
+            f"[fetch_deals] prioritized {len(prioritized_exact_asins)} exact-item ASIN(s) "
+            f"({len(exact_asins)} direct, {len(searched_asins)} from search)"
+        )
+    else:
+        print("[fetch_deals] no exact-item ASINs found for prioritization")
+
+    asins = dedupe_keep_order(prioritized_exact_asins + asins)
+    prioritized_exact_set = set(prioritized_exact_asins)
+
     written = 0
     for batch in batches(asins, size=10):
         try:
@@ -304,7 +433,10 @@ def main():
 
         prioritized = sorted(
             products,
-            key=lambda p: 0 if is_affiliate_ready(getattr(p, "url", "") or "") else 1,
+            key=lambda p: (
+                0 if str(getattr(p, "asin", "") or "").strip().upper() in prioritized_exact_set else 1,
+                0 if is_affiliate_ready(getattr(p, "url", "") or "") else 1,
+            ),
         )
 
         for product in prioritized:

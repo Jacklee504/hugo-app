@@ -56,6 +56,17 @@ Auto-apply stale listing price/discount updates:
 python scripts/validate_discount_freshness.py --apply
 ```
 
+### 5b) Review tag relevance (title/category/url based)
+Suggest tags that match each item based on product signals (without using description text):
+```bash
+python scripts/review_tags.py
+```
+
+Apply suggested tags:
+```bash
+python scripts/review_tags.py --apply
+```
+
 ### 6) Parse Discord alert submissions
 If Formspree is connected to a Discord webhook channel, parse incoming messages into a clean queue:
 ```bash
@@ -91,7 +102,7 @@ Automation:
 - `.github/workflows/exact-item-alerts.yml` runs every 30 minutes.
 - It parses new Discord submissions, sends exact-item alert emails, and commits state updates.
 - `.github/workflows/sample-exact-item-email.yml` is a manual test workflow to send a branded sample email to any recipient.
-- `.github/workflows/sample-signup-option-email.yml` is a manual test workflow for category, keyword, weekly digest, and strongest-deals sample emails.
+- `.github/workflows/sample-signup-option-email.yml` is a manual test workflow for category, keyword, and weekly-digest sample emails.
 
 ## Setup
 

@@ -15,7 +15,6 @@ on:
           - category
           - keyword
           - weekly_digest
-          - strongest
       category_option:
         description: "Category filter (used when sample_type=category)"
         required: true

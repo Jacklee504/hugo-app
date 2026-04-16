@@ -35,7 +35,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 DEALS_DIR = ROOT / "content" / "deals"
@@ -212,6 +212,102 @@ def deal_matches_exact_item(deal: Deal, item: str) -> bool:
     return n_item in haystack or haystack in n_item
 
 
+def parse_notes_preferences(notes: str) -> dict[str, Any]:
+    preferences: dict[str, Any] = {
+        "max_price": None,
+        "min_price": None,
+        "min_discount_pct": None,
+        "exclude_terms": [],
+        "prefer_terms": [],
+    }
+    if not notes:
+        return preferences
+
+    tokens = [t.strip() for t in re.split(r"[\n,;]+", notes) if t.strip()]
+    for token in tokens:
+        raw = token.strip()
+        lower = raw.lower()
+        normalized = normalize(raw)
+        if not normalized:
+            continue
+
+        max_price_match = re.search(r"(?:under|below|max(?:imum)?|less than)\s*€?\s*([0-9]+(?:\.[0-9]+)?)", lower)
+        if max_price_match:
+            preferences["max_price"] = float(max_price_match.group(1))
+            continue
+
+        min_price_match = re.search(r"(?:over|above|min(?:imum)?|more than)\s*€?\s*([0-9]+(?:\.[0-9]+)?)", lower)
+        if min_price_match:
+            preferences["min_price"] = float(min_price_match.group(1))
+            continue
+
+        min_discount_match = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*%", lower)
+        if min_discount_match and (
+            "+" in lower
+            or "at least" in lower
+            or "minimum" in lower
+            or lower.startswith("min ")
+            or "or more" in lower
+        ):
+            preferences["min_discount_pct"] = float(min_discount_match.group(1)) / 100.0
+            continue
+
+        excluded = ""
+        if lower.startswith("no "):
+            excluded = lower[3:].strip()
+        elif lower.startswith("not "):
+            excluded = lower[4:].strip()
+        elif lower.startswith("-"):
+            excluded = lower[1:].strip()
+        if excluded:
+            normalized_excluded = normalize(excluded)
+            if len(normalized_excluded) >= 2:
+                preferences["exclude_terms"].append(normalized_excluded)
+            continue
+
+        if len(normalized) >= 3:
+            preferences["prefer_terms"].append(normalized)
+
+    preferences["exclude_terms"] = list(dict.fromkeys(preferences["exclude_terms"]))
+    preferences["prefer_terms"] = list(dict.fromkeys(preferences["prefer_terms"]))
+    return preferences
+
+
+def evaluate_notes_match(deal: Deal, preferences: dict[str, Any]) -> tuple[bool, int, list[str]]:
+    sale_price = deal.sale_price if isinstance(deal.sale_price, (int, float)) else None
+    discount_pct = float(deal.discount_pct or 0.0)
+    max_price = preferences.get("max_price")
+    min_price = preferences.get("min_price")
+    min_discount_pct = preferences.get("min_discount_pct")
+    exclude_terms = preferences.get("exclude_terms") or []
+    prefer_terms = preferences.get("prefer_terms") or []
+
+    if max_price is not None and sale_price is not None and sale_price > float(max_price):
+        return False, 0, []
+    if min_price is not None and sale_price is not None and sale_price < float(min_price):
+        return False, 0, []
+    if min_discount_pct is not None and discount_pct < float(min_discount_pct):
+        return False, 0, []
+
+    haystack = normalize(f"{deal.title} {deal.listing_title} {' '.join(deal.tags)}")
+    padded_haystack = f" {haystack} "
+
+    for term in exclude_terms:
+        if not term:
+            continue
+        if f" {term} " in padded_haystack or term in haystack:
+            return False, 0, []
+
+    preferred_hits: list[str] = []
+    for term in prefer_terms:
+        if not term:
+            continue
+        if f" {term} " in padded_haystack or term in haystack:
+            preferred_hits.append(term)
+
+    return True, len(preferred_hits), preferred_hits[:3]
+
+
 def update_subscriptions(requests_payload: dict[str, Any], subs: dict[str, Any]) -> dict[str, Any]:
     now_iso = datetime.now(timezone.utc).isoformat()
     records = requests_payload.get("records", [])
@@ -227,17 +323,23 @@ def update_subscriptions(requests_payload: dict[str, Any], subs: dict[str, Any])
         slot = subs.setdefault(
             email,
             {
+                "name": "",
                 "email": email,
+                "country": "",
                 "cadence": "",
                 "categories": "",
                 "keywords": "",
+                "notes": "",
                 "exact_items": [],
                 "updated_at": now_iso,
             },
         )
+        slot["name"] = str(rec.get("name", slot.get("name", ""))).strip()
+        slot["country"] = str(rec.get("country", slot.get("country", ""))).strip()
         slot["cadence"] = str(rec.get("cadence", slot.get("cadence", "")))
         slot["categories"] = str(rec.get("effective_categories", rec.get("categories", slot.get("categories", ""))))
         slot["keywords"] = str(rec.get("keywords", slot.get("keywords", "")))
+        slot["notes"] = str(rec.get("notes", slot.get("notes", ""))).strip()
 
         merged = list(slot.get("exact_items", []))
         merged_set = {x.lower() for x in merged}
@@ -250,7 +352,32 @@ def update_subscriptions(requests_payload: dict[str, Any], subs: dict[str, Any])
     return subs
 
 
-def build_email_body(email: str, matches: list[dict[str, Any]], site_base: str) -> str:
+def build_alert_links() -> tuple[str, str]:
+    sender_email = (os.getenv("SMTP_FROM") or "contact@dealledger.eu").strip()
+    sender_email = sender_email if "@" in sender_email else "contact@dealledger.eu"
+    unsubscribe = os.getenv("ALERT_UNSUBSCRIBE_URL", "").strip()
+    feedback = os.getenv("ALERT_FEEDBACK_URL", "").strip()
+
+    if not unsubscribe:
+        unsubscribe = (
+            f"mailto:{sender_email}"
+            f"?subject={quote('Unsubscribe from Deal Ledger alerts')}"
+        )
+    if not feedback:
+        feedback = (
+            f"mailto:{sender_email}"
+            f"?subject={quote('Deal match feedback')}"
+        )
+    return unsubscribe, feedback
+
+
+def build_email_body(
+    email: str,
+    matches: list[dict[str, Any]],
+    site_base: str,
+    unsubscribe_url: str,
+    feedback_url: str,
+) -> str:
     lines = [
         "Deal Ledger: Exact-item discount alert",
         "",
@@ -263,15 +390,13 @@ def build_email_body(email: str, matches: list[dict[str, Any]], site_base: str) 
         list_price = m.get("list_price")
         sale_txt = f"€{sale:.2f}" if isinstance(sale, (int, float)) else "-"
         list_txt = f"€{list_price:.2f}" if isinstance(list_price, (int, float)) else "-"
-        lines.extend(
-            [
-                f"- Item: {m['title']}",
-                f"  Price: {sale_txt} (was {list_txt}, -{pct}%)",
-                f"  Deal page: {m['deal_page_url']}",
-                f"  Retailer: {compact_url(m['retailer_url'])}",
-                "",
-            ]
-        )
+        lines.append(f"- Item: {m['title']}")
+        lines.append(f"  Price: {sale_txt} (was {list_txt}, -{pct}%)")
+        if m.get("preference_hits"):
+            lines.append("  Preference match: " + ", ".join(m.get("preference_hits", [])))
+        lines.append(f"  Deal page: {m['deal_page_url']}")
+        lines.append(f"  Retailer: {compact_url(m['retailer_url'])}")
+        lines.append("")
     lines.extend(
         [
             f"Browse more deals: {site_base.rstrip('/')}/deals/",
@@ -279,12 +404,19 @@ def build_email_body(email: str, matches: list[dict[str, Any]], site_base: str) 
             "Thanks for using Deal Ledger.",
             "The Deal Ledger Team",
             "You received this because you requested exact item tracking.",
+            f"Unsubscribe: {unsubscribe_url}",
+            f"Did we get this wrong? {feedback_url}",
         ]
     )
     return "\n".join(lines)
 
 
-def build_email_html(matches: list[dict[str, Any]], site_base: str) -> str:
+def build_email_html(
+    matches: list[dict[str, Any]],
+    site_base: str,
+    unsubscribe_url: str,
+    feedback_url: str,
+) -> str:
     logo_url = f"{site_base.rstrip('/')}/images/brand/deal-ledger-logo.svg"
     cards: list[str] = []
     for m in matches:
@@ -309,6 +441,11 @@ def build_email_html(matches: list[dict[str, Any]], site_base: str) -> str:
                     <td style="vertical-align:top;">
                       <h3 style="margin:0 0 8px;font-size:16px;line-height:1.35;color:#17332e;">{m['title']}</h3>
                       <p style="margin:0 0 10px;font-size:14px;color:#17332e;"><strong>{sale_txt}</strong> <span style="color:#6e7d75;">(was {list_txt}, -{pct}%)</span></p>
+                      {
+                        f'<p style="margin:0 0 8px;font-size:12px;color:#5d6f66;">Preference match: {", ".join(m.get("preference_hits", []))}</p>'
+                        if m.get("preference_hits")
+                        else ""
+                      }
                       <p style="margin:0 0 8px;font-size:13px;"><a href="{m['deal_page_url']}" style="display:inline-block;background:#17332e;color:#fffdf9;text-decoration:none;padding:8px 12px;border-radius:999px;">View deal page</a></p>
                       <p style="margin:0;font-size:12px;color:#6e7d75;">Retailer: {compact_url(m['retailer_url'])}</p>
                     </td>
@@ -339,6 +476,15 @@ def build_email_html(matches: list[dict[str, Any]], site_base: str) -> str:
                   {''.join(cards)}
                 </table>
                 <p style="margin:14px 0 0;font-size:13px;color:#5d6f66;">Browse more deals: <a href="{site_base.rstrip('/')}/deals/" style="color:#0d4e46;text-decoration:none;">{site_base.rstrip('/')}/deals/</a></p>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;border-top:1px solid #edf1ed;">
+                  <tr>
+                    <td style="padding-top:12px;font-size:12px;line-height:1.5;color:#5d6f66;">
+                      <a href="{unsubscribe_url}" style="color:#0d4e46;text-decoration:none;">Unsubscribe</a>
+                      &nbsp;|&nbsp;
+                      <a href="{feedback_url}" style="color:#0d4e46;text-decoration:none;">Did we get this wrong?</a>
+                    </td>
+                  </tr>
+                </table>
                 <p style="margin:12px 0 0;font-size:13px;color:#5d6f66;">Thanks for using Deal Ledger.<br>The Deal Ledger Team</p>
               </td>
             </tr>
@@ -350,7 +496,7 @@ def build_email_html(matches: list[dict[str, Any]], site_base: str) -> str:
 </html>"""
 
 
-def send_email(to_email: str, subject: str, body: str, html_body: str) -> None:
+def send_email(to_email: str, subject: str, body: str, html_body: str, unsubscribe_url: str = "") -> None:
     host = os.getenv("SMTP_HOST", "").strip()
     user = os.getenv("SMTP_USERNAME", "").strip()
     password = os.getenv("SMTP_PASSWORD", "").strip()
@@ -365,6 +511,8 @@ def send_email(to_email: str, subject: str, body: str, html_body: str) -> None:
     msg["Subject"] = subject
     msg["From"] = sender
     msg["To"] = to_email
+    if unsubscribe_url:
+        msg["List-Unsubscribe"] = f"<{unsubscribe_url}>"
     msg.attach(MIMEText(body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
@@ -385,6 +533,7 @@ def main() -> None:
     args = parser.parse_args()
 
     site_base = os.getenv("SITE_BASE_URL", "https://dealledger.eu").strip()
+    unsubscribe_url, feedback_url = build_alert_links()
     requests_path = Path(args.requests)
     deals = load_deals()
 
@@ -405,12 +554,23 @@ def main() -> None:
             "dedupe_key": "sample",
         }
         subject = "Deal Ledger: sample exact-item discount alert"
-        body = build_email_body(email=args.test_email_to, matches=[sample_match], site_base=site_base)
-        html_body = build_email_html(matches=[sample_match], site_base=site_base)
+        body = build_email_body(
+            email=args.test_email_to,
+            matches=[sample_match],
+            site_base=site_base,
+            unsubscribe_url=unsubscribe_url,
+            feedback_url=feedback_url,
+        )
+        html_body = build_email_html(
+            matches=[sample_match],
+            site_base=site_base,
+            unsubscribe_url=unsubscribe_url,
+            feedback_url=feedback_url,
+        )
         if args.dry_run:
             print(f"[dry-run] sample email prepared for {args.test_email_to}")
         else:
-            send_email(args.test_email_to.strip(), subject, body, html_body)
+            send_email(args.test_email_to.strip(), subject, body, html_body, unsubscribe_url=unsubscribe_url)
             print(f"[sent] sample email -> {args.test_email_to.strip()}")
         return
 
@@ -429,12 +589,16 @@ def main() -> None:
         exact_items = parse_exact_items(", ".join(sub.get("exact_items", [])))
         if not exact_items:
             continue
+        notes_preferences = parse_notes_preferences(str(sub.get("notes", "")))
 
         for requested_item in exact_items:
             for deal in deals:
                 if deal.discount_pct <= 0:
                     continue
                 if not deal_matches_exact_item(deal, requested_item):
+                    continue
+                notes_ok, note_score, preference_hits = evaluate_notes_match(deal, notes_preferences)
+                if not notes_ok:
                     continue
 
                 dedupe_key = f"{email}|{normalize(requested_item)}|{deal.slug}"
@@ -459,19 +623,33 @@ def main() -> None:
                         "image_url": deal.listing_image,
                         "deal_slug": deal.slug,
                         "dedupe_key": dedupe_key,
+                        "note_score": note_score,
+                        "preference_hits": preference_hits,
                     }
                 )
 
     sent_count = 0
     for email, matches in queued_by_email.items():
+        matches.sort(key=lambda m: (int(m.get("note_score", 0)), float(m.get("discount_pct", 0.0))), reverse=True)
         subject = f"Deal Ledger: {len(matches)} exact-item discount match{'es' if len(matches) != 1 else ''}"
-        body = build_email_body(email=email, matches=matches, site_base=site_base)
-        html_body = build_email_html(matches=matches, site_base=site_base)
+        body = build_email_body(
+            email=email,
+            matches=matches,
+            site_base=site_base,
+            unsubscribe_url=unsubscribe_url,
+            feedback_url=feedback_url,
+        )
+        html_body = build_email_html(
+            matches=matches,
+            site_base=site_base,
+            unsubscribe_url=unsubscribe_url,
+            feedback_url=feedback_url,
+        )
 
         if args.dry_run:
             print(f"[dry-run] would email {email} with {len(matches)} match(es)")
         else:
-            send_email(email, subject, body, html_body)
+            send_email(email, subject, body, html_body, unsubscribe_url=unsubscribe_url)
             print(f"[sent] {email} ({len(matches)} match(es))")
 
         sent_count += 1

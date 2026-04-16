@@ -2,8 +2,8 @@
 {{ $formspreeEndpoint := .Site.Params.formspree_endpoint | compare.Default "" }}
 <section class="alerts-shell">
   <span class="pill">Request alerts</span>
-  <h1>Category email alerts</h1>
-  <p class="page-copy">Share what you want to track and how often. Your request is submitted directly from this page.</p>
+  <h1>Email alerts</h1>
+  <p class="page-copy">Tell us how often you want updates, then fill the matching section below.</p>
 
   <form class="alert-form" id="alert-request-form" name="alert-request" action="{{ $formspreeEndpoint }}" method="POST" data-formspree-endpoint="{{ $formspreeEndpoint }}">
     <input type="hidden" name="_subject" value="New Deal Ledger alert request">
@@ -12,21 +12,31 @@
     <section class="alert-form__section alert-form__split">
       <h2 class="alert-form__heading alert-form__heading--span">Where should we send updates?</h2>
       <div class="alert-form__field">
+        <label class="alert-form__label" for="alert-name">Name</label>
+        <input id="alert-name" name="name" type="text" placeholder="Your name" autocomplete="name">
+      </div>
+
+      <div class="alert-form__field">
         <label class="alert-form__label" for="alert-email">Email address</label>
         <input id="alert-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
       </div>
 
       <div class="alert-form__field">
+        <label class="alert-form__label" for="country">Country</label>
+        <input id="country" name="country" type="text" list="country-options" placeholder="Start typing your country" autocomplete="country-name" required>
+      </div>
+
+      <div class="alert-form__field">
         <label class="alert-form__label" for="cadence">How often</label>
-        <select id="cadence" name="cadence">
+        <select id="cadence" name="cadence" required>
           <option>As new picks are added</option>
           <option>Weekly digest</option>
-          <option>Only the strongest deals</option>
+          <option>Instant exact-item alerts</option>
         </select>
       </div>
     </section>
 
-    <section class="alert-form__section">
+    <section class="alert-form__section" id="regular-alert-fields">
       <h2 class="alert-form__heading">What should we watch?</h2>
       <div class="alert-form__field">
         <p class="alert-form__label">Quick categories</p>
@@ -41,41 +51,123 @@
       <div class="alert-form__field">
         <label class="alert-form__label" for="keywords">Keywords or terms</label>
         <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor">
-        <p class="alert-field__hint">Use commas to describe the products, features, or use cases you want to track.</p>
-        <input type="hidden" name="inferred_categories" id="inferred-categories" value="">
-        <input type="hidden" name="effective_categories" id="effective-categories" value="">
+        <p class="alert-field__hint">Use commas to describe products, features, or use cases you want to track.</p>
       </div>
+      <input type="hidden" name="inferred_categories" id="inferred-categories" value="">
+      <input type="hidden" name="effective_categories" id="effective-categories" value="">
+    </section>
 
+    <section class="alert-form__section" id="exact-alert-fields" hidden>
+      <h2 class="alert-form__heading">Exact item to track</h2>
       <div class="alert-form__field">
-        <label class="alert-form__label" for="exact-items">Exact items to track</label>
-        <textarea class="alert-form__notes" id="exact-items" name="exact_items" rows="3" placeholder="Add an exact item name or product URL (you’ll get an instant email when a discount appears)"></textarea>
-        <p class="alert-field__hint">Add exact product names, model numbers, ASINs, or URLs for targeted instant discount alerts.</p>
-      </div>
-
-      <div class="alert-form__field">
-        <label class="alert-form__label" for="notes">Optional notes</label>
-        <textarea class="alert-form__notes" id="notes" name="notes" rows="3" placeholder="Examples: under €200, compact setup, travel-friendly"></textarea>
+        <label class="alert-form__label" for="exact-items">Exact item name or URL</label>
+        <textarea class="alert-form__notes" id="exact-items" name="exact_items" rows="3" placeholder="Add an exact item name, model number, ASIN, or product URL"></textarea>
+        <p class="alert-field__hint">You will get an instant email when a matching discount appears.</p>
       </div>
     </section>
 
-    <button type="submit">Send alert request</button>
+    <section class="alert-form__section" id="shared-notes-fields">
+      <h2 class="alert-form__heading">Optional notes</h2>
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="notes">Notes for your alerts</label>
+        <textarea class="alert-form__notes" id="notes" name="notes" rows="3" placeholder="Examples: under €200, at least 20% off, compact travel setup"></textarea>
+      </div>
+    </section>
+
+    <button type="submit" id="alert-submit-button">Send alert request</button>
   </form>
   <p class="alert-toast" id="alert-toast" role="status" aria-live="polite"></p>
 </section>
+
+<datalist id="country-options"></datalist>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('alert-request-form');
     if (!form) return;
 
     const emailInput = document.getElementById('alert-email');
+    const countryInput = document.getElementById('country');
+    const cadenceInput = document.getElementById('cadence');
     const keywordsInput = document.getElementById('keywords');
     const exactItemsInput = document.getElementById('exact-items');
-    const notesInput = document.getElementById('notes');
     const inferredCategoriesInput = document.getElementById('inferred-categories');
     const effectiveCategoriesInput = document.getElementById('effective-categories');
-    const categoryInputs = Array.from(form.querySelectorAll('input[name="categories"]'));
-    const submitButton = form.querySelector('button[type="submit"]');
+    const regularSection = document.getElementById('regular-alert-fields');
+    const exactSection = document.getElementById('exact-alert-fields');
+    const submitButton = document.getElementById('alert-submit-button');
     const toast = document.getElementById('alert-toast');
+    const mobileKeywordsMedia = window.matchMedia('(max-width: 42rem)');
+    const defaultKeywordsPlaceholder = 'Examples: over-ear headphones, ultrawide monitor';
+    const mobileKeywordsPlaceholder = 'Eg: monitor, headphone';
+
+    const allCountries = [
+      'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda',
+      'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain',
+      'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan',
+      'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria',
+      'Burkina Faso', 'Burundi', 'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada',
+      'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros',
+      'Congo', 'Costa Rica', 'Cote d\'Ivoire', 'Croatia', 'Cuba', 'Cyprus', 'Czechia',
+      'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica',
+      'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea',
+      'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon',
+      'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala',
+      'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hungary', 'Iceland',
+      'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica',
+      'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait', 'Kyrgyzstan',
+      'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein',
+      'Lithuania', 'Luxembourg', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali',
+      'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia',
+      'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar',
+      'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger',
+      'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman', 'Pakistan', 'Palau',
+      'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland',
+      'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis',
+      'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino',
+      'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles',
+      'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia',
+      'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan',
+      'Suriname', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania',
+      'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia',
+      'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates',
+      'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu',
+      'Vatican City', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+    ];
+    const countrySet = new Set(allCountries);
+    const countryList = document.getElementById('country-options');
+
+    if (countryList) {
+      countryList.innerHTML = allCountries
+        .slice()
+        .sort((a, b) => a.localeCompare(b))
+        .map((country) => `<option value="${country}"></option>`)
+        .join('');
+    }
+
+    const detectDefaultCountry = () => {
+      const host = (window.location.hostname || '').toLowerCase();
+      const path = (window.location.pathname || '').toLowerCase();
+      if (host.startsWith('us.') || path === '/us' || path.startsWith('/us/')) return 'United States';
+      if (host.startsWith('uk.') || path === '/uk' || path.startsWith('/uk/')) return 'United Kingdom';
+      return 'Ireland';
+    };
+
+    const defaultCountry = detectDefaultCountry();
+    if (countryInput && !countryInput.value.trim()) countryInput.value = defaultCountry;
+
+    const applyKeywordsPlaceholder = () => {
+      if (!keywordsInput) return;
+      keywordsInput.placeholder = mobileKeywordsMedia.matches
+        ? mobileKeywordsPlaceholder
+        : defaultKeywordsPlaceholder;
+    };
+    applyKeywordsPlaceholder();
+    if (typeof mobileKeywordsMedia.addEventListener === 'function') {
+      mobileKeywordsMedia.addEventListener('change', applyKeywordsPlaceholder);
+    } else if (typeof mobileKeywordsMedia.addListener === 'function') {
+      mobileKeywordsMedia.addListener(applyKeywordsPlaceholder);
+    }
 
     const categoryMeta = {
       home: {
@@ -134,8 +226,7 @@
       return false;
     };
 
-    const inferCategoryKeys = () => {
-      const sourceText = `${keywordsInput ? keywordsInput.value : ''} ${notesInput ? notesInput.value : ''}`;
+    const inferCategoryKeys = (sourceText) => {
       const tokens = tokenize(sourceText);
       if (tokens.length === 0) return [];
 
@@ -153,6 +244,69 @@
       return scored.slice(0, 4).map((entry) => entry.key);
     };
 
+    const isInstantMode = () => (cadenceInput ? cadenceInput.value === 'Instant exact-item alerts' : false);
+
+    const toggleMode = () => {
+      const instant = isInstantMode();
+      if (regularSection) regularSection.hidden = instant;
+      if (exactSection) exactSection.hidden = !instant;
+
+      if (exactItemsInput) {
+        exactItemsInput.required = instant;
+        if (!instant) exactItemsInput.value = '';
+      }
+
+      if (!instant) {
+        if (inferredCategoriesInput) inferredCategoriesInput.value = '';
+        if (effectiveCategoriesInput) effectiveCategoriesInput.value = '';
+      }
+
+      if (submitButton) {
+        submitButton.textContent = instant ? 'Send exact-item request' : 'Send regular alert request';
+      }
+    };
+
+    const bindEmailValidation = () => {
+      if (!emailInput) return;
+      emailInput.addEventListener('invalid', () => {
+        if (emailInput.validity.valueMissing) {
+          emailInput.setCustomValidity('Please enter your email address.');
+        } else if (emailInput.validity.typeMismatch) {
+          emailInput.setCustomValidity('Please enter a valid email address.');
+        } else {
+          emailInput.setCustomValidity('');
+        }
+      });
+      emailInput.addEventListener('input', () => {
+        emailInput.setCustomValidity('');
+      });
+    };
+
+    const bindCountryValidation = () => {
+      if (!countryInput) return;
+      countryInput.addEventListener('input', () => {
+        countryInput.setCustomValidity('');
+      });
+      countryInput.addEventListener('invalid', () => {
+        const value = countryInput.value.trim();
+        if (!value) {
+          countryInput.setCustomValidity('Please enter your country.');
+          return;
+        }
+        if (!countrySet.has(value)) {
+          countryInput.setCustomValidity('Choose a country from the suggestions or type the full country name.');
+          return;
+        }
+        countryInput.setCustomValidity('');
+      });
+      countryInput.addEventListener('blur', () => {
+        const value = countryInput.value.trim();
+        if (!value) return;
+        const exactMatch = allCountries.find((country) => country.toLowerCase() === value.toLowerCase());
+        if (exactMatch) countryInput.value = exactMatch;
+      });
+    };
+
     let toastTimer;
     const showToast = (message, isError = false) => {
       if (!toast) return;
@@ -165,19 +319,10 @@
       }, 2800);
     };
 
-    emailInput.addEventListener('invalid', () => {
-      if (emailInput.validity.valueMissing) {
-        emailInput.setCustomValidity('Please enter your email address.');
-      } else if (emailInput.validity.typeMismatch) {
-        emailInput.setCustomValidity('Please enter a valid email address.');
-      } else {
-        emailInput.setCustomValidity('');
-      }
-    });
-
-    emailInput.addEventListener('input', () => {
-      emailInput.setCustomValidity('');
-    });
+    bindEmailValidation();
+    bindCountryValidation();
+    if (cadenceInput) cadenceInput.addEventListener('change', toggleMode);
+    toggleMode();
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -190,26 +335,33 @@
 
       if (!form.reportValidity()) return;
 
-      const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
-      const keywords = keywordsInput.value.trim();
-      const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
-      if (selectedCategories.length === 0 && !keywords && !exactItems) {
-        showToast('Choose a category, add keywords, or add exact items.', true);
-        return;
-      }
+      if (isInstantMode()) {
+        const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
+        if (!exactItems) {
+          showToast('Add at least one exact item to track.', true);
+          return;
+        }
+        if (inferredCategoriesInput) inferredCategoriesInput.value = '';
+        if (effectiveCategoriesInput) effectiveCategoriesInput.value = '';
+      } else {
+        const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
+        const keywords = keywordsInput ? keywordsInput.value.trim() : '';
+        if (selectedCategories.length === 0 && !keywords) {
+          showToast('Choose a category or add keywords.', true);
+          return;
+        }
 
-      const selectedKeys = selectedCategories.map((input) => input.value);
-      const inferredKeys = inferCategoryKeys().filter((key) => !selectedKeys.includes(key));
-      const inferredLabels = inferredKeys.map((key) => categoryMeta[key].label);
-      const effectiveLabels = Array.from(
-        new Set([
+        const selectedKeys = selectedCategories.map((input) => input.value);
+        const inferredKeys = inferCategoryKeys(keywords).filter((key) => !selectedKeys.includes(key));
+        const inferredLabels = inferredKeys.map((key) => categoryMeta[key].label);
+        const effectiveLabels = Array.from(new Set([
           ...selectedKeys.map((key) => (categoryMeta[key] ? categoryMeta[key].label : key)),
           ...inferredLabels
-        ])
-      );
+        ]));
 
-      if (inferredCategoriesInput) inferredCategoriesInput.value = inferredLabels.join(', ');
-      if (effectiveCategoriesInput) effectiveCategoriesInput.value = effectiveLabels.join(', ');
+        if (inferredCategoriesInput) inferredCategoriesInput.value = inferredLabels.join(', ');
+        if (effectiveCategoriesInput) effectiveCategoriesInput.value = effectiveLabels.join(', ');
+      }
 
       if (submitButton) submitButton.disabled = true;
 
@@ -217,9 +369,7 @@
         const formData = new FormData(form);
         const response = await fetch(endpoint, {
           method: 'POST',
-          headers: {
-            Accept: 'application/json'
-          },
+          headers: { Accept: 'application/json' },
           body: formData
         });
 
@@ -228,7 +378,9 @@
         }
 
         form.reset();
-        showToast('Your response was saved.');
+        if (countryInput) countryInput.value = defaultCountry;
+        toggleMode();
+        showToast('Your alert request was saved.');
       } catch (error) {
         console.error(error);
         showToast('Could not save right now. Please try again.', true);
