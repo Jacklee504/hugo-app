@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitor on Deal Ledger</title>
+    <link>https://dealledger.eu/tags/monitor/</link>
+    <description>Recent content in Monitor on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Apr 2026 22:36:35 +0100</lastBuildDate>
+    <atom:link href="https://dealledger.eu/tags/monitor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ingnok 15.6-inch FHD Portable Monitor</title>
+      <link>https://dealledger.eu/deals/ingnok-15-6-portable-monitor/</link>
+      <pubDate>Thu, 16 Apr 2026 20:37:00 +0000</pubDate>
+      <guid>https://dealledger.eu/deals/ingnok-15-6-portable-monitor/</guid>
+      <description>15.6-inch portable FHD monitor for travel, remote work, and dual-screen setups.</description>
+    </item>
+    <item>
+      <title>Samsung Essential 27-inch Monitor</title>
+      <link>https://dealledger.eu/deals/samsung-essential-27-monitor/</link>
+      <pubDate>Thu, 16 Apr 2026 20:11:00 +0000</pubDate>
+      <guid>https://dealledger.eu/deals/samsung-essential-27-monitor/</guid>
+      <description>27-inch Samsung monitor deal for desk setups and everyday productivity use.</description>
+    </item>
+  </channel>
+</rss>

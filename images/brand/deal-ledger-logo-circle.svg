@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Deal Ledger Circle Logo</title>
+  <desc id="desc">Circular variant of the Deal Ledger icon.</desc>
+  <circle cx="60" cy="60" r="50" fill="#17332e"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#f1c57a" stroke-width="3"/>
+  <g transform="translate(-10 0) scale(1.1)">
+    <path d="M34 36h18c11 0 18 8 18 18s-7 18-18 18H34zM45 46v26h7c5.2 0 8.8-3.6 8.8-9.1S57.2 46 52 46z" fill="#fffdf9"/>
+    <path d="M72 36h10v30h16v8H72z" fill="#f1c57a"/>
+  </g>
+</svg>
