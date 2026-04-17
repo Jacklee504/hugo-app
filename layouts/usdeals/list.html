@@ -1,5 +1,5 @@
 {{ define "main" }}
-<section class="list-shell">
+<section class="deals-shell list-shell--deals">
   {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
   {{ $deals := slice }}
   {{ range $allLiveDeals }}
