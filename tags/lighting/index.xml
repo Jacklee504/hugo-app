@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lighting on Deal Ledger</title>
+    <link>https://dealledger.eu/tags/lighting/</link>
+    <description>Recent content in Lighting on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Apr 2026 00:48:26 +0100</lastBuildDate>
+    <atom:link href="https://dealledger.eu/tags/lighting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>httpsmp Neon Rope Lights</title>
+      <link>https://dealledger.eu/deals/httpsmp-neon-rope-lights/</link>
+      <pubDate>Fri, 17 Apr 2026 10:10:00 +0000</pubDate>
+      <guid>https://dealledger.eu/deals/httpsmp-neon-rope-lights/</guid>
+      <description>Waterproof neon rope lights for indoor or outdoor ambient setups.</description>
+    </item>
+    <item>
+      <title>RIYO RGB Corner Floor Lamp</title>
+      <link>https://dealledger.eu/deals/riyo-rgb-corner-floor-lamp/</link>
+      <pubDate>Fri, 17 Apr 2026 10:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/deals/riyo-rgb-corner-floor-lamp/</guid>
+      <description>App-controlled RGB standing lamp for bedroom or living room ambience.</description>
+    </item>
+  </channel>
+</rss>
