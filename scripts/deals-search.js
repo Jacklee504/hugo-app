@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const queryTokens = tokenize(query);
     const terms = expandTokens(queryTokens);
-    const requiredTerms = queryTokens.filter((term) => term.length >= 3);
+    const requiredTerms = queryTokens.filter((term) => term.length >= 2);
     const queries = [query, ...terms.filter((term) => term !== query)];
     const resultScores = new Map();
 
