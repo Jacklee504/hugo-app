@@ -1004,7 +1004,7 @@ main > article[class^="page-"] .ananke-socials {
 }
 
 .deal-card--list .deal-card__price-row--compact {
-  justify-content: center;
+  justify-content: space-between;
   gap: 0.35rem;
 }
 
@@ -1017,6 +1017,21 @@ main > article[class^="page-"] .ananke-socials {
 .deal-card--list .deal-card__badge,
 .deal-card--list .deal-card__timer {
   white-space: nowrap;
+}
+
+.deal-card--list .deal-card__price-row--compact .deal-card__sale {
+  font-size: 1.03rem;
+  font-weight: 900;
+}
+
+.deal-card--list .deal-card__price-row--compact .deal-card__list {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.deal-card--list .deal-card__price-row--compact .deal-card__badge {
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .deal-card--list .deal-card__badge {
@@ -2020,7 +2035,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 
   .deal-card--list .deal-card__price-row {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 0.24rem 0.3rem;
     text-align: center;
@@ -2034,8 +2049,23 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 
   .deal-card--list .deal-card__price-row--compact {
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 0.22rem;
+  }
+
+  .deal-card--list .deal-card__price-row--compact .deal-card__sale {
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  .deal-card--list .deal-card__price-row--compact .deal-card__list {
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .deal-card--list .deal-card__price-row--compact .deal-card__badge {
+    font-size: 0.7rem;
+    font-weight: 800;
   }
 
   .deal-card--list .deal-card__badge {
@@ -2240,7 +2270,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   .deal-card--list .deal-card__price-row--compact {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 0.18rem;
   }
@@ -2258,13 +2288,19 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   }
 
   .deal-card--list .deal-card__price-row--compact .deal-card__sale {
-    font-size: 0.78rem;
+    font-size: 0.84rem;
+    font-weight: 900;
   }
 
   .deal-card--list .deal-card__price-row--compact .deal-card__list,
   .deal-card--list .deal-card__price-row--compact .deal-card__badge,
   .deal-card--list .deal-card__price-row--compact .deal-card__timer {
-    font-size: 0.6rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+
+  .deal-card--list .deal-card__price-row--compact .deal-card__list {
+    font-size: 0.76rem;
   }
 
   .deal-card--list .deal-card__badge {
