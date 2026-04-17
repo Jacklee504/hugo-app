@@ -24,6 +24,18 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Restore exact-item alert state
+        run: |
+          mkdir -p .state
+          if git ls-remote --exit-code --heads origin state >/dev/null 2>&1; then
+            git fetch origin state --depth=1
+            git checkout origin/state -- .state || true
+            git reset .state
+            echo "Restored .state from origin/state."
+          else
+            echo "No origin/state branch yet. Starting with local/default state."
+          fi
+
       - name: Parse new Discord submissions
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
@@ -43,14 +55,34 @@ jobs:
         run: |
           python scripts/send_exact_item_alerts.py
 
-      - name: Commit state updates
+      - name: Persist state updates to state branch
         run: |
           if git diff --quiet -- .state; then
             echo "No state changes."
             exit 0
           fi
+
+          state_tmp="$(mktemp -d)"
+          cp -R .state "${state_tmp}/.state"
+
+          if git ls-remote --exit-code --heads origin state >/dev/null 2>&1; then
+            git fetch origin state --depth=1
+            git checkout -B state origin/state
+          else
+            git checkout --orphan state
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          rm -rf .state
+          mkdir -p .state
+          cp -R "${state_tmp}/.state/." .state/
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .state
+          if git diff --cached --quiet; then
+            echo "No state changes after syncing state branch."
+            exit 0
+          fi
           git commit -m "chore: update exact-item alert state"
-          git push
+          git push origin HEAD:state
