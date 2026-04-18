@@ -121,6 +121,36 @@ def retailer_cta_label(url: str) -> str:
     return "View retailer"
 
 
+def retailer_display_name(url: str) -> str:
+    lower = (url or "").lower()
+    if "amazon." in lower or "amzn.to" in lower:
+        return "Amazon"
+    parsed = urlparse(url or "")
+    host = (parsed.netloc or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return host or "Retailer"
+
+
+def build_discover_url(
+    site_base: str,
+    categories: list[str],
+    tags: list[str],
+    title: str,
+    default_query: str = "",
+) -> str:
+    query = normalize(default_query)
+    if not query:
+        if categories:
+            query = normalize(categories[0])
+    if not query:
+        if tags:
+            query = normalize(tags[0])
+    if not query:
+        query = " ".join(normalize(title).split()[:2]) or "deals"
+    return f"{site_base.rstrip('/')}/deals/?q={quote(query)}"
+
+
 def pick_deals(deals: list[Deal], sample_type: str, query: str) -> list[Deal]:
     q = normalize(query)
     if sample_type == "weekly_digest":
@@ -178,11 +208,12 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str) 
         list_price = f"€{d.list_price:.2f}" if isinstance(d.list_price, (int, float)) else "-"
         retailer_url = d.product_url or d.listing_url or f"{site_base.rstrip('/')}/deals/{d.slug}/"
         cta_label = retailer_cta_label(retailer_url)
+        discover_url = build_discover_url(site_base, d.categories, d.tags, d.title, query)
         img = d.listing_image.strip()
         img_html = (
-            f'<img src="{img}" alt="{d.title}" width="200" height="140" style="display:block;width:200px;height:140px;object-fit:cover;border-radius:10px;border:1px solid #e8ede8;background:#ffffff;">'
+            f'<img src="{img}" alt="{d.title}" width="240" height="160" style="display:block;width:240px;height:160px;object-fit:cover;border-radius:10px;border:1px solid #e8ede8;background:#ffffff;">'
             if img
-            else '<div style="width:200px;height:140px;border-radius:10px;border:1px solid #e8ede8;background:#f5f8f6;"></div>'
+            else '<div style="width:240px;height:160px;border-radius:10px;border:1px solid #e8ede8;background:#f5f8f6;"></div>'
         )
         cards.append(
             f"""
@@ -190,12 +221,24 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str) 
               <td style="padding:14px 0;border-top:1px solid #edf1ed;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e3ebe6;border-radius:12px;overflow:hidden;background:#ffffff;">
                   <tr>
-                    <td style="width:220px;vertical-align:top;padding:10px;background:#f7faf8;">{img_html}</td>
+                    <td style="width:250px;vertical-align:top;padding:10px 8px 10px 10px;">{img_html}</td>
                     <td style="vertical-align:top;padding:12px 14px;">
                       <h3 style="margin:0 0 8px;font-size:16px;line-height:1.35;color:#17332e;">{d.title}</h3>
                       <p style="margin:0 0 10px;font-size:14px;color:#17332e;"><strong>{sale}</strong> <span style="color:#6e7d75;">(was {list_price}, -{pct}%)</span></p>
-                      <p style="margin:0 0 8px;font-size:13px;"><a href="{retailer_url}" style="display:inline-block;background:#17332e;color:#fffdf9;text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:700;">{cta_label}</a></p>
-                      <p style="margin:0;font-size:12px;color:#6e7d75;">Retailer: {compact_url(retailer_url)}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="padding:0 10px 12px 10px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                        <tr>
+                          <td style="padding-right:6px;vertical-align:top;">
+                            <a href="{retailer_url}" style="display:block;text-align:center;background:#17332e;color:#fffdf9;text-decoration:none;padding:10px 12px;border-radius:999px;font-weight:700;font-size:13px;">{cta_label}</a>
+                          </td>
+                          <td style="padding-left:6px;vertical-align:top;">
+                            <a href="{discover_url}" style="display:block;text-align:center;background:#edf4f1;color:#17332e;text-decoration:none;padding:10px 12px;border-radius:999px;border:1px solid #d9e4de;font-weight:700;font-size:13px;">View category on Deal Ledger</a>
+                          </td>
+                        </tr>
+                      </table>
                     </td>
                   </tr>
                 </table>
