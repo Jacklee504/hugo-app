@@ -415,6 +415,11 @@ def build_collection_url(site_base: str, matches: list[dict[str, Any]]) -> str:
     return f"{site_base.rstrip('/')}/deals/?q={quote(query)}"
 
 
+def build_unsubscribe_page_url(site_base: str, email: str) -> str:
+    email_q = quote((email or "").strip())
+    return f"{site_base.rstrip('/')}/alerts/unsubscribe/?email={email_q}&type=exact"
+
+
 def build_match_discover_url(site_base: str, match: dict[str, Any]) -> str:
     hits = match.get("preference_hits") or []
     if isinstance(hits, list):
@@ -438,13 +443,11 @@ def build_email_body(
     unsubscribe_url: str,
     feedback_url: str,
 ) -> str:
-    collection_url = build_collection_url(site_base, matches)
+    unsubscribe_page_url = build_unsubscribe_page_url(site_base, email)
     lines = [
         "Deal Ledger: Exact-item discount alert",
         "",
         f"We found {len(matches)} discounted match(es) for your tracked items:",
-        "",
-        f"See all matching deals: {collection_url}",
         "",
     ]
     for m in matches:
@@ -464,20 +467,21 @@ def build_email_body(
             "Thanks for using Deal Ledger.",
             "The Deal Ledger Team",
             "You received this because you requested exact item tracking.",
-            f"Unsubscribe: {unsubscribe_url}",
+            f"Unsubscribe: {unsubscribe_page_url}",
         ]
     )
     return "\n".join(lines)
 
 
 def build_email_html(
+    email: str,
     matches: list[dict[str, Any]],
     site_base: str,
     unsubscribe_url: str,
     feedback_url: str,
 ) -> str:
     logo_url = f"{site_base.rstrip('/')}/images/brand/deal-ledger-logo.svg"
-    collection_url = build_collection_url(site_base, matches)
+    unsubscribe_page_url = build_unsubscribe_page_url(site_base, email)
     cards: list[str] = []
     for m in matches:
         pct = int(round(float(m["discount_pct"]) * 100))
@@ -563,14 +567,13 @@ def build_email_html(
               <td style="padding:18px 20px;">
                 <h2 style="margin:0 0 8px;font-size:20px;color:#17332e;">Exact-item discount alert</h2>
                 <p style="margin:0 0 12px;font-size:14px;color:#4d5f57;">We found {len(matches)} discounted match(es) for your tracked items.</p>
-                <p style="margin:0 0 12px;font-size:13px;"><a href="{collection_url}" style="display:inline-block;background:#edf4f1;color:#17332e;text-decoration:none;padding:7px 11px;border-radius:999px;border:1px solid #d9e4de;">See all matching deals</a></p>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   {''.join(cards)}
                 </table>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;border-top:1px solid #edf1ed;">
                   <tr>
                     <td style="padding-top:12px;font-size:12px;line-height:1.5;color:#5d6f66;">
-                      <a href="{unsubscribe_url}" style="color:#0d4e46;text-decoration:none;">Unsubscribe</a>
+                      <a href="{unsubscribe_page_url}" style="color:#0d4e46;text-decoration:none;">Unsubscribe</a>
                     </td>
                   </tr>
                 </table>
@@ -651,6 +654,7 @@ def main() -> None:
             feedback_url=feedback_url,
         )
         html_body = build_email_html(
+            email=args.test_email_to.strip(),
             matches=[sample_match],
             site_base=site_base,
             unsubscribe_url=unsubscribe_url,
@@ -729,6 +733,7 @@ def main() -> None:
             feedback_url=feedback_url,
         )
         html_body = build_email_html(
+            email=email,
             matches=matches,
             site_base=site_base,
             unsubscribe_url=unsubscribe_url,

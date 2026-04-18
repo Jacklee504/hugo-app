@@ -17,7 +17,7 @@ listing_summary = "Anker Wireless Charger, 313 Wireless Charger (Pad), Qi-Certif
 listing_sale_price = 9.90
 listing_list_price = 14.90
 listing_discount_pct = 0.3356
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 listing_image = "https://m.media-amazon.com/images/I/51ywUBQcrbL._AC_SL1500_.jpg"
 aliases = ["/deals/home-dumbbell-set/"]
 +++

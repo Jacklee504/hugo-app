@@ -16,7 +16,7 @@ listing_image = "https://m.media-amazon.com/images/I/51GYi1kNaBL._SL1500_.jpg"
 listing_sale_price = 246.75
 listing_list_price = 329.00
 listing_discount_pct = 0.25
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/ray-ban-meta-wayfarer-glasses/"]
 +++
 

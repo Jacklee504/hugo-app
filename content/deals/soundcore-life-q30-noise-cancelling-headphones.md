@@ -13,10 +13,10 @@ listing_url = "https://www.amazon.com/dp/B08HMWZBXC"
 listing_title = "Amazon.com: Soundcore Q30 by Anker, Hybrid Active Noise Cancelling Headphones, Multiple Modes, Hi-Res Audio, Custom EQ via App, 50H Playtime, Comfortable Fit, Bluetooth, Multipoint Connection : Electronics"
 listing_summary = "Buy Soundcore Q30 by Anker, Hybrid Active Noise Cancelling Headphones, Multiple Modes, Hi-Res Audio, Custom EQ via App, 50H Playtime, Comfortable Fit, Bluetooth, Multipoint Connection: Over-Ear Headphones - Amazon.com ✓ "
 listing_image = "https://m.media-amazon.com/images/I/514RLTa36cL._AC_SL1200_.jpg"
-listing_sale_price = 47.53
+listing_sale_price = 47.57
 listing_list_price = 79.99
 listing_discount_pct = 0.30
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/soundcore-life-q30-headphones/"]
 +++
 

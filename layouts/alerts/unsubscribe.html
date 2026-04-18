@@ -1,0 +1,110 @@
+{{ define "main" }}
+<style>
+  .unsubscribe-actions .button-link::after {
+    content: "→";
+    display: inline-block;
+    margin-left: 0.35rem;
+    transition: transform 120ms ease;
+    pointer-events: none;
+  }
+
+  .unsubscribe-actions .button-link:hover::after {
+    transform: translateX(2px);
+  }
+
+  .unsubscribe-actions .button-link--secondary {
+    background: #edf4f1;
+    border-color: #d9e4de;
+    color: #17332e;
+  }
+
+  .unsubscribe-actions .button-link--secondary:hover {
+    background: #e5f0eb;
+    border-color: #c9d9d2;
+  }
+</style>
+<section class="alerts-shell" style="padding-bottom:4.5rem;">
+  <p class="page-copy">Confirm below if you want to stop Deal Ledger alert emails.</p>
+
+  <div class="alert-form">
+    <section class="alert-form__section">
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="unsubscribe-email">Email address</label>
+        <input id="unsubscribe-email" type="email" placeholder="you@example.com" autocomplete="email">
+        <p class="alert-field__hint">We will prefill this if you opened the link from an alert email.</p>
+      </div>
+
+      <div class="alert-form__field unsubscribe-actions" style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <button type="button" id="unsubscribe-confirm-button">Unsubscribe me</button>
+        <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">Keep my alerts</a>
+      </div>
+
+      <p class="alert-field__hint" id="unsubscribe-status"></p>
+    </section>
+
+    <section class="alert-form__section" style="margin-top:0.8rem;">
+      <h2 class="alert-form__heading">What happens next</h2>
+      <div class="alert-form__field">
+        <p class="page-copy" style="margin:0;">
+          Unsubscribe requests are processed as quickly as possible. If you clicked this by mistake,
+          use <strong>Keep my alerts</strong> above and no change will be made.
+        </p>
+      </div>
+      <div class="alert-form__field unsubscribe-actions" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <a class="button-link button-link--primary" href="{{ "deals/" | relURL }}">Browse deals</a>
+        <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">Update alert preferences</a>
+      </div>
+    </section>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const emailInput = document.getElementById('unsubscribe-email');
+    const confirmButton = document.getElementById('unsubscribe-confirm-button');
+    const status = document.getElementById('unsubscribe-status');
+
+    const queryEmail = (params.get('email') || '').trim();
+    if (queryEmail && emailInput) emailInput.value = queryEmail;
+
+    const normalizeEmail = (value) => String(value || '').trim();
+    const validEmail = (value) => /.+@.+\..+/.test(value);
+
+    const sender = 'contact@dealledger.eu';
+
+    const buildMailto = (email, sourceType) => {
+      const subject = encodeURIComponent('Unsubscribe from Deal Ledger alerts');
+      const body = encodeURIComponent(
+        [
+          'Please unsubscribe me from Deal Ledger alerts.',
+          '',
+          `Email: ${email || '(not provided)'}`,
+          `Alert type: ${sourceType || 'unknown'}`,
+          `Page: ${window.location.href}`,
+        ].join('\n')
+      );
+      return `mailto:${sender}?subject=${subject}&body=${body}`;
+    };
+
+    confirmButton.addEventListener('click', () => {
+      const email = normalizeEmail(emailInput ? emailInput.value : '');
+      const sourceType = normalizeEmail(params.get('type'));
+
+      if (!validEmail(email)) {
+        if (status) status.textContent = 'Enter a valid email address before unsubscribing.';
+        return;
+      }
+
+      const ok = window.confirm('Are you sure you want to unsubscribe from Deal Ledger alerts for this email?');
+      if (!ok) {
+        if (status) status.textContent = 'No changes were made.';
+        return;
+      }
+
+      if (status) status.textContent = 'Opening your email app to complete unsubscribe request...';
+      window.location.href = buildMailto(email, sourceType);
+    });
+  });
+</script>
+{{ end }}

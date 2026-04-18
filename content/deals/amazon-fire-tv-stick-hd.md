@@ -18,7 +18,7 @@ listing_sale_price = 45.97
 listing_list_price = 48.33
 listing_discount_pct = 0.05
 listing_image = "https://m.media-amazon.com/images/I/51FkXD91IbL._AC_SL1000_.jpg"
-listing_synced_at = "2026-04-18T05:59:23.750580+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 +++
 
 Easy way to add streaming apps and voice search to any compatible TV.

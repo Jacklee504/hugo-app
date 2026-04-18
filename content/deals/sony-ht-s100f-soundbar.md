@@ -16,7 +16,7 @@ listing_image = "https://m.media-amazon.com/images/I/510P8uQSOLL._AC_SL1500_.jpg
 listing_sale_price = 98.00
 listing_list_price = 118.00
 listing_discount_pct = 0.17
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 +++
 
 Simple TV audio upgrade with a smaller footprint and straightforward setup.

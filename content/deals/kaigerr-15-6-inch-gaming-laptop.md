@@ -10,13 +10,13 @@ tags = ["laptop", "gaming", "computing"]
 categories = ["electronics"]
 summary = "15.6-inch laptop deal positioned for gaming and everyday performance use."
 listing_url = "https://www.amazon.com/dp/B0GR8YL9MY"
-listing_sale_price = 499.99
+listing_sale_price = 424.81
 listing_list_price = 1699.99
 listing_discount_pct = 0.71
-listing_title = "Amazon.com: KAIGERR Light Gaming Laptop, 2026 Laptop with AMD Ryzen 7 5700U (8C/16T, Up to 4.3GHz), 16GB DDR4 512GB NVMe SSD Laptop Computer, Supports upgrading to 64GB, 15.6-inch FHD Display, WiFi 6 : Everything Else"
-listing_summary = "Buy KAIGERR Light Gaming Laptop, 2026 Laptop with AMD Ryzen 7 5700U (8C/16T, Up to 4.3GHz), 16GB DDR4 512GB NVMe SSD Laptop Computer, Supports upgrading to 64GB, 15.6-inch FHD Display, WiFi 6: Everything Else - Amazon.co"
+listing_title = "Amazon.com: KAIGERR Light Gaming Laptop, 2026 Laptop with AMD Ryzen 7 5700U (8C/16T, Up to 4.3GHz), 16GB DDR4 512GB NVMe SSD Laptop Computer, Supports upgrading to 64GB, 15.6-inch FHD Display, WiFi 6 : Electronics"
+listing_summary = "Amazon.com: KAIGERR Light Gaming Laptop, 2026 Laptop with AMD Ryzen 7 5700U (8C/16T, Up to 4.3GHz), 16GB DDR4 512GB NVMe SSD Laptop Computer, Supports upgrading to 64GB, 15.6-inch FHD Display, WiFi 6 : Electronics"
 listing_image = "https://m.media-amazon.com/images/I/71zFwwxz9xL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/kaigerr-gaming-laptop/"]
 +++
 

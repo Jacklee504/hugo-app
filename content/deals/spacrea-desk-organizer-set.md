@@ -10,13 +10,13 @@ tags = ["desk setup", "home office", "organization"]
 categories = ["electronics"]
 summary = "Desk accessories organizer set for cleaner workspace storage."
 listing_url = "https://www.amazon.com/dp/B0F1YFDDV6"
-listing_sale_price = 19.86
+listing_sale_price = 19.87
 listing_list_price = 29.99
 listing_discount_pct = 0.22
 listing_title = "Amazon.com: Spacrea Metal Desk Organizers and Accessories, Dual Monitor Stand Riser with Drawer and 2 Pen Holders, Book Racks, Desk Accessories & Workspace Desktop Organizers for Office Supplies (Black) : Electronics"
 listing_summary = "Amazon.com: Spacrea Metal Desk Organizers and Accessories, Dual Monitor Stand Riser with Drawer and 2 Pen Holders, Book Racks, Desk Accessories & Workspace Desktop Organizers for Office Supplies (Black) : Electronics"
 listing_image = "https://m.media-amazon.com/images/I/71M6MOVdupL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/spacrea-desk-organizer/"]
 +++
 

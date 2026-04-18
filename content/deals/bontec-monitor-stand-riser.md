@@ -18,7 +18,7 @@ listing_sale_price = 20.35
 listing_list_price = 24.99
 listing_discount_pct = 0.1857
 listing_image = "https://m.media-amazon.com/images/I/81BuZYHIjLL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/monitor-stand-riser/"]
 +++
 

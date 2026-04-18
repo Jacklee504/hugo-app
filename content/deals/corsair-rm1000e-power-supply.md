@@ -17,8 +17,8 @@ listing_summary = "2025 RMe Series, RM1000e, 1000 Watt, ATX 3.1, PCIe 5.1, Cyben
 listing_sale_price = 119.9
 listing_list_price = 190.00
 listing_discount_pct = 0.3868
-listing_image = "https://m.media-amazon.com/images/I/61Tba4skKkL._AC_SL1000_.jpg"
-listing_synced_at = "2026-04-17T17:31:34.001972+00:00"
+listing_image = "https://m.media-amazon.com/images/I/71DvsXvdUkL._AC_SL1500_.jpg"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/corsair-rm1000e-psu/"]
 +++
 

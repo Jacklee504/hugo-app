@@ -13,6 +13,10 @@ listing_url = "https://www.amazon.ie/dp/B09B37FKVB"
 listing_sale_price = 30.17
 listing_list_price = 35.50
 listing_discount_pct = 0.1501
+listing_title = "ARTINABS Sunrise Alarm Clocks, Wake Up Light with Sunrise/Sunset Simulation Dual Alarms Bedside Night Lamp Snooze Function FM Radio 7 Natural Sound 11 Colorful Atmosphere Lamp(White) : Amazon.ie: DIY & Tools"
+listing_summary = "ARTINABS Sunrise Alarm Clocks, Wake Up Light with Sunrise/Sunset Simulation Dual Alarms Bedside Night Lamp Snooze Function FM Radio 7 Natural Sound 11 Colorful Atmosphere Lamp(White) : Amazon.ie: DIY & Tools"
+listing_image = "https://m.media-amazon.com/images/I/61xYmitVFJL._AC_SL1500_.jpg"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 +++
 
 Gentle wake-up clock with sunrise-style light ramp and extra color ambience modes.

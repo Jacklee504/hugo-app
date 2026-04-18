@@ -13,10 +13,10 @@ listing_url = "https://www.amazon.com/dp/B07FNJB8TT"
 listing_title = "Amazon.com: Logitech MX Vertical Wireless Mouse – Ergonomic Design Reduces Muscle Strain, Move Content Between 3 Windows and Apple Computers, Rechargeable, Graphite : Electronics"
 listing_summary = "Buy Logitech MX Vertical Wireless Mouse – Ergonomic Design Reduces Muscle Strain, Move Content Between 3 Windows and Apple Computers, Rechargeable, Graphite: Mice - Amazon.com ✓ FREE DELIVERY possible on eligible purchas"
 listing_image = "https://m.media-amazon.com/images/I/61iiZ-gDYEL._AC_SL1500_.jpg"
-listing_sale_price = 74.99
+listing_sale_price = 67.33
 listing_list_price = 119.99
 listing_discount_pct = 0.38
-listing_synced_at = "2026-04-17T06:12:26.795997+00:00"
+listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
 aliases = ["/deals/logitech-mx-vertical-mouse/"]
 +++
 

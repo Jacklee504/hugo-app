@@ -151,6 +151,11 @@ def build_discover_url(
     return f"{site_base.rstrip('/')}/deals/?q={quote(query)}"
 
 
+def build_unsubscribe_page_url(site_base: str, email: str) -> str:
+    email_q = quote((email or "").strip())
+    return f"{site_base.rstrip('/')}/alerts/unsubscribe/?email={email_q}&type=general"
+
+
 def pick_deals(deals: list[Deal], sample_type: str, query: str) -> list[Deal]:
     q = normalize(query)
     if sample_type == "weekly_digest":
@@ -177,7 +182,7 @@ def build_subject(sample_type: str, query: str) -> str:
     return "Deal Ledger sample alert"
 
 
-def build_text(sample_type: str, query: str, deals: list[Deal], site_base: str) -> str:
+def build_text(sample_type: str, query: str, deals: list[Deal], site_base: str, unsubscribe_url: str) -> str:
     lines = [f"Deal Ledger sample email ({sample_type.replace('_', ' ')})", ""]
     if query:
         lines.append(f"Filter: {query}")
@@ -195,11 +200,17 @@ def build_text(sample_type: str, query: str, deals: list[Deal], site_base: str) 
                 "",
             ]
         )
-    lines.extend(["Thanks for using Deal Ledger.", "The Deal Ledger Team"])
+    lines.extend(
+        [
+            "Thanks for using Deal Ledger.",
+            "The Deal Ledger Team",
+            f"Unsubscribe: {unsubscribe_url}",
+        ]
+    )
     return "\n".join(lines)
 
 
-def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str) -> str:
+def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str, unsubscribe_url: str) -> str:
     logo_url = f"{site_base.rstrip('/')}/images/brand/deal-ledger-logo.svg"
     cards = []
     for d in deals:
@@ -283,6 +294,13 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str) 
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   {''.join(cards)}
                 </table>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:14px;border-top:1px solid #edf1ed;">
+                  <tr>
+                    <td style="padding-top:12px;font-size:12px;line-height:1.5;color:#5d6f66;">
+                      <a href="{unsubscribe_url}" style="color:#0d4e46;text-decoration:none;">Unsubscribe</a>
+                    </td>
+                  </tr>
+                </table>
                 <p style="margin:12px 0 0;font-size:13px;color:#5d6f66;">Thanks for using Deal Ledger.<br>The Deal Ledger Team</p>
               </td>
             </tr>
@@ -294,7 +312,7 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str) 
 </html>"""
 
 
-def send_email(to_email: str, subject: str, text_body: str, html_body: str) -> None:
+def send_email(to_email: str, subject: str, text_body: str, html_body: str, unsubscribe_url: str = "") -> None:
     host = (os.getenv("SMTP_HOST") or "").strip()
     user = (os.getenv("SMTP_USERNAME") or "").strip()
     password = (os.getenv("SMTP_PASSWORD") or "").strip()
@@ -308,6 +326,8 @@ def send_email(to_email: str, subject: str, text_body: str, html_body: str) -> N
     msg["Subject"] = subject
     msg["From"] = sender
     msg["To"] = to_email
+    if unsubscribe_url:
+        msg["List-Unsubscribe"] = f"<{unsubscribe_url}>"
     msg.attach(MIMEText(text_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
@@ -333,10 +353,11 @@ def main() -> None:
     if not selected:
         raise SystemExit("No deals available for sample.")
 
+    unsubscribe_url = build_unsubscribe_page_url(site_base, args.to.strip())
     subject = build_subject(args.type, args.query.strip())
-    text_body = build_text(args.type, args.query.strip(), selected, site_base)
-    html_body = build_html(args.type, args.query.strip(), selected, site_base)
-    send_email(args.to.strip(), subject, text_body, html_body)
+    text_body = build_text(args.type, args.query.strip(), selected, site_base, unsubscribe_url)
+    html_body = build_html(args.type, args.query.strip(), selected, site_base, unsubscribe_url)
+    send_email(args.to.strip(), subject, text_body, html_body, unsubscribe_url=unsubscribe_url)
     print(f"[sent] sample {args.type} email -> {args.to.strip()} ({len(selected)} card(s))")
 
 
