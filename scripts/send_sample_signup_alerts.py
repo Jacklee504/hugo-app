@@ -114,6 +114,13 @@ def compact_url(value: str) -> str:
     return parsed.netloc + parsed.path if parsed.netloc else value
 
 
+def retailer_cta_label(url: str) -> str:
+    lower = (url or "").lower()
+    if "amazon." in lower or "amzn.to" in lower:
+        return "View on Amazon"
+    return "View retailer"
+
+
 def pick_deals(deals: list[Deal], sample_type: str, query: str) -> list[Deal]:
     q = normalize(query)
     if sample_type == "weekly_digest":
@@ -149,11 +156,12 @@ def build_text(sample_type: str, query: str, deals: list[Deal], site_base: str) 
         pct = int(round(d.discount_pct * 100))
         sale = f"€{d.sale_price:.2f}" if isinstance(d.sale_price, (int, float)) else "-"
         list_price = f"€{d.list_price:.2f}" if isinstance(d.list_price, (int, float)) else "-"
+        retailer_url = d.product_url or d.listing_url or f"{site_base.rstrip('/')}/deals/{d.slug}/"
         lines.extend(
             [
                 f"- {d.title}",
                 f"  Price: {sale} (was {list_price}, -{pct}%)",
-                f"  Deal page: {site_base.rstrip('/')}/deals/{d.slug}/",
+                f"  Retailer: {retailer_url}",
                 "",
             ]
         )
@@ -168,23 +176,26 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str) 
         pct = int(round(d.discount_pct * 100))
         sale = f"€{d.sale_price:.2f}" if isinstance(d.sale_price, (int, float)) else "-"
         list_price = f"€{d.list_price:.2f}" if isinstance(d.list_price, (int, float)) else "-"
+        retailer_url = d.product_url or d.listing_url or f"{site_base.rstrip('/')}/deals/{d.slug}/"
+        cta_label = retailer_cta_label(retailer_url)
         img = d.listing_image.strip()
         img_html = (
-            f'<img src="{img}" alt="{d.title}" width="220" style="display:block;width:100%;max-width:220px;height:auto;border-radius:10px;border:1px solid #e8ede8;">'
+            f'<img src="{img}" alt="{d.title}" width="200" height="140" style="display:block;width:200px;height:140px;object-fit:cover;border-radius:10px;border:1px solid #e8ede8;background:#ffffff;">'
             if img
-            else ""
+            else '<div style="width:200px;height:140px;border-radius:10px;border:1px solid #e8ede8;background:#f5f8f6;"></div>'
         )
         cards.append(
             f"""
             <tr>
               <td style="padding:14px 0;border-top:1px solid #edf1ed;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e3ebe6;border-radius:12px;overflow:hidden;background:#ffffff;">
                   <tr>
-                    <td style="width:220px;vertical-align:top;padding-right:14px;">{img_html}</td>
-                    <td style="vertical-align:top;">
+                    <td style="width:220px;vertical-align:top;padding:10px;background:#f7faf8;">{img_html}</td>
+                    <td style="vertical-align:top;padding:12px 14px;">
                       <h3 style="margin:0 0 8px;font-size:16px;line-height:1.35;color:#17332e;">{d.title}</h3>
                       <p style="margin:0 0 10px;font-size:14px;color:#17332e;"><strong>{sale}</strong> <span style="color:#6e7d75;">(was {list_price}, -{pct}%)</span></p>
-                      <p style="margin:0 0 8px;font-size:13px;"><a href="{site_base.rstrip('/')}/deals/{d.slug}/" style="display:inline-block;background:#17332e;color:#fffdf9;text-decoration:none;padding:8px 12px;border-radius:999px;">View deal page</a></p>
+                      <p style="margin:0 0 8px;font-size:13px;"><a href="{retailer_url}" style="display:inline-block;background:#17332e;color:#fffdf9;text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:700;">{cta_label}</a></p>
+                      <p style="margin:0;font-size:12px;color:#6e7d75;">Retailer: {compact_url(retailer_url)}</p>
                     </td>
                   </tr>
                 </table>
