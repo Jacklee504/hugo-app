@@ -14,11 +14,11 @@ summary = "LEGO Speed Champions Bugatti set for display or build play."
 listing_url = "https://www.amazon.ie/dp/B0FPVT4VG6"
 listing_title = "LEGO Speed Champions Bugatti Vision GT Hyper Sports Car Toy - Model Kit w/a Collectible Driver Minifigure - Gaming Gift Idea for 9+ Year Old Boys & Motorsport Fans - 77253 : Amazon.ie"
 listing_summary = "LEGO Speed Champions Bugatti Vision GT Hyper Sports Car Toy - Model Kit w/a Collectible Driver Minifigure - Gaming Gift Idea for 9+ Year Old Boys & Motorsport Fans - 77253 : Amazon.ie"
-listing_sale_price = 23.82
+listing_sale_price = 23.66
 listing_list_price = 27.99
 listing_discount_pct = 0.25
 listing_image = "https://m.media-amazon.com/images/I/81FTNi+XjrL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
+listing_synced_at = "2026-04-19T06:09:09.474515+00:00"
 +++
 
 Compact LEGO car set with strong shelf appeal and quick build time.

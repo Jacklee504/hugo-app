@@ -14,10 +14,10 @@ summary = "Full-size RGB keyboard with media controls."
 listing_url = "https://www.amazon.ie/dp/B01L6L451Q"
 listing_title = "Logitech G G213 Prodigy Gaming Keyboard, LIGHTSYNC RGB Backlit Keys, Spill-Resistant, Customizable Keys, Dedicated Multi-Media Keys, QWERTY UK Layout - Black : Amazon.ie: Electronics"
 listing_summary = "Logitech G G213 Prodigy Gaming Keyboard, LIGHTSYNC RGB Backlit Keys, Spill-Resistant, Customizable Keys, Dedicated Multi-Media Keys, QWERTY UK Layout - Black : Amazon.ie: Electronics"
-listing_sale_price = 51.72
+listing_sale_price = 53.26
 listing_list_price = 84.99
 listing_discount_pct = 0.39
-listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
+listing_synced_at = "2026-04-19T06:09:09.474515+00:00"
 listing_image = "https://m.media-amazon.com/images/I/61Nt8geXzWL._AC_SL1500_.jpg"
 aliases = ["/deals/mechanical-keyboard/"]
 +++
