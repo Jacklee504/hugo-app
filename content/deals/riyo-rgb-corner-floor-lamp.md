@@ -10,13 +10,13 @@ tags = ["home", "lighting", "decor"]
 categories = ["home"]
 summary = "App-controlled RGB standing lamp for bedroom or living room ambience."
 listing_url = "https://www.amazon.ie/dp/B0DT3TMN88"
-listing_sale_price = 26.15
+listing_sale_price = 29.29
 listing_list_price = 35.50
 listing_discount_pct = 0.2634
 listing_title = "riyo Corner Floor Lamp, LED Corner Lamp Smart RGB Standing Lamp with APP & Remote Control, Corner Light with 16 Million Colors, 68+ Scene Modes, Music Sync for Living Room, Bedroom, and Gaming Room : Amazon.ie: DIY & Tools"
 listing_summary = "riyo Corner Floor Lamp, LED Corner Lamp Smart RGB Standing Lamp with APP & Remote Control, Corner Light with 16 Million Colors, 68+ Scene Modes, Music Sync for Living Room, Bedroom, and Gaming Room : Amazon.ie: DIY & Too"
 listing_image = "https://m.media-amazon.com/images/I/711b5ftBoRL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
+listing_synced_at = "2026-04-20T06:17:26.956593+00:00"
 +++
 
 Smart ambient corner lamp with color presets, app control, and slim footprint for smaller rooms.

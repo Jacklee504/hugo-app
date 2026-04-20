@@ -14,10 +14,10 @@ summary = "Adaptive ANC headphones with 50-hour battery life."
 listing_url = "https://www.amazon.ie/dp/B0B5VHRX7F"
 listing_title = "soundcore by Anker Space Q45 Adaptive Noise Cancelling Headphones, Reduce Noise By Up to 98%, Ultra Long 50H Playtime, App Control, Hi-Res Sound with Details, Bluetooth 5.3, Ideal for Traveling : Amazon.ie"
 listing_summary = "soundcore by Anker Space Q45 Adaptive Noise Cancelling Headphones, Reduce Noise By Up to 98%, Ultra Long 50H Playtime, App Control, Hi-Res Sound with Details, Bluetooth 5.3, Ideal for Traveling : Amazon.ie"
-listing_sale_price = 99.90
+listing_sale_price = 149.9
 listing_list_price = 149.90
 listing_discount_pct = 0.3336
-listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
+listing_synced_at = "2026-04-20T06:17:26.956593+00:00"
 listing_image = "https://m.media-amazon.com/images/I/71y9B19C5LL._AC_SL1500_.jpg"
 aliases = ["/deals/smartwatch-runner/"]
 +++

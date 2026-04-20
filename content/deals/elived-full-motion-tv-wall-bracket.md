@@ -14,10 +14,10 @@ summary = "Full-motion TV wall bracket for 14-42 inch screens."
 listing_url = "https://www.amazon.ie/dp/B087PCNFVK"
 listing_title = "ELIVED TV Wall Bracket Tilt Swivel for Most 14-42 Inch LED, LCD, OLED Flat/Curved TVs with Max VESA 200x200mm up to 15KG, Full Motion TV Bracket with Articulating Arm, Monitor Wall Mount EV012 : Amazon.ie: Electronics"
 listing_summary = "ELIVED TV Wall Bracket Tilt Swivel for Most 14-42 Inch LED, LCD, OLED Flat/Curved TVs with Max VESA 200x200mm up to 15KG, Full Motion TV Bracket with Articulating Arm, Monitor Wall Mount EV012 : Amazon.ie: Electronics"
-listing_sale_price = 13.99
+listing_sale_price = 16.99
 listing_list_price = 25.77
 listing_discount_pct = 0.4571
-listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
+listing_synced_at = "2026-04-20T06:17:26.956593+00:00"
 listing_image = "https://m.media-amazon.com/images/I/71wMjhpx2NL._AC_SL1500_.jpg"
 aliases = ["/deals/ultrawide-monitor/"]
 +++
