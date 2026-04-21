@@ -1,0 +1,16 @@
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .IsPage -}}
+  {{- $description = or .Params.summary .Params.listing_summary .Title -}}
+{{- else -}}
+  {{- $description = .Site.Params.description | default .Site.Title -}}
+{{- end -}}
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" (cond .IsPage "WebPage" "WebSite")
+  "name" (.Title | default .Site.Title)
+  "description" $description
+  "url" .Permalink
+ -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

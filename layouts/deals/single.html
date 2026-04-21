@@ -14,7 +14,7 @@
 {{ end }}
 {{ $timeLeft := .Params.time_left | default "" }}
 {{ $displayTitle := or .Title .Params.listing_title }}
-{{ $description := or .Params.listing_summary .Params.summary (.Summary | plainify) }}
+{{ $description := or .Params.summary .Params.listing_summary .Title }}
 {{ $dealImage := or .Params.listing_image .Params.image }}
 {{ $salePrice := or .Params.listing_sale_price .Params.sale_price }}
 {{ $listPrice := or .Params.listing_list_price .Params.list_price }}
@@ -108,9 +108,12 @@
     {{ end }}
   </div>
 
-  <div class="deal-single__content">
-    {{ .Content }}
-  </div>
+  {{ $detailCopy := .Params.listing_summary }}
+  {{ if and $detailCopy (ne $detailCopy $description) }}
+    <div class="deal-single__content">
+      <p>{{ $detailCopy }}</p>
+    </div>
+  {{ end }}
 
   {{ with .Params.tags }}
     <div class="deal-single__tags">

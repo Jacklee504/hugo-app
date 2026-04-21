@@ -10,7 +10,8 @@
       {{ range sort $posts "Date" "desc" }}
         <article class="post-card">
           <h2 class="post-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          <p class="post-card__excerpt">{{ with .Summary }}{{ . | plainify | truncate 170 }}{{ else }}Read the full post.{{ end }}</p>
+          {{ $excerpt := or .Params.summary .Description .Title }}
+          <p class="post-card__excerpt">{{ if $excerpt }}{{ $excerpt }}{{ else }}Read the full post.{{ end }}</p>
           <a class="post-card__link" href="{{ .RelPermalink }}">Read guide</a>
         </article>
       {{ end }}

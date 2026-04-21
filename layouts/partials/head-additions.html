@@ -31,6 +31,7 @@
 {{ $graph := dict "@context" "https://schema.org" "@graph" (slice $org $website) }}
 <script type="application/ld+json">{{ $graph | jsonify | safeJS }}</script>
 {{ if and .IsPage (eq .Section "posts") }}
+  {{ $postDescription := or .Params.summary .Description .Title }}
   {{ $postSchema := dict
     "@context" "https://schema.org"
     "@type" "BlogPosting"
@@ -39,7 +40,7 @@
     "url" .Permalink
     "datePublished" (time.Format "2006-01-02T15:04:05Z07:00" .Date)
     "dateModified" (time.Format "2006-01-02T15:04:05Z07:00" .Lastmod)
-    "description" (.Params.summary | default (.Summary | plainify))
+    "description" $postDescription
     "publisher" (dict "@id" $orgID)
     "author" (dict "@type" "Organization" "name" .Site.Title)
   }}

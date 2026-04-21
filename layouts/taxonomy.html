@@ -18,7 +18,7 @@
         {{ else }}
           <article class="guide-card">
             <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Summary }}</p>
+            <p>{{ or .Params.summary .Description .Title }}</p>
           </article>
         {{ end }}
       {{ end }}

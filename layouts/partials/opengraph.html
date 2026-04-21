@@ -1,0 +1,24 @@
+{{- $title := .Title | default .Site.Title -}}
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .IsPage -}}
+  {{- $description = or .Params.summary .Params.listing_summary .Title -}}
+{{- else -}}
+  {{- $description = .Site.Params.description | default .Site.Title -}}
+{{- end -}}
+{{- $image := "" -}}
+{{- with .Params.images }}{{ $image = index . 0 }}{{ end -}}
+{{- if not $image }}{{ with .Params.image }}{{ $image = . }}{{ end }}{{ end -}}
+{{- if not $image }}{{ with .Params.listing_image }}{{ $image = . }}{{ end }}{{ end -}}
+{{- if and $image (not (or (hasPrefix $image "http://") (hasPrefix $image "https://"))) -}}
+  {{- $image = absURL $image -}}
+{{- end -}}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+{{- with $image }}
+<meta property="og:image" content="{{ . }}">
+{{- end }}

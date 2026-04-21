@@ -19,7 +19,7 @@
 {{ $discount := or $params.listing_discount_pct $params.discount_pct }}
 {{ $tags := $params.tags }}
 {{ $url := or $params.listing_url $params.product_url $params.affiliate_url }}
-{{ $summary := or $params.summary $params.listing_summary ($page.Summary | plainify) }}
+{{ $summary := or $params.summary $params.listing_summary $title }}
 {{ $normalizedURL := lower (printf "%v" $url) }}
 {{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
 {{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
@@ -72,11 +72,6 @@
           <div class="deal-card__details-body">
             {{ if $summary }}
               <p class="deal-card__details-summary">{{ $summary }}</p>
-            {{ end }}
-            {{ with $page.Content }}
-              <div class="deal-card__details-rich">{{ . }}</div>
-            {{ else }}
-              {{ with $params.summary }}<p>{{ . }}</p>{{ end }}
             {{ end }}
             {{ if and (not $compact) $tags }}
               <div class="deal-card__tags">

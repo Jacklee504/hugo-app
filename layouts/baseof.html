@@ -6,7 +6,17 @@
     {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
     <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+    {{ $metaDescription := "" }}
+    {{ if .Description }}
+      {{ $metaDescription = .Description }}
+    {{ else }}
+      {{ if .IsPage }}
+        {{ $metaDescription = or .Params.summary .Params.listing_summary .Title }}
+      {{ else }}
+        {{ with .Site.Params.description }}{{ $metaDescription = . }}{{ end }}
+      {{ end }}
+    {{ end }}
+    <meta name="description" content="{{ $metaDescription }}">
     {{ hugo.Generator }}
     {{ $production := hugo.IsProduction }}
     {{ $isPrivate := .Params.private }}

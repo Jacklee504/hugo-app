@@ -56,15 +56,24 @@ def main() -> None:
         default="",
         help="Required for category/keyword sample type (example: audio, headphones)",
     )
+    parser.add_argument("--dry-run", action="store_true", help="Render preview without sending email.")
+    parser.add_argument(
+        "--preview-dir",
+        default="review-queue",
+        help="Directory for preview files when --dry-run is used.",
+    )
     args = parser.parse_args()
 
-    require_smtp_env()
+    if not args.dry_run:
+        require_smtp_env()
 
     if args.type in {"category", "keyword"} and not args.query.strip():
         raise SystemExit("--query is required when --type is category or keyword.")
 
     if args.type == "exact":
         cmd = [sys.executable, str(EXACT_SCRIPT), "--test-email-to", args.to.strip()]
+        if args.dry_run:
+            cmd.append("--dry-run")
         run_cmd(cmd)
         return
 
@@ -78,9 +87,10 @@ def main() -> None:
     ]
     if args.type in {"category", "keyword"}:
         cmd.extend(["--query", args.query.strip()])
+    if args.dry_run:
+        cmd.extend(["--dry-run", "--preview-dir", args.preview_dir.strip()])
     run_cmd(cmd)
 
 
 if __name__ == "__main__":
     main()
-

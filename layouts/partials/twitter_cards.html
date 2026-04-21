@@ -1,0 +1,22 @@
+{{- $title := .Title | default .Site.Title -}}
+{{- $description := "" -}}
+{{- if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .IsPage -}}
+  {{- $description = or .Params.summary .Params.listing_summary .Title -}}
+{{- else -}}
+  {{- $description = .Site.Params.description | default .Site.Title -}}
+{{- end -}}
+{{- $image := "" -}}
+{{- with .Params.images }}{{ $image = index . 0 }}{{ end -}}
+{{- if not $image }}{{ with .Params.image }}{{ $image = . }}{{ end }}{{ end -}}
+{{- if not $image }}{{ with .Params.listing_image }}{{ $image = . }}{{ end }}{{ end -}}
+{{- if and $image (not (or (hasPrefix $image "http://") (hasPrefix $image "https://"))) -}}
+  {{- $image = absURL $image -}}
+{{- end -}}
+<meta name="twitter:card" content="{{ if $image }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- with $image }}
+<meta name="twitter:image" content="{{ . }}">
+{{- end }}

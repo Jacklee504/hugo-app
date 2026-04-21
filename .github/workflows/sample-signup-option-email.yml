@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       sample_type:
-        description: "Which signup option sample to send"
+        description: "Which signup option email to send"
         required: true
         type: choice
         options:
@@ -55,7 +55,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Send sample signup-option email
+      - name: Send signup-option email (production-style template)
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}

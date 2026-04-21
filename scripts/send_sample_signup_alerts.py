@@ -1,9 +1,10 @@
-"""Send sample emails for non-exact signup options.
+"""Send production-style preview emails for non-exact signup options.
 
 Usage:
   python scripts/send_sample_signup_alerts.py --to you@example.com --type category --query audio
   python scripts/send_sample_signup_alerts.py --to you@example.com --type keyword --query keyboard
   python scripts/send_sample_signup_alerts.py --to you@example.com --type weekly_digest
+  python scripts/send_sample_signup_alerts.py --to you@example.com --type category --query audio --dry-run --preview-dir review-queue
 
 Required env:
   SMTP_HOST, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD, SMTP_FROM
@@ -172,18 +173,24 @@ def pick_deals(deals: list[Deal], sample_type: str, query: str) -> list[Deal]:
     return sorted(deals, key=lambda d: d.discount_pct, reverse=True)[:4]
 
 
-def build_subject(sample_type: str, query: str) -> str:
+def build_subject(sample_type: str, query: str, deal_count: int) -> str:
+    clean_query = query.strip() or ("category" if sample_type == "category" else "keyword")
     if sample_type == "category":
-        return f"Deal Ledger sample: category alerts ({query or 'category'})"
+        return f"Deal Ledger: {deal_count} new deals in {clean_query}"
     if sample_type == "keyword":
-        return f"Deal Ledger sample: keyword alerts ({query or 'keyword'})"
+        return f"Deal Ledger: {deal_count} new matches for {clean_query}"
     if sample_type == "weekly_digest":
-        return "Deal Ledger sample: weekly digest"
-    return "Deal Ledger sample alert"
+        return f"Deal Ledger: weekly digest ({deal_count} picks)"
+    return "Deal Ledger: deal alerts"
 
 
 def build_text(sample_type: str, query: str, deals: list[Deal], site_base: str, unsubscribe_url: str) -> str:
-    lines = [f"Deal Ledger sample email ({sample_type.replace('_', ' ')})", ""]
+    lines = ["Deal Ledger alert", ""]
+    if sample_type == "weekly_digest":
+        lines.append(f"Here are this week's top {len(deals)} picks:")
+    else:
+        lines.append(f"We found {len(deals)} deal match(es) for your alert.")
+    lines.append("")
     if query:
         lines.append(f"Filter: {query}")
         lines.append("")
@@ -258,6 +265,16 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str, 
             """
         )
 
+    if sample_type == "weekly_digest":
+        heading = "Weekly digest"
+        intro = f"Here are this week's top {len(deals)} picks."
+    elif sample_type == "category":
+        heading = "Category deal alert"
+        intro = f"We found {len(deals)} deal match(es) for your category alert."
+    else:
+        heading = "Keyword deal alert"
+        intro = f"We found {len(deals)} deal match(es) for your keyword alert."
+
     filter_line = f"<p style='margin:0 0 12px;font-size:14px;color:#4d5f57;'>Filter: {query}</p>" if query else ""
     return f"""<!doctype html>
 <html>
@@ -289,7 +306,8 @@ def build_html(sample_type: str, query: str, deals: list[Deal], site_base: str, 
             </tr>
             <tr>
               <td style="padding:18px 20px;">
-                <h2 style="margin:0 0 8px;font-size:20px;color:#17332e;">Sample alert: {sample_type.replace('_', ' ')}</h2>
+                <h2 style="margin:0 0 8px;font-size:20px;color:#17332e;">{heading}</h2>
+                <p style="margin:0 0 12px;font-size:14px;color:#4d5f57;">{intro}</p>
                 {filter_line}
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   {''.join(cards)}
@@ -341,10 +359,16 @@ def send_email(to_email: str, subject: str, text_body: str, html_body: str, unsu
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Send sample signup-option email.")
+    parser = argparse.ArgumentParser(description="Send production-style signup-option email preview.")
     parser.add_argument("--to", required=True, help="Recipient email")
     parser.add_argument("--type", required=True, choices=["category", "keyword", "weekly_digest"])
     parser.add_argument("--query", default="", help="Category/keyword query for category/keyword sample types")
+    parser.add_argument("--dry-run", action="store_true", help="Render output without sending email.")
+    parser.add_argument(
+        "--preview-dir",
+        default="",
+        help="Directory to write rendered preview files when --dry-run is set.",
+    )
     args = parser.parse_args()
 
     site_base = (os.getenv("SITE_BASE_URL") or "https://dealledger.eu").strip()
@@ -354,11 +378,29 @@ def main() -> None:
         raise SystemExit("No deals available for sample.")
 
     unsubscribe_url = build_unsubscribe_page_url(site_base, args.to.strip())
-    subject = build_subject(args.type, args.query.strip())
+    subject = build_subject(args.type, args.query.strip(), len(selected))
     text_body = build_text(args.type, args.query.strip(), selected, site_base, unsubscribe_url)
     html_body = build_html(args.type, args.query.strip(), selected, site_base, unsubscribe_url)
+    if args.dry_run:
+        print(f"[dry-run] rendered {args.type} email for {args.to.strip()} ({len(selected)} card(s))")
+        print(f"[dry-run] subject: {subject}")
+        for deal in selected:
+            print(f"[dry-run] card: {deal.title}")
+
+        if args.preview_dir.strip():
+            preview_dir = Path(args.preview_dir.strip())
+            preview_dir.mkdir(parents=True, exist_ok=True)
+            slug = args.type if args.type == "weekly_digest" else f"{args.type}-{normalize(args.query.strip() or 'default').replace(' ', '-')}"
+            text_path = preview_dir / f"email-preview-{slug}.txt"
+            html_path = preview_dir / f"email-preview-{slug}.html"
+            text_path.write_text(text_body + "\n", encoding="utf-8")
+            html_path.write_text(html_body + "\n", encoding="utf-8")
+            print(f"[dry-run] wrote text preview: {text_path}")
+            print(f"[dry-run] wrote html preview: {html_path}")
+        return
+
     send_email(args.to.strip(), subject, text_body, html_body, unsubscribe_url=unsubscribe_url)
-    print(f"[sent] sample {args.type} email -> {args.to.strip()} ({len(selected)} card(s))")
+    print(f"[sent] {args.type} email -> {args.to.strip()} ({len(selected)} card(s))")
 
 
 if __name__ == "__main__":

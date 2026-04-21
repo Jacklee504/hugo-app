@@ -18,7 +18,7 @@ listing_sale_price = 119.9
 listing_list_price = 190.00
 listing_discount_pct = 0.3868
 listing_image = "https://m.media-amazon.com/images/I/71DvsXvdUkL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-18T14:25:46.486843+00:00"
+listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
 aliases = ["/deals/corsair-rm1000e-psu/"]
 +++
 
