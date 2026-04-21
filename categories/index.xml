@@ -6,20 +6,20 @@
     <description>Recent content in Categories on Deal Ledger</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Apr 2026 06:13:03 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2026 22:14:22 +0100</lastBuildDate>
     <atom:link href="https://dealledger.eu/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Electronics</title>
+      <link>https://dealledger.eu/categories/electronics/</link>
+      <pubDate>Tue, 21 Apr 2026 20:34:28 +0000</pubDate>
+      <guid>https://dealledger.eu/categories/electronics/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Home</title>
       <link>https://dealledger.eu/categories/home/</link>
       <pubDate>Fri, 17 Apr 2026 10:10:00 +0000</pubDate>
       <guid>https://dealledger.eu/categories/home/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Electronics</title>
-      <link>https://dealledger.eu/categories/electronics/</link>
-      <pubDate>Thu, 16 Apr 2026 20:39:00 +0000</pubDate>
-      <guid>https://dealledger.eu/categories/electronics/</guid>
       <description></description>
     </item>
     <item>

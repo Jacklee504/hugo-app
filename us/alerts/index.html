@@ -6,6 +6,10 @@
     
     <title>Category Alerts | Deal Ledger</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
+    
+    
+      
+    
     <meta name="description" content="Join the waitlist for focused email alerts by category.">
     <meta name="generator" content="Hugo 0.160.1">
     
@@ -49,20 +53,15 @@
 
     
     
-    <meta property="og:url" content="https://dealledger.eu/us/alerts/">
-  <meta property="og:site_name" content="Deal Ledger">
-  <meta property="og:title" content="Category Alerts">
-  <meta property="og:description" content="Join the waitlist for focused email alerts by category.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-
-  <meta itemprop="name" content="Category Alerts">
-  <meta itemprop="description" content="Join the waitlist for focused email alerts by category.">
-  <meta itemprop="dateModified" content="2026-04-17T14:20:26+01:00">
-  <meta itemprop="wordCount" content="23">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Category Alerts">
-  <meta name="twitter:description" content="Join the waitlist for focused email alerts by category.">
+    <meta property="og:title" content="Category Alerts">
+<meta property="og:description" content="Join the waitlist for focused email alerts by category.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dealledger.eu/us/alerts/">
+<meta property="og:site_name" content="Deal Ledger">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Join the waitlist for focused email alerts by category.","name":"Category Alerts","url":"https://dealledger.eu/us/alerts/"}</script>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Category Alerts">
+<meta name="twitter:description" content="Join the waitlist for focused email alerts by category.">
 
       
       
@@ -81,7 +80,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776753546">
+<link rel="stylesheet" href="/styles/site.css?v=1776806823">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -228,7 +227,6 @@
 
   <form class="alert-form" id="alert-request-form" name="alert-request" action="https://formspree.io/f/mgopnyjd" method="POST" data-formspree-endpoint="https://formspree.io/f/mgopnyjd">
     <input type="hidden" name="_subject" value="New Deal Ledger alert request">
-    <input type="hidden" id="country" name="country" value="">
     <p hidden><label>Leave this empty if you're human: <input name="_gotcha"></label></p>
 
     <section class="alert-form__section alert-form__split">
@@ -243,9 +241,49 @@
         <input id="alert-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
       </div>
 
+      <div class="alert-form__field alert-form__field--country">
+        <div class="alert-form__label-row">
+          <label class="alert-form__label" for="country-search">Country</label>
+          <button
+            type="button"
+            class="alert-info-button"
+            id="country-info-trigger"
+            aria-controls="country-info-popup"
+            aria-expanded="false"
+            aria-label="Country availability info"
+            style="width:1rem;height:1rem;min-width:1rem;min-height:1rem;padding:0;line-height:1;"
+          ><span class="alert-info-button__glyph" aria-hidden="true">i</span></button>
+        </div>
+        <input type="hidden" id="country" name="country" value="">
+        <div class="country-combobox" id="country-combobox">
+          <input
+            id="country-search"
+            class="country-combobox__input"
+            type="text"
+            autocomplete="new-password"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
+            placeholder="Start typing your country"
+            aria-autocomplete="list"
+            aria-controls="country-options"
+            aria-expanded="false"
+            role="combobox"
+            required
+          >
+          <ul class="country-combobox__list" id="country-options" role="listbox" hidden></ul>
+        </div>
+        <div class="alert-inline-popup" id="country-info-popup" role="dialog" aria-modal="false" hidden>
+          <p>
+            Some countries are not fully set up yet for all alert types. You can still submit now, and we are actively rolling support out as quickly as possible.
+          </p>
+          <button type="button" class="alert-inline-popup__close" id="country-info-close">Got it</button>
+        </div>
+      </div>
+
       <div class="alert-form__field">
         <label class="alert-form__label" for="cadence">How often</label>
-        <select id="cadence" name="cadence" required>
+        <select id="cadence" class="alert-form__native-select" name="cadence" required>
           <option>As new picks are added</option>
           <option>Weekly digest</option>
           <option>Instant exact-item alerts</option>
@@ -312,34 +350,58 @@
     const exactSection = document.getElementById('exact-alert-fields');
     const submitButton = document.getElementById('alert-submit-button');
     const toast = document.getElementById('alert-toast');
+    const countryInfoTrigger = document.getElementById('country-info-trigger');
+    const countryInfoPopup = document.getElementById('country-info-popup');
+    const countryInfoClose = document.getElementById('country-info-close');
+    const countryCombobox = document.getElementById('country-combobox');
+    const countrySearchInput = document.getElementById('country-search');
+    const countryOptionsList = document.getElementById('country-options');
     const mobileKeywordsMedia = window.matchMedia('(max-width: 42rem)');
+    const coarsePointerMedia = window.matchMedia('(hover: none) and (pointer: coarse)');
     const defaultKeywordsPlaceholder = 'Examples: over-ear headphones, ultrawide monitor';
     const mobileKeywordsPlaceholder = 'Eg: monitor, headphone';
 
-    const detectDefaultCountry = () => {
-      const cookieMap = (document.cookie || '')
-        .split(';')
-        .map((item) => item.trim())
-        .filter(Boolean)
-        .reduce((acc, item) => {
-          const eqIdx = item.indexOf('=');
-          if (eqIdx === -1) return acc;
-          const key = item.slice(0, eqIdx).trim();
-          const value = item.slice(eqIdx + 1).trim();
-          acc[key] = value;
-          return acc;
-        }, {});
-      if (cookieMap.market === 'us') return 'United States';
-      if (cookieMap.market === 'eu') return 'Ireland';
-      const host = (window.location.hostname || '').toLowerCase();
-      const path = (window.location.pathname || '').toLowerCase();
-      if (host.startsWith('us.') || path === '/us' || path.startsWith('/us/')) return 'United States';
-      if (host.startsWith('uk.') || path === '/uk' || path.startsWith('/uk/')) return 'United Kingdom';
-      return 'Ireland';
+    const closeCountryPopup = () => {
+      if (!countryInfoPopup || !countryInfoTrigger) return;
+      countryInfoPopup.hidden = true;
+      countryInfoTrigger.setAttribute('aria-expanded', 'false');
     };
 
-    const defaultCountry = detectDefaultCountry();
-    if (countryInput && !countryInput.value.trim()) countryInput.value = defaultCountry;
+    const openCountryPopup = () => {
+      if (!countryInfoPopup || !countryInfoTrigger) return;
+      countryInfoPopup.hidden = false;
+      countryInfoTrigger.setAttribute('aria-expanded', 'true');
+    };
+
+    if (countryInfoTrigger && countryInfoPopup) {
+      countryInfoTrigger.addEventListener('click', () => {
+        if (countryInfoPopup.hidden) {
+          openCountryPopup();
+        } else {
+          closeCountryPopup();
+        }
+      });
+    }
+
+    if (countryInfoClose) {
+      countryInfoClose.addEventListener('click', closeCountryPopup);
+    }
+
+    document.addEventListener('click', (event) => {
+      if (!countryInfoPopup || countryInfoPopup.hidden) return;
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      const clickedInsidePopup = countryInfoPopup.contains(target);
+      const clickedTrigger = countryInfoTrigger && countryInfoTrigger.contains(target);
+      if (!clickedInsidePopup && !clickedTrigger) closeCountryPopup();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeCountryPopup();
+        closeCountryOptions();
+      }
+    });
 
     const applyKeywordsPlaceholder = () => {
       if (!keywordsInput) return;
@@ -381,6 +443,271 @@
       .trim();
 
     const tokenize = (value) => normalize(value).split(' ').filter(Boolean);
+
+    const fallbackCountries = [
+      ['AF', 'Afghanistan'], ['AL', 'Albania'], ['DZ', 'Algeria'], ['AD', 'Andorra'], ['AO', 'Angola'],
+      ['AG', 'Antigua and Barbuda'], ['AR', 'Argentina'], ['AM', 'Armenia'], ['AU', 'Australia'], ['AT', 'Austria'],
+      ['AZ', 'Azerbaijan'], ['BS', 'Bahamas'], ['BH', 'Bahrain'], ['BD', 'Bangladesh'], ['BB', 'Barbados'],
+      ['BY', 'Belarus'], ['BE', 'Belgium'], ['BZ', 'Belize'], ['BJ', 'Benin'], ['BT', 'Bhutan'],
+      ['BO', 'Bolivia'], ['BA', 'Bosnia and Herzegovina'], ['BW', 'Botswana'], ['BR', 'Brazil'], ['BN', 'Brunei'],
+      ['BG', 'Bulgaria'], ['BF', 'Burkina Faso'], ['BI', 'Burundi'], ['CV', 'Cabo Verde'], ['KH', 'Cambodia'],
+      ['CM', 'Cameroon'], ['CA', 'Canada'], ['CF', 'Central African Republic'], ['TD', 'Chad'], ['CL', 'Chile'],
+      ['CN', 'China'], ['CO', 'Colombia'], ['KM', 'Comoros'], ['CG', 'Congo'], ['CR', 'Costa Rica'],
+      ['CI', "Cote d'Ivoire"], ['HR', 'Croatia'], ['CU', 'Cuba'], ['CY', 'Cyprus'], ['CZ', 'Czechia'],
+      ['CD', 'Democratic Republic of the Congo'], ['DK', 'Denmark'], ['DJ', 'Djibouti'], ['DM', 'Dominica'],
+      ['DO', 'Dominican Republic'], ['EC', 'Ecuador'], ['EG', 'Egypt'], ['SV', 'El Salvador'], ['GQ', 'Equatorial Guinea'],
+      ['ER', 'Eritrea'], ['EE', 'Estonia'], ['SZ', 'Eswatini'], ['ET', 'Ethiopia'], ['FJ', 'Fiji'],
+      ['FI', 'Finland'], ['FR', 'France'], ['GA', 'Gabon'], ['GM', 'Gambia'], ['GE', 'Georgia'],
+      ['DE', 'Germany'], ['GH', 'Ghana'], ['GR', 'Greece'], ['GD', 'Grenada'], ['GT', 'Guatemala'],
+      ['GN', 'Guinea'], ['GW', 'Guinea-Bissau'], ['GY', 'Guyana'], ['HT', 'Haiti'], ['HN', 'Honduras'],
+      ['HU', 'Hungary'], ['IS', 'Iceland'], ['IN', 'India'], ['ID', 'Indonesia'], ['IR', 'Iran'],
+      ['IQ', 'Iraq'], ['IE', 'Ireland'], ['IL', 'Israel'], ['IT', 'Italy'], ['JM', 'Jamaica'],
+      ['JP', 'Japan'], ['JO', 'Jordan'], ['KZ', 'Kazakhstan'], ['KE', 'Kenya'], ['KI', 'Kiribati'],
+      ['KP', 'North Korea'], ['KR', 'South Korea'], ['KW', 'Kuwait'], ['KG', 'Kyrgyzstan'], ['LA', 'Laos'],
+      ['LV', 'Latvia'], ['LB', 'Lebanon'], ['LS', 'Lesotho'], ['LR', 'Liberia'], ['LY', 'Libya'],
+      ['LI', 'Liechtenstein'], ['LT', 'Lithuania'], ['LU', 'Luxembourg'], ['MG', 'Madagascar'], ['MW', 'Malawi'],
+      ['MY', 'Malaysia'], ['MV', 'Maldives'], ['ML', 'Mali'], ['MT', 'Malta'], ['MH', 'Marshall Islands'],
+      ['MR', 'Mauritania'], ['MU', 'Mauritius'], ['MX', 'Mexico'], ['FM', 'Micronesia'], ['MD', 'Moldova'],
+      ['MC', 'Monaco'], ['MN', 'Mongolia'], ['ME', 'Montenegro'], ['MA', 'Morocco'], ['MZ', 'Mozambique'],
+      ['MM', 'Myanmar'], ['NA', 'Namibia'], ['NR', 'Nauru'], ['NP', 'Nepal'], ['NL', 'Netherlands'],
+      ['NZ', 'New Zealand'], ['NI', 'Nicaragua'], ['NE', 'Niger'], ['NG', 'Nigeria'], ['MK', 'North Macedonia'],
+      ['NO', 'Norway'], ['OM', 'Oman'], ['PK', 'Pakistan'], ['PW', 'Palau'], ['PA', 'Panama'],
+      ['PG', 'Papua New Guinea'], ['PY', 'Paraguay'], ['PE', 'Peru'], ['PH', 'Philippines'], ['PL', 'Poland'],
+      ['PT', 'Portugal'], ['QA', 'Qatar'], ['RO', 'Romania'], ['RU', 'Russia'], ['RW', 'Rwanda'],
+      ['KN', 'Saint Kitts and Nevis'], ['LC', 'Saint Lucia'], ['VC', 'Saint Vincent and the Grenadines'],
+      ['WS', 'Samoa'], ['SM', 'San Marino'], ['ST', 'Sao Tome and Principe'], ['SA', 'Saudi Arabia'],
+      ['SN', 'Senegal'], ['RS', 'Serbia'], ['SC', 'Seychelles'], ['SL', 'Sierra Leone'], ['SG', 'Singapore'],
+      ['SK', 'Slovakia'], ['SI', 'Slovenia'], ['SB', 'Solomon Islands'], ['SO', 'Somalia'], ['ZA', 'South Africa'],
+      ['SS', 'South Sudan'], ['ES', 'Spain'], ['LK', 'Sri Lanka'], ['SD', 'Sudan'], ['SR', 'Suriname'],
+      ['SE', 'Sweden'], ['CH', 'Switzerland'], ['SY', 'Syria'], ['TJ', 'Tajikistan'], ['TZ', 'Tanzania'],
+      ['TH', 'Thailand'], ['TL', 'Timor-Leste'], ['TG', 'Togo'], ['TO', 'Tonga'], ['TT', 'Trinidad and Tobago'],
+      ['TN', 'Tunisia'], ['TR', 'Turkey'], ['TM', 'Turkmenistan'], ['TV', 'Tuvalu'], ['UG', 'Uganda'],
+      ['UA', 'Ukraine'], ['AE', 'United Arab Emirates'], ['GB', 'United Kingdom'], ['US', 'United States'],
+      ['UY', 'Uruguay'], ['UZ', 'Uzbekistan'], ['VU', 'Vanuatu'], ['VA', 'Vatican City'], ['VE', 'Venezuela'],
+      ['VN', 'Vietnam'], ['YE', 'Yemen'], ['ZM', 'Zambia'], ['ZW', 'Zimbabwe']
+    ].map(([code, name]) => ({ code, name }));
+
+    const toFlagEmoji = (code) => {
+      if (!/^[A-Z]{2}$/.test(code || '')) return '';
+      return code
+        .toUpperCase()
+        .split('')
+        .map((char) => String.fromCodePoint(127397 + char.charCodeAt(0)))
+        .join('');
+    };
+
+    const buildCountryList = () => {
+      try {
+        if (typeof Intl !== 'undefined' && typeof Intl.DisplayNames === 'function' && typeof Intl.supportedValuesOf === 'function') {
+          const displayNames = new Intl.DisplayNames(['en'], { type: 'region' });
+          const seen = new Set();
+          const built = Intl.supportedValuesOf('region')
+            .filter((code) => /^[A-Z]{2}$/.test(code))
+            .map((code) => ({ code, name: displayNames.of(code) || code }))
+            .filter((entry) => entry.name && !/^[A-Z]{2}$/.test(entry.name))
+            .filter((entry) => {
+              const key = `${entry.code}|${entry.name}`;
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            })
+            .sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+          if (built.length >= 180) return built;
+        }
+      } catch (error) {
+        
+      }
+      return fallbackCountries;
+    };
+
+    const countries = buildCountryList();
+    let filteredCountries = countries.slice();
+    let activeCountryIndex = -1;
+
+    const renderCountryOptions = (query = '') => {
+      if (!countryOptionsList || !countrySearchInput) return;
+      const normalizedQuery = normalize(query);
+      filteredCountries = countries.filter((entry) => !normalizedQuery || normalize(entry.name).includes(normalizedQuery));
+      filteredCountries.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+
+      const visibleCountries = filteredCountries;
+      countryOptionsList.innerHTML = '';
+
+      if (visibleCountries.length === 0) {
+        countryOptionsList.hidden = true;
+        countrySearchInput.setAttribute('aria-expanded', 'false');
+        activeCountryIndex = -1;
+        return;
+      }
+
+      visibleCountries.forEach((entry, index) => {
+        const option = document.createElement('li');
+        option.className = 'country-combobox__item';
+        option.setAttribute('role', 'option');
+        option.setAttribute('data-index', String(index));
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'country-combobox__option';
+        button.setAttribute('tabindex', '-1');
+        button.setAttribute('data-country-name', entry.name);
+        const flag = toFlagEmoji(entry.code);
+        button.innerHTML = `${flag ? `<span class="country-combobox__flag">${flag}</span>` : ''}<span>${entry.name}</span>`;
+        button.addEventListener('mousedown', (event) => event.preventDefault());
+        button.addEventListener('click', () => selectCountry(entry));
+
+        option.appendChild(button);
+        countryOptionsList.appendChild(option);
+      });
+
+      countryOptionsList.hidden = false;
+      countrySearchInput.setAttribute('aria-expanded', 'true');
+      activeCountryIndex = -1;
+      positionCountryOptions();
+    };
+
+    const closeCountryOptions = () => {
+      if (!countryOptionsList || !countrySearchInput) return;
+      countryOptionsList.hidden = true;
+      countrySearchInput.setAttribute('aria-expanded', 'false');
+      activeCountryIndex = -1;
+      countryOptionsList.classList.remove('is-upward');
+      countryOptionsList.style.maxHeight = '';
+      countryOptionsList.querySelectorAll('.country-combobox__item').forEach((item) => item.classList.remove('is-active'));
+    };
+
+    const positionCountryOptions = () => {
+      if (!countryOptionsList || !countrySearchInput || countryOptionsList.hidden) return;
+      const inputRect = countrySearchInput.getBoundingClientRect();
+      const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const gap = 8;
+      const spaceBelow = Math.max(0, viewportHeight - inputRect.bottom - gap);
+      const spaceAbove = Math.max(0, inputRect.top - gap);
+      const openUpward = spaceBelow < 180 && spaceAbove > spaceBelow;
+      const available = openUpward ? spaceAbove : spaceBelow;
+      const maxHeight = Math.max(120, Math.min(260, available - gap));
+
+      countryOptionsList.classList.toggle('is-upward', openUpward);
+      countryOptionsList.style.maxHeight = `${maxHeight}px`;
+    };
+
+    const setActiveCountryIndex = (index) => {
+      if (!countryOptionsList || countryOptionsList.hidden) return;
+      const items = Array.from(countryOptionsList.querySelectorAll('.country-combobox__item'));
+      if (items.length === 0) return;
+      activeCountryIndex = Math.max(0, Math.min(index, items.length - 1));
+      items.forEach((item, idx) => {
+        item.classList.toggle('is-active', idx === activeCountryIndex);
+      });
+      const active = items[activeCountryIndex];
+      if (active) active.scrollIntoView({ block: 'nearest' });
+    };
+
+    const selectCountry = (entry) => {
+      if (!countryInput || !countrySearchInput || !entry) return;
+      countryInput.value = entry.name;
+      countrySearchInput.value = entry.name;
+      countrySearchInput.setCustomValidity('');
+      closeCountryOptions();
+    };
+
+    const clearCountryFields = () => {
+      if (countryInput) countryInput.value = '';
+      if (countrySearchInput) {
+        countrySearchInput.value = '';
+        countrySearchInput.setCustomValidity('');
+      }
+    };
+    clearCountryFields();
+    window.setTimeout(clearCountryFields, 60);
+    window.addEventListener('pageshow', clearCountryFields);
+
+    if (countrySearchInput) {
+      countrySearchInput.addEventListener('focus', () => {
+        if (!coarsePointerMedia.matches) {
+          renderCountryOptions(countrySearchInput.value);
+        }
+      });
+
+      countrySearchInput.addEventListener('input', () => {
+        if (!countryInput) return;
+        const typedValue = countrySearchInput.value.trim();
+        countryInput.value = coarsePointerMedia.matches ? typedValue : '';
+        countrySearchInput.setCustomValidity('');
+        if (!coarsePointerMedia.matches) {
+          renderCountryOptions(countrySearchInput.value);
+        } else {
+          closeCountryOptions();
+        }
+      });
+
+      countrySearchInput.addEventListener('keydown', (event) => {
+        if (coarsePointerMedia.matches) return;
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          if (countryOptionsList && countryOptionsList.hidden) renderCountryOptions(countrySearchInput.value);
+          setActiveCountryIndex(activeCountryIndex + 1);
+          return;
+        }
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (countryOptionsList && countryOptionsList.hidden) renderCountryOptions(countrySearchInput.value);
+          setActiveCountryIndex((activeCountryIndex < 1 ? 0 : activeCountryIndex - 1));
+          return;
+        }
+        if (event.key === 'Enter' && countryOptionsList && !countryOptionsList.hidden) {
+          event.preventDefault();
+          const selected = filteredCountries[Math.max(0, activeCountryIndex)];
+          if (selected) selectCountry(selected);
+          return;
+        }
+        if (event.key === 'Escape') {
+          closeCountryOptions();
+        }
+      });
+
+      countrySearchInput.addEventListener('blur', () => {
+        window.setTimeout(() => {
+          const typed = countrySearchInput.value.trim();
+          if (!typed) {
+            countrySearchInput.setCustomValidity('Please choose your country.');
+            return;
+          }
+          if (coarsePointerMedia.matches) {
+            if (countryInput) countryInput.value = typed;
+            closeCountryOptions();
+            return;
+          }
+          const exact = countries.find((entry) => normalize(entry.name) === normalize(typed));
+          if (exact) {
+            selectCountry(exact);
+            return;
+          }
+          const first = filteredCountries[0];
+          if (first) {
+            selectCountry(first);
+          } else {
+            countrySearchInput.setCustomValidity('Please choose a country from the list.');
+          }
+          closeCountryOptions();
+        }, 100);
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      if (!countryCombobox || !countryOptionsList || countryOptionsList.hidden) return;
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (!countryCombobox.contains(target)) closeCountryOptions();
+    });
+
+    window.addEventListener('scroll', closeCountryOptions, { passive: true });
+    window.addEventListener('touchmove', closeCountryOptions, { passive: true });
+    window.addEventListener('resize', positionCountryOptions, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', positionCountryOptions);
+      window.visualViewport.addEventListener('scroll', positionCountryOptions);
+    }
 
     const levenshtein = (a, b) => {
       const matrix = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
@@ -489,6 +816,15 @@
       }
 
       if (!form.reportValidity()) return;
+
+      if (countryInput && !countryInput.value.trim()) {
+        showToast('Please choose your country from the list.', true);
+        if (countrySearchInput) {
+          countrySearchInput.focus();
+          renderCountryOptions(countrySearchInput.value);
+        }
+        return;
+      }
 
       if (isInstantMode()) {
         const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
