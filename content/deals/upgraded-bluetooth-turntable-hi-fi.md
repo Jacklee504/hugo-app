@@ -10,13 +10,13 @@ tags = ["audio", "turntable", "vinyl"]
 categories = ["electronics"]
 summary = "Hi-fi Bluetooth turntable deal with cartridge-focused playback setup."
 listing_url = "https://www.amazon.ie/dp/B09P8GPDHP"
-listing_sale_price = 144.76
+listing_sale_price = 187.76
 listing_list_price = 187.00
 listing_discount_pct = 0.225882
 listing_title = "Angels Horn Record Player Vinyl Player, Upgraded 5.0 Bluetooth Turntable, Home Audio High Fidelity Belt Drive With Moving Magnetic At 3600L Cartridge : Amazon.ie: Electronics"
 listing_summary = "Angels Horn Record Player Vinyl Player, Upgraded 5.0 Bluetooth Turntable, Home Audio High Fidelity Belt Drive With Moving Magnetic At 3600L Cartridge : Amazon.ie: Electronics"
 listing_image = "https://m.media-amazon.com/images/I/71Krfogj2OL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_synced_at = "2026-04-22T06:10:44.579618+00:00"
 +++
 
 Good-value turntable option with a stronger discount than most current vinyl listings.

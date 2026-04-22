@@ -10,13 +10,13 @@ tags = ["audio", "turntable", "vinyl"]
 categories = ["electronics"]
 summary = "Bluetooth-enabled turntable deal for vinyl listening setups."
 listing_url = "https://www.amazon.ie/dp/B0BNBNMTDR"
-listing_sale_price = 206.08
+listing_sale_price = 251.08
 listing_list_price = 251.08
 listing_discount_pct = 0.179226
 listing_title = "Angels Horn All-In-One Bluetooth Vinyl Record Player - High-Fidelity 2-Speed Turntable With Built-In Speakers - Includes Phono Preamp & Magnetic At-3600L Cartridge - Black Classic Edition : Amazon.ie: Electronics"
 listing_summary = "Angels Horn All-In-One Bluetooth Vinyl Record Player - High-Fidelity 2-Speed Turntable With Built-In Speakers - Includes Phono Preamp & Magnetic At-3600L Cartridge - Black Classic Edition : Amazon.ie: Electronics"
 listing_image = "https://m.media-amazon.com/images/I/717dC60IWKL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_synced_at = "2026-04-22T06:10:44.579618+00:00"
 +++
 
 Solid price drop on an all-in-one Bluetooth record player for home audio setups.
