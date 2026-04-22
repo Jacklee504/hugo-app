@@ -1,6 +1,9 @@
 name: Deploy Hugo site
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -33,6 +36,7 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Fetch deals (PA-API)
+        if: ${{ secrets.AMZ_PAAPI_ACCESS_KEY != '' && secrets.AMZ_PAAPI_SECRET_KEY != '' && secrets.AMZ_PARTNER_TAG != '' && secrets.AMZ_MARKETPLACE != '' }}
         env:
           AMZ_PAAPI_ACCESS_KEY: ${{ secrets.AMZ_PAAPI_ACCESS_KEY }}
           AMZ_PAAPI_SECRET_KEY: ${{ secrets.AMZ_PAAPI_SECRET_KEY }}
@@ -41,7 +45,12 @@ jobs:
         run: python scripts/fetch_deals.py
 
       - name: Sync listing details (from URLs)
+        if: ${{ secrets.AMZ_PAAPI_ACCESS_KEY != '' && secrets.AMZ_PAAPI_SECRET_KEY != '' && secrets.AMZ_PARTNER_TAG != '' && secrets.AMZ_MARKETPLACE != '' }}
         run: python scripts/sync_listing_from_urls.py
+
+      - name: Skip deal refresh (keys missing)
+        if: ${{ secrets.AMZ_PAAPI_ACCESS_KEY == '' || secrets.AMZ_PAAPI_SECRET_KEY == '' || secrets.AMZ_PARTNER_TAG == '' || secrets.AMZ_MARKETPLACE == '' }}
+        run: echo "AMZ_* secrets missing. Skipping PA-API refresh and building with existing content."
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
