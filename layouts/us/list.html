@@ -104,6 +104,41 @@
   <p>Simple picks • Clear value • Smarter spending</p>
 </section>
 
+<section class="home-filter-rail" aria-label="Sample deal filters">
+  <div class="home-filter-rail__top">
+    <div class="home-filter-rail__intro">
+      <h2>Start with a quick filter</h2>
+      <p>Jump into common deal searches in one click.</p>
+    </div>
+    <div class="home-filter-rail__action">
+      <a class="button-link button-link--primary" href="{{ $dealsBase | relURL }}">View all deals</a>
+    </div>
+  </div>
+  <div class="home-filter-rail__row" data-home-filter-row>
+    <button class="home-filter-rail__search-trigger" type="button" data-home-filter-search-toggle aria-expanded="false" aria-label="Open search">&#128269;</button>
+    <div class="home-filter-rail__chips">
+      <a href="{{ printf "%s?q=audio" $dealsBase | relURL }}">Audio</a>
+      <a href="{{ printf "%s?q=laptop" $dealsBase | relURL }}">Laptops</a>
+      <a href="{{ printf "%s?q=monitor" $dealsBase | relURL }}">Monitors</a>
+      <a href="{{ printf "%s?q=accessories" $dealsBase | relURL }}">Accessories</a>
+      <a href="{{ printf "%s?q=gaming" $dealsBase | relURL }}">Gaming</a>
+      <a href="{{ printf "%s?q=desk" $dealsBase | relURL }}">Desk</a>
+    </div>
+    <form class="home-filter-rail__search-form" action="{{ $dealsBase | relURL }}" method="get" role="search" data-home-filter-search-form>
+      <input
+        type="search"
+        name="q"
+        class="home-filter-rail__search-input"
+        placeholder="Search deals"
+        aria-label="Search deals"
+        data-home-filter-search-input
+      >
+      <button type="submit" class="home-filter-rail__search-submit">Go</button>
+      <button type="button" class="home-filter-rail__search-close" data-home-filter-search-close>Close</button>
+    </form>
+  </div>
+</section>
+
 <section class="home-section">
   <div class="home-section__intro">
     <h2>Featured picks</h2>
@@ -122,21 +157,6 @@
 
 <section class="home-section">
   <div class="home-section__intro">
-    <h2>Quick categories</h2>
-    <p>Jump straight into deals for what you need.</p>
-  </div>
-  <div class="category-strip">
-    <a href="{{ printf "%s?q=home" $dealsBase | relURL }}">Home essentials</a>
-    <a href="{{ printf "%s?q=audio" $dealsBase | relURL }}">Audio</a>
-    <a href="{{ printf "%s?q=charging" $dealsBase | relURL }}">Charging</a>
-    <a href="{{ printf "%s?q=desk" $dealsBase | relURL }}">Desk setup</a>
-    <a href="{{ printf "%s?q=gaming" $dealsBase | relURL }}">Gaming gear</a>
-    <a href="{{ printf "%s?q=toys+gift" $dealsBase | relURL }}">Toys & gifts</a>
-  </div>
-</section>
-
-<section class="home-section">
-  <div class="home-section__intro">
     <h2>Recent additions</h2>
     <p>Latest deals added to the site.</p>
   </div>
@@ -150,5 +170,7 @@
     <p>New deals will appear once published.</p>
   {{ end }}
 </section>
+
+<script type="module" src="{{ "scripts/home-filter-rail.js" | relURL }}?v={{ now.Unix }}"></script>
 
 {{ end }}

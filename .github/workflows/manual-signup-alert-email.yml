@@ -1,0 +1,74 @@
+name: Send manual signup alert email
+
+on:
+  workflow_dispatch:
+    inputs:
+      recipient_email:
+        description: "Recipient email address"
+        required: true
+        type: string
+      sample_type:
+        description: "Email type to send"
+        required: true
+        type: choice
+        options:
+          - category
+          - keyword
+          - weekly_digest
+      query:
+        description: "Free-text query (required for category/keyword, e.g. vinyl)"
+        required: false
+        type: string
+      dry_run:
+        description: "Render only (do not send)"
+        required: true
+        type: boolean
+        default: false
+
+jobs:
+  send-manual:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate inputs
+        run: |
+          if [ "${{ inputs.sample_type }}" != "weekly_digest" ] && [ -z "${{ inputs.query }}" ]; then
+            echo "query is required for category/keyword sends."
+            exit 1
+          fi
+
+      - name: Send signup-option email (manual)
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_USE_TLS: "true"
+          SITE_BASE_URL: "https://dealledger.eu"
+        run: |
+          CMD=(python scripts/send_sample_signup_alerts.py \
+            --to "${{ inputs.recipient_email }}" \
+            --type "${{ inputs.sample_type }}")
+
+          if [ -n "${{ inputs.query }}" ]; then
+            CMD+=(--query "${{ inputs.query }}")
+          fi
+
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            CMD+=(--dry-run --preview-dir review-queue)
+          fi
+
+          "${CMD[@]}"
