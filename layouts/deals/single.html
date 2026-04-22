@@ -16,9 +16,9 @@
 {{ $displayTitle := or .Title .Params.listing_title }}
 {{ $description := or .Params.summary .Params.listing_summary .Title }}
 {{ $dealImage := or .Params.listing_image .Params.image }}
-{{ $salePrice := or .Params.listing_sale_price .Params.sale_price }}
-{{ $listPrice := or .Params.listing_list_price .Params.list_price }}
-{{ $discountPct := or .Params.listing_discount_pct .Params.discount_pct }}
+{{ $salePrice := or .Params.sale_price .Params.listing_sale_price }}
+{{ $listPrice := or .Params.list_price .Params.listing_list_price }}
+{{ $discountPct := or .Params.discount_pct .Params.listing_discount_pct }}
 {{ $showExpiryMeta := not $url }}
 {{ $schema := dict
   "@context" "https://schema.org"

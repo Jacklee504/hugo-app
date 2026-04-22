@@ -2,8 +2,6 @@ name: Exact item alert emails
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/30 * * * *"
 
 jobs:
   exact-item-alerts:

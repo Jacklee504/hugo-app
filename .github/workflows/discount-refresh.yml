@@ -2,8 +2,6 @@ name: Refresh listing discounts
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "30 5 * * *"
 
 jobs:
   refresh-discounts:

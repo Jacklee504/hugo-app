@@ -78,6 +78,34 @@ def normalize(value: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9\s]", " ", (value or "").lower())).strip()
 
 
+def resolve_deal_prices(front: str, discount_pct: float) -> tuple[float | None, float | None]:
+    listing_sale = get_float(front, "listing_sale_price")
+    listing_list = get_float(front, "listing_list_price")
+    base_sale = get_float(front, "sale_price")
+    base_list = get_float(front, "list_price")
+
+    sale_price = listing_sale if listing_sale is not None else base_sale
+    list_price = listing_list if listing_list is not None else base_list
+
+    # Coupon-backed listings often keep listing_sale_price == listing_list_price.
+    # Prefer the effective sale when available, otherwise derive it from discount.
+    if (
+        isinstance(sale_price, (int, float))
+        and isinstance(list_price, (int, float))
+        and list_price > 0
+        and abs(sale_price - list_price) < 0.01
+        and discount_pct > 0
+    ):
+        if isinstance(base_sale, (int, float)) and base_sale > 0 and base_sale < list_price:
+            sale_price = base_sale
+        else:
+            derived_sale = round(list_price * (1.0 - float(discount_pct)), 2)
+            if derived_sale > 0 and derived_sale < list_price:
+                sale_price = derived_sale
+
+    return sale_price, list_price
+
+
 def load_deals() -> list[Deal]:
     deals: list[Deal] = []
     for path in sorted(DEALS_DIR.glob("*.md")):
@@ -89,6 +117,12 @@ def load_deals() -> list[Deal]:
             continue
         front, _ = split
         slug = path.stem
+        discount_pct = get_float(front, "listing_discount_pct")
+        if discount_pct is None:
+            discount_pct = get_float(front, "discount_pct")
+        if discount_pct is None:
+            discount_pct = 0.0
+        sale_price, list_price = resolve_deal_prices(front, discount_pct)
         deals.append(
             Deal(
                 slug=slug,
@@ -97,9 +131,9 @@ def load_deals() -> list[Deal]:
                 product_url=get_str(front, "product_url"),
                 listing_url=get_str(front, "listing_url"),
                 listing_image=get_str(front, "listing_image"),
-                discount_pct=(get_float(front, "listing_discount_pct") or get_float(front, "discount_pct") or 0.0),
-                sale_price=(get_float(front, "listing_sale_price") or get_float(front, "sale_price")),
-                list_price=(get_float(front, "listing_list_price") or get_float(front, "list_price")),
+                discount_pct=discount_pct,
+                sale_price=sale_price,
+                list_price=list_price,
                 tags=get_array(front, "tags"),
                 categories=get_array(front, "categories"),
             )

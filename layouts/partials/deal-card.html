@@ -14,9 +14,9 @@
 {{ $params := $page.Params }}
 {{ $title := or $page.Title $params.listing_title }}
 {{ $img := or $params.listing_image $params.image }}
-{{ $list := or $params.listing_list_price $params.list_price }}
-{{ $sale := or $params.listing_sale_price $params.sale_price }}
-{{ $discount := or $params.listing_discount_pct $params.discount_pct }}
+{{ $list := or $params.list_price $params.listing_list_price }}
+{{ $sale := or $params.sale_price $params.listing_sale_price }}
+{{ $discount := or $params.discount_pct $params.listing_discount_pct }}
 {{ $tags := $params.tags }}
 {{ $url := or $params.listing_url $params.product_url $params.affiliate_url }}
 {{ $summary := or $params.summary $params.listing_summary $title }}

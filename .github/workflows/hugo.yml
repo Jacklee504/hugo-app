@@ -1,12 +1,7 @@
 name: Deploy Hugo site
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
-  schedule:
-    - cron: "0 6 * * *"
 
 jobs:
   build-deploy:
