@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      AMZ_PAAPI_ACCESS_KEY: ${{ secrets.AMZ_PAAPI_ACCESS_KEY }}
+      AMZ_PAAPI_SECRET_KEY: ${{ secrets.AMZ_PAAPI_SECRET_KEY }}
+      AMZ_PARTNER_TAG: ${{ secrets.AMZ_PARTNER_TAG }}
+      AMZ_MARKETPLACE: ${{ secrets.AMZ_MARKETPLACE }}
     permissions:
       contents: write
 
@@ -36,20 +40,15 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       - name: Fetch deals (PA-API)
-        if: ${{ secrets.AMZ_PAAPI_ACCESS_KEY != '' && secrets.AMZ_PAAPI_SECRET_KEY != '' && secrets.AMZ_PARTNER_TAG != '' && secrets.AMZ_MARKETPLACE != '' }}
-        env:
-          AMZ_PAAPI_ACCESS_KEY: ${{ secrets.AMZ_PAAPI_ACCESS_KEY }}
-          AMZ_PAAPI_SECRET_KEY: ${{ secrets.AMZ_PAAPI_SECRET_KEY }}
-          AMZ_PARTNER_TAG: ${{ secrets.AMZ_PARTNER_TAG }}
-          AMZ_MARKETPLACE: ${{ secrets.AMZ_MARKETPLACE }}
+        if: ${{ env.AMZ_PAAPI_ACCESS_KEY != '' && env.AMZ_PAAPI_SECRET_KEY != '' && env.AMZ_PARTNER_TAG != '' && env.AMZ_MARKETPLACE != '' }}
         run: python scripts/fetch_deals.py
 
       - name: Sync listing details (from URLs)
-        if: ${{ secrets.AMZ_PAAPI_ACCESS_KEY != '' && secrets.AMZ_PAAPI_SECRET_KEY != '' && secrets.AMZ_PARTNER_TAG != '' && secrets.AMZ_MARKETPLACE != '' }}
+        if: ${{ env.AMZ_PAAPI_ACCESS_KEY != '' && env.AMZ_PAAPI_SECRET_KEY != '' && env.AMZ_PARTNER_TAG != '' && env.AMZ_MARKETPLACE != '' }}
         run: python scripts/sync_listing_from_urls.py
 
       - name: Skip deal refresh (keys missing)
-        if: ${{ secrets.AMZ_PAAPI_ACCESS_KEY == '' || secrets.AMZ_PAAPI_SECRET_KEY == '' || secrets.AMZ_PARTNER_TAG == '' || secrets.AMZ_MARKETPLACE == '' }}
+        if: ${{ env.AMZ_PAAPI_ACCESS_KEY == '' || env.AMZ_PAAPI_SECRET_KEY == '' || env.AMZ_PARTNER_TAG == '' || env.AMZ_MARKETPLACE == '' }}
         run: echo "AMZ_* secrets missing. Skipping PA-API refresh and building with existing content."
 
       - name: Setup Hugo
