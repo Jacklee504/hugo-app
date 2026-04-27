@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Deal Ledger Deutschland | Deal Ledger</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    
+    
+      
+    
+    <meta name="description" content="Eine kuratierte Deals-Seite für Deutschland mit klarer Preis-Einordnung und gezielten Alerts.">
+    <meta name="generator" content="Hugo 0.160.1">
+    
+    
+    
+    
+    
+    
+      <meta name="robots" content="index, follow, max-image-preview:large">
+    
+    
+
+    
+
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css">
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+    
+      <link href="/de/index.xml" rel="alternate" type="application/rss+xml" title="Deal Ledger" />
+      <link href="/de/index.xml" rel="feed" type="application/rss+xml" title="Deal Ledger" />
+      
+    
+
+    
+    
+    
+      
+    
+    <link rel="canonical" href="https://dealledger.eu/de/">
+
+    
+    
+    <meta property="og:title" content="Deal Ledger Deutschland">
+<meta property="og:description" content="Eine kuratierte Deals-Seite für Deutschland mit klarer Preis-Einordnung und gezielten Alerts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dealledger.eu/de/">
+<meta property="og:site_name" content="Deal Ledger">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Eine kuratierte Deals-Seite für Deutschland mit klarer Preis-Einordnung und gezielten Alerts.","name":"Deal Ledger Deutschland","url":"https://dealledger.eu/de/"}</script>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deal Ledger Deutschland">
+<meta name="twitter:description" content="Eine kuratierte Deals-Seite für Deutschland mit klarer Preis-Einordnung und gezielten Alerts.">
+
+      
+      
+    
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https: https://formspree.io https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests">
+
+
+
+
+
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
+
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
+
+  </head><body class="ma0 avenir bg-near-white production is-section is-section">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+<header class="site-top site-top--home">
+  <div class="site-top__backdrop">
+    <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="flex-l center items-center justify-between nav-shell">
+    <a href="/de/" class="nav-brand no-underline" aria-label="Deal Ledger">
+      <img class="nav-brand__logo" src="/images/brand/deal-ledger-logo.svg" alt="Deal Ledger" width="220" height="56" loading="eager" decoding="async">
+    </a>
+    <div class="flex-l items-center nav-actions">
+      <div class="nav-market">
+        <select id="market-select" class="nav-market__select" name="market-select" aria-label="Markt auswählen">
+          <option value="eu" >EU</option>
+          <option value="us" >US</option>
+          <option value="de" selected>DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
+        </select>
+      </div>
+      <div class="nav-menu" data-nav-menu>
+        <button class="nav-menu__toggle" type="button" aria-label="Navigation umschalten" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav-links">
+          <span class="nav-menu__icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="nav-menu__label">Menü</span>
+        </button>
+        <ul class="pl0 nav-links" id="site-nav-links">
+          <li class="list dib nav-links__item">
+            <a class="nav-links__anchor no-underline" href="/de/deals/">Angebote</a>
+          </li>
+          <li class="list dib nav-links__item">
+            <a class="nav-links__anchor no-underline" href="/de/alerts/">E-Mail-Benachrichtigungen</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-social"><div class="ananke-socials"></div>
+</div>
+    </div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('[data-nav-menu]');
+    if (!menu) return;
+
+    const toggle = menu.querySelector('.nav-menu__toggle');
+    const links = menu.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    const closeMenu = () => {
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960) closeMenu();
+    });
+
+    const marketSelect = document.getElementById('market-select');
+    if (marketSelect) {
+      const cookieMap = (document.cookie || '')
+        .split(';')
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .reduce((acc, item) => {
+          const eqIdx = item.indexOf('=');
+          if (eqIdx === -1) return acc;
+          const key = item.slice(0, eqIdx).trim();
+          const value = item.slice(eqIdx + 1).trim();
+          acc[key] = value;
+          return acc;
+        }, {});
+
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
+        marketSelect.value = cookieMap.market;
+      }
+
+      marketSelect.addEventListener('change', () => {
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
+        const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
+        window.location.assign(`${window.location.origin}${targetPath}`);
+      });
+    }
+  });
+</script>
+
+    
+  </div>
+</header>
+
+    <main class="pb7" role="main">
+      
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+    
+  
+
+
+
+
+  
+
+
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+    
+    
+    
+      
+    
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"UGREEN Auto-Ladegerät mit ausziehbarem Kabel","position":1,"url":"https://dealledger.eu/deals/ugreen-retractable-car-charger-de/"},{"@type":"ListItem","name":"Airchros Ergonomischer Bürostuhl","position":2,"url":"https://dealledger.eu/deals/airchros-ergonomic-office-chair-de/"},{"@type":"ListItem","name":"Apple AirPods 4","position":3,"url":"https://dealledger.eu/deals/apple-airpods-4-de/"},{"@type":"ListItem","name":"INIU Powerbank 10000 mAh","position":4,"url":"https://dealledger.eu/deals/iniu-power-bank-10000mah-de/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Featured deals","numberOfItems":4}</script>
+
+
+  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"naspaluro Ergonomischer Bürostuhl","position":1,"url":"https://dealledger.eu/deals/naspaluro-ergonomic-office-chair-de/"},{"@type":"ListItem","name":"Airchros Ergonomischer Bürostuhl","position":2,"url":"https://dealledger.eu/deals/airchros-ergonomic-office-chair-de/"},{"@type":"ListItem","name":"Coleshome L-förmiger Schreibtisch","position":3,"url":"https://dealledger.eu/deals/coleshome-l-shaped-desk-de/"},{"@type":"ListItem","name":"VASAGLE Höhenverstellbarer Schreibtisch","position":4,"url":"https://dealledger.eu/deals/vasagle-standing-desk-lsd310wz03-de/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Recent deals","numberOfItems":4}</script>
+
+
+<section class="home-value-strip" aria-label="Deal Ledger highlights">
+  <p>Einfache Auswahl • Klarer Wert • Smarter sparen</p>
+</section>
+
+<section class="home-filter-rail" aria-label="Sample deal filters">
+  <div class="home-filter-rail__top">
+    <div class="home-filter-rail__intro">
+      <h2>Mit einem Schnellfilter starten</h2>
+      <p>Direkt mit typischen Deal-Suchen loslegen.</p>
+    </div>
+    <div class="home-filter-rail__action">
+      <a class="button-link button-link--primary" href="/de/deals/">Alle Angebote ansehen</a>
+    </div>
+  </div>
+  <div class="home-filter-rail__row" data-home-filter-row>
+    <button class="home-filter-rail__search-trigger" type="button" data-home-filter-search-toggle aria-expanded="false" aria-label="Suche öffnen">&#128269;</button>
+    <div class="home-filter-rail__chips">
+      <a href="/de/deals/?q=homeoffice">homeoffice</a><a href="/de/deals/?q=ergonomie">ergonomie</a><a href="/de/deals/?q=schreibtisch">schreibtisch</a><a href="/de/deals/?q=audio">audio</a><a href="/de/deals/?q=b%C3%BCro">büro</a>
+    </div>
+    <form class="home-filter-rail__search-form" action="/de/deals/" method="get" role="search" data-home-filter-search-form>
+      <input
+        type="search"
+        name="q"
+        class="home-filter-rail__search-input"
+        placeholder="Angebote suchen"
+        aria-label="Angebote suchen"
+        data-home-filter-search-input
+      >
+      <button type="submit" class="home-filter-rail__search-submit">Los</button>
+      <button type="button" class="home-filter-rail__search-close" data-home-filter-search-close>Schließen</button>
+    </form>
+  </div>
+</section>
+
+<section class="home-section">
+  <div class="home-section__intro">
+    <h2>Empfohlene Angebote</h2>
+    <p>Top-Angebote, die sich jetzt lohnen.</p>
+  </div>
+  
+    <div class="deal-grid deal-grid--browse">
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="ugreen auto-ladegerät mit ausziehbarem kabel" data-summary="ugreen-autolader mit ausziehbarem ladekabel und starkem preisnachlass auf amazon de." data-tags="technik auto ladegerät usb-c" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.330000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/51bXKwCJIqL._AC_SL1500_.jpg"
+    alt="UGREEN Auto-Ladegerät mit ausziehbarem Kabel"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">UGREEN Auto-Ladegerät mit ausziehbarem Kabel</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€29.96</span>
+          
+          
+            <span class="deal-card__list">€44.99</span>
+          
+          
+            <span class="deal-card__badge">-33%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">UGREEN-Autolader mit ausziehbarem Ladekabel und starkem Preisnachlass auf Amazon DE.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#technik</span><span class="deal-card__tag">#auto</span><span class="deal-card__tag">#ladegerät</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/UGREEN-Charger-Retractable-Charging-Compatible-black/dp/B0DP1ZP9SM?crid=3OUJ1OYVHXI4F&amp;dib=eyJ2IjoiMSJ9.jdAbqPMQvIaD_DBDV9sx4cVcTmo1TZTqsUs0M0fTGckKOpE77Wf1_rdudmo9-olgarpm4KAndb9nl6ACfKujO6Gh-hOdE74neAj5sPFZTRKM-PHWtcg1MZ-XzF8ERQ19Cj9fHEFy3NG4r2abY-nnTG-eJ0Kj32RNsIRdgM3A1RNRqH3OaYER5zcV-5MnmeM12I2aExR08u5H4IowYgFqq3U9Le4rGdFximqU_N_I14TN3ba-EAXqpwIe5et7awzXiKmy9y4oRUsMCjxXRvNi9mEI_ffmHLIslCwyd9z6Utk.pGmhzmkfNZarOSIYzor80mPron1aP-wLxq6n3QxYh3I&amp;dib_tag=se&amp;keywords=tech&amp;qid=1777322978&amp;sprefix=tec%2Caps%2C189&amp;sr=8-16&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=faabfddd3456eff9a7c8118caab0c5cc&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="airchros ergonomischer bürostuhl" data-summary="ergonomischer bürostuhl von airchros mit hoher rückenlehne und starkem rabatt." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.310000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/715pQIBptFL._AC_SL1500_.jpg"
+    alt="Airchros Ergonomischer Bürostuhl"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Airchros Ergonomischer Bürostuhl</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€55.51</span>
+          
+          
+            <span class="deal-card__list">€79.99</span>
+          
+          
+            <span class="deal-card__badge">-31%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Ergonomischer Bürostuhl von Airchros mit hoher Rückenlehne und starkem Rabatt.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#homeoffice</span><span class="deal-card__tag">#stuhl</span><span class="deal-card__tag">#ergonomie</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/Airchros-Ergonomic-Office-Adjustable-Height-Adjustable/dp/B0CGZZJ7X4?crid=1391M53JI7WT3&amp;dib=eyJ2IjoiMSJ9.JDcsIRiVhbhERVByjcx9L9ymtS2dwyfA26KSDwOPGRqs-kyFQmVaSChHkWwquQRRgbNE2pz-G99dvxj4cc14lCBNPTnAc6RPpMENNcsNrhAtcWNFt1WLfhBiiWoZFhNVCgTMpivMmIZshJ1fd9aU8vCbL4pXhsbJ6rGbEOAS02issAV92YjcIQ_nZRznXC-RSHV1ElOLLQQvwxEYgdKeG_5vx5PwTrmXq-xdk5qvLUP5TwbxsFCbEm5D1dEtDOxDHjtgLifE5bHxqAigKyDHyeA7r5AukFHQ5mM0ZKvuZvk.ajaN--Cu0Csxz8bMtb4ZLnnFj-uB2BLgWCJMZ-nYO98&amp;dib_tag=se&amp;keywords=office%2Bchair%2Bergonomic&amp;qid=1777323260&amp;sprefix=office%2Bchair%2Be%2Caps%2C183&amp;sr=8-18&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=7a87e29080e646e0724447bbf546f538&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="apple airpods 4" data-summary="apple airpods 4 mit bluetooth und personalisiertem audio zu stark reduziertem preis." data-tags="audio apple earbuds kabellos" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.240000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/61DvMw16ITL._AC_SL1500_.jpg"
+    alt="Apple AirPods 4"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Apple AirPods 4</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€113.49</span>
+          
+          
+            <span class="deal-card__list">€149.00</span>
+          
+          
+            <span class="deal-card__badge">-24%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Apple AirPods 4 mit Bluetooth und personalisiertem Audio zu stark reduziertem Preis.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#apple</span><span class="deal-card__tag">#earbuds</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/Apple-Headphones-Bluetooth-Personalised-Protection/dp/B0DGHWD7CT?crid=N6FWG9X2D5MW&amp;dib=eyJ2IjoiMSJ9.ER3QeuFQhRWUkf3-rTJjEVst6_t3zCpRHWm2zEocCBaRQbnT23G0lnYdATx6vVy0oLaDTHeH2lGXDUwLFa5iVU45F4xeOz1weRuvtqb5dcoxyouHyrGaZTtV1V0hnbJ2nJrGO0iDu3reKr--KOKvRnHe3f2zYwAWBvK--Hm-lmfcKcyLD35wQojvHC2Z_KDRfKwjnTqb5_Niu-lZKI2ntvOJvngJ6ZRxUKCXsF-xv5A.HMqcGLt-soKIb3YPXGuR1POJn3-MIFD2XJb9T7pBxQE&amp;dib_tag=se&amp;keywords=audio&amp;qid=1777323160&amp;sprefix=audi%2Caps%2C149&amp;sr=8-10&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=de93d63d6ba43cbbe54039341b9142b5&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="iniu powerbank 10000 mah" data-summary="kompakte iniu-powerbank mit 10000 mah und gutem rabatt auf amazon de." data-tags="technik powerbank akku mobil" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.210000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/61vDCOjDoEL._AC_SL1500_.jpg"
+    alt="INIU Powerbank 10000 mAh"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">INIU Powerbank 10000 mAh</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€26.99</span>
+          
+          
+            <span class="deal-card__list">€33.99</span>
+          
+          
+            <span class="deal-card__badge">-21%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Kompakte INIU-Powerbank mit 10000 mAh und gutem Rabatt auf Amazon DE.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#technik</span><span class="deal-card__tag">#powerbank</span><span class="deal-card__tag">#akku</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/INIU-Portable-External-Batteries-Aeroplane/dp/B0DS5ZFMXK?crid=3OUJ1OYVHXI4F&amp;dib=eyJ2IjoiMSJ9.jdAbqPMQvIaD_DBDV9sx4cVcTmo1TZTqsUs0M0fTGckKOpE77Wf1_rdudmo9-olgarpm4KAndb9nl6ACfKujO6Gh-hOdE74neAj5sPFZTRKM-PHWtcg1MZ-XzF8ERQ19Cj9fHEFy3NG4r2abY-nnTG-eJ0Kj32RNsIRdgM3A1RNRqH3OaYER5zcV-5MnmeM12I2aExR08u5H4IowYgFqq3U9Le4rGdFximqU_N_I14TN3ba-EAXqpwIe5et7awzXiKmy9y4oRUsMCjxXRvNi9mEI_ffmHLIslCwyd9z6Utk.pGmhzmkfNZarOSIYzor80mPron1aP-wLxq6n3QxYh3I&amp;dib_tag=se&amp;keywords=tech&amp;qid=1777322978&amp;sprefix=tec%2Caps%2C189&amp;sr=8-5&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=946c5bc7a2ec2471315736ac9b193df3&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+    </div>
+  
+</section>
+
+<section class="home-section">
+  <div class="home-section__intro">
+    <h2>Neu hinzugefügt</h2>
+    <p>Die neuesten veröffentlichten Angebote.</p>
+  </div>
+  
+    <div class="deal-grid deal-grid--browse">
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="naspaluro ergonomischer bürostuhl" data-summary="naspaluro bürostuhl mit verstellbaren armlehnen und ergonomischer rückenstütze." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.110000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/71QkeDzUZCL._AC_SL1500_.jpg"
+    alt="naspaluro Ergonomischer Bürostuhl"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">naspaluro Ergonomischer Bürostuhl</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€56.99</span>
+          
+          
+            <span class="deal-card__list">€63.99</span>
+          
+          
+            <span class="deal-card__badge">-11%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">naspaluro Bürostuhl mit verstellbaren Armlehnen und ergonomischer Rückenstütze.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#homeoffice</span><span class="deal-card__tag">#stuhl</span><span class="deal-card__tag">#ergonomie</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/naspaluro-Adjustable-Armrests-Ergonomic-Support/dp/B0CTT7Q8WQ?crid=1391M53JI7WT3&amp;dib=eyJ2IjoiMSJ9.JDcsIRiVhbhERVByjcx9L9ymtS2dwyfA26KSDwOPGRqs-kyFQmVaSChHkWwquQRRgbNE2pz-G99dvxj4cc14lCBNPTnAc6RPpMENNcsNrhAtcWNFt1WLfhBiiWoZFhNVCgTMpivMmIZshJ1fd9aU8vCbL4pXhsbJ6rGbEOAS02issAV92YjcIQ_nZRznXC-RSHV1ElOLLQQvwxEYgdKeG_5vx5PwTrmXq-xdk5qvLUP5TwbxsFCbEm5D1dEtDOxDHjtgLifE5bHxqAigKyDHyeA7r5AukFHQ5mM0ZKvuZvk.ajaN--Cu0Csxz8bMtb4ZLnnFj-uB2BLgWCJMZ-nYO98&amp;dib_tag=se&amp;keywords=office%2Bchair%2Bergonomic&amp;qid=1777323260&amp;sprefix=office%2Bchair%2Be%2Caps%2C183&amp;sr=8-44&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=1df9498204531fbe7b17cfd9da254d9e&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="airchros ergonomischer bürostuhl" data-summary="ergonomischer bürostuhl von airchros mit hoher rückenlehne und starkem rabatt." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.310000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/715pQIBptFL._AC_SL1500_.jpg"
+    alt="Airchros Ergonomischer Bürostuhl"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Airchros Ergonomischer Bürostuhl</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€55.51</span>
+          
+          
+            <span class="deal-card__list">€79.99</span>
+          
+          
+            <span class="deal-card__badge">-31%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Ergonomischer Bürostuhl von Airchros mit hoher Rückenlehne und starkem Rabatt.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#homeoffice</span><span class="deal-card__tag">#stuhl</span><span class="deal-card__tag">#ergonomie</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/Airchros-Ergonomic-Office-Adjustable-Height-Adjustable/dp/B0CGZZJ7X4?crid=1391M53JI7WT3&amp;dib=eyJ2IjoiMSJ9.JDcsIRiVhbhERVByjcx9L9ymtS2dwyfA26KSDwOPGRqs-kyFQmVaSChHkWwquQRRgbNE2pz-G99dvxj4cc14lCBNPTnAc6RPpMENNcsNrhAtcWNFt1WLfhBiiWoZFhNVCgTMpivMmIZshJ1fd9aU8vCbL4pXhsbJ6rGbEOAS02issAV92YjcIQ_nZRznXC-RSHV1ElOLLQQvwxEYgdKeG_5vx5PwTrmXq-xdk5qvLUP5TwbxsFCbEm5D1dEtDOxDHjtgLifE5bHxqAigKyDHyeA7r5AukFHQ5mM0ZKvuZvk.ajaN--Cu0Csxz8bMtb4ZLnnFj-uB2BLgWCJMZ-nYO98&amp;dib_tag=se&amp;keywords=office%2Bchair%2Bergonomic&amp;qid=1777323260&amp;sprefix=office%2Bchair%2Be%2Caps%2C183&amp;sr=8-18&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=7a87e29080e646e0724447bbf546f538&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="coleshome l-förmiger schreibtisch" data-summary="kompakter l-schreibtisch von coleshome für kleine räume und arbeitsplätze." data-tags="homeoffice schreibtisch l-form möbel" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.150000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/71zkBKbEWcL._AC_SL1500_.jpg"
+    alt="Coleshome L-förmiger Schreibtisch"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Coleshome L-förmiger Schreibtisch</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€34.28</span>
+          
+          
+            <span class="deal-card__list">€40.33</span>
+          
+          
+            <span class="deal-card__badge">-15%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Kompakter L-Schreibtisch von Coleshome für kleine Räume und Arbeitsplätze.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#homeoffice</span><span class="deal-card__tag">#schreibtisch</span><span class="deal-card__tag">#l-form</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/Coleshome-Reversible-Compartment-Space-Saving-L-shaped/dp/B0FDB3Y1YT?crid=17MBAYEGKDHK4&amp;dib=eyJ2IjoiMSJ9.OTJhPz7OZJf0Il6lZbImqQAmLPir2RK-DgHjO2beVEP-HqKrxymi7nJL6S_PINy57yzMYH_10ZdJC9I_Zp6jR6LeXVldRMTmOc6ntVVhAICz0O8_ifrV_0DwHVdpzkXd9xmE0CMnd5Wuu4X8eWLaICcGKccKx1VFdn-24v7axg0X-QmmGyrNhZgTvudbS-2TyyvQwtcOyaqkXak8HWkt0BmPaRvNxHHTTmaqKIfND7dSMVD-iQdqC8OGUXBpY4HwLi3X7XXnM2Z67YkY2Q9lyNcZtkPRqN8fTPjJzcD4PYI.Yf09rHJ3HsAiYO25aOZgh5gdvIL380RFANQHrjnPKas&amp;dib_tag=se&amp;keywords=desk&amp;qid=1777323232&amp;sprefix=desk%2Caps%2C138&amp;sr=8-11&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=ea148b2e7560fed05ed7f3b8b12db70c&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="vasagle höhenverstellbarer schreibtisch" data-summary="vasagle schreibtisch für homeoffice-setups mit gutem preis-leistungs-rabatt." data-tags="homeoffice schreibtisch möbel ergonomie" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.180000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/61mT7kKAvSL._AC_SL1500_.jpg"
+    alt="VASAGLE Höhenverstellbarer Schreibtisch"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">VASAGLE Höhenverstellbarer Schreibtisch</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€58.99</span>
+          
+          
+            <span class="deal-card__list">€71.99</span>
+          
+          
+            <span class="deal-card__badge">-18%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">Mehr Details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">VASAGLE Schreibtisch für Homeoffice-Setups mit gutem Preis-Leistungs-Rabatt.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#homeoffice</span><span class="deal-card__tag">#schreibtisch</span><span class="deal-card__tag">#möbel</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.de/-/en/VASAGLE-LSD310WZ03-Adjustable-Standing-Computer/dp/B0FSQL53S6?crid=17MBAYEGKDHK4&amp;dib=eyJ2IjoiMSJ9.OTJhPz7OZJf0Il6lZbImqQAmLPir2RK-DgHjO2beVEP-HqKrxymi7nJL6S_PINy57yzMYH_10ZdJC9I_Zp6jR6LeXVldRMTmOc6ntVVhAICz0O8_ifrV_0DwHVdpzkXd9xmE0CMnd5Wuu4X8eWLaICcGKccKx1VFdn-24v7axg0X-QmmGyrNhZgTvudbS-2TyyvQwtcOyaqkXak8HWkt0BmPaRvNxHHTTmaqKIfND7dSMVD-iQdqC8OGUXBpY4HwLi3X7XXnM2Z67YkY2Q9lyNcZtkPRqN8fTPjJzcD4PYI.Yf09rHJ3HsAiYO25aOZgh5gdvIL380RFANQHrjnPKas&amp;dib_tag=se&amp;keywords=desk&amp;qid=1777323232&amp;sprefix=desk%2Caps%2C138&amp;sr=8-10&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger05-21&amp;linkId=6487f5e15c5bcb3b4aa4f8bcf2ce05a9&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">Bei Amazon ansehen</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+    </div>
+  
+</section>
+
+<script type="module" src="/scripts/home-filter-rail.js?v=1777327096"></script>
+
+
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="site-footer__title" href="/de/" aria-label="Deal Ledger">
+        <img class="site-footer__logo" src="/images/brand/deal-ledger-logo.svg" alt="Deal Ledger" width="186" height="48" loading="lazy" decoding="async">
+      </a>
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer">
+      <a href="/de/about/">Über uns</a>
+      <a href="/de/privacy/">Datenschutz</a>
+      <a href="/de/disclosure/">Hinweis</a>
+    </nav>
+  </div>
+  <div class="site-footer__meta site-footer__meta--sub">
+    <span>&copy; Deal Ledger 2026</span>
+    <div class="site-footer__social"><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

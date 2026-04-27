@@ -80,7 +80,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -89,9 +89,22 @@
 
 
 
+
+
+
+
+
+
+  
+
+
+
 <header class="site-top site-top--section">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -107,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -182,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -216,161 +231,14 @@
 
     <main class="pb7" role="main">
       
+
+
+
 <section class="list-shell">
   <div class="list-shell__intro">
     <h1>Top savings</h1>
     <p>The strongest pages by discount depth, useful for readers who want the best-value picks first.</p>
   </div>
-  
-  
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
   
   
   
@@ -401,6 +269,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -534,6 +409,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -631,6 +513,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -764,6 +653,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -861,6 +757,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -994,6 +897,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1091,6 +1001,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1224,6 +1141,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1321,6 +1245,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1454,6 +1385,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1551,6 +1489,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1684,6 +1629,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1781,6 +1733,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1914,11 +1873,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="upgraded bluetooth turntable hi-fi" data-summary="hi-fi bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.229016" data-date="1776867143" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="upgraded bluetooth turntable hi-fi" data-summary="hi-fi bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.229016" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2011,6 +1977,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -2144,11 +2117,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="bookshelf speakers bluetooth turntable" data-summary="bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200260" data-date="1776867143" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="bookshelf speakers bluetooth turntable" data-summary="bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200260" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2259,11 +2239,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="bontec monitor stand riser" data-summary="desk monitor riser with storage shelf and ergonomic lift." data-tags="desk setup home office accessories" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.185700" data-date="1776806062" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="bontec monitor stand riser" data-summary="desk monitor riser with storage shelf and ergonomic lift." data-tags="desk setup home office accessories" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.185700" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2280,7 +2267,7 @@
 
 
   <img
-    src="https://m.media-amazon.com/images/I/81BuZYHIjLL._AC_SL1500_.jpg"
+    src="https://m.media-amazon.com/images/I/71aeCYu&#43;FpL._AC_SL1500_.jpg"
     alt="BONTEC Monitor Stand Riser"
     class=""
     loading="lazy"
@@ -2374,11 +2361,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="angels horn bluetooth record player" data-summary="bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.179226" data-date="1776867143" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="angels horn bluetooth record player" data-summary="bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.179226" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2471,6 +2465,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -2601,6 +2602,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -2677,6 +2685,8 @@
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

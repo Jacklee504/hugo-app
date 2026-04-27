@@ -82,7 +82,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-home">
     
@@ -91,9 +91,22 @@
 
 
 
+
+
+
+
+
+
+  
+
+
+
 <header class="site-top site-top--home">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -109,6 +122,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -184,17 +200,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -211,158 +226,6 @@
 
 
 
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-
-
-
-
 
 
   
@@ -445,8 +308,6 @@
   
 
   
-    
-  
 
   
     
@@ -477,6 +338,10 @@
   
 
   
+    
+  
+
+  
 
   
 
@@ -488,8 +353,6 @@
 
   
     
-  
-
   
 
   
@@ -747,6 +610,26 @@
     
   
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -776,7 +659,7 @@
 
 
   
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"AOC Gaming 25G3ZM/BK Monitor","position":1,"url":"https://dealledger.eu/deals/aoc-gaming-25g3zm-monitor/"},{"@type":"ListItem","name":"AOC Gaming C24G42E Monitor","position":2,"url":"https://dealledger.eu/deals/aoc-gaming-c24g42e-monitor/"},{"@type":"ListItem","name":"DH FitLife Space-Saving Treadmill","position":3,"url":"https://dealledger.eu/deals/dh-fitlife-space-saving-treadmill/"},{"@type":"ListItem","name":"ErGear Electric Standing Desk","position":4,"url":"https://dealledger.eu/deals/ergear-electric-standing-desk/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Recent deals","numberOfItems":4}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"BONTEC Monitor Stand Riser","position":1,"url":"https://dealledger.eu/deals/bontec-monitor-stand-riser/"},{"@type":"ListItem","name":"Bookshelf Speakers Bluetooth Turntable","position":2,"url":"https://dealledger.eu/deals/bookshelf-speakers-bluetooth-turntable/"},{"@type":"ListItem","name":"Angels Horn Bluetooth Record Player","position":3,"url":"https://dealledger.eu/deals/angels-horn-bluetooth-record-player/"},{"@type":"ListItem","name":"Upgraded Bluetooth Turntable Hi-Fi","position":4,"url":"https://dealledger.eu/deals/upgraded-bluetooth-turntable-hi-fi/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Recent deals","numberOfItems":4}</script>
 
 
 <section class="home-value-strip" aria-label="Deal Ledger highlights">
@@ -796,12 +679,7 @@
   <div class="home-filter-rail__row" data-home-filter-row>
     <button class="home-filter-rail__search-trigger" type="button" data-home-filter-search-toggle aria-expanded="false" aria-label="Open search">&#128269;</button>
     <div class="home-filter-rail__chips">
-      <a href="/deals/?q=audio">Audio</a>
-      <a href="/deals/?q=laptop">Laptops</a>
-      <a href="/deals/?q=monitor">Monitors</a>
-      <a href="/deals/?q=accessories">Accessories</a>
-      <a href="/deals/?q=gaming">Gaming</a>
-      <a href="/deals/?q=desk">Desk</a>
+      <a href="/deals/?q=audio">audio</a><a href="/deals/?q=gaming">gaming</a><a href="/deals/?q=home">home</a><a href="/deals/?q=accessories">accessories</a><a href="/deals/?q=turntable">turntable</a>
     </div>
     <form class="home-filter-rail__search-form" action="/deals/" method="get" role="search" data-home-filter-search-form>
       <input
@@ -851,6 +729,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -984,6 +869,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1099,6 +991,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1196,6 +1095,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1341,11 +1247,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="aoc gaming 25g3zm/bk monitor" data-summary="aoc high-refresh gaming monitor deal for competitive setups." data-tags="gaming monitor display aoc" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.415746" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="bontec monitor stand riser" data-summary="desk monitor riser with storage shelf and ergonomic lift." data-tags="desk setup home office accessories" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.185700" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1362,8 +1275,8 @@
 
 
   <img
-    src="https://m.media-amazon.com/images/I/610UddVp7LL._AC_SL1188_.jpg"
-    alt="AOC Gaming 25G3ZM/BK Monitor"
+    src="https://m.media-amazon.com/images/I/71aeCYu&#43;FpL._AC_SL1500_.jpg"
+    alt="BONTEC Monitor Stand Riser"
     class=""
     loading="lazy"
     decoding="async"
@@ -1377,17 +1290,17 @@
   <div class="deal-card__body">
     
       <div class="deal-card__stack">
-        <h3 class="deal-card__title">AOC Gaming 25G3ZM/BK Monitor</h3>
+        <h3 class="deal-card__title">BONTEC Monitor Stand Riser</h3>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row deal-card__price-row--compact">
           
-            <span class="deal-card__sale">€117.18</span>
+            <span class="deal-card__sale">€20.35</span>
           
           
-            <span class="deal-card__list">€200.56</span>
+            <span class="deal-card__list">€24.99</span>
           
           
-            <span class="deal-card__badge">-42%</span>
+            <span class="deal-card__badge">-19%</span>
           
         </div>
         <div class="deal-card__divider"></div>
@@ -1395,17 +1308,17 @@
           <summary class="deal-card__details-toggle">More details</summary>
           <div class="deal-card__details-body">
             
-              <p class="deal-card__details-summary">AOC high-refresh gaming monitor deal for competitive setups.</p>
+              <p class="deal-card__details-summary">Desk monitor riser with storage shelf and ergonomic lift.</p>
             
             
               <div class="deal-card__tags">
-                <span class="deal-card__tag">#gaming</span><span class="deal-card__tag">#monitor</span><span class="deal-card__tag">#display</span>
+                <span class="deal-card__tag">#desk setup</span><span class="deal-card__tag">#home office</span><span class="deal-card__tag">#accessories</span>
               </div>
             
           </div>
         </details>
         
-          <a class="deal-card__cta" href="https://www.amazon.ie/AOC-Gaming-25G3ZM-BK-DisplayPort/dp/B0BGCG4NJM?crid=U9PO5QF85DY6&amp;dib=eyJ2IjoiMSJ9.U61QKdhpEHlLvOB5IJtmUPiMA09gqLfjlp_WA_EvuodciwdEh1jOcGIupvgPQrlU6NsHUWVbgFMK7Iqx0gFzVXcwZ585zYsKFIiM7cQ03Ww2QDwcSD-BdjiQkOp8dT2MMIBCYDOiA6lMUzSsEVKqzol2VXQXcwrZRCvDbfsXRcb-m0LnC_lWFDugR8DbjLwOCWwlex0MFiOSvgdfH2RJNYSWkD6ytmxL72VML_WBI1LfKFeDQv19CSiMMw3Q-pJcQc9VwA0S5hQBL1No-CDkWrjlyTJKy444IBDdyyFV13w.PxvyJS1PLghPGwSccUL5lKb_Hfs5ev8AwXi_PVJDDlo&amp;dib_tag=se&amp;keywords=gaming&amp;qid=1776877267&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=ga%2Caps%2C483&amp;sr=8-46&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=36f2efb56de579f251a3c1c039994089&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+          <a class="deal-card__cta" href="https://www.amazon.ie/BONTEC-Monitor-Platform-Ergonomic-Organiser/dp/B01M4S7ZGM?pf_rd_r=3YQXTWG4JDCRVA8WB51F&amp;pf_rd_p=d73fcff6-4492-4857-9389-5cfcb522e91d&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=dd0a7c2aebcc3893ab9a779aef0c240e&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
         
       </div>
     
@@ -1456,11 +1369,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="aoc gaming c24g42e monitor" data-summary="aoc gaming monitor deal for fast-refresh 1080p setups." data-tags="gaming monitor display aoc" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.294767" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="bookshelf speakers bluetooth turntable" data-summary="bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200260" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1477,8 +1397,8 @@
 
 
   <img
-    src="https://m.media-amazon.com/images/I/71n-xi2secL._AC_SL1500_.jpg"
-    alt="AOC Gaming C24G42E Monitor"
+    src="https://m.media-amazon.com/images/I/61FHrb1t5bL._AC_SL1500_.jpg"
+    alt="Bookshelf Speakers Bluetooth Turntable"
     class=""
     loading="lazy"
     decoding="async"
@@ -1492,17 +1412,17 @@
   <div class="deal-card__body">
     
       <div class="deal-card__stack">
-        <h3 class="deal-card__title">AOC Gaming C24G42E Monitor</h3>
+        <h3 class="deal-card__title">Bookshelf Speakers Bluetooth Turntable</h3>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row deal-card__price-row--compact">
           
-            <span class="deal-card__sale">€83.95</span>
+            <span class="deal-card__sale">€215.65</span>
           
           
-            <span class="deal-card__list">€119.04</span>
+            <span class="deal-card__list">€269.65</span>
           
           
-            <span class="deal-card__badge">-29%</span>
+            <span class="deal-card__badge">-20%</span>
           
         </div>
         <div class="deal-card__divider"></div>
@@ -1510,17 +1430,17 @@
           <summary class="deal-card__details-toggle">More details</summary>
           <div class="deal-card__details-body">
             
-              <p class="deal-card__details-summary">AOC gaming monitor deal for fast-refresh 1080p setups.</p>
+              <p class="deal-card__details-summary">Bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout.</p>
             
             
               <div class="deal-card__tags">
-                <span class="deal-card__tag">#gaming</span><span class="deal-card__tag">#monitor</span><span class="deal-card__tag">#display</span>
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
               </div>
             
           </div>
         </details>
         
-          <a class="deal-card__cta" href="https://www.amazon.ie/AOC-Gaming-C24G42E-1920x1080-DisplayPort/dp/B0DXFNTPBG?crid=U9PO5QF85DY6&amp;dib=eyJ2IjoiMSJ9.U61QKdhpEHlLvOB5IJtmUPiMA09gqLfjlp_WA_EvuodciwdEh1jOcGIupvgPQrlU6NsHUWVbgFMK7Iqx0gFzVXcwZ585zYsKFIiM7cQ03Ww2QDwcSD-BdjiQkOp8dT2MMIBCYDOiA6lMUzSsEVKqzol2VXQXcwrZRCvDbfsXRcb-m0LnC_lWFDugR8DbjLwOCWwlex0MFiOSvgdfH2RJNYSWkD6ytmxL72VML_WBI1LfKFeDQv19CSiMMw3Q-pJcQc9VwA0S5hQBL1No-CDkWrjlyTJKy444IBDdyyFV13w.PxvyJS1PLghPGwSccUL5lKb_Hfs5ev8AwXi_PVJDDlo&amp;dib_tag=se&amp;keywords=gaming&amp;qid=1776877267&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=ga%2Caps%2C483&amp;sr=8-41&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=1c3190300ba3cd1b2bdfc3a31a617bee&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+          <a class="deal-card__cta" href="https://www.amazon.ie/Bookshelf-Speakers-Bluetooth-Turntable-Cartridge/dp/B09P8LXKXV?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-10&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=8b8d2fab19a27b7619c4537df1da7063&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
         
       </div>
     
@@ -1571,11 +1491,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="dh fitlife space-saving treadmill" data-summary="space-saving treadmill deal for home workouts." data-tags="fitness treadmill home" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.511552" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="angels horn bluetooth record player" data-summary="bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.179226" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1592,8 +1519,8 @@
 
 
   <img
-    src="https://m.media-amazon.com/images/I/71BcsQtH7GL._AC_SL1500_.jpg"
-    alt="DH FitLife Space-Saving Treadmill"
+    src="https://m.media-amazon.com/images/I/717dC60IWKL._AC_SL1500_.jpg"
+    alt="Angels Horn Bluetooth Record Player"
     class=""
     loading="lazy"
     decoding="async"
@@ -1607,17 +1534,17 @@
   <div class="deal-card__body">
     
       <div class="deal-card__stack">
-        <h3 class="deal-card__title">DH FitLife Space-Saving Treadmill</h3>
+        <h3 class="deal-card__title">Angels Horn Bluetooth Record Player</h3>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row deal-card__price-row--compact">
           
-            <span class="deal-card__sale">€84.99</span>
+            <span class="deal-card__sale">€206.08</span>
           
           
-            <span class="deal-card__list">€174.00</span>
+            <span class="deal-card__list">€251.08</span>
           
           
-            <span class="deal-card__badge">-51%</span>
+            <span class="deal-card__badge">-18%</span>
           
         </div>
         <div class="deal-card__divider"></div>
@@ -1625,17 +1552,17 @@
           <summary class="deal-card__details-toggle">More details</summary>
           <div class="deal-card__details-body">
             
-              <p class="deal-card__details-summary">Space-saving treadmill deal for home workouts.</p>
+              <p class="deal-card__details-summary">Bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout.</p>
             
             
               <div class="deal-card__tags">
-                <span class="deal-card__tag">#fitness</span><span class="deal-card__tag">#treadmill</span><span class="deal-card__tag">#home</span>
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
               </div>
             
           </div>
         </details>
         
-          <a class="deal-card__cta" href="https://www.amazon.ie/DH-FitLife-Space-Saving-Treadmill-Extended/dp/B0G2T28D2J?crid=27L5O9ZC59ZN7&amp;dib=eyJ2IjoiMSJ9._RVjLta-__iwYfoKaXWwTAT8sc-Xg2z2I1WoTnbCAgTXa1Km4Lolt4PzX0y6AAvQDR21ffpAUy8cyaRyN6RFEjwSXvRG5Zs-P8b6PsdmkyYmwawXx26-frzT0qK10qStLJIsQwZrAOWxeM9ysHV69YAMvzspKEL9rH7jRjh9XZxrGKaKwVImEp2tuLoOaW-tDWhLPLcYHcfhAx0M688M5sYFjiYdvB7Qyfyq5d1KnamOSwH-wtN0cZ7E4xW-MZaNW4pHAy1sR-7Nivw5iu14M7qHK7JxPNNarQOSJEdZWrk.gx8SRjRFrdfElP0bMzZJN1_yr8Qe56BXCBOwahzvA8s&amp;dib_tag=se&amp;keywords=home&#43;office&amp;qid=1776877674&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=home&#43;offic%2Caps%2C256&amp;sr=8-27&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=222703155ba10af0a9119489e6346977&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+          <a class="deal-card__cta" href="https://www.amazon.ie/Angels-Bluetooth-Record-Player-Built/dp/B0BNBNMTDR?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-9&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=7a6846fe5a3ab9ae64fd8d97cbc07df7&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
         
       </div>
     
@@ -1686,11 +1613,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="ergear electric standing desk" data-summary="electric height-adjustable standing desk deal for home office setups." data-tags="desk office standing-desk ergonomic" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.223060" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="upgraded bluetooth turntable hi-fi" data-summary="hi-fi bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.229016" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1707,8 +1641,8 @@
 
 
   <img
-    src="https://m.media-amazon.com/images/I/615nQaS3rvL._AC_SL1500_.jpg"
-    alt="ErGear Electric Standing Desk"
+    src="https://m.media-amazon.com/images/I/71Krfogj2OL._AC_SL1500_.jpg"
+    alt="Upgraded Bluetooth Turntable Hi-Fi"
     class=""
     loading="lazy"
     decoding="async"
@@ -1722,17 +1656,17 @@
   <div class="deal-card__body">
     
       <div class="deal-card__stack">
-        <h3 class="deal-card__title">ErGear Electric Standing Desk</h3>
+        <h3 class="deal-card__title">Upgraded Bluetooth Turntable Hi-Fi</h3>
         <div class="deal-card__divider"></div>
         <div class="deal-card__price-row deal-card__price-row--compact">
           
-            <span class="deal-card__sale">€70.00</span>
+            <span class="deal-card__sale">€144.76</span>
           
           
-            <span class="deal-card__list">€90.11</span>
+            <span class="deal-card__list">€187.76</span>
           
           
-            <span class="deal-card__badge">-22%</span>
+            <span class="deal-card__badge">-23%</span>
           
         </div>
         <div class="deal-card__divider"></div>
@@ -1740,17 +1674,17 @@
           <summary class="deal-card__details-toggle">More details</summary>
           <div class="deal-card__details-body">
             
-              <p class="deal-card__details-summary">Electric height-adjustable standing desk deal for home office setups.</p>
+              <p class="deal-card__details-summary">Hi-fi Bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout.</p>
             
             
               <div class="deal-card__tags">
-                <span class="deal-card__tag">#desk</span><span class="deal-card__tag">#office</span><span class="deal-card__tag">#standing-desk</span>
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
               </div>
             
           </div>
         </details>
         
-          <a class="deal-card__cta" href="https://www.amazon.ie/ErGear-Electric-Standing-Height-Adjustable/dp/B0D9MGDDHD?crid=27L5O9ZC59ZN7&amp;dib=eyJ2IjoiMSJ9.Rl7gksa1499McNTxEMiVCiExXdlp_ujNfJ2WputbamQ5rMysTrfHo4-GwvKqCkspGBJcbq0MOUgGwoOxtVggoS4T1gihAX4ZaBpJSUB938Gjgls7ql487hthmReHN0mlxuRRdAhWTQe_e6a6ATm-ZFs_oabOscD1PrJNgZImQbW515DKRIDF3oKCK82RktV_lJ6TqzLtl3U6CKUxmM0tASRS9fs9lwqufXB6B0-sG51JMEohGXt2kxZ4zGphPnzWtEp6c1t-6bLhLiLkuq71NTFfaycJmuW9kB4ZWuafGj0.iY9TQ8TDKiTCLvCNZ08mBGFI4rh23-UffFhZyyJOCVw&amp;dib_tag=se&amp;keywords=home%2Boffice&amp;qid=1776877427&amp;sprefix=home%2Boffic%2Caps%2C256&amp;sr=8-6&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=7e322ff240a8f4e26eaba63330696427&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+          <a class="deal-card__cta" href="https://www.amazon.ie/Upgraded-Bluetooth-Turntable-Fidelity-Cartridge/dp/B09P8GPDHP?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-7&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=5814b5368679e9705d4ae6f1bb7439b3&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
         
       </div>
     
@@ -1762,11 +1696,13 @@
   
 </section>
 
-<script type="module" src="/scripts/home-filter-rail.js?v=1776883855"></script>
+<script type="module" src="/scripts/home-filter-rail.js?v=1777327096"></script>
 
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

@@ -80,12 +80,22 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327097">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
 
 
+
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -98,9 +108,8 @@
   
   
   
-    
-    
-    
+  
+  
   
   <div class="flex-l center items-center justify-between nav-shell">
     <a href="/us/" class="nav-brand no-underline" aria-label="Deal Ledger">
@@ -111,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" >EU</option>
           <option value="us" selected>US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -186,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -210,148 +221,6 @@
     <main class="pb7" role="main">
       
 <section class="deals-shell list-shell--deals">
-  
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
   
   
     
@@ -719,6 +588,628 @@
 
 
 
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="levoit core mini air purifier" data-summary="compact levoit air purifier deal for desks, bedrooms, and offices." data-tags="home air-purifier office levoit" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.200440" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/71wGv7Fh2AL._AC_SL1500_.jpg"
+    alt="LEVOIT Core Mini Air Purifier"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">LEVOIT Core Mini Air Purifier</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$39.97</span>
+          
+          
+            <span class="deal-card__list">$49.99</span>
+          
+          
+            <span class="deal-card__badge">-20%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Compact LEVOIT air purifier deal for desks, bedrooms, and offices.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#home</span><span class="deal-card__tag">#air-purifier</span><span class="deal-card__tag">#office</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/LEVOIT-Purifiers-Freshener-Core-Mini/dp/B09GTRVJQM?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.wDVrOeRu9cm5047VCAFoHIZEe4qeljJhUmypmr2MnTE.qiQybxod8vacfDdgeVNGwllRnKwT0KBuKostExhUxrs&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878587&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-20&amp;xpid=aZWeNbVGevO43&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=4e9df5f7bca1a54d5e873ce344ac69c9&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="opnice desk organizers and accessories" data-summary="desk organizer set deal for cleaner office workspace setups." data-tags="desk organizer office accessories" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.333444" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg"
+    alt="OPNICE Desk Organizers and Accessories"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">OPNICE Desk Organizers and Accessories</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$19.99</span>
+          
+          
+            <span class="deal-card__list">$29.99</span>
+          
+          
+            <span class="deal-card__badge">-33%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Desk organizer set deal for cleaner office workspace setups.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#desk</span><span class="deal-card__tag">#organizer</span><span class="deal-card__tag">#office</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/OPNICE-Organizers-Accessories-Organizer-Workspace/dp/B0DB8F7GDN?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.G2_HEmOdEaN_xud4oHAe9mZKeC8NLxaKBPvPsjJL97UggWxwlprff5t0WY5xRQsIczPyWwpaDZbKml1opvsk16dB0v2pntKbLeeyyGVsjOlTv_tx0USfaXMzSJcQi5RrH-qOUDtuJeBSAlwCaeEbkJc1DB5jHiRAlgIBlrOy1Ib76WxrcZ3ZqnGE1EMuwC4Qvh5sjiCeNcnyUo8jon9Az6fCclgeKPgu-_Y1bJMTTew.mT9vO0syFIc5ws-8RZh7VS73sHcOQqOmJ7-WqAz60lg&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878391&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-8&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=4d457b84e51e7e1d326f23cf1d33eb49&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="sceptre 27-inch fhd monitor" data-summary="27-inch fhd monitor deal for work and gaming setups." data-tags="monitor display fhd sceptre" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.203302" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/71jdr9u9YhL._AC_SL1500_.jpg"
+    alt="Sceptre 27-inch FHD Monitor"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Sceptre 27-inch FHD Monitor</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$97.97</span>
+          
+          
+            <span class="deal-card__list">$122.97</span>
+          
+          
+            <span class="deal-card__badge">-20%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">27-inch FHD monitor deal for work and gaming setups.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#monitor</span><span class="deal-card__tag">#display</span><span class="deal-card__tag">#fhd</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/Sceptre-DisplayPort-FreeSync-Frameless-E275W-FW100T/dp/B0CHHSFMRL?crid=1QJB8GY0XXNN3&amp;dib=eyJ2IjoiMSJ9.xbPWrjXwaW82FlSQGaGScHz3fh_lDnY98wZbw8ACHurD5fZ6JCh8OmCfQx_qFSatseFHnrCuIqcz7zbpodzQXvJiOMenow3o2PmsfznHArFAaJOJKPT-zlO-eeoPhTks8uH2gQkWEgK8svYLPuVHtt6Sl5qKVdCA8j-J1hOFIT52_ra-PnKuaniErig0tTCnhc8FE_tyv4DwYiJpsBSxNnTtPpH5diNWbYQA3PvGxVY.sA1olxn-JQ49S3tegR6Im9XPazol4C4iyBbCQHzUok8&amp;dib_tag=se&amp;keywords=monitor&amp;qid=1776879137&amp;sprefix=monito%2Caps%2C646&amp;sr=8-20&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=cf43fb8a96260fdfd4280be2e6890d4f&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="simple trending vertical file organizer" data-summary="vertical file organizer deal to tidy desk documents and folders." data-tags="desk organizer office files" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.189343" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/91AUT7AZwJL._AC_SL1500_.jpg"
+    alt="Simple Trending Vertical File Organizer"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Simple Trending Vertical File Organizer</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$29.97</span>
+          
+          
+            <span class="deal-card__list">$36.97</span>
+          
+          
+            <span class="deal-card__badge">-19%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Vertical file organizer deal to tidy desk documents and folders.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#desk</span><span class="deal-card__tag">#organizer</span><span class="deal-card__tag">#office</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/Simple-Trending-Organizer-Vertical-Document/dp/B07R7FZ6RG?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.4Hl6C8B7LBf22trZGA0I2V-BQnW8p-WitpoHoxkuYzVkBuaFf9ODOyr4YFUY0X-vusj2j40NHVg7Hqr9hsNSwXgfYDU1uZ2sFW5rBdl8hkLjV2gnVLEMVOqLeYrBCRuXKfe54zzAjFHwByVIqY8-jD0QbeUzWENcjbmrJqd7d1b0P44M8ASpjnHqNFww3tww6im_HGLZVXWMSfIplWrb0A.2mntPmFJEbv1SaC-0hO4XDiHtB4fxRcPo9KXQb_nBQ0&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878587&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-18&amp;xpid=aZWeNbVGevO43&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=7a19703b653f988ef3e32aa52374fd8b&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="ray-ban meta wayfarer smart glasses" data-summary="ray-ban meta wayfarer smart glasses with camera capture and open-ear audio." data-tags="wearables audio camera" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.250000" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/51GYi1kNaBL._SL1500_.jpg"
+    alt="Ray-Ban Meta Wayfarer Smart Glasses"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Ray-Ban Meta Wayfarer Smart Glasses</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$246.75</span>
+          
+          
+            <span class="deal-card__list">$329.00</span>
+          
+          
+            <span class="deal-card__badge">-25%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Ray-Ban Meta Wayfarer smart glasses with camera capture and open-ear audio.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#wearables</span><span class="deal-card__tag">#audio</span><span class="deal-card__tag">#camera</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/Ray-Ban-Glasses-Wayfarer-Capture-high-def-photos/dp/B0CGXYVQ1P?&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=a6353d2a4fff23255069390e81e0de66&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
@@ -832,11 +1323,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="jbl vibe beam wireless earbuds" data-summary="jbl wireless earbuds listing for audio deals tracking." data-tags="audio earbuds wireless jbl" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="%!f(int=000000)" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="jbl vibe beam wireless earbuds" data-summary="jbl wireless earbuds listing for audio deals tracking." data-tags="audio earbuds wireless jbl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="%!f(int=000000)" data-date="1776883782" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -935,463 +1433,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="levoit core mini air purifier" data-summary="compact levoit air purifier deal for desks, bedrooms, and offices." data-tags="home air-purifier office levoit" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.200440" data-date="1776883782" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/71wGv7Fh2AL._AC_SL1500_.jpg"
-    alt="LEVOIT Core Mini Air Purifier"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">LEVOIT Core Mini Air Purifier</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$39.97</span>
-          
-          
-            <span class="deal-card__list">$49.99</span>
-          
-          
-            <span class="deal-card__badge">-20%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Compact LEVOIT air purifier deal for desks, bedrooms, and offices.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#home</span><span class="deal-card__tag">#air-purifier</span><span class="deal-card__tag">#office</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/LEVOIT-Purifiers-Freshener-Core-Mini/dp/B09GTRVJQM?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.wDVrOeRu9cm5047VCAFoHIZEe4qeljJhUmypmr2MnTE.qiQybxod8vacfDdgeVNGwllRnKwT0KBuKostExhUxrs&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878587&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-20&amp;xpid=aZWeNbVGevO43&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=4e9df5f7bca1a54d5e873ce344ac69c9&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="opnice desk organizers and accessories" data-summary="desk organizer set deal for cleaner office workspace setups." data-tags="desk organizer office accessories" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.333444" data-date="1776883782" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg"
-    alt="OPNICE Desk Organizers and Accessories"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">OPNICE Desk Organizers and Accessories</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$19.99</span>
-          
-          
-            <span class="deal-card__list">$29.99</span>
-          
-          
-            <span class="deal-card__badge">-33%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Desk organizer set deal for cleaner office workspace setups.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#desk</span><span class="deal-card__tag">#organizer</span><span class="deal-card__tag">#office</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/OPNICE-Organizers-Accessories-Organizer-Workspace/dp/B0DB8F7GDN?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.G2_HEmOdEaN_xud4oHAe9mZKeC8NLxaKBPvPsjJL97UggWxwlprff5t0WY5xRQsIczPyWwpaDZbKml1opvsk16dB0v2pntKbLeeyyGVsjOlTv_tx0USfaXMzSJcQi5RrH-qOUDtuJeBSAlwCaeEbkJc1DB5jHiRAlgIBlrOy1Ib76WxrcZ3ZqnGE1EMuwC4Qvh5sjiCeNcnyUo8jon9Az6fCclgeKPgu-_Y1bJMTTew.mT9vO0syFIc5ws-8RZh7VS73sHcOQqOmJ7-WqAz60lg&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878391&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-8&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=4d457b84e51e7e1d326f23cf1d33eb49&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="sceptre 27-inch fhd monitor" data-summary="27-inch fhd monitor deal for work and gaming setups." data-tags="monitor display fhd sceptre" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.203302" data-date="1776883782" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/71jdr9u9YhL._AC_SL1500_.jpg"
-    alt="Sceptre 27-inch FHD Monitor"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">Sceptre 27-inch FHD Monitor</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$97.97</span>
-          
-          
-            <span class="deal-card__list">$122.97</span>
-          
-          
-            <span class="deal-card__badge">-20%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">27-inch FHD monitor deal for work and gaming setups.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#monitor</span><span class="deal-card__tag">#display</span><span class="deal-card__tag">#fhd</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/Sceptre-DisplayPort-FreeSync-Frameless-E275W-FW100T/dp/B0CHHSFMRL?crid=1QJB8GY0XXNN3&amp;dib=eyJ2IjoiMSJ9.xbPWrjXwaW82FlSQGaGScHz3fh_lDnY98wZbw8ACHurD5fZ6JCh8OmCfQx_qFSatseFHnrCuIqcz7zbpodzQXvJiOMenow3o2PmsfznHArFAaJOJKPT-zlO-eeoPhTks8uH2gQkWEgK8svYLPuVHtt6Sl5qKVdCA8j-J1hOFIT52_ra-PnKuaniErig0tTCnhc8FE_tyv4DwYiJpsBSxNnTtPpH5diNWbYQA3PvGxVY.sA1olxn-JQ49S3tegR6Im9XPazol4C4iyBbCQHzUok8&amp;dib_tag=se&amp;keywords=monitor&amp;qid=1776879137&amp;sprefix=monito%2Caps%2C646&amp;sr=8-20&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=cf43fb8a96260fdfd4280be2e6890d4f&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="simple trending vertical file organizer" data-summary="vertical file organizer deal to tidy desk documents and folders." data-tags="desk organizer office files" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.189343" data-date="1776883782" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/91AUT7AZwJL._AC_SL1500_.jpg"
-    alt="Simple Trending Vertical File Organizer"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">Simple Trending Vertical File Organizer</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$29.97</span>
-          
-          
-            <span class="deal-card__list">$36.97</span>
-          
-          
-            <span class="deal-card__badge">-19%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Vertical file organizer deal to tidy desk documents and folders.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#desk</span><span class="deal-card__tag">#organizer</span><span class="deal-card__tag">#office</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/Simple-Trending-Organizer-Vertical-Document/dp/B07R7FZ6RG?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.4Hl6C8B7LBf22trZGA0I2V-BQnW8p-WitpoHoxkuYzVkBuaFf9ODOyr4YFUY0X-vusj2j40NHVg7Hqr9hsNSwXgfYDU1uZ2sFW5rBdl8hkLjV2gnVLEMVOqLeYrBCRuXKfe54zzAjFHwByVIqY8-jD0QbeUzWENcjbmrJqd7d1b0P44M8ASpjnHqNFww3tww6im_HGLZVXWMSfIplWrb0A.2mntPmFJEbv1SaC-0hO4XDiHtB4fxRcPo9KXQb_nBQ0&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878587&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-18&amp;xpid=aZWeNbVGevO43&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=7a19703b653f988ef3e32aa52374fd8b&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
 
 
 
@@ -1526,6 +1567,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1624,6 +1672,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1758,6 +1813,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1856,6 +1918,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1990,6 +2059,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -2088,6 +2164,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -2222,115 +2305,6 @@
 
 
 
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="ray-ban meta wayfarer smart glasses" data-summary="ray-ban meta wayfarer smart glasses with camera capture and open-ear audio." data-tags="wearables audio camera" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.250000" data-date="1776806062" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/51GYi1kNaBL._SL1500_.jpg"
-    alt="Ray-Ban Meta Wayfarer Smart Glasses"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">Ray-Ban Meta Wayfarer Smart Glasses</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$246.75</span>
-          
-          
-            <span class="deal-card__list">$329.00</span>
-          
-          
-            <span class="deal-card__badge">-25%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Ray-Ban Meta Wayfarer smart glasses with camera capture and open-ear audio.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#wearables</span><span class="deal-card__tag">#audio</span><span class="deal-card__tag">#camera</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/Ray-Ban-Glasses-Wayfarer-Capture-high-def-photos/dp/B0CGXYVQ1P?&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=a6353d2a4fff23255069390e81e0de66&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2454,6 +2428,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -2528,7 +2509,7 @@
         
       </div>
     </section>
-    <script type="module" src="/scripts/deals-search.js?v=1776883855"></script>
+    <script type="module" src="/scripts/deals-search.js?v=1777327097"></script>
   
 </section>
 
@@ -2541,7 +2522,8 @@
   
   
   
-    
+  
+  
     
     
     

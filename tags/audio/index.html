@@ -82,7 +82,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327097">
 
   </head><body class="ma0 avenir bg-near-white production is-term">
     
@@ -91,9 +91,20 @@
 
 
 
+
+
+
+
+
+
+
+
 <header class="site-top site-top--section">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -109,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -184,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -217,6 +230,60 @@
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Deals</span>
+    <h1 class="f3 near-black">
+      <a href="/deals/sony-wh-ch720n-headphones-de/" class="link black dim">
+        Sony WH-CH720N Bluetooth-Kopfhörer
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Sony Over-Ear-Kopfhörer mit Noise Cancelling und attraktivem Rabatt.
+    </div>
+    <a href="/deals/sony-wh-ch720n-headphones-de/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Deals</span>
+    <h1 class="f3 near-black">
+      <a href="/deals/soundcore-p20i-wireless-earbuds-de/" class="link black dim">
+        soundcore P20i Bluetooth In-Ear-Kopfhörer
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Preiswerte soundcore In-Ears mit Bluetooth und solider Ersparnis auf Amazon DE.
+    </div>
+    <a href="/deals/soundcore-p20i-wireless-earbuds-de/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Deals</span>
+    <h1 class="f3 near-black">
+      <a href="/deals/apple-airpods-4-de/" class="link black dim">
+        Apple AirPods 4
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      Apple AirPods 4 mit Bluetooth und personalisiertem Audio zu stark reduziertem Preis.
+    </div>
+    <a href="/deals/apple-airpods-4-de/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">
@@ -344,60 +411,6 @@
 
         </div>
       
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Deals</span>
-    <h1 class="f3 near-black">
-      <a href="/deals/ray-ban-meta-wayfarer-smart-glasses/" class="link black dim">
-        Ray-Ban Meta Wayfarer Smart Glasses
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Ray-Ban Meta Wayfarer smart glasses with camera capture and open-ear audio.
-    </div>
-    <a href="/deals/ray-ban-meta-wayfarer-smart-glasses/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Deals</span>
-    <h1 class="f3 near-black">
-      <a href="/deals/soundcore-life-q30-noise-cancelling-headphones/" class="link black dim">
-        Soundcore Life Q30 Noise-Cancelling Headphones
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Wireless over-ear ANC headphones with strong battery life and comfort-first design.
-    </div>
-    <a href="/deals/soundcore-life-q30-noise-cancelling-headphones/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
-        <div class="w-100 w-30-l mb4 relative bg-white">
-          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
-  <div class="mb3 pa4 gray overflow-hidden bg-white">
-    <span class="f6 db">Deals</span>
-    <h1 class="f3 near-black">
-      <a href="/deals/noise-cancelling-over-ears/" class="link black dim">
-        Noise-cancelling over-ears
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Wireless Sony ANC headphones with long battery life.
-    </div>
-    <a href="/deals/noise-cancelling-over-ears/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-  </div>
-</div>
-
-        </div>
-      
     </section>
     
     <ul class="pagination pagination-default">
@@ -423,6 +436,8 @@
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

@@ -80,7 +80,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -89,9 +89,22 @@
 
 
 
+
+
+
+
+
+
+  
+
+
+
 <header class="site-top site-top--section">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -107,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -182,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -200,14 +215,10 @@
 </script>
 
     
-      <div class="site-top__intro">
+      <div class="site-top__intro site-top__intro--alerts">
         <h1 class="site-top__title">
           Category Alerts
         </h1>
-        
-          <p class="site-top__description">
-            Join the waitlist for focused email alerts by category.
-          </p>
         
       </div>
     
@@ -217,13 +228,65 @@
     <main class="pb7" role="main">
       
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <section class="alerts-shell">
-  <h1>Email alerts</h1>
-  <p class="page-copy">Tell us how often you want updates, then fill the matching section below.</p>
+  <h1 class="alerts-shell__title">Email alerts</h1>
+  <p class="page-copy alerts-shell__intro">Tell us how often you want updates, then fill the matching section below.</p>
 
   <form class="alert-form" id="alert-request-form" name="alert-request" action="https://formspree.io/f/mgopnyjd" method="POST" data-formspree-endpoint="https://formspree.io/f/mgopnyjd">
     <input type="hidden" name="_subject" value="New Deal Ledger alert request">
-    <p hidden><label>Leave this empty if you're human: <input name="_gotcha"></label></p>
+    <p hidden><label>Leave this empty if you&amp;#39;re human: <input name="_gotcha"></label></p>
 
     <section class="alert-form__section alert-form__split">
       <h2 class="alert-form__heading alert-form__heading--span">Where should we send updates?</h2>
@@ -270,9 +333,7 @@
           <ul class="country-combobox__list" id="country-options" role="listbox" hidden></ul>
         </div>
         <div class="alert-inline-popup" id="country-info-popup" role="dialog" aria-modal="false" hidden>
-          <p>
-            Some countries are not fully set up yet for all alert types. You can still submit now, and we are actively rolling support out as quickly as possible.
-          </p>
+          <p>Some countries are not fully set up yet for all alert types. You can still submit now, and we are actively rolling support out as quickly as possible.</p>
           <button type="button" class="alert-inline-popup__close" id="country-info-close">Got it</button>
         </div>
       </div>
@@ -295,7 +356,7 @@
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> Audio</span><small>Headphones, speakers, and everyday listening gear.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="home_office"> Home office</span><small>Monitors, mice, keyboards, and desk setup upgrades.</small></label>
           <label><span class="alert-option__row"><input type="checkbox" name="categories" value="gaming"> Gaming</span><small>PC and console accessories and components.</small></label>
-          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="tv"> TV & streaming</span><small>Streaming sticks, soundbars, and TV extras.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="tv"> TV &amp;amp; streaming</span><small>Streaming sticks, soundbars, and TV extras.</small></label>
         </div>
       </div>
 
@@ -354,8 +415,24 @@
     const countryOptionsList = document.getElementById('country-options');
     const mobileKeywordsMedia = window.matchMedia('(max-width: 42rem)');
     const coarsePointerMedia = window.matchMedia('(hover: none) and (pointer: coarse)');
-    const defaultKeywordsPlaceholder = 'Examples: over-ear headphones, ultrawide monitor';
-    const mobileKeywordsPlaceholder = 'Eg: monitor, headphone';
+    const defaultCountry = '';
+    const minCountryQueryChars = 2;
+    const locale = "en";
+    const cadenceInstantValue = "Instant exact-item alerts";
+    const defaultKeywordsPlaceholder = "Examples: over-ear headphones, ultrawide monitor";
+    const mobileKeywordsPlaceholder = "Eg: monitor, headphone";
+    const submitDefaultText = "Send alert request";
+    const submitExactText = "Send exact-item request";
+    const notConfiguredToast = "Form is not configured yet. Add your Formspree endpoint in hugo.toml.";
+    const countryRequiredToast = "Please choose your country from the list.";
+    const exactRequiredToast = "Add at least one exact item to track.";
+    const categoryOrKeywordsToast = "Choose a category or add keywords.";
+    const savedToast = "Your alert request was saved.";
+    const failedToast = "Could not save right now. Please try again.";
+    const emailMissingValidity = "Please enter your email address.";
+    const emailInvalidValidity = "Please enter a valid email address.";
+    const countryValidityRequired = "Please choose your country.";
+    const countryValidityList = "Please choose a country from the list.";
 
     const closeCountryPopup = () => {
       if (!countryInfoPopup || !countryInfoTrigger) return;
@@ -414,19 +491,19 @@
 
     const categoryMeta = {
       audio: {
-        label: 'Audio',
+        label: "Audio",
         terms: ['audio', 'headphones', 'earbuds', 'earphones', 'speaker', 'speakers', 'soundbar', 'bluetooth', 'noise', 'anc', 'music']
       },
       home_office: {
-        label: 'Home office',
+        label: "Home office",
         terms: ['home office', 'office', 'desk', 'desk setup', 'workspace', 'productivity', 'monitor', 'ultrawide', 'display', 'mouse', 'keyboard', 'ergonomic']
       },
       gaming: {
-        label: 'Gaming',
+        label: "Gaming",
         terms: ['gaming', 'gamer', 'headset', 'pc build', 'pc components', 'motherboard', 'psu', 'keyboard', 'laptop']
       },
       tv: {
-        label: 'TV & streaming',
+        label: "TV &amp; streaming",
         terms: ['tv', 'television', 'streaming', 'fire tv', 'stick', 'soundbar', 'home theater']
       }
     };
@@ -495,7 +572,7 @@
     const buildCountryList = () => {
       try {
         if (typeof Intl !== 'undefined' && typeof Intl.DisplayNames === 'function' && typeof Intl.supportedValuesOf === 'function') {
-          const displayNames = new Intl.DisplayNames(['en'], { type: 'region' });
+          const displayNames = new Intl.DisplayNames([locale || 'en'], { type: 'region' });
           const seen = new Set();
           const built = Intl.supportedValuesOf('region')
             .filter((code) => /^[A-Z]{2}$/.test(code))
@@ -507,7 +584,7 @@
               seen.add(key);
               return true;
             })
-            .sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+            .sort((a, b) => a.name.localeCompare(b.name, locale || 'en', { sensitivity: 'base' }));
           if (built.length >= 180) return built;
         }
       } catch (error) {
@@ -523,8 +600,12 @@
     const renderCountryOptions = (query = '') => {
       if (!countryOptionsList || !countrySearchInput) return;
       const normalizedQuery = normalize(query);
-      filteredCountries = countries.filter((entry) => !normalizedQuery || normalize(entry.name).includes(normalizedQuery));
-      filteredCountries.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+      if (normalizedQuery.length < minCountryQueryChars) {
+        filteredCountries = [];
+      } else {
+        filteredCountries = countries.filter((entry) => normalize(entry.name).includes(normalizedQuery));
+      }
+      filteredCountries.sort((a, b) => a.name.localeCompare(b.name, locale || 'en', { sensitivity: 'base' }));
 
       const visibleCountries = filteredCountries;
       countryOptionsList.innerHTML = '';
@@ -666,7 +747,7 @@
         window.setTimeout(() => {
           const typed = countrySearchInput.value.trim();
           if (!typed) {
-            countrySearchInput.setCustomValidity('Please choose your country.');
+            countrySearchInput.setCustomValidity(countryValidityRequired);
             return;
           }
           if (coarsePointerMedia.matches) {
@@ -683,7 +764,7 @@
           if (first) {
             selectCountry(first);
           } else {
-            countrySearchInput.setCustomValidity('Please choose a country from the list.');
+            countrySearchInput.setCustomValidity(countryValidityList);
           }
           closeCountryOptions();
         }, 100);
@@ -748,7 +829,7 @@
       return scored.slice(0, 4).map((entry) => entry.key);
     };
 
-    const isInstantMode = () => (cadenceInput ? cadenceInput.value === 'Instant exact-item alerts' : false);
+    const isInstantMode = () => (cadenceInput ? cadenceInput.value === cadenceInstantValue : false);
 
     const toggleMode = () => {
       const instant = isInstantMode();
@@ -766,7 +847,7 @@
       }
 
       if (submitButton) {
-        submitButton.textContent = instant ? 'Send exact-item request' : 'Send alert request';
+        submitButton.textContent = instant ? submitExactText : submitDefaultText;
       }
     };
 
@@ -774,9 +855,9 @@
       if (!emailInput) return;
       emailInput.addEventListener('invalid', () => {
         if (emailInput.validity.valueMissing) {
-          emailInput.setCustomValidity('Please enter your email address.');
+          emailInput.setCustomValidity(emailMissingValidity);
         } else if (emailInput.validity.typeMismatch) {
-          emailInput.setCustomValidity('Please enter a valid email address.');
+          emailInput.setCustomValidity(emailInvalidValidity);
         } else {
           emailInput.setCustomValidity('');
         }
@@ -807,14 +888,14 @@
       const endpoint = (form.dataset.formspreeEndpoint || '').trim();
 
       if (!endpoint || endpoint.includes('REPLACE_WITH_YOUR_FORM_ID')) {
-        showToast('Form is not configured yet. Add your Formspree endpoint in hugo.toml.', true);
+        showToast(notConfiguredToast, true);
         return;
       }
 
       if (!form.reportValidity()) return;
 
       if (countryInput && !countryInput.value.trim()) {
-        showToast('Please choose your country from the list.', true);
+        showToast(countryRequiredToast, true);
         if (countrySearchInput) {
           countrySearchInput.focus();
           renderCountryOptions(countrySearchInput.value);
@@ -825,7 +906,7 @@
       if (isInstantMode()) {
         const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
         if (!exactItems) {
-          showToast('Add at least one exact item to track.', true);
+          showToast(exactRequiredToast, true);
           return;
         }
         if (inferredCategoriesInput) inferredCategoriesInput.value = '';
@@ -834,7 +915,7 @@
         const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
         const keywords = keywordsInput ? keywordsInput.value.trim() : '';
         if (selectedCategories.length === 0 && !keywords) {
-          showToast('Choose a category or add keywords.', true);
+          showToast(categoryOrKeywordsToast, true);
           return;
         }
 
@@ -867,10 +948,10 @@
         form.reset();
         if (countryInput) countryInput.value = defaultCountry;
         toggleMode();
-        showToast('Your alert request was saved.');
+        showToast(savedToast);
       } catch (error) {
         console.error(error);
-        showToast('Could not save right now. Please try again.', true);
+        showToast(failedToast, true);
       } finally {
         if (submitButton) submitButton.disabled = false;
       }
@@ -880,6 +961,8 @@
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

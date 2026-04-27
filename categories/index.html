@@ -82,7 +82,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-taxonomy">
     
@@ -91,9 +91,20 @@
 
 
 
+
+
+
+
+
+
+
+
 <header class="site-top site-top--section">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -109,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -184,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -220,18 +233,11 @@
     
       <p>Results tagged with <strong>Categories</strong>, including related deal pages and editorial guides.</p>
     
-    <p class="list-shell__count">4 results</p>
+    <p class="list-shell__count">8 results</p>
   </div>
   
   
     <div class="deal-grid deal-grid--browse">
-      
-        
-          <article class="guide-card">
-            <h3><a href="/categories/electronics/">Electronics</a></h3>
-            <p>Electronics</p>
-          </article>
-        
       
         
           <article class="guide-card">
@@ -249,8 +255,43 @@
       
         
           <article class="guide-card">
+            <h3><a href="/categories/audio/">Audio</a></h3>
+            <p>Audio</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/electronics/">Electronics</a></h3>
+            <p>Electronics</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
             <h3><a href="/categories/productivity/">Productivity</a></h3>
             <p>Productivity</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/mobile/">Mobile</a></h3>
+            <p>Mobile</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/gamen/">Gamen</a></h3>
+            <p>Gamen</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/home_office/">Home_office</a></h3>
+            <p>Home_office</p>
           </article>
         
       
@@ -260,6 +301,8 @@
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

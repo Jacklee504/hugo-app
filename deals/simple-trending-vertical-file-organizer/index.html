@@ -79,12 +79,22 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-simple-trending-vertical-file-organizer">
     
 
 
+
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -97,15 +107,21 @@
   
   
   
+  
+  
+  
   <div class="flex-l center items-center justify-between nav-shell">
-    <a href="/" class="nav-brand no-underline" aria-label="Deal Ledger">
+    <a href="/us/" class="nav-brand no-underline" aria-label="Deal Ledger">
       <img class="nav-brand__logo" src="/images/brand/deal-ledger-logo.svg" alt="Deal Ledger" width="220" height="56" loading="eager" decoding="async">
     </a>
     <div class="flex-l items-center nav-actions">
       <div class="nav-market">
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
-          <option value="eu" selected>EU</option>
-          <option value="us" >US</option>
+          <option value="eu" >EU</option>
+          <option value="us" selected>US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -119,10 +135,10 @@
         </button>
         <ul class="pl0 nav-links" id="site-nav-links">
           <li class="list dib nav-links__item">
-            <a class="nav-links__anchor no-underline" href="/deals/">Deals</a>
+            <a class="nav-links__anchor no-underline" href="/us/deals/">Deals</a>
           </li>
           <li class="list dib nav-links__item">
-            <a class="nav-links__anchor no-underline" href="/alerts/">Email Alerts</a>
+            <a class="nav-links__anchor no-underline" href="/us/alerts/">Email Alerts</a>
           </li>
         </ul>
       </div>
@@ -181,17 +197,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -211,6 +226,21 @@
 
     <main class="pb7" role="main">
       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -258,7 +288,7 @@
     {"@context":"https://schema.org","@type":"Product","brand":{"@type":"Brand","name":"Deal Ledger"},"description":"Vertical file organizer deal to tidy desk documents and folders.","image":["https://m.media-amazon.com/images/I/91AUT7AZwJL._AC_SL1500_.jpg"],"mainEntityOfPage":"https://dealledger.eu/deals/simple-trending-vertical-file-organizer/","name":"Simple Trending Vertical File Organizer","offers":{"@type":"Offer","availability":"https://schema.org/InStock","price":"29.97","priceCurrency":"USD","url":"https://www.amazon.com/Simple-Trending-Organizer-Vertical-Document/dp/B07R7FZ6RG?crid=N9HYL4M63OOF\u0026dib=eyJ2IjoiMSJ9.4Hl6C8B7LBf22trZGA0I2V-BQnW8p-WitpoHoxkuYzVkBuaFf9ODOyr4YFUY0X-vusj2j40NHVg7Hqr9hsNSwXgfYDU1uZ2sFW5rBdl8hkLjV2gnVLEMVOqLeYrBCRuXKfe54zzAjFHwByVIqY8-jD0QbeUzWENcjbmrJqd7d1b0P44M8ASpjnHqNFww3tww6im_HGLZVXWMSfIplWrb0A.2mntPmFJEbv1SaC-0hO4XDiHtB4fxRcPo9KXQb_nBQ0\u0026dib_tag=se\u0026keywords=office\u0026qid=1776878587\u0026sprefix=office%2B%2Caps%2C430\u0026sr=8-18\u0026xpid=aZWeNbVGevO43\u0026th=1\u0026linkCode=ll2\u0026tag=dealledger-20\u0026linkId=7a19703b653f988ef3e32aa52374fd8b\u0026language=en_US\u0026ref_=as_li_ss_tl"},"url":"https://dealledger.eu/deals/simple-trending-vertical-file-organizer/"}
   </script>
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://dealledger.eu/","name":"Home","position":1},{"@type":"ListItem","item":"https://dealledger.eu/deals/","name":"Deals","position":2},{"@type":"ListItem","item":"https://dealledger.eu/deals/simple-trending-vertical-file-organizer/","name":"Simple Trending Vertical File Organizer","position":3}]}
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://dealledger.eu/","name":"Home","position":1},{"@type":"ListItem","item":"https://dealledger.eu/us/deals/","name":"Deals","position":2},{"@type":"ListItem","item":"https://dealledger.eu/deals/simple-trending-vertical-file-organizer/","name":"Simple Trending Vertical File Organizer","position":3}]}
   </script>
   <div class="deal-single__hero">
     <div>
@@ -315,6 +345,9 @@
 
   
   
+    
+  
+  
 
   
     <div class="deal-single__tags">
@@ -322,145 +355,6 @@
     </div>
   
 
-  
-  
-  
-  
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
   
   
   
@@ -493,6 +387,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -591,6 +492,13 @@
   
     
   
+
+
+
+
+
+
+
 
 
 
@@ -736,11 +644,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="levoit core mini air purifier" data-summary="compact levoit air purifier deal for desks, bedrooms, and offices." data-tags="home air-purifier office levoit" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200440" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="levoit core mini air purifier" data-summary="compact levoit air purifier deal for desks, bedrooms, and offices." data-tags="home air-purifier office levoit" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200440" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -822,16 +737,22 @@
   
   
   
+  
+  
+    
+    
+    
+  
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <a class="site-footer__title" href="/" aria-label="Deal Ledger">
+      <a class="site-footer__title" href="/us/" aria-label="Deal Ledger">
         <img class="site-footer__logo" src="/images/brand/deal-ledger-logo.svg" alt="Deal Ledger" width="186" height="48" loading="lazy" decoding="async">
       </a>
     </div>
     <nav class="site-footer__nav" aria-label="Footer">
-      <a href="/about/">About</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/disclosure/">Disclosure</a>
+      <a href="/us/about/">About</a>
+      <a href="/us/privacy/">Privacy</a>
+      <a href="/us/disclosure/">Disclosure</a>
     </nav>
   </div>
   <div class="site-footer__meta site-footer__meta--sub">

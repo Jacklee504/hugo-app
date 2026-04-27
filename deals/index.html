@@ -80,7 +80,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
@@ -89,9 +89,22 @@
 
 
 
+
+
+
+
+
+
+  
+
+
+
 <header class="site-top site-top--home">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -107,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -182,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -205,159 +220,22 @@
 
     <main class="pb7" role="main">
       
+
+
+
+
+
+
+
+
+
+
+
+
+
 <section class="deals-shell list-shell--deals">
   
   
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-    
-    
-      
-    
-  
-  
     
     
     
@@ -468,8 +346,6 @@
       
     
       
-        
-      
     
       
         
@@ -500,6 +376,10 @@
       
     
       
+        
+      
+    
+      
     
       
     
@@ -511,8 +391,6 @@
     
       
         
-      
-    
       
     
       
@@ -816,7 +694,7 @@
     
     
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://dealledger.eu/","name":"Home","position":1},{"@type":"ListItem","item":"https://dealledger.eu/deals/","name":"Deals","position":2}]}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"CORSAIR HS80 RGB Wireless Headset","position":1,"url":"https://dealledger.eu/deals/corsair-hs80-rgb-wireless-headset/"},{"@type":"ListItem","name":"Noise-cancelling over-ears","position":2,"url":"https://dealledger.eu/deals/noise-cancelling-over-ears/"},{"@type":"ListItem","name":"Compact mechanical keyboard","position":3,"url":"https://dealledger.eu/deals/compact-mechanical-keyboard/"},{"@type":"ListItem","name":"Amazon Fire TV Stick HD","position":4,"url":"https://dealledger.eu/deals/amazon-fire-tv-stick-hd/"},{"@type":"ListItem","name":"Corsair RM1000e Power Supply","position":5,"url":"https://dealledger.eu/deals/corsair-rm1000e-power-supply/"},{"@type":"ListItem","name":"Anker MagSafe Charging Station","position":6,"url":"https://dealledger.eu/deals/anker-magsafe-charging-station/"},{"@type":"ListItem","name":"LEGO Bugatti Vision GT","position":7,"url":"https://dealledger.eu/deals/lego-bugatti-vision-gt/"},{"@type":"ListItem","name":"BONTEC Monitor Stand Riser","position":8,"url":"https://dealledger.eu/deals/bontec-monitor-stand-riser/"},{"@type":"ListItem","name":"AOC Gaming 25G3ZM/BK Monitor","position":9,"url":"https://dealledger.eu/deals/aoc-gaming-25g3zm-monitor/"},{"@type":"ListItem","name":"AOC Gaming C24G42E Monitor","position":10,"url":"https://dealledger.eu/deals/aoc-gaming-c24g42e-monitor/"},{"@type":"ListItem","name":"DH FitLife Space-Saving Treadmill","position":11,"url":"https://dealledger.eu/deals/dh-fitlife-space-saving-treadmill/"},{"@type":"ListItem","name":"ErGear Electric Standing Desk","position":12,"url":"https://dealledger.eu/deals/ergear-electric-standing-desk/"},{"@type":"ListItem","name":"Evaporative Air Conditioner Space-Saving","position":13,"url":"https://dealledger.eu/deals/evaporative-air-conditioner-space-saving/"},{"@type":"ListItem","name":"Logitech G Condenser Microphone","position":14,"url":"https://dealledger.eu/deals/logitech-gx-condenser-microphone/"},{"@type":"ListItem","name":"Sennheiser Momentum 4 Wireless Headphones","position":15,"url":"https://dealledger.eu/deals/sennheiser-momentum-4-wireless-headphones/"},{"@type":"ListItem","name":"VASAGLE L-Shaped Computer Desk","position":16,"url":"https://dealledger.eu/deals/vasagle-l-shaped-computer-desk/"},{"@type":"ListItem","name":"Bookshelf Speakers Bluetooth Turntable","position":17,"url":"https://dealledger.eu/deals/bookshelf-speakers-bluetooth-turntable/"},{"@type":"ListItem","name":"Angels Horn Bluetooth Record Player","position":18,"url":"https://dealledger.eu/deals/angels-horn-bluetooth-record-player/"},{"@type":"ListItem","name":"Upgraded Bluetooth Turntable Hi-Fi","position":19,"url":"https://dealledger.eu/deals/upgraded-bluetooth-turntable-hi-fi/"},{"@type":"ListItem","name":"Neon Rope Lights","position":20,"url":"https://dealledger.eu/deals/httpsmp-neon-rope-lights/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Deal listings","numberOfItems":20}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"CORSAIR HS80 RGB Wireless Headset","position":1,"url":"https://dealledger.eu/deals/corsair-hs80-rgb-wireless-headset/"},{"@type":"ListItem","name":"Noise-cancelling over-ears","position":2,"url":"https://dealledger.eu/deals/noise-cancelling-over-ears/"},{"@type":"ListItem","name":"Compact mechanical keyboard","position":3,"url":"https://dealledger.eu/deals/compact-mechanical-keyboard/"},{"@type":"ListItem","name":"Amazon Fire TV Stick HD","position":4,"url":"https://dealledger.eu/deals/amazon-fire-tv-stick-hd/"},{"@type":"ListItem","name":"Corsair RM1000e Power Supply","position":5,"url":"https://dealledger.eu/deals/corsair-rm1000e-power-supply/"},{"@type":"ListItem","name":"Anker MagSafe Charging Station","position":6,"url":"https://dealledger.eu/deals/anker-magsafe-charging-station/"},{"@type":"ListItem","name":"LEGO Bugatti Vision GT","position":7,"url":"https://dealledger.eu/deals/lego-bugatti-vision-gt/"},{"@type":"ListItem","name":"BONTEC Monitor Stand Riser","position":8,"url":"https://dealledger.eu/deals/bontec-monitor-stand-riser/"},{"@type":"ListItem","name":"Bookshelf Speakers Bluetooth Turntable","position":9,"url":"https://dealledger.eu/deals/bookshelf-speakers-bluetooth-turntable/"},{"@type":"ListItem","name":"Angels Horn Bluetooth Record Player","position":10,"url":"https://dealledger.eu/deals/angels-horn-bluetooth-record-player/"},{"@type":"ListItem","name":"Upgraded Bluetooth Turntable Hi-Fi","position":11,"url":"https://dealledger.eu/deals/upgraded-bluetooth-turntable-hi-fi/"},{"@type":"ListItem","name":"AOC Gaming 25G3ZM/BK Monitor","position":12,"url":"https://dealledger.eu/deals/aoc-gaming-25g3zm-monitor/"},{"@type":"ListItem","name":"AOC Gaming C24G42E Monitor","position":13,"url":"https://dealledger.eu/deals/aoc-gaming-c24g42e-monitor/"},{"@type":"ListItem","name":"DH FitLife Space-Saving Treadmill","position":14,"url":"https://dealledger.eu/deals/dh-fitlife-space-saving-treadmill/"},{"@type":"ListItem","name":"ErGear Electric Standing Desk","position":15,"url":"https://dealledger.eu/deals/ergear-electric-standing-desk/"},{"@type":"ListItem","name":"Evaporative Air Conditioner Space-Saving","position":16,"url":"https://dealledger.eu/deals/evaporative-air-conditioner-space-saving/"},{"@type":"ListItem","name":"Logitech G Condenser Microphone","position":17,"url":"https://dealledger.eu/deals/logitech-gx-condenser-microphone/"},{"@type":"ListItem","name":"Sennheiser Momentum 4 Wireless Headphones","position":18,"url":"https://dealledger.eu/deals/sennheiser-momentum-4-wireless-headphones/"},{"@type":"ListItem","name":"VASAGLE L-Shaped Computer Desk","position":19,"url":"https://dealledger.eu/deals/vasagle-l-shaped-computer-desk/"},{"@type":"ListItem","name":"Neon Rope Lights","position":20,"url":"https://dealledger.eu/deals/httpsmp-neon-rope-lights/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Deal listings","numberOfItems":20}</script>
     <section class="list-subsection">
       <div class="list-subsection__intro">
         <h2>Browse deals</h2>
@@ -863,6 +741,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -997,6 +882,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1095,6 +987,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1229,6 +1128,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1327,6 +1233,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1461,6 +1374,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1559,6 +1479,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1693,11 +1620,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="bontec monitor stand riser" data-summary="desk monitor riser with storage shelf and ergonomic lift." data-tags="desk setup home office accessories" data-top-savings="false" data-latest="false" data-expiring-soon="true" data-discount="0.185700" data-date="1776806062" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="bontec monitor stand riser" data-summary="desk monitor riser with storage shelf and ergonomic lift." data-tags="desk setup home office accessories" data-top-savings="false" data-latest="true" data-expiring-soon="true" data-discount="0.185700" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1714,7 +1648,7 @@
 
 
   <img
-    src="https://m.media-amazon.com/images/I/81BuZYHIjLL._AC_SL1500_.jpg"
+    src="https://m.media-amazon.com/images/I/71aeCYu&#43;FpL._AC_SL1500_.jpg"
     alt="BONTEC Monitor Stand Riser"
     class=""
     loading="lazy"
@@ -1791,6 +1725,382 @@
 
   
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="bookshelf speakers bluetooth turntable" data-summary="bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.200260" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/61FHrb1t5bL._AC_SL1500_.jpg"
+    alt="Bookshelf Speakers Bluetooth Turntable"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Bookshelf Speakers Bluetooth Turntable</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€215.65</span>
+          
+          
+            <span class="deal-card__list">€269.65</span>
+          
+          
+            <span class="deal-card__badge">-20%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.ie/Bookshelf-Speakers-Bluetooth-Turntable-Cartridge/dp/B09P8LXKXV?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-10&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=8b8d2fab19a27b7619c4537df1da7063&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="angels horn bluetooth record player" data-summary="bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.179226" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/717dC60IWKL._AC_SL1500_.jpg"
+    alt="Angels Horn Bluetooth Record Player"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Angels Horn Bluetooth Record Player</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€206.08</span>
+          
+          
+            <span class="deal-card__list">€251.08</span>
+          
+          
+            <span class="deal-card__badge">-18%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.ie/Angels-Bluetooth-Record-Player-Built/dp/B0BNBNMTDR?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-9&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=7a6846fe5a3ab9ae64fd8d97cbc07df7&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="upgraded bluetooth turntable hi-fi" data-summary="hi-fi bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.229016" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/71Krfogj2OL._AC_SL1500_.jpg"
+    alt="Upgraded Bluetooth Turntable Hi-Fi"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Upgraded Bluetooth Turntable Hi-Fi</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">€144.76</span>
+          
+          
+            <span class="deal-card__list">€187.76</span>
+          
+          
+            <span class="deal-card__badge">-23%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Hi-fi Bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.ie/Upgraded-Bluetooth-Turntable-Fidelity-Cartridge/dp/B09P8GPDHP?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-7&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=5814b5368679e9705d4ae6f1bb7439b3&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+        
+          
+          
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
 
 
 
@@ -1925,6 +2235,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -2041,11 +2358,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="dh fitlife space-saving treadmill" data-summary="space-saving treadmill deal for home workouts." data-tags="fitness treadmill home" data-top-savings="true" data-latest="true" data-expiring-soon="false" data-discount="0.511552" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="dh fitlife space-saving treadmill" data-summary="space-saving treadmill deal for home workouts." data-tags="fitness treadmill home" data-top-savings="true" data-latest="false" data-expiring-soon="false" data-discount="0.511552" data-date="1776883782" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2157,11 +2481,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="ergear electric standing desk" data-summary="electric height-adjustable standing desk deal for home office setups." data-tags="desk office standing-desk ergonomic" data-top-savings="false" data-latest="true" data-expiring-soon="false" data-discount="0.223060" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="ergear electric standing desk" data-summary="electric height-adjustable standing desk deal for home office setups." data-tags="desk office standing-desk ergonomic" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.223060" data-date="1776883782" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2273,11 +2604,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="evaporative air conditioner space-saving" data-summary="space-saving evaporative air conditioner deal with strong discount." data-tags="home cooling air-conditioner" data-top-savings="true" data-latest="true" data-expiring-soon="false" data-discount="0.634834" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="evaporative air conditioner space-saving" data-summary="space-saving evaporative air conditioner deal with strong discount." data-tags="home cooling air-conditioner" data-top-savings="true" data-latest="false" data-expiring-soon="false" data-discount="0.634834" data-date="1776883782" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2389,11 +2727,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="logitech g condenser microphone" data-summary="logitech condenser microphone deal for gaming and streaming setups." data-tags="audio microphone gaming streaming logitech" data-top-savings="true" data-latest="true" data-expiring-soon="false" data-discount="0.508143" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="logitech g condenser microphone" data-summary="logitech condenser microphone deal for gaming and streaming setups." data-tags="audio microphone gaming streaming logitech" data-top-savings="true" data-latest="false" data-expiring-soon="false" data-discount="0.508143" data-date="1776883782" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -2470,6 +2815,13 @@
   
     
   
+
+
+
+
+
+
+
 
 
 
@@ -2616,6 +2968,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -2732,347 +3091,6 @@
 
 
 
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="bookshelf speakers bluetooth turntable" data-summary="bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200260" data-date="1776867143" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/61FHrb1t5bL._AC_SL1500_.jpg"
-    alt="Bookshelf Speakers Bluetooth Turntable"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">Bookshelf Speakers Bluetooth Turntable</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">€215.65</span>
-          
-          
-            <span class="deal-card__list">€269.65</span>
-          
-          
-            <span class="deal-card__badge">-20%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Bluetooth turntable bundle with a €54 coupon: €269.65 shown price drops to €215.65 at checkout.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.ie/Bookshelf-Speakers-Bluetooth-Turntable-Cartridge/dp/B09P8LXKXV?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-10&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=8b8d2fab19a27b7619c4537df1da7063&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="angels horn bluetooth record player" data-summary="bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.179226" data-date="1776867143" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/717dC60IWKL._AC_SL1500_.jpg"
-    alt="Angels Horn Bluetooth Record Player"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">Angels Horn Bluetooth Record Player</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">€206.08</span>
-          
-          
-            <span class="deal-card__list">€251.08</span>
-          
-          
-            <span class="deal-card__badge">-18%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Bluetooth-enabled turntable with a €45 coupon: €251.08 shown price drops to €206.08 at checkout.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.ie/Angels-Bluetooth-Record-Player-Built/dp/B0BNBNMTDR?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-9&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=7a6846fe5a3ab9ae64fd8d97cbc07df7&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="upgraded bluetooth turntable hi-fi" data-summary="hi-fi bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout." data-tags="audio turntable vinyl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.229016" data-date="1776867143" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/71Krfogj2OL._AC_SL1500_.jpg"
-    alt="Upgraded Bluetooth Turntable Hi-Fi"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">Upgraded Bluetooth Turntable Hi-Fi</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">€144.76</span>
-          
-          
-            <span class="deal-card__list">€187.76</span>
-          
-          
-            <span class="deal-card__badge">-23%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">Hi-fi Bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#turntable</span><span class="deal-card__tag">#vinyl</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.ie/Upgraded-Bluetooth-Turntable-Fidelity-Cartridge/dp/B09P8GPDHP?crid=36LQ7J8F4I6EI&amp;dib=eyJ2IjoiMSJ9.-DyYa15a8-wIUnuGsOyA23r_mBk3O32C_N83v_90o3SvziaYJFju_tl8HW_IMSx1Q8ChvGZFLM8wX-KvZq1uay2yPYeQ10RTPIa8qrqG3ydjQRLspM7gvtMt99mjaO5Xptd9ruz0Iij31KATWOYTlt9L9Hy_AG3-5K9EH-WM1gYmkDjt2lrbjw2EEnK-bbsfHaUnDpEmV5oRGdzHm5k4SuwC8Wr6uSaWF5DH4YrvUCNOLqUOEk0jFO4Nws04Y3PusglU_1P98YzFNczrnI-sWe5ncc26vyWanT6j3QoP6v8.PhHDNlXePGVBOOl1qz9Yo6mJxsJcVYWmKH6DKd-HMyI&amp;dib_tag=se&amp;keywords=turntable&amp;qid=1776794446&amp;refinements=p_n_deal_type%3A94791403031&amp;rnid=94791364031&amp;sprefix=turntable%2Caps%2C562&amp;sr=8-7&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-21&amp;linkId=5814b5368679e9705d4ae6f1bb7439b3&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-        
-          
-          
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3154,12 +3172,14 @@
         
       </div>
     </section>
-    <script type="module" src="/scripts/deals-search.js?v=1776883855"></script>
+    <script type="module" src="/scripts/deals-search.js?v=1777327096"></script>
   
 </section>
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

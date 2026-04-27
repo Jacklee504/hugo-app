@@ -80,12 +80,22 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327097">
 
   </head><body class="ma0 avenir bg-near-white production is-section is-section">
     
 
 
+
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -98,9 +108,8 @@
   
   
   
-    
-    
-    
+  
+  
   
   <div class="flex-l center items-center justify-between nav-shell">
     <a href="/us/" class="nav-brand no-underline" aria-label="Deal Ledger">
@@ -111,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" >EU</option>
           <option value="us" selected>US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -186,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -209,150 +220,6 @@
 
     <main class="pb7" role="main">
       
-
-
-
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-    
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
 
 
 
@@ -658,7 +525,7 @@
 
 
   
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"INSIGNIA 50-inch 4K UHD Fire TV","position":1,"url":"https://dealledger.eu/deals/insignia-50-inch-4k-fire-tv/"},{"@type":"ListItem","name":"JBL Vibe Beam Wireless Earbuds","position":2,"url":"https://dealledger.eu/deals/jbl-vibe-beam-wireless-earbuds/"},{"@type":"ListItem","name":"LEVOIT Core Mini Air Purifier","position":3,"url":"https://dealledger.eu/deals/levoit-core-mini-air-purifier/"},{"@type":"ListItem","name":"OPNICE Desk Organizers and Accessories","position":4,"url":"https://dealledger.eu/deals/opnice-desk-organizers-accessories/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Recent deals","numberOfItems":4}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","name":"LEVOIT Core Mini Air Purifier","position":1,"url":"https://dealledger.eu/deals/levoit-core-mini-air-purifier/"},{"@type":"ListItem","name":"OPNICE Desk Organizers and Accessories","position":2,"url":"https://dealledger.eu/deals/opnice-desk-organizers-accessories/"},{"@type":"ListItem","name":"Sceptre 27-inch FHD Monitor","position":3,"url":"https://dealledger.eu/deals/sceptre-27-inch-fhd-monitor/"},{"@type":"ListItem","name":"Simple Trending Vertical File Organizer","position":4,"url":"https://dealledger.eu/deals/simple-trending-vertical-file-organizer/"}],"itemListOrder":"https://schema.org/ItemListOrderAscending","name":"Recent deals","numberOfItems":4}</script>
 
 
 <section class="home-value-strip" aria-label="Deal Ledger highlights">
@@ -678,12 +545,7 @@
   <div class="home-filter-rail__row" data-home-filter-row>
     <button class="home-filter-rail__search-trigger" type="button" data-home-filter-search-toggle aria-expanded="false" aria-label="Open search">&#128269;</button>
     <div class="home-filter-rail__chips">
-      <a href="/us/deals/?q=audio">Audio</a>
-      <a href="/us/deals/?q=laptop">Laptops</a>
-      <a href="/us/deals/?q=monitor">Monitors</a>
-      <a href="/us/deals/?q=accessories">Accessories</a>
-      <a href="/us/deals/?q=gaming">Gaming</a>
-      <a href="/us/deals/?q=desk">Desk</a>
+      <a href="/us/deals/?q=audio">audio</a><a href="/us/deals/?q=home&#43;office">home office</a><a href="/us/deals/?q=gaming">gaming</a><a href="/us/deals/?q=monitor">monitor</a><a href="/us/deals/?q=office">office</a>
     </div>
     <form class="home-filter-rail__search-form" action="/us/deals/" method="get" role="search" data-home-filter-search-form>
       <input
@@ -733,6 +595,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -866,6 +735,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -981,6 +857,13 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
@@ -1078,6 +961,13 @@
 
   
   
+
+
+
+
+
+
+
 
 
 
@@ -1223,111 +1113,6 @@
 
 
 
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="insignia 50-inch 4k uhd fire tv" data-summary="50-inch 4k fire tv deal for streaming and home entertainment setups." data-tags="tv 4k fire-tv insignia" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.400013" data-date="1776883782" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/81jLRWNrTXL._AC_SL1500_.jpg"
-    alt="INSIGNIA 50-inch 4K UHD Fire TV"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">INSIGNIA 50-inch 4K UHD Fire TV</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$179.99</span>
-          
-          
-            <span class="deal-card__list">$299.99</span>
-          
-          
-            <span class="deal-card__badge">-40%</span>
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">50-inch 4K Fire TV deal for streaming and home entertainment setups.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#tv</span><span class="deal-card__tag">#4k</span><span class="deal-card__tag">#fire-tv</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/INSIGNIA-50-inch-4K-UHD-Fire-TV/dp/B0F19KLHG3?crid=XFBBBJ4DIZFH&amp;dib=eyJ2IjoiMSJ9.V_Q7md-IoYAkDUXE5AbzGzTT8sKZQVw6r_yKfZspyZ_Q_m4tWcMrlmk_m0FdmX_J3XMTO8QD0IDS0Oii5VoDfMomJfF4fL31E_EIp-9myF7Sudj_cOztIPEfiliqLqAa9Z2e5GPtRiiAh_vmnrcNqdiWGcqGljzmcyWxOeAa_u_lF-2xcBIijueVoOJOnBRT9vOtxW3ArR3bG7dChsHRGhr44q17Sn3HKaJGSiJMYGo.zUgUfWy0BVhcJBRjYJD7Yvv7Qu-aK4kH0A-r3h1kqLU&amp;dib_tag=se&amp;keywords=tv&amp;qid=1776879087&amp;sprefix=tv%2Caps%2C473&amp;sr=8-4&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=387aa4c0233308394006e140de011bc7&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-      
-        
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1339,120 +1124,7 @@
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="jbl vibe beam wireless earbuds" data-summary="jbl wireless earbuds listing for audio deals tracking." data-tags="audio earbuds wireless jbl" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="%!f(int=000000)" data-date="1776883782" data-affiliate="true">
-  
-    <div class="deal-card__image">
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  <img
-    src="https://m.media-amazon.com/images/I/41&#43;1Csr1pSL._AC_SL1000_.jpg"
-    alt="JBL Vibe Beam Wireless Earbuds"
-    class=""
-    loading="lazy"
-    decoding="async"
-    fetchpriority="auto"
-    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
-  >
-
-
-    </div>
-  
-  <div class="deal-card__body">
-    
-      <div class="deal-card__stack">
-        <h3 class="deal-card__title">JBL Vibe Beam Wireless Earbuds</h3>
-        <div class="deal-card__divider"></div>
-        <div class="deal-card__price-row deal-card__price-row--compact">
-          
-            <span class="deal-card__sale">$29.95</span>
-          
-          
-            <span class="deal-card__list">$29.95</span>
-          
-          
-        </div>
-        <div class="deal-card__divider"></div>
-        <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
-          <div class="deal-card__details-body">
-            
-              <p class="deal-card__details-summary">JBL wireless earbuds listing for audio deals tracking.</p>
-            
-            
-              <div class="deal-card__tags">
-                <span class="deal-card__tag">#audio</span><span class="deal-card__tag">#earbuds</span><span class="deal-card__tag">#wireless</span>
-              </div>
-            
-          </div>
-        </details>
-        
-          <a class="deal-card__cta" href="https://www.amazon.com/JBL-Vibe-Beam-Wireless-Headphones/dp/B0BQPNMXQV?crid=82OYZKQD2MHT&amp;dib=eyJ2IjoiMSJ9.b_HRxBY07QXLABPCUNIjrmhDC-jZSBNOrOzhENy1XPM8sxdffeuhxSWH1zK9Q19vZU4_qlu2JjniLoY3i0zHBvKVlRnPvQXQXDngeTN35QIq2FAGL1XXS4HbR4i-akt08UTfBRVFtn2nU5GgwovHDeCgl9WIwIy9lsYG2vft7Us0YIez_UPw9NiOh-NcpYOzj89gcbXU2-zoqc89W5cy39F8hBpXbv4Uad3lJp9mu_2Ke0VfG9msFa_E4C5H-zfjnNnEJrCA873ZUo3VLmtrOC39g4AFNpwmzgrd14UbXQs.G85PaUeYrp84-EBDZf0-KbbCWqbeP8PBD16yYfRMZnY&amp;dib_tag=se&amp;keywords=audio&amp;qid=1776879036&amp;sprefix=aud%2Caps%2C352&amp;sr=8-3&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=9b0f194d8e1534db20b51ad2891e654e&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
-        
-      </div>
-    
-  </div>
-</article>
-
-      
-        
-
-
-
-  
-  
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="levoit core mini air purifier" data-summary="compact levoit air purifier deal for desks, bedrooms, and offices." data-tags="home air-purifier office levoit" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200440" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="levoit core mini air purifier" data-summary="compact levoit air purifier deal for desks, bedrooms, and offices." data-tags="home air-purifier office levoit" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.200440" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1563,11 +1235,18 @@
 
 
 
+
+
+
+
+
+
+
   
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="opnice desk organizers and accessories" data-summary="desk organizer set deal for cleaner office workspace setups." data-tags="desk organizer office accessories" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.333444" data-date="1776883782" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="opnice desk organizers and accessories" data-summary="desk organizer set deal for cleaner office workspace setups." data-tags="desk organizer office accessories" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.333444" data-date="1777327008" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -1635,11 +1314,255 @@
 </article>
 
       
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="sceptre 27-inch fhd monitor" data-summary="27-inch fhd monitor deal for work and gaming setups." data-tags="monitor display fhd sceptre" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.203302" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/71jdr9u9YhL._AC_SL1500_.jpg"
+    alt="Sceptre 27-inch FHD Monitor"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Sceptre 27-inch FHD Monitor</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$97.97</span>
+          
+          
+            <span class="deal-card__list">$122.97</span>
+          
+          
+            <span class="deal-card__badge">-20%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">27-inch FHD monitor deal for work and gaming setups.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#monitor</span><span class="deal-card__tag">#display</span><span class="deal-card__tag">#fhd</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/Sceptre-DisplayPort-FreeSync-Frameless-E275W-FW100T/dp/B0CHHSFMRL?crid=1QJB8GY0XXNN3&amp;dib=eyJ2IjoiMSJ9.xbPWrjXwaW82FlSQGaGScHz3fh_lDnY98wZbw8ACHurD5fZ6JCh8OmCfQx_qFSatseFHnrCuIqcz7zbpodzQXvJiOMenow3o2PmsfznHArFAaJOJKPT-zlO-eeoPhTks8uH2gQkWEgK8svYLPuVHtt6Sl5qKVdCA8j-J1hOFIT52_ra-PnKuaniErig0tTCnhc8FE_tyv4DwYiJpsBSxNnTtPpH5diNWbYQA3PvGxVY.sA1olxn-JQ49S3tegR6Im9XPazol4C4iyBbCQHzUok8&amp;dib_tag=se&amp;keywords=monitor&amp;qid=1776879137&amp;sprefix=monito%2Caps%2C646&amp;sr=8-20&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=cf43fb8a96260fdfd4280be2e6890d4f&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
+        
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="simple trending vertical file organizer" data-summary="vertical file organizer deal to tidy desk documents and folders." data-tags="desk organizer office files" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.189343" data-date="1777327008" data-affiliate="true">
+  
+    <div class="deal-card__image">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+  <img
+    src="https://m.media-amazon.com/images/I/91AUT7AZwJL._AC_SL1500_.jpg"
+    alt="Simple Trending Vertical File Organizer"
+    class=""
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    sizes="(max-width: 60rem) 50vw, (max-width: 90rem) 33vw, 280px"
+  >
+
+
+    </div>
+  
+  <div class="deal-card__body">
+    
+      <div class="deal-card__stack">
+        <h3 class="deal-card__title">Simple Trending Vertical File Organizer</h3>
+        <div class="deal-card__divider"></div>
+        <div class="deal-card__price-row deal-card__price-row--compact">
+          
+            <span class="deal-card__sale">$29.97</span>
+          
+          
+            <span class="deal-card__list">$36.97</span>
+          
+          
+            <span class="deal-card__badge">-19%</span>
+          
+        </div>
+        <div class="deal-card__divider"></div>
+        <details class="deal-card__details">
+          <summary class="deal-card__details-toggle">More details</summary>
+          <div class="deal-card__details-body">
+            
+              <p class="deal-card__details-summary">Vertical file organizer deal to tidy desk documents and folders.</p>
+            
+            
+              <div class="deal-card__tags">
+                <span class="deal-card__tag">#desk</span><span class="deal-card__tag">#organizer</span><span class="deal-card__tag">#office</span>
+              </div>
+            
+          </div>
+        </details>
+        
+          <a class="deal-card__cta" href="https://www.amazon.com/Simple-Trending-Organizer-Vertical-Document/dp/B07R7FZ6RG?crid=N9HYL4M63OOF&amp;dib=eyJ2IjoiMSJ9.4Hl6C8B7LBf22trZGA0I2V-BQnW8p-WitpoHoxkuYzVkBuaFf9ODOyr4YFUY0X-vusj2j40NHVg7Hqr9hsNSwXgfYDU1uZ2sFW5rBdl8hkLjV2gnVLEMVOqLeYrBCRuXKfe54zzAjFHwByVIqY8-jD0QbeUzWENcjbmrJqd7d1b0P44M8ASpjnHqNFww3tww6im_HGLZVXWMSfIplWrb0A.2mntPmFJEbv1SaC-0hO4XDiHtB4fxRcPo9KXQb_nBQ0&amp;dib_tag=se&amp;keywords=office&amp;qid=1776878587&amp;sprefix=office%2B%2Caps%2C430&amp;sr=8-18&amp;xpid=aZWeNbVGevO43&amp;th=1&amp;linkCode=ll2&amp;tag=dealledger-20&amp;linkId=7a19703b653f988ef3e32aa52374fd8b&amp;language=en_US&amp;ref_=as_li_ss_tl" rel="noopener noreferrer" target="_blank">View on Amazon</a>
+        
+      </div>
+    
+  </div>
+</article>
+
+      
     </div>
   
 </section>
 
-<script type="module" src="/scripts/home-filter-rail.js?v=1776883855"></script>
+<script type="module" src="/scripts/home-filter-rail.js?v=1777327097"></script>
 
 
     </main>
@@ -1651,7 +1574,8 @@
   
   
   
-    
+  
+  
     
     
     

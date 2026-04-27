@@ -82,7 +82,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1776883855">
+<link rel="stylesheet" href="/styles/site.css?v=1777327096">
 
   </head><body class="ma0 avenir bg-near-white production is-term">
     
@@ -91,9 +91,20 @@
 
 
 
+
+
+
+
+
+
+
+
 <header class="site-top site-top--section">
   <div class="site-top__backdrop">
     <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
   
   
   
@@ -109,6 +120,9 @@
         <select id="market-select" class="nav-market__select" name="market-select" aria-label="Select market">
           <option value="eu" selected>EU</option>
           <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -184,17 +198,16 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
-      } else {
-        marketSelect.value = window.location.pathname.startsWith('/us/') || window.location.pathname === '/us' ? 'us' : 'eu';
       }
 
       marketSelect.addEventListener('change', () => {
-        const targetMarket = marketSelect.value === 'us' ? 'us' : 'eu';
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
-        const targetPath = targetMarket === 'us' ? '/us/' : '/';
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
         window.location.assign(`${window.location.origin}${targetPath}`);
       });
     }
@@ -223,14 +236,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/upgraded-bluetooth-turntable-hi-fi/" class="link black dim">
-        Upgraded Bluetooth Turntable Hi-Fi
+      <a href="/deals/razer-naga-pro-wireless-mouse-nl/" class="link black dim">
+        Razer Naga Pro Draadloze Muis
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Hi-fi Bluetooth turntable with a €43 coupon: €187.76 shown price drops to €144.76 at checkout.
+      Razer Naga Pro draadloze gamingmuis met korting op Amazon NL.
     </div>
-    <a href="/deals/upgraded-bluetooth-turntable-hi-fi/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/razer-naga-pro-wireless-mouse-nl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -241,14 +254,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/hyperx-cloud-iii-gaming-headset/" class="link black dim">
-        HyperX Cloud III Gaming Headset
+      <a href="/deals/razer-viper-v3-hyperspeed-wireless-mouse-nl/" class="link black dim">
+        Razer Viper V3 HyperSpeed Draadloze Muis
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Wired HyperX Cloud III headset with clear mic pickup and multi-platform support.
+      Snelle draadloze gamingmuis met next-gen sensorprestaties.
     </div>
-    <a href="/deals/hyperx-cloud-iii-gaming-headset/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/razer-viper-v3-hyperspeed-wireless-mouse-nl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -259,14 +272,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/kaigerr-15-6-inch-gaming-laptop/" class="link black dim">
-        KAIGERR 15.6-inch Gaming Laptop
+      <a href="/deals/yunzii-al80-wireless-mechanical-keyboard-nl/" class="link black dim">
+        YUNZII AL80 Draadloos Mechanisch Toetsenbord
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      15.6-inch laptop deal positioned for gaming and everyday performance use.
+      YUNZII AL80 draadloos mechanisch toetsenbord met korting op Amazon NL.
     </div>
-    <a href="/deals/kaigerr-15-6-inch-gaming-laptop/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/yunzii-al80-wireless-mechanical-keyboard-nl/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -277,14 +290,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/ingnok-15-6-inch-fhd-portable-monitor/" class="link black dim">
-        Ingnok 15.6-inch FHD Portable Monitor
+      <a href="/deals/aoc-gaming-25g3zm-monitor/" class="link black dim">
+        AOC Gaming 25G3ZM/BK Monitor
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      15.6-inch portable FHD monitor for travel, remote work, and dual-screen setups.
+      AOC high-refresh gaming monitor deal for competitive setups.
     </div>
-    <a href="/deals/ingnok-15-6-inch-fhd-portable-monitor/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/aoc-gaming-25g3zm-monitor/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -295,14 +308,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/gianotter-desk-organizer/" class="link black dim">
-        gianotter Desk Organizer
+      <a href="/deals/aoc-gaming-c24g42e-monitor/" class="link black dim">
+        AOC Gaming C24G42E Monitor
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Compact desktop organizer for office accessories and stationery.
+      AOC gaming monitor deal for fast-refresh 1080p setups.
     </div>
-    <a href="/deals/gianotter-desk-organizer/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/aoc-gaming-c24g42e-monitor/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -313,14 +326,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/spacrea-desk-organizer-set/" class="link black dim">
-        Spacrea Desk Organizer Set
+      <a href="/deals/ergear-electric-standing-desk/" class="link black dim">
+        ErGear Electric Standing Desk
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Desk accessories organizer set for cleaner workspace storage.
+      Electric height-adjustable standing desk deal for home office setups.
     </div>
-    <a href="/deals/spacrea-desk-organizer-set/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/ergear-electric-standing-desk/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -331,14 +344,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/logitech-mx-vertical-wireless-mouse/" class="link black dim">
-        Logitech MX Vertical Wireless Mouse
+      <a href="/deals/insignia-50-inch-4k-fire-tv/" class="link black dim">
+        INSIGNIA 50-inch 4K UHD Fire TV
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Ergonomic vertical wireless mouse designed to reduce wrist strain.
+      50-inch 4K Fire TV deal for streaming and home entertainment setups.
     </div>
-    <a href="/deals/logitech-mx-vertical-wireless-mouse/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/insignia-50-inch-4k-fire-tv/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -349,14 +362,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/gigabyte-b650-gaming-x-ax-v2-motherboard/" class="link black dim">
-        GIGABYTE B650 Gaming X AX V2 Motherboard
+      <a href="/deals/jbl-vibe-beam-wireless-earbuds/" class="link black dim">
+        JBL Vibe Beam Wireless Earbuds
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      AM5 B650 motherboard deal for new Ryzen desktop builds.
+      JBL wireless earbuds listing for audio deals tracking.
     </div>
-    <a href="/deals/gigabyte-b650-gaming-x-ax-v2-motherboard/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/jbl-vibe-beam-wireless-earbuds/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -367,14 +380,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/ray-ban-meta-wayfarer-smart-glasses/" class="link black dim">
-        Ray-Ban Meta Wayfarer Smart Glasses
+      <a href="/deals/logitech-gx-condenser-microphone/" class="link black dim">
+        Logitech G Condenser Microphone
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      Ray-Ban Meta Wayfarer smart glasses with camera capture and open-ear audio.
+      Logitech condenser microphone deal for gaming and streaming setups.
     </div>
-    <a href="/deals/ray-ban-meta-wayfarer-smart-glasses/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/logitech-gx-condenser-microphone/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -385,14 +398,14 @@
   <div class="mb3 pa4 gray overflow-hidden bg-white">
     <span class="f6 db">Deals</span>
     <h1 class="f3 near-black">
-      <a href="/deals/samsung-essential-27-inch-monitor/" class="link black dim">
-        Samsung Essential 27-inch Monitor
+      <a href="/deals/sceptre-27-inch-fhd-monitor/" class="link black dim">
+        Sceptre 27-inch FHD Monitor
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      27-inch Samsung monitor deal for desk setups and everyday productivity use.
+      27-inch FHD monitor deal for work and gaming setups.
     </div>
-    <a href="/deals/samsung-essential-27-inch-monitor/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/deals/sceptre-27-inch-fhd-monitor/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
@@ -417,15 +430,20 @@
         <a href="/categories/electronics/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
       </li>
       <li class="page-item">
+        <a href="/categories/electronics/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
+      </li>
+      <li class="page-item">
         <a href="/categories/electronics/page/3/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/categories/electronics/page/3/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/categories/electronics/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul></article>
 
     </main>
     <footer class="site-footer" role="contentinfo">
+  
+  
   
   
   

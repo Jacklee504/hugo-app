@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deal Ledger India on Deal Ledger</title>
+    <link>https://dealledger.eu/in/</link>
+    <description>Recent content in Deal Ledger India on Deal Ledger</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://dealledger.eu/in/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://dealledger.eu/in/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/in/about/</guid>
+      <description>&lt;p&gt;Deal Ledger is a curated deals site focused on practical product picks with clear price context.&lt;/p&gt;&#xA;&lt;p&gt;The goal is simple: publish fewer, better deals so readers can decide quickly and confidently.&lt;/p&gt;&#xA;&lt;p&gt;Each listing is selected to be useful on its own, not just as another outbound link.&#xA;We prioritize clear context over volume so the site stays focused and readable.&lt;/p&gt;&#xA;&lt;p&gt;We regularly review older listings and guidance to keep things accurate and relevant. If a page is no longer helpful, we would rather update it or remove it than keep stale information live.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Disclosure</title>
+      <link>https://dealledger.eu/in/disclosure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/in/disclosure/</guid>
+      <description>&lt;p&gt;Deal Ledger may include affiliate links. If you buy through those links, we may earn a commission at no extra cost to you.&lt;/p&gt;&#xA;&lt;p&gt;As an Amazon Associate I earn from qualifying purchases.&lt;/p&gt;&#xA;&lt;p&gt;Affiliate relationships do not change our editorial intent.&#xA;We aim to feature deals based on practical value, relevance, and clarity for readers.&lt;/p&gt;&#xA;&lt;p&gt;When available, we compare current deal pricing against typical ranges so readers can judge whether an offer is genuinely useful. Not every mention includes a commission link, and we may recommend non-affiliate options when they are the better pick.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Privacy</title>
+      <link>https://dealledger.eu/in/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://dealledger.eu/in/privacy/</guid>
+      <description>&lt;p&gt;Deal Ledger may collect limited information when you visit the site or contact us, including email messages you send and basic analytics or server data.&lt;/p&gt;&#xA;&lt;p&gt;This information is used to operate and improve the site, and to respond to inquiries.&lt;/p&gt;&#xA;&lt;p&gt;Deal Ledger does not sell personal information. Third-party services (such as hosting, analytics, or retailers you click to) may process data under their own policies.&lt;/p&gt;&#xA;&lt;p&gt;If you subscribe to alerts or contact us directly, we retain only the information needed to deliver that service and handle support. We aim to keep this data limited, secure, and relevant to the original request.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
