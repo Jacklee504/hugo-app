@@ -1,0 +1,14 @@
+{{ $marketKey := partials.Include "func/market/key.html" . | strings.TrimSpace }}
+{{ $dealPathMap := partial "func/market/deal-path-map.html" (dict "Site" .Site "marketKey" $marketKey) }}
+{{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
+{{ $filteredDeals := slice }}
+{{ range $allLiveDeals }}
+  {{ $dealPath := lower .RelPermalink }}
+  {{ if not (hasSuffix $dealPath "/") }}
+    {{ $dealPath = printf "%s/" $dealPath }}
+  {{ end }}
+  {{ if index $dealPathMap $dealPath }}
+    {{ $filteredDeals = $filteredDeals | append . }}
+  {{ end }}
+{{ end }}
+{{ return $filteredDeals }}

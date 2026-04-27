@@ -1,13 +1,19 @@
 {{ define "main" }}
+{{ $dealsBrowseTitle := partial "func/market/t.html" (dict "context" . "key" "deals_browse_title") }}
+{{ $dealsSearchPlaceholder := partial "func/market/t.html" (dict "context" . "key" "deals_search_placeholder") }}
+{{ $dealsSearchLabel := partial "func/market/t.html" (dict "context" . "key" "deals_search_label") }}
+{{ $dealsFiltersLabel := partial "func/market/t.html" (dict "context" . "key" "deals_filters_label") }}
+{{ $dealsTabAll := partial "func/market/t.html" (dict "context" . "key" "deals_tab_all") }}
+{{ $dealsTabTop := partial "func/market/t.html" (dict "context" . "key" "deals_tab_top") }}
+{{ $dealsTabLatest := partial "func/market/t.html" (dict "context" . "key" "deals_tab_latest") }}
+{{ $dealsNoResults := partial "func/market/t.html" (dict "context" . "key" "deals_no_results") }}
+{{ $dealsSuggestions := partial "func/market/t.html" (dict "context" . "key" "deals_suggestions") }}
+{{ $dealsEmpty := partial "func/market/t.html" (dict "context" . "key" "deals_empty") }}
+{{ $breadcrumbHome := partial "func/market/t.html" (dict "context" . "key" "breadcrumb_home") }}
+{{ $breadcrumbDeals := partial "func/market/t.html" (dict "context" . "key" "breadcrumb_deals") }}
+{{ $dealsSchemaListName := partial "func/market/t.html" (dict "context" . "key" "deals_schema_list_name") }}
 <section class="deals-shell list-shell--deals">
-  {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $allLiveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.ie/") (in $dealURL "amazon.co.uk/") (in $dealURL "amazon.de/") (in $dealURL "amazon.fr/") (in $dealURL "amazon.it/") (in $dealURL "amazon.es/") (in $dealURL "amazon.nl/") (in $dealURL "amazon.se/") (in $dealURL "amazon.pl/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ if gt (len $deals) 0 }}
     {{ $topSavings := first 4 (sort $deals "Params.discount_pct" "desc") }}
     {{ $topSavingsPaths := slice }}
@@ -70,8 +76,8 @@
       "@context" "https://schema.org"
       "@type" "BreadcrumbList"
       "itemListElement" (slice
-        (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.Home.Permalink)
-        (dict "@type" "ListItem" "position" 2 "name" "Deals" "item" .Permalink)
+        (dict "@type" "ListItem" "position" 1 "name" $breadcrumbHome "item" .Site.Home.Permalink)
+        (dict "@type" "ListItem" "position" 2 "name" $breadcrumbDeals "item" .Permalink)
       )
     }}
     {{ $listItems := slice }}
@@ -86,7 +92,7 @@
     {{ $itemListSchema := dict
       "@context" "https://schema.org"
       "@type" "ItemList"
-      "name" "Deal listings"
+      "name" $dealsSchemaListName
       "itemListOrder" "https://schema.org/ItemListOrderAscending"
       "numberOfItems" (len $orderedDeals)
       "itemListElement" $listItems
@@ -95,21 +101,21 @@
     <script type="application/ld+json">{{ $itemListSchema | jsonify | safeJS }}</script>
     <section class="list-subsection">
       <div class="list-subsection__intro">
-        <h2>Browse deals</h2>
+        <h2>{{ $dealsBrowseTitle }}</h2>
       </div>
       <div class="deal-filters" data-deal-filters>
-        <input id="deal-search" name="deal-search" class="deal-filters__search" type="search" placeholder="Search by product or category" aria-label="Search deals" data-deal-search>
-        <div class="deal-filters__tabs" role="tablist" aria-label="Deal filters">
-          <button class="deal-filters__tab is-active" type="button" data-filter="all">All</button>
-          <button class="deal-filters__tab" type="button" data-filter="top-savings">Top savings</button>
-          <button class="deal-filters__tab" type="button" data-filter="latest">Latest</button>
+        <input id="deal-search" name="deal-search" class="deal-filters__search" type="search" placeholder="{{ $dealsSearchPlaceholder }}" aria-label="{{ $dealsSearchLabel }}" data-deal-search>
+        <div class="deal-filters__tabs" role="tablist" aria-label="{{ $dealsFiltersLabel }}">
+          <button class="deal-filters__tab is-active" type="button" data-filter="all">{{ $dealsTabAll }}</button>
+          <button class="deal-filters__tab" type="button" data-filter="top-savings">{{ $dealsTabTop }}</button>
+          <button class="deal-filters__tab" type="button" data-filter="latest">{{ $dealsTabLatest }}</button>
         </div>
       </div>
       <p class="list-shell__count deal-no-results is-hidden" data-no-results>
-        No items found for "<span data-no-results-query></span>".
+        {{ $dealsNoResults }} "<span data-no-results-query></span>".
       </p>
       <p class="list-shell__count deal-no-results deal-no-results__hint is-hidden" data-no-results-hint>
-        Other items you may like:
+        {{ $dealsSuggestions }}
       </p>
       <div class="deal-grid deal-grid--browse">
         {{ range $orderedDeals }}
@@ -126,7 +132,7 @@
     </section>
     <script type="module" src="{{ "scripts/deals-search.js" | relURL }}?v={{ now.Unix }}"></script>
   {{ else }}
-    <p>No deals available yet.</p>
+    <p>{{ $dealsEmpty }}</p>
   {{ end }}
 </section>
 {{ end }}

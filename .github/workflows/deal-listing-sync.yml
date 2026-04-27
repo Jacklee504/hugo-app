@@ -1,0 +1,44 @@
+name: Sync listing metadata on deal changes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/deals/*.md'
+      - 'scripts/sync_listing_from_urls.py'
+  workflow_dispatch:
+
+jobs:
+  sync-listing-metadata:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync listing fields from retailer URLs
+        run: python scripts/sync_listing_from_urls.py
+
+      - name: Commit and push synced fields
+        run: |
+          if git diff --quiet -- content/deals; then
+            echo "No listing metadata changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/deals
+          git commit -m "chore: sync listing metadata for deals"
+          git push

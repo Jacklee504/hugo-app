@@ -1,5 +1,10 @@
 {{ $featured_image := partials.Include "func/GetFeaturedImage.html" . }}
 {{ $description := .Params.description | default .Site.Params.description }}
+{{ $contentBaseName := "" }}
+{{ with .File }}
+  {{ $contentBaseName = .ContentBaseName | lower }}
+{{ end }}
+{{ $isLegalPage := in (slice "about" "privacy" "disclosure") $contentBaseName }}
 {{ if hasPrefix .RelPermalink "/posts/" }}
   <header class="site-top site-top--guide">
     {{ partials.Include "site-navigation.html" . }}
@@ -13,9 +18,9 @@
           <h1 class="site-top__title">
             {{ .Title | compare.Default .Site.Title }}
           </h1>
-          {{ with $description }}
+          {{ if and (not $isLegalPage) $description }}
             <p class="site-top__description">
-              {{ . }}
+              {{ $description }}
             </p>
           {{ end }}
         </div>

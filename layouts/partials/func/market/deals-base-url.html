@@ -1,6 +1,6 @@
-{{ $path := lower .RelPermalink }}
-{{ if or (eq $path "/us/") (hasPrefix $path "/us/") }}
-  /us/deals/
-{{ else }}
+{{ $marketKey := partials.Include "func/market/key.html" . | strings.TrimSpace }}
+{{ if eq $marketKey "ie" }}
   /deals/
+{{ else }}
+  {{ printf "/%s/deals/" $marketKey }}
 {{ end }}

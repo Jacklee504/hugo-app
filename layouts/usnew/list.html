@@ -4,14 +4,7 @@
     <h1>New arrivals</h1>
     <p>The most recently updated deal pages and product notes.</p>
   </div>
-  {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $allLiveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.com/") (in $dealURL "amzn.to/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ $deals = sort $deals "Lastmod" "desc" }}
   {{ if gt (len $deals) 0 }}
     <div class="deal-grid">

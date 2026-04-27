@@ -1,13 +1,6 @@
 {{ define "main" }}
 <section class="deals-shell list-shell--deals">
-  {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $allLiveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.com/") (in $dealURL "amzn.to/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ if gt (len $deals) 0 }}
     {{ $topSavings := first 4 (sort $deals "Params.discount_pct" "desc") }}
     {{ $topSavingsPaths := slice }}

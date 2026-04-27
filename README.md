@@ -180,6 +180,20 @@ hugo server -D
   This is backend-facing only (no visible suggestion UI).
 - Deal cards/single pages prefer `listing_*` fields when present, then fall back to manual front matter values.
 
+## Market datasets (`data/stores`)
+- Market membership is now driven by country files under `data/stores/` (for example `data/stores/ie.yaml`, `data/stores/us.yaml`).
+- Each file defines a `market` code, a display `label`, and a `deals` list of canonical deal paths.
+- Example:
+  ```yaml
+  market: ie
+  label: IE
+  deals:
+    - /deals/example-deal-slug/
+  ```
+- Add a new country by creating `data/stores/<code>.yaml` and adding market-specific content pages under `content/<code>/...`.
+- The market selector only enables countries whose home page exists (for example `/ca/`), so you can prepare datasets before launch.
+- For non-English markets, localize user-facing deal metadata (`title`, `summary`, and `tags`) to the market language.
+
 ## Deploy
 - `.github/workflows/hugo.yml` builds and deploys to `gh-pages`.
 - GitHub Pages should serve from `gh-pages` root.

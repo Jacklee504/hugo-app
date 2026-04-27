@@ -1,0 +1,8 @@
+{{ $marketKey := partials.Include "func/market/key.html" . | strings.TrimSpace }}
+{{ $locale := "en" }}
+{{ with index hugo.Data.stores $marketKey }}
+  {{ with .locale }}
+    {{ $locale = . }}
+  {{ end }}
+{{ end }}
+{{ $locale }}

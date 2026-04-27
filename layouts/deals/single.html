@@ -1,13 +1,28 @@
 {{ define "main" }}
+{{ $marketKey := partials.Include "func/market/key.html" . | strings.TrimSpace }}
+{{ $dealsBase := partials.Include "func/market/deals-base-url.html" . | strings.TrimSpace }}
+{{ $alertsBase := partials.Include "func/market/alerts-base-url.html" . | strings.TrimSpace }}
+{{ $singleViewDeal := partial "func/market/t.html" (dict "context" . "key" "single_view_deal") }}
+{{ $singleViewAmazon := partial "func/market/t.html" (dict "context" . "key" "single_view_amazon") }}
+{{ $singleJoinAlerts := partial "func/market/t.html" (dict "context" . "key" "single_join_alerts") }}
+{{ $singlePlaceholderNote := partial "func/market/t.html" (dict "context" . "key" "single_placeholder_note") }}
+{{ $singleMoreDeals := partial "func/market/t.html" (dict "context" . "key" "single_more_deals") }}
+{{ $singlePriceCheckAmazon := partial "func/market/t.html" (dict "context" . "key" "single_price_check_amazon") }}
+{{ $singleEndsIn := partial "func/market/t.html" (dict "context" . "key" "single_ends_in") }}
+{{ $singleExpiresOn := partial "func/market/t.html" (dict "context" . "key" "single_expires_on") }}
+{{ $singlePreviewPlaceholder := partial "func/market/t.html" (dict "context" . "key" "single_preview_placeholder") }}
+{{ $breadcrumbHome := partial "func/market/t.html" (dict "context" . "key" "breadcrumb_home") }}
+{{ $breadcrumbDeals := partial "func/market/t.html" (dict "context" . "key" "breadcrumb_deals") }}
+{{ $locale := partials.Include "func/market/locale.html" . | strings.TrimSpace }}
 {{ $url := or .Params.affiliate_url .Params.product_url .Params.listing_url }}
 {{ $normalizedURL := lower (printf "%v" $url) }}
 {{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
 {{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
 {{ $isAffiliateLink := or .Params.affiliate_url $hasAmazonTag }}
-{{ $ctaLabel := "View deal" }}
-{{ if $isAmazonURL }}{{ $ctaLabel = "View on Amazon" }}{{ end }}
+{{ $ctaLabel := $singleViewDeal }}
+{{ if $isAmazonURL }}{{ $ctaLabel = $singleViewAmazon }}{{ end }}
 {{ $canShowLocalPrice := .Params.show_local_price | default true }}
-{{ $isUSDDeal := or (in $normalizedURL "amazon.com/") (and (in $normalizedURL "amzn.to/") (in $normalizedURL "dealledger-20")) }}
+{{ $isUSDDeal := eq $marketKey "us" }}
 {{ $currency := "€" }}
 {{ $currencyCode := "EUR" }}
 {{ if $isUSDDeal }}
@@ -67,11 +82,11 @@
   {{ $schema = merge $schema (dict "offers" $offer) }}
 {{ end }}
 {{ $breadcrumbs := dict
-  "@context" "https://schema.org"
-  "@type" "BreadcrumbList"
-  "itemListElement" (slice
-    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.Home.Permalink)
-    (dict "@type" "ListItem" "position" 2 "name" "Deals" "item" (printf "%sdeals/" .Site.BaseURL))
+    "@context" "https://schema.org"
+    "@type" "BreadcrumbList"
+    "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" $breadcrumbHome "item" .Site.Home.Permalink)
+    (dict "@type" "ListItem" "position" 2 "name" $breadcrumbDeals "item" (absURL $dealsBase))
     (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
   )
 }}
@@ -95,13 +110,13 @@
           {{ with $listPrice }}{{ if gt . 0 }}<span class="list">{{ printf "%s%.2f" $currency (float .) }}</span>{{ end }}{{ end }}
           {{ with $discountPct }}{{ if gt . 0 }}<span class="badge">-{{ printf "%.0f" (mul . 100) }}%</span>{{ end }}{{ end }}
         {{ else }}
-          <div class="meta">See Amazon for current price and availability.</div>
+          <div class="meta">{{ $singlePriceCheckAmazon }}</div>
         {{ end }}
         {{ if and $showExpiryMeta $timeLeft }}
-          <div class="meta">Ends in {{ $timeLeft }}</div>
+          <div class="meta">{{ $singleEndsIn }} {{ $timeLeft }}</div>
         {{ else }}
           {{ if $showExpiryMeta }}
-            {{ with .Params.expires_at }}<div class="meta">Expires {{ time.Format "Jan 2, 2006" (time .) }}</div>{{ end }}
+            {{ with .Params.expires_at }}<div class="meta">{{ $singleExpiresOn }} {{ time.Format "Jan 2, 2006" (time .) }}</div>{{ end }}
           {{ end }}
         {{ end }}
       </div>
@@ -109,8 +124,8 @@
       {{ if $url }}
         <p><a class="deal-single__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">{{ $ctaLabel }}</a></p>
       {{ else }}
-        <p><a class="deal-single__cta deal-single__cta--soft" href="{{ "alerts/" | relURL }}">Join category alerts</a></p>
-        <p class="deal-single__note">Retailer links are added selectively as listings are finalized.</p>
+        <p><a class="deal-single__cta deal-single__cta--soft" href="{{ $alertsBase | relURL }}">{{ $singleJoinAlerts }}</a></p>
+        <p class="deal-single__note">{{ $singlePlaceholderNote }}</p>
       {{ end }}
     </div>
 
@@ -125,11 +140,14 @@
         ) }}
       </div>
     {{ else }}
-      <div class="deal-single__placeholder">Product page preview</div>
+      <div class="deal-single__placeholder">{{ $singlePreviewPlaceholder }}</div>
     {{ end }}
   </div>
 
-  {{ $detailCopy := .Params.listing_summary }}
+  {{ $detailCopy := "" }}
+  {{ if eq $locale "en" }}
+    {{ $detailCopy = .Params.listing_summary }}
+  {{ end }}
   {{ if and $detailCopy (ne $detailCopy $description) }}
     <div class="deal-single__content">
       <p>{{ $detailCopy }}</p>
@@ -142,23 +160,11 @@
     </div>
   {{ end }}
 
-  {{ $relatedPool := where (where .Site.RegularPages "Section" "deals") "Permalink" "ne" .Permalink }}
-  {{ $relatedUS := slice }}
-  {{ $currentDealURL := lower (printf "%v" $url) }}
-  {{ $isUSDeal := and $currentDealURL (or (in $currentDealURL "amazon.com/") (in $currentDealURL "amzn.to/")) }}
-  {{ range $relatedPool }}
-    {{ $relatedURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $relatedURL (or
-      (and $isUSDeal (or (in $relatedURL "amazon.com/") (in $relatedURL "amzn.to/")))
-      (and (not $isUSDeal) (or (in $relatedURL "amazon.ie/") (in $relatedURL "amazon.co.uk/") (in $relatedURL "amazon.de/") (in $relatedURL "amazon.fr/") (in $relatedURL "amazon.it/") (in $relatedURL "amazon.es/") (in $relatedURL "amazon.nl/") (in $relatedURL "amazon.se/") (in $relatedURL "amazon.pl/")))
-    ) }}
-      {{ $relatedUS = $relatedUS | append . }}
-    {{ end }}
-  {{ end }}
-  {{ $related := first 3 $relatedUS }}
+  {{ $relatedPool := where (partial "func/market/live-deals.html" .) "Permalink" "ne" .Permalink }}
+  {{ $related := first 3 $relatedPool }}
   {{ if gt (len $related) 0 }}
     <section class="related">
-      <h2>More deals</h2>
+      <h2>{{ $singleMoreDeals }}</h2>
       <div class="deal-grid">
         {{ range $related }}
           {{ partial "deal-card.html" (dict "page" . "variant" "list") }}

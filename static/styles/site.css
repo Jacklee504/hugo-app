@@ -89,6 +89,10 @@ main.pb7 {
   line-height: 1.65;
 }
 
+.site-top__intro--alerts {
+  padding-bottom: 0.45rem;
+}
+
 .nav-shell {
   display: flex;
   flex-wrap: nowrap;
@@ -613,7 +617,7 @@ main.pb7 {
   padding: 0.65rem 0.9rem;
   border: 1px solid rgba(19, 111, 99, 0.24);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.88);
   color: var(--ink);
   font-size: 0.86rem;
   font-weight: 600;
@@ -660,7 +664,7 @@ main.pb7 {
 
 @media (min-width: 42.001rem) {
   .home-value-strip {
-    max-width: 47%;
+    max-width: 53%;
   }
 }
 
@@ -718,7 +722,7 @@ main.pb7 {
 
 @media (min-width: 54.001rem) {
   .home-filter-rail {
-    max-width: calc(50% - 40px);
+    max-width: calc(60% - 100px);
   }
 }
 
@@ -1631,7 +1635,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 
 .alert-form__heading {
   margin: 0;
-  padding-left: 0.4rem;
+  padding-left: 0;
   color: var(--ink);
   font-family: var(--font-display);
   font-size: 1.18rem;
@@ -1644,7 +1648,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 
 .alert-form__label {
   margin: 0;
-  padding-left: 0.4rem;
+  padding-left: 0;
   color: var(--ink);
   font-weight: 700;
   font-size: 0.95rem;
@@ -1785,15 +1789,16 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   position: absolute;
   top: calc(100% + 0.35rem);
   left: 0;
-  right: 0;
-  z-index: 9;
+  right: auto;
+  width: min(24rem, 90%);
+  z-index: 200;
   margin: 0;
   padding: 0.35rem;
   list-style: none;
-  border: 1px solid rgba(19, 111, 99, 0.24);
+  border: 1px solid rgba(19, 111, 99, 0.15);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.99);
-  box-shadow: 0 14px 26px rgba(12, 27, 23, 0.15);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 9px 18px rgba(12, 27, 23, 0.09);
   max-height: 16rem;
   overflow-y: auto;
 }
@@ -1845,6 +1850,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 
 @media (max-width: 42rem) {
   .country-combobox__list {
+    width: auto;
     left: 0.3rem;
     right: 0.3rem;
     max-height: 9rem;
@@ -2401,11 +2407,11 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   }
 
   .alert-form__label {
-    padding-left: 0.3rem;
+    padding-left: 0;
   }
 
   .alert-form__heading {
-    padding-left: 0.3rem;
+    padding-left: 0;
   }
 
   .alert-form input#keywords::placeholder {
@@ -2473,7 +2479,6 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 
   .deal-card--list .deal-card__body,
   .deal-card__body,
-  .alerts-shell,
   .list-shell {
     padding: 0.5rem;
     margin: 0 0 0 0 !important;
@@ -2482,7 +2487,7 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
   }
 
   .alert-form__label {
-    padding-left: 0.5rem;
+    padding-left: 0;
   }
 
   .deal-card--list .deal-card__title {
@@ -2901,13 +2906,21 @@ main article[class^="page-"] > header > time.f6.mv4.dib.tracked {
 }
 
 @media (max-width: 42rem) {
+  .site-top__title {
+    padding-bottom: 15px;
+  }
+
   .deal-card--list .deal-card__body,
   .deal-card__body,
-  .alerts-shell,
   .list-shell {
     padding: 0.5rem;
     margin: 0 0 0 0 !important;
     width: auto;
     border-radius: 0;
+  }
+
+  .alerts-shell__title,
+  .alerts-shell__intro {
+    padding: 0 10px;
   }
 }

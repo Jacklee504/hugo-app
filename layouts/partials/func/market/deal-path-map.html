@@ -1,0 +1,19 @@
+{{ $paths := dict }}
+{{ $store := index hugo.Data.stores .marketKey }}
+{{ with $store }}
+  {{ with .deals }}
+    {{ range . }}
+      {{ $path := lower (printf "%v" .) | strings.TrimSpace }}
+      {{ if $path }}
+        {{ if not (hasPrefix $path "/") }}
+          {{ $path = printf "/%s" $path }}
+        {{ end }}
+        {{ if not (hasSuffix $path "/") }}
+          {{ $path = printf "%s/" $path }}
+        {{ end }}
+        {{ $paths = merge $paths (dict $path true) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return $paths }}

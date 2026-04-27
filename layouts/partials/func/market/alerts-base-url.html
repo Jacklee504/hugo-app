@@ -1,0 +1,6 @@
+{{ $marketKey := partials.Include "func/market/key.html" . | strings.TrimSpace }}
+{{ if eq $marketKey "ie" }}
+  /alerts/
+{{ else }}
+  {{ printf "/%s/alerts/" $marketKey }}
+{{ end }}

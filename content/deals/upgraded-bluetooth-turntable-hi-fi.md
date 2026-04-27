@@ -14,9 +14,9 @@ listing_sale_price = 144.76
 listing_list_price = 187.76
 listing_discount_pct = 0.229016
 listing_title = "Angels Horn Record Player Vinyl Player, Upgraded 5.0 Bluetooth Turntable, Home Audio High Fidelity Belt Drive With Moving Magnetic At 3600L Cartridge : Amazon.ie: Electronics"
-listing_summary = "Shown at €187.76 with a €43 coupon on the listing, bringing the effective checkout price to €144.76."
+listing_summary = "Angels Horn Record Player Vinyl Player, Upgraded 5.0 Bluetooth Turntable, Home Audio High Fidelity Belt Drive With Moving Magnetic At 3600L Cartridge : Amazon.ie: Electronics"
 listing_image = "https://m.media-amazon.com/images/I/71Krfogj2OL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-22T06:10:44.579618+00:00"
+listing_synced_at = "2026-04-27T18:51:17.968675+00:00"
 +++
 
 Shown price is €187.76, with a €43 coupon applied on the listing to reach an effective €144.76 checkout price.

@@ -1,4 +1,26 @@
 {{ define "main" }}
+{{ $alertsBase := partials.Include "func/market/alerts-base-url.html" . | strings.TrimSpace }}
+{{ $dealsBase := partials.Include "func/market/deals-base-url.html" . | strings.TrimSpace }}
+{{ $unsubscribeIntro := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_intro") }}
+{{ $unsubscribeEmailLabel := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_email_label") }}
+{{ $unsubscribeEmailPlaceholder := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_email_placeholder") }}
+{{ $unsubscribePrefillHint := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_prefill_hint") }}
+{{ $unsubscribeButton := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_button") }}
+{{ $unsubscribeKeepAlerts := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_keep_alerts") }}
+{{ $unsubscribeNextTitle := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_next_title") }}
+{{ $unsubscribeNextCopy := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_next_copy") }}
+{{ $unsubscribeBrowseDeals := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_browse_deals") }}
+{{ $unsubscribeUpdatePrefs := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_update_prefs") }}
+{{ $unsubscribeMailSubject := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_mail_subject") }}
+{{ $unsubscribeMailBodyLine1 := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_mail_body_line1") }}
+{{ $unsubscribeMailBodyEmail := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_mail_body_email") }}
+{{ $unsubscribeMailBodyType := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_mail_body_type") }}
+{{ $unsubscribeMailBodyPage := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_mail_body_page") }}
+{{ $unsubscribeUnknown := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_unknown") }}
+{{ $unsubscribeInvalidEmail := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_invalid_email") }}
+{{ $unsubscribeConfirmPrompt := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_confirm_prompt") }}
+{{ $unsubscribeNoChanges := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_no_changes") }}
+{{ $unsubscribeOpeningMail := partial "func/market/t.html" (dict "context" . "key" "unsubscribe_opening_mail") }}
 <style>
   .unsubscribe-actions .button-link::after {
     content: "→";
@@ -24,35 +46,32 @@
   }
 </style>
 <section class="alerts-shell" style="padding-bottom:4.5rem;">
-  <p class="page-copy">Confirm below if you want to stop Deal Ledger alert emails.</p>
+  <p class="page-copy">{{ $unsubscribeIntro }}</p>
 
   <div class="alert-form">
     <section class="alert-form__section">
       <div class="alert-form__field">
-        <label class="alert-form__label" for="unsubscribe-email">Email address</label>
-        <input id="unsubscribe-email" type="email" placeholder="you@example.com" autocomplete="email">
-        <p class="alert-field__hint">We will prefill this if you opened the link from an alert email.</p>
+        <label class="alert-form__label" for="unsubscribe-email">{{ $unsubscribeEmailLabel }}</label>
+        <input id="unsubscribe-email" type="email" placeholder="{{ $unsubscribeEmailPlaceholder }}" autocomplete="email">
+        <p class="alert-field__hint">{{ $unsubscribePrefillHint }}</p>
       </div>
 
       <div class="alert-form__field unsubscribe-actions" style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-        <button type="button" id="unsubscribe-confirm-button">Unsubscribe me</button>
-        <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">Keep my alerts</a>
+        <button type="button" id="unsubscribe-confirm-button">{{ $unsubscribeButton }}</button>
+        <a class="button-link button-link--secondary" href="{{ $alertsBase | relURL }}">{{ $unsubscribeKeepAlerts }}</a>
       </div>
 
       <p class="alert-field__hint" id="unsubscribe-status"></p>
     </section>
 
     <section class="alert-form__section" style="margin-top:0.8rem;">
-      <h2 class="alert-form__heading">What happens next</h2>
+      <h2 class="alert-form__heading">{{ $unsubscribeNextTitle }}</h2>
       <div class="alert-form__field">
-        <p class="page-copy" style="margin:0;">
-          Unsubscribe requests are processed as quickly as possible. If you clicked this by mistake,
-          use <strong>Keep my alerts</strong> above and no change will be made.
-        </p>
+        <p class="page-copy" style="margin:0;">{{ $unsubscribeNextCopy }}</p>
       </div>
       <div class="alert-form__field unsubscribe-actions" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-        <a class="button-link button-link--primary" href="{{ "deals/" | relURL }}">Browse deals</a>
-        <a class="button-link button-link--secondary" href="{{ "alerts/" | relURL }}">Update alert preferences</a>
+        <a class="button-link button-link--primary" href="{{ $dealsBase | relURL }}">{{ $unsubscribeBrowseDeals }}</a>
+        <a class="button-link button-link--secondary" href="{{ $alertsBase | relURL }}">{{ $unsubscribeUpdatePrefs }}</a>
       </div>
     </section>
   </div>
@@ -60,6 +79,19 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const i18n = {
+      mailSubject: {{ $unsubscribeMailSubject | jsonify | safeJS }},
+      mailBodyLine1: {{ $unsubscribeMailBodyLine1 | jsonify | safeJS }},
+      mailBodyEmail: {{ $unsubscribeMailBodyEmail | jsonify | safeJS }},
+      mailBodyType: {{ $unsubscribeMailBodyType | jsonify | safeJS }},
+      mailBodyPage: {{ $unsubscribeMailBodyPage | jsonify | safeJS }},
+      unknown: {{ $unsubscribeUnknown | jsonify | safeJS }},
+      invalidEmail: {{ $unsubscribeInvalidEmail | jsonify | safeJS }},
+      confirmPrompt: {{ $unsubscribeConfirmPrompt | jsonify | safeJS }},
+      noChanges: {{ $unsubscribeNoChanges | jsonify | safeJS }},
+      openingMail: {{ $unsubscribeOpeningMail | jsonify | safeJS }},
+    };
+
     const params = new URLSearchParams(window.location.search);
     const emailInput = document.getElementById('unsubscribe-email');
     const confirmButton = document.getElementById('unsubscribe-confirm-button');
@@ -74,14 +106,14 @@
     const sender = 'contact@dealledger.eu';
 
     const buildMailto = (email, sourceType) => {
-      const subject = encodeURIComponent('Unsubscribe from Deal Ledger alerts');
+      const subject = encodeURIComponent(i18n.mailSubject);
       const body = encodeURIComponent(
         [
-          'Please unsubscribe me from Deal Ledger alerts.',
+          i18n.mailBodyLine1,
           '',
-          `Email: ${email || '(not provided)'}`,
-          `Alert type: ${sourceType || 'unknown'}`,
-          `Page: ${window.location.href}`,
+          `${i18n.mailBodyEmail}: ${email || i18n.unknown}`,
+          `${i18n.mailBodyType}: ${sourceType || i18n.unknown}`,
+          `${i18n.mailBodyPage}: ${window.location.href}`,
         ].join('\n')
       );
       return `mailto:${sender}?subject=${subject}&body=${body}`;
@@ -92,17 +124,17 @@
       const sourceType = normalizeEmail(params.get('type'));
 
       if (!validEmail(email)) {
-        if (status) status.textContent = 'Enter a valid email address before unsubscribing.';
+        if (status) status.textContent = i18n.invalidEmail;
         return;
       }
 
-      const ok = window.confirm('Are you sure you want to unsubscribe from Deal Ledger alerts for this email?');
+      const ok = window.confirm(i18n.confirmPrompt);
       if (!ok) {
-        if (status) status.textContent = 'No changes were made.';
+        if (status) status.textContent = i18n.noChanges;
         return;
       }
 
-      if (status) status.textContent = 'Opening your email app to complete unsubscribe request...';
+      if (status) status.textContent = i18n.openingMail;
       window.location.href = buildMailto(email, sourceType);
     });
   });

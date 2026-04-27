@@ -1,17 +1,13 @@
 {{ define "main" }}
+{{ $newTitle := partial "func/market/t.html" (dict "context" . "key" "new_title") }}
+{{ $newCopy := partial "func/market/t.html" (dict "context" . "key" "new_copy") }}
+{{ $newEmpty := partial "func/market/t.html" (dict "context" . "key" "new_empty") }}
 <section class="list-shell">
   <div class="list-shell__intro">
-    <h1>New arrivals</h1>
-    <p>The most recently updated deal pages and product notes.</p>
+    <h1>{{ $newTitle }}</h1>
+    <p>{{ $newCopy }}</p>
   </div>
-  {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $allLiveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.ie/") (in $dealURL "amazon.co.uk/") (in $dealURL "amazon.de/") (in $dealURL "amazon.fr/") (in $dealURL "amazon.it/") (in $dealURL "amazon.es/") (in $dealURL "amazon.nl/") (in $dealURL "amazon.se/") (in $dealURL "amazon.pl/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ $deals = sort $deals "Lastmod" "desc" }}
   {{ if gt (len $deals) 0 }}
     <div class="deal-grid">
@@ -20,7 +16,7 @@
       {{ end }}
     </div>
   {{ else }}
-    <p>No recent deals yet.</p>
+    <p>{{ $newEmpty }}</p>
   {{ end }}
 </section>
 {{ end }}

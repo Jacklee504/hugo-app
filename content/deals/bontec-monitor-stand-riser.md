@@ -17,8 +17,8 @@ listing_summary = "BONTEC Monitor Stand Riser, Wooden Desk Riser for Screen and 
 listing_sale_price = 20.35
 listing_list_price = 24.99
 listing_discount_pct = 0.1857
-listing_image = "https://m.media-amazon.com/images/I/81BuZYHIjLL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_image = "https://m.media-amazon.com/images/I/71aeCYu+FpL._AC_SL1500_.jpg"
+listing_synced_at = "2026-04-27T18:51:17.968675+00:00"
 aliases = ["/deals/monitor-stand-riser/"]
 +++
 

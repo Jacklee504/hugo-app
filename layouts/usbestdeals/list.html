@@ -4,14 +4,7 @@
     <h1>Top savings</h1>
     <p>The strongest pages by discount depth, useful for readers who want the best-value picks first.</p>
   </div>
-  {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $allLiveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.com/") (in $dealURL "amzn.to/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ $sorted := sort $deals "Params.discount_pct" "desc" }}
   {{ if gt (len $sorted) 0 }}
     <div class="deal-grid">

@@ -1,19 +1,14 @@
 {{ define "main" }}
+{{ $expiringTitle := partial "func/market/t.html" (dict "context" . "key" "expiring_title") }}
+{{ $expiringCopy := partial "func/market/t.html" (dict "context" . "key" "expiring_copy") }}
+{{ $expiringEmpty := partial "func/market/t.html" (dict "context" . "key" "expiring_empty") }}
 <section class="list-shell">
   <div class="list-shell__intro">
-    <h1>Expiring soon</h1>
-    <p>Pages with expiration windows, ordered so the most time-sensitive picks appear first.</p>
+    <h1>{{ $expiringTitle }}</h1>
+    <p>{{ $expiringCopy }}</p>
   </div>
   {{ $now := now }}
-  {{ $allDeals := where .Site.RegularPages "Section" "deals" }}
-  {{ $liveDeals := where $allDeals "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $liveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.ie/") (in $dealURL "amazon.co.uk/") (in $dealURL "amazon.de/") (in $dealURL "amazon.fr/") (in $dealURL "amazon.it/") (in $dealURL "amazon.es/") (in $dealURL "amazon.nl/") (in $dealURL "amazon.se/") (in $dealURL "amazon.pl/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ $soon := sort (where (where $deals "Params.expires_at" "ne" nil) "Params.expires_at" "ge" $now) "Params.expires_at" "asc" }}
   {{ if gt (len $soon) 0 }}
     <div class="deal-grid">
@@ -22,7 +17,7 @@
       {{ end }}
     </div>
   {{ else }}
-    <p>No expiring deals at the moment.</p>
+    <p>{{ $expiringEmpty }}</p>
   {{ end }}
 </section>
 {{ end }}

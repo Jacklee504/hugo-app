@@ -1,35 +1,87 @@
 {{ define "main" }}
 {{ $formspreeEndpoint := .Site.Params.formspree_endpoint | compare.Default "" }}
+{{ $marketLocale := partials.Include "func/market/locale.html" . | strings.TrimSpace }}
+{{ $alertsTitle := partial "func/market/t.html" (dict "context" . "key" "alerts_title") | strings.TrimSpace }}
+{{ $alertsIntro := partial "func/market/t.html" (dict "context" . "key" "alerts_intro") | strings.TrimSpace }}
+{{ $alertsFormSubject := partial "func/market/t.html" (dict "context" . "key" "alerts_form_subject") | strings.TrimSpace }}
+{{ $alertsHoneypotLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_honeypot_label") | strings.TrimSpace }}
+{{ $alertsSectionWhere := partial "func/market/t.html" (dict "context" . "key" "alerts_section_where") | strings.TrimSpace }}
+{{ $alertsNameLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_name_label") | strings.TrimSpace }}
+{{ $alertsNamePlaceholder := partial "func/market/t.html" (dict "context" . "key" "alerts_name_placeholder") | strings.TrimSpace }}
+{{ $alertsEmailLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_email_label") | strings.TrimSpace }}
+{{ $alertsEmailPlaceholder := partial "func/market/t.html" (dict "context" . "key" "alerts_email_placeholder") | strings.TrimSpace }}
+{{ $alertsCountryLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_country_label") | strings.TrimSpace }}
+{{ $alertsCountryInfoAria := partial "func/market/t.html" (dict "context" . "key" "alerts_country_info_aria") | strings.TrimSpace }}
+{{ $alertsCountryPlaceholder := partial "func/market/t.html" (dict "context" . "key" "alerts_country_placeholder") | strings.TrimSpace }}
+{{ $alertsCountryPopupText := partial "func/market/t.html" (dict "context" . "key" "alerts_country_popup_text") | strings.TrimSpace }}
+{{ $alertsCountryPopupClose := partial "func/market/t.html" (dict "context" . "key" "alerts_country_popup_close") | strings.TrimSpace }}
+{{ $alertsCadenceLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_cadence_label") | strings.TrimSpace }}
+{{ $alertsCadenceNew := partial "func/market/t.html" (dict "context" . "key" "alerts_cadence_new") | strings.TrimSpace }}
+{{ $alertsCadenceWeekly := partial "func/market/t.html" (dict "context" . "key" "alerts_cadence_weekly") | strings.TrimSpace }}
+{{ $alertsCadenceInstant := partial "func/market/t.html" (dict "context" . "key" "alerts_cadence_instant") | strings.TrimSpace }}
+{{ $alertsSectionWatch := partial "func/market/t.html" (dict "context" . "key" "alerts_section_watch") | strings.TrimSpace }}
+{{ $alertsQuickCategories := partial "func/market/t.html" (dict "context" . "key" "alerts_quick_categories") | strings.TrimSpace }}
+{{ $alertsCatAudio := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_audio") | strings.TrimSpace }}
+{{ $alertsCatAudioDesc := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_audio_desc") | strings.TrimSpace }}
+{{ $alertsCatHomeOffice := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_home_office") | strings.TrimSpace }}
+{{ $alertsCatHomeOfficeDesc := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_home_office_desc") | strings.TrimSpace }}
+{{ $alertsCatGaming := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_gaming") | strings.TrimSpace }}
+{{ $alertsCatGamingDesc := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_gaming_desc") | strings.TrimSpace }}
+{{ $alertsCatTv := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_tv") | strings.TrimSpace }}
+{{ $alertsCatTvDesc := partial "func/market/t.html" (dict "context" . "key" "alerts_cat_tv_desc") | strings.TrimSpace }}
+{{ $alertsKeywordsLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_keywords_label") | strings.TrimSpace }}
+{{ $alertsKeywordsPlaceholder := partial "func/market/t.html" (dict "context" . "key" "alerts_keywords_placeholder") | strings.TrimSpace }}
+{{ $alertsKeywordsPlaceholderMobile := partial "func/market/t.html" (dict "context" . "key" "alerts_keywords_placeholder_mobile") | strings.TrimSpace }}
+{{ $alertsKeywordsHint := partial "func/market/t.html" (dict "context" . "key" "alerts_keywords_hint") | strings.TrimSpace }}
+{{ $alertsSectionExact := partial "func/market/t.html" (dict "context" . "key" "alerts_section_exact") | strings.TrimSpace }}
+{{ $alertsExactLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_exact_label") | strings.TrimSpace }}
+{{ $alertsExactPlaceholder := partial "func/market/t.html" (dict "context" . "key" "alerts_exact_placeholder") | strings.TrimSpace }}
+{{ $alertsExactHint := partial "func/market/t.html" (dict "context" . "key" "alerts_exact_hint") | strings.TrimSpace }}
+{{ $alertsSectionNotes := partial "func/market/t.html" (dict "context" . "key" "alerts_section_notes") | strings.TrimSpace }}
+{{ $alertsNotesLabel := partial "func/market/t.html" (dict "context" . "key" "alerts_notes_label") | strings.TrimSpace }}
+{{ $alertsNotesPlaceholder := partial "func/market/t.html" (dict "context" . "key" "alerts_notes_placeholder") | strings.TrimSpace }}
+{{ $alertsSubmitDefault := partial "func/market/t.html" (dict "context" . "key" "alerts_submit_default") | strings.TrimSpace }}
+{{ $alertsSubmitExact := partial "func/market/t.html" (dict "context" . "key" "alerts_submit_exact") | strings.TrimSpace }}
+{{ $alertsNotConfigured := partial "func/market/t.html" (dict "context" . "key" "alerts_not_configured") | strings.TrimSpace }}
+{{ $alertsCountryRequiredToast := partial "func/market/t.html" (dict "context" . "key" "alerts_country_required_toast") | strings.TrimSpace }}
+{{ $alertsExactRequiredToast := partial "func/market/t.html" (dict "context" . "key" "alerts_exact_required_toast") | strings.TrimSpace }}
+{{ $alertsChooseCategoryOrKeywords := partial "func/market/t.html" (dict "context" . "key" "alerts_choose_category_or_keywords") | strings.TrimSpace }}
+{{ $alertsSavedToast := partial "func/market/t.html" (dict "context" . "key" "alerts_saved_toast") | strings.TrimSpace }}
+{{ $alertsFailedToast := partial "func/market/t.html" (dict "context" . "key" "alerts_failed_toast") | strings.TrimSpace }}
+{{ $alertsEmailMissing := partial "func/market/t.html" (dict "context" . "key" "alerts_email_missing") | strings.TrimSpace }}
+{{ $alertsEmailInvalid := partial "func/market/t.html" (dict "context" . "key" "alerts_email_invalid") | strings.TrimSpace }}
+{{ $alertsCountryValidityRequired := partial "func/market/t.html" (dict "context" . "key" "alerts_country_validity_required") | strings.TrimSpace }}
+{{ $alertsCountryValidityList := partial "func/market/t.html" (dict "context" . "key" "alerts_country_validity_list") | strings.TrimSpace }}
 <section class="alerts-shell">
-  <h1>Email alerts</h1>
-  <p class="page-copy">Tell us how often you want updates, then fill the matching section below.</p>
+  <h1 class="alerts-shell__title">{{ $alertsTitle }}</h1>
+  <p class="page-copy alerts-shell__intro">{{ $alertsIntro }}</p>
 
   <form class="alert-form" id="alert-request-form" name="alert-request" action="{{ $formspreeEndpoint }}" method="POST" data-formspree-endpoint="{{ $formspreeEndpoint }}">
-    <input type="hidden" name="_subject" value="New Deal Ledger alert request">
-    <p hidden><label>Leave this empty if you're human: <input name="_gotcha"></label></p>
+    <input type="hidden" name="_subject" value="{{ $alertsFormSubject }}">
+    <p hidden><label>{{ $alertsHoneypotLabel }} <input name="_gotcha"></label></p>
 
     <section class="alert-form__section alert-form__split">
-      <h2 class="alert-form__heading alert-form__heading--span">Where should we send updates?</h2>
+      <h2 class="alert-form__heading alert-form__heading--span">{{ $alertsSectionWhere }}</h2>
       <div class="alert-form__field">
-        <label class="alert-form__label" for="alert-name">Name</label>
-        <input id="alert-name" name="name" type="text" placeholder="Your name" autocomplete="name">
+        <label class="alert-form__label" for="alert-name">{{ $alertsNameLabel }}</label>
+        <input id="alert-name" name="name" type="text" placeholder="{{ $alertsNamePlaceholder }}" autocomplete="name">
       </div>
 
       <div class="alert-form__field">
-        <label class="alert-form__label" for="alert-email">Email address</label>
-        <input id="alert-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <label class="alert-form__label" for="alert-email">{{ $alertsEmailLabel }}</label>
+        <input id="alert-email" name="email" type="email" placeholder="{{ $alertsEmailPlaceholder }}" autocomplete="email" required>
       </div>
 
       <div class="alert-form__field alert-form__field--country">
         <div class="alert-form__label-row">
-          <label class="alert-form__label" for="country-search">Country</label>
+          <label class="alert-form__label" for="country-search">{{ $alertsCountryLabel }}</label>
           <button
             type="button"
             class="alert-info-button"
             id="country-info-trigger"
             aria-controls="country-info-popup"
             aria-expanded="false"
-            aria-label="Country availability info"
+            aria-label="{{ $alertsCountryInfoAria }}"
             style="width:1rem;height:1rem;min-width:1rem;min-height:1rem;padding:0;line-height:1;"
           ><span class="alert-info-button__glyph" aria-hidden="true">i</span></button>
         </div>
@@ -43,7 +95,7 @@
             autocapitalize="off"
             autocorrect="off"
             spellcheck="false"
-            placeholder="Start typing your country"
+            placeholder="{{ $alertsCountryPlaceholder }}"
             aria-autocomplete="list"
             aria-controls="country-options"
             aria-expanded="false"
@@ -53,62 +105,60 @@
           <ul class="country-combobox__list" id="country-options" role="listbox" hidden></ul>
         </div>
         <div class="alert-inline-popup" id="country-info-popup" role="dialog" aria-modal="false" hidden>
-          <p>
-            Some countries are not fully set up yet for all alert types. You can still submit now, and we are actively rolling support out as quickly as possible.
-          </p>
-          <button type="button" class="alert-inline-popup__close" id="country-info-close">Got it</button>
+          <p>{{ $alertsCountryPopupText }}</p>
+          <button type="button" class="alert-inline-popup__close" id="country-info-close">{{ $alertsCountryPopupClose }}</button>
         </div>
       </div>
 
       <div class="alert-form__field">
-        <label class="alert-form__label" for="cadence">How often</label>
+        <label class="alert-form__label" for="cadence">{{ $alertsCadenceLabel }}</label>
         <select id="cadence" class="alert-form__native-select" name="cadence" required>
-          <option>As new picks are added</option>
-          <option>Weekly digest</option>
-          <option>Instant exact-item alerts</option>
+          <option>{{ $alertsCadenceNew }}</option>
+          <option>{{ $alertsCadenceWeekly }}</option>
+          <option>{{ $alertsCadenceInstant }}</option>
         </select>
       </div>
     </section>
 
     <section class="alert-form__section" id="regular-alert-fields">
-      <h2 class="alert-form__heading">What should we watch?</h2>
+      <h2 class="alert-form__heading">{{ $alertsSectionWatch }}</h2>
       <div class="alert-form__field">
-        <p class="alert-form__label">Quick categories</p>
+        <p class="alert-form__label">{{ $alertsQuickCategories }}</p>
         <div class="alert-options">
-          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> Audio</span><small>Headphones, speakers, and everyday listening gear.</small></label>
-          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="home_office"> Home office</span><small>Monitors, mice, keyboards, and desk setup upgrades.</small></label>
-          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="gaming"> Gaming</span><small>PC and console accessories and components.</small></label>
-          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="tv"> TV & streaming</span><small>Streaming sticks, soundbars, and TV extras.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> {{ $alertsCatAudio }}</span><small>{{ $alertsCatAudioDesc }}</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="home_office"> {{ $alertsCatHomeOffice }}</span><small>{{ $alertsCatHomeOfficeDesc }}</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="gaming"> {{ $alertsCatGaming }}</span><small>{{ $alertsCatGamingDesc }}</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="tv"> {{ $alertsCatTv }}</span><small>{{ $alertsCatTvDesc }}</small></label>
         </div>
       </div>
 
       <div class="alert-form__field">
-        <label class="alert-form__label" for="keywords">Keywords or terms</label>
-        <input id="keywords" name="keywords" type="text" placeholder="Examples: over-ear headphones, ultrawide monitor">
-        <p class="alert-field__hint">Use commas to describe products, features, or use cases you want to track.</p>
+        <label class="alert-form__label" for="keywords">{{ $alertsKeywordsLabel }}</label>
+        <input id="keywords" name="keywords" type="text" placeholder="{{ $alertsKeywordsPlaceholder }}">
+        <p class="alert-field__hint">{{ $alertsKeywordsHint }}</p>
       </div>
       <input type="hidden" name="inferred_categories" id="inferred-categories" value="">
       <input type="hidden" name="effective_categories" id="effective-categories" value="">
     </section>
 
     <section class="alert-form__section" id="exact-alert-fields" hidden>
-      <h2 class="alert-form__heading">Exact item to track</h2>
+      <h2 class="alert-form__heading">{{ $alertsSectionExact }}</h2>
       <div class="alert-form__field">
-        <label class="alert-form__label" for="exact-items">Exact item name or URL</label>
-        <textarea class="alert-form__notes" id="exact-items" name="exact_items" rows="3" placeholder="Add an exact item name, model number, ASIN, or product URL"></textarea>
-        <p class="alert-field__hint">You will get an instant email when a matching discount appears.</p>
+        <label class="alert-form__label" for="exact-items">{{ $alertsExactLabel }}</label>
+        <textarea class="alert-form__notes" id="exact-items" name="exact_items" rows="3" placeholder="{{ $alertsExactPlaceholder }}"></textarea>
+        <p class="alert-field__hint">{{ $alertsExactHint }}</p>
       </div>
     </section>
 
     <section class="alert-form__section" id="shared-notes-fields">
-      <h2 class="alert-form__heading">Optional notes</h2>
+      <h2 class="alert-form__heading">{{ $alertsSectionNotes }}</h2>
       <div class="alert-form__field">
-        <label class="alert-form__label" for="notes">Notes for your alerts</label>
-        <textarea class="alert-form__notes" id="notes" name="notes" rows="3" placeholder="Examples: under €200, at least 20% off, compact travel setup"></textarea>
+        <label class="alert-form__label" for="notes">{{ $alertsNotesLabel }}</label>
+        <textarea class="alert-form__notes" id="notes" name="notes" rows="3" placeholder="{{ $alertsNotesPlaceholder }}"></textarea>
       </div>
     </section>
 
-    <button type="submit" id="alert-submit-button">Send alert request</button>
+    <button type="submit" id="alert-submit-button">{{ $alertsSubmitDefault }}</button>
   </form>
   <p class="alert-toast" id="alert-toast" role="status" aria-live="polite"></p>
 </section>
@@ -137,8 +187,24 @@
     const countryOptionsList = document.getElementById('country-options');
     const mobileKeywordsMedia = window.matchMedia('(max-width: 42rem)');
     const coarsePointerMedia = window.matchMedia('(hover: none) and (pointer: coarse)');
-    const defaultKeywordsPlaceholder = 'Examples: over-ear headphones, ultrawide monitor';
-    const mobileKeywordsPlaceholder = 'Eg: monitor, headphone';
+    const defaultCountry = '';
+    const minCountryQueryChars = 2;
+    const locale = {{ printf "%q" $marketLocale | safeJS }};
+    const cadenceInstantValue = {{ printf "%q" $alertsCadenceInstant | safeJS }};
+    const defaultKeywordsPlaceholder = {{ printf "%q" $alertsKeywordsPlaceholder | safeJS }};
+    const mobileKeywordsPlaceholder = {{ printf "%q" $alertsKeywordsPlaceholderMobile | safeJS }};
+    const submitDefaultText = {{ printf "%q" $alertsSubmitDefault | safeJS }};
+    const submitExactText = {{ printf "%q" $alertsSubmitExact | safeJS }};
+    const notConfiguredToast = {{ printf "%q" $alertsNotConfigured | safeJS }};
+    const countryRequiredToast = {{ printf "%q" $alertsCountryRequiredToast | safeJS }};
+    const exactRequiredToast = {{ printf "%q" $alertsExactRequiredToast | safeJS }};
+    const categoryOrKeywordsToast = {{ printf "%q" $alertsChooseCategoryOrKeywords | safeJS }};
+    const savedToast = {{ printf "%q" $alertsSavedToast | safeJS }};
+    const failedToast = {{ printf "%q" $alertsFailedToast | safeJS }};
+    const emailMissingValidity = {{ printf "%q" $alertsEmailMissing | safeJS }};
+    const emailInvalidValidity = {{ printf "%q" $alertsEmailInvalid | safeJS }};
+    const countryValidityRequired = {{ printf "%q" $alertsCountryValidityRequired | safeJS }};
+    const countryValidityList = {{ printf "%q" $alertsCountryValidityList | safeJS }};
 
     const closeCountryPopup = () => {
       if (!countryInfoPopup || !countryInfoTrigger) return;
@@ -197,19 +263,19 @@
 
     const categoryMeta = {
       audio: {
-        label: 'Audio',
+        label: {{ printf "%q" $alertsCatAudio | safeJS }},
         terms: ['audio', 'headphones', 'earbuds', 'earphones', 'speaker', 'speakers', 'soundbar', 'bluetooth', 'noise', 'anc', 'music']
       },
       home_office: {
-        label: 'Home office',
+        label: {{ printf "%q" $alertsCatHomeOffice | safeJS }},
         terms: ['home office', 'office', 'desk', 'desk setup', 'workspace', 'productivity', 'monitor', 'ultrawide', 'display', 'mouse', 'keyboard', 'ergonomic']
       },
       gaming: {
-        label: 'Gaming',
+        label: {{ printf "%q" $alertsCatGaming | safeJS }},
         terms: ['gaming', 'gamer', 'headset', 'pc build', 'pc components', 'motherboard', 'psu', 'keyboard', 'laptop']
       },
       tv: {
-        label: 'TV & streaming',
+        label: {{ printf "%q" $alertsCatTv | safeJS }},
         terms: ['tv', 'television', 'streaming', 'fire tv', 'stick', 'soundbar', 'home theater']
       }
     };
@@ -278,7 +344,7 @@
     const buildCountryList = () => {
       try {
         if (typeof Intl !== 'undefined' && typeof Intl.DisplayNames === 'function' && typeof Intl.supportedValuesOf === 'function') {
-          const displayNames = new Intl.DisplayNames(['en'], { type: 'region' });
+          const displayNames = new Intl.DisplayNames([locale || 'en'], { type: 'region' });
           const seen = new Set();
           const built = Intl.supportedValuesOf('region')
             .filter((code) => /^[A-Z]{2}$/.test(code))
@@ -290,7 +356,7 @@
               seen.add(key);
               return true;
             })
-            .sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+            .sort((a, b) => a.name.localeCompare(b.name, locale || 'en', { sensitivity: 'base' }));
           if (built.length >= 180) return built;
         }
       } catch (error) {
@@ -306,8 +372,12 @@
     const renderCountryOptions = (query = '') => {
       if (!countryOptionsList || !countrySearchInput) return;
       const normalizedQuery = normalize(query);
-      filteredCountries = countries.filter((entry) => !normalizedQuery || normalize(entry.name).includes(normalizedQuery));
-      filteredCountries.sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
+      if (normalizedQuery.length < minCountryQueryChars) {
+        filteredCountries = [];
+      } else {
+        filteredCountries = countries.filter((entry) => normalize(entry.name).includes(normalizedQuery));
+      }
+      filteredCountries.sort((a, b) => a.name.localeCompare(b.name, locale || 'en', { sensitivity: 'base' }));
 
       const visibleCountries = filteredCountries;
       countryOptionsList.innerHTML = '';
@@ -449,7 +519,7 @@
         window.setTimeout(() => {
           const typed = countrySearchInput.value.trim();
           if (!typed) {
-            countrySearchInput.setCustomValidity('Please choose your country.');
+            countrySearchInput.setCustomValidity(countryValidityRequired);
             return;
           }
           if (coarsePointerMedia.matches) {
@@ -466,7 +536,7 @@
           if (first) {
             selectCountry(first);
           } else {
-            countrySearchInput.setCustomValidity('Please choose a country from the list.');
+            countrySearchInput.setCustomValidity(countryValidityList);
           }
           closeCountryOptions();
         }, 100);
@@ -531,7 +601,7 @@
       return scored.slice(0, 4).map((entry) => entry.key);
     };
 
-    const isInstantMode = () => (cadenceInput ? cadenceInput.value === 'Instant exact-item alerts' : false);
+    const isInstantMode = () => (cadenceInput ? cadenceInput.value === cadenceInstantValue : false);
 
     const toggleMode = () => {
       const instant = isInstantMode();
@@ -549,7 +619,7 @@
       }
 
       if (submitButton) {
-        submitButton.textContent = instant ? 'Send exact-item request' : 'Send alert request';
+        submitButton.textContent = instant ? submitExactText : submitDefaultText;
       }
     };
 
@@ -557,9 +627,9 @@
       if (!emailInput) return;
       emailInput.addEventListener('invalid', () => {
         if (emailInput.validity.valueMissing) {
-          emailInput.setCustomValidity('Please enter your email address.');
+          emailInput.setCustomValidity(emailMissingValidity);
         } else if (emailInput.validity.typeMismatch) {
-          emailInput.setCustomValidity('Please enter a valid email address.');
+          emailInput.setCustomValidity(emailInvalidValidity);
         } else {
           emailInput.setCustomValidity('');
         }
@@ -590,14 +660,14 @@
       const endpoint = (form.dataset.formspreeEndpoint || '').trim();
 
       if (!endpoint || endpoint.includes('REPLACE_WITH_YOUR_FORM_ID')) {
-        showToast('Form is not configured yet. Add your Formspree endpoint in hugo.toml.', true);
+        showToast(notConfiguredToast, true);
         return;
       }
 
       if (!form.reportValidity()) return;
 
       if (countryInput && !countryInput.value.trim()) {
-        showToast('Please choose your country from the list.', true);
+        showToast(countryRequiredToast, true);
         if (countrySearchInput) {
           countrySearchInput.focus();
           renderCountryOptions(countrySearchInput.value);
@@ -608,7 +678,7 @@
       if (isInstantMode()) {
         const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
         if (!exactItems) {
-          showToast('Add at least one exact item to track.', true);
+          showToast(exactRequiredToast, true);
           return;
         }
         if (inferredCategoriesInput) inferredCategoriesInput.value = '';
@@ -617,7 +687,7 @@
         const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
         const keywords = keywordsInput ? keywordsInput.value.trim() : '';
         if (selectedCategories.length === 0 && !keywords) {
-          showToast('Choose a category or add keywords.', true);
+          showToast(categoryOrKeywordsToast, true);
           return;
         }
 
@@ -650,10 +720,10 @@
         form.reset();
         if (countryInput) countryInput.value = defaultCountry;
         toggleMode();
-        showToast('Your alert request was saved.');
+        showToast(savedToast);
       } catch (error) {
         console.error(error);
-        showToast('Could not save right now. Please try again.', true);
+        showToast(failedToast, true);
       } finally {
         if (submitButton) submitButton.disabled = false;
       }

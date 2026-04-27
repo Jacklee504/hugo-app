@@ -39,14 +39,21 @@
 {{ $tags := $params.tags }}
 {{ $url := or $params.affiliate_url $params.product_url $params.listing_url }}
 {{ $summary := or $params.summary $params.listing_summary $title }}
+{{ $marketKey := partials.Include "func/market/key.html" $page | strings.TrimSpace }}
+{{ $alertsBase := partials.Include "func/market/alerts-base-url.html" $page | strings.TrimSpace }}
+{{ $cardViewDeal := partial "func/market/t.html" (dict "context" $page "key" "card_view_deal") }}
+{{ $cardViewAmazon := partial "func/market/t.html" (dict "context" $page "key" "card_view_amazon") }}
+{{ $cardGetAlerts := partial "func/market/t.html" (dict "context" $page "key" "card_get_alerts") }}
+{{ $cardMoreDetails := partial "func/market/t.html" (dict "context" $page "key" "card_more_details") }}
+{{ $cardPlaceholder := partial "func/market/t.html" (dict "context" $page "key" "card_placeholder") }}
 {{ $normalizedURL := lower (printf "%v" $url) }}
 {{ $isAmazonURL := and $url (or (in $normalizedURL "amazon.") (in $normalizedURL "amzn.to")) }}
 {{ $hasAmazonTag := and $isAmazonURL (in $normalizedURL "tag=") }}
 {{ $isAffiliateLink := or $params.affiliate_url $hasAmazonTag }}
-{{ $ctaLabel := "View deal" }}
-{{ if $isAmazonURL }}{{ $ctaLabel = "View on Amazon" }}{{ end }}
+{{ $ctaLabel := $cardViewDeal }}
+{{ if $isAmazonURL }}{{ $ctaLabel = $cardViewAmazon }}{{ end }}
 {{ $canShowLocalPrice := $params.show_local_price | default true }}
-{{ $isUSDDeal := or (in $normalizedURL "amazon.com/") (and (in $normalizedURL "amzn.to/") (in $normalizedURL "dealledger-20")) }}
+{{ $isUSDDeal := eq $marketKey "us" }}
 {{ $currency := "€" }}
 {{ if $isUSDDeal }}{{ $currency = "$" }}{{ end }}
 {{ $topSavings := false }}
@@ -69,7 +76,7 @@
       ) }}
     </div>
   {{ else }}
-    <div class="deal-card__placeholder">Deal pick</div>
+    <div class="deal-card__placeholder">{{ $cardPlaceholder }}</div>
   {{ end }}
   <div class="deal-card__body">
     {{ if $listCard }}
@@ -89,7 +96,7 @@
         </div>
         <div class="deal-card__divider"></div>
         <details class="deal-card__details">
-          <summary class="deal-card__details-toggle">More details</summary>
+          <summary class="deal-card__details-toggle">{{ $cardMoreDetails }}</summary>
           <div class="deal-card__details-body">
             {{ if $summary }}
               <p class="deal-card__details-summary">{{ $summary }}</p>
@@ -104,7 +111,7 @@
         {{ if $url }}
           <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">{{ $ctaLabel }}</a>
         {{ else }}
-          <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get alerts</a>
+          <a class="deal-card__cta deal-card__cta--soft" href="{{ $alertsBase | relURL }}">{{ $cardGetAlerts }}</a>
         {{ end }}
       </div>
     {{ else }}
@@ -128,7 +135,7 @@
       {{ if $url }}
         <a class="deal-card__cta" href="{{ $url }}" rel="noopener noreferrer" target="_blank">{{ $ctaLabel }}</a>
       {{ else }}
-        <a class="deal-card__cta deal-card__cta--soft" href="{{ "alerts/" | relURL }}">Get alerts</a>
+        <a class="deal-card__cta deal-card__cta--soft" href="{{ $alertsBase | relURL }}">{{ $cardGetAlerts }}</a>
       {{ end }}
     {{ end }}
   </div>

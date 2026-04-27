@@ -1,0 +1,34 @@
+{{ $path := lower .RelPermalink }}
+{{ $trimmed := strings.Trim $path "/" }}
+{{ $segments := split $trimmed "/" }}
+{{ $scratch := newScratch }}
+{{ $scratch.Set "marketKey" "ie" }}
+{{ if gt (len $segments) 0 }}
+  {{ $first := index $segments 0 }}
+  {{ if isset hugo.Data.stores $first }}
+    {{ $scratch.Set "marketKey" $first }}
+  {{ else if eq $first "deals" }}
+    {{ $dealPath := $path }}
+    {{ if not (hasSuffix $dealPath "/") }}
+      {{ $dealPath = printf "%s/" $dealPath }}
+    {{ end }}
+    {{ range sort hugo.Data.stores "market" }}
+      {{ $candidate := .market }}
+      {{ with .deals }}
+        {{ range . }}
+          {{ $storePath := lower (printf "%v" .) | strings.TrimSpace }}
+          {{ if not (hasPrefix $storePath "/") }}
+            {{ $storePath = printf "/%s" $storePath }}
+          {{ end }}
+          {{ if not (hasSuffix $storePath "/") }}
+            {{ $storePath = printf "%s/" $storePath }}
+          {{ end }}
+          {{ if eq $storePath $dealPath }}
+            {{ $scratch.Set "marketKey" $candidate }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $scratch.Get "marketKey" }}

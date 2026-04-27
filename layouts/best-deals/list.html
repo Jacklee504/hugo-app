@@ -1,17 +1,13 @@
 {{ define "main" }}
+{{ $bestTitle := partial "func/market/t.html" (dict "context" . "key" "best_title") }}
+{{ $bestCopy := partial "func/market/t.html" (dict "context" . "key" "best_copy") }}
+{{ $bestEmpty := partial "func/market/t.html" (dict "context" . "key" "best_empty") }}
 <section class="list-shell">
   <div class="list-shell__intro">
-    <h1>Top savings</h1>
-    <p>The strongest pages by discount depth, useful for readers who want the best-value picks first.</p>
+    <h1>{{ $bestTitle }}</h1>
+    <p>{{ $bestCopy }}</p>
   </div>
-  {{ $allLiveDeals := where (where .Site.RegularPages "Section" "deals") "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $allLiveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.ie/") (in $dealURL "amazon.co.uk/") (in $dealURL "amazon.de/") (in $dealURL "amazon.fr/") (in $dealURL "amazon.it/") (in $dealURL "amazon.es/") (in $dealURL "amazon.nl/") (in $dealURL "amazon.se/") (in $dealURL "amazon.pl/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ $sorted := sort $deals "Params.discount_pct" "desc" }}
   {{ if gt (len $sorted) 0 }}
     <div class="deal-grid">
@@ -20,7 +16,7 @@
       {{ end }}
     </div>
   {{ else }}
-    <p>No discounts to show yet.</p>
+    <p>{{ $bestEmpty }}</p>
   {{ end }}
 </section>
 {{ end }}

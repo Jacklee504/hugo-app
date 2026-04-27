@@ -1,0 +1,61 @@
+{{- $ctx := .context -}}
+{{- $dealsBase := .dealsBase -}}
+{{- $liveDeals := .liveDeals -}}
+{{- $counts := dict -}}
+{{- $labels := dict -}}
+{{- range $liveDeals -}}
+  {{- range (default (slice) .Params.tags) -}}
+    {{- $raw := strings.TrimSpace (printf "%v" .) -}}
+    {{- $key := lower $raw -}}
+    {{- if ne $key "" -}}
+      {{- $current := int (or (index $counts $key) 0) -}}
+      {{- $counts = merge $counts (dict $key (add $current 1)) -}}
+      {{- if not (isset $labels $key) -}}
+        {{- $labels = merge $labels (dict $key $raw) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $tagStats := slice -}}
+{{- range $key, $countRaw := $counts -}}
+  {{- $count := int $countRaw -}}
+  {{- if gt $count 0 -}}
+    {{- $label := index $labels $key -}}
+    {{- $tagStats = $tagStats | append (dict "query" $key "label" $label "count" $count) -}}
+  {{- end -}}
+{{- end -}}
+{{- $topTags := first 5 (sort $tagStats "count" "desc") -}}
+{{- if lt (len $topTags) 5 -}}
+  {{- $fallback := slice
+    (dict "query" (partials.Include "func/market/t.html" (dict "context" $ctx "key" "home_chip_search_audio") | strings.TrimSpace) "label" (strings.TrimSpace (partial "func/market/t.html" (dict "context" $ctx "key" "home_chip_audio")))
+    )
+    (dict "query" (partials.Include "func/market/t.html" (dict "context" $ctx "key" "home_chip_search_monitors") | strings.TrimSpace) "label" (strings.TrimSpace (partial "func/market/t.html" (dict "context" $ctx "key" "home_chip_monitors")))
+    )
+    (dict "query" (partials.Include "func/market/t.html" (dict "context" $ctx "key" "home_chip_search_accessories") | strings.TrimSpace) "label" (strings.TrimSpace (partial "func/market/t.html" (dict "context" $ctx "key" "home_chip_accessories")))
+    )
+    (dict "query" (partials.Include "func/market/t.html" (dict "context" $ctx "key" "home_chip_search_gaming") | strings.TrimSpace) "label" (strings.TrimSpace (partial "func/market/t.html" (dict "context" $ctx "key" "home_chip_gaming")))
+    )
+    (dict "query" (partials.Include "func/market/t.html" (dict "context" $ctx "key" "home_chip_search_desk") | strings.TrimSpace) "label" (strings.TrimSpace (partial "func/market/t.html" (dict "context" $ctx "key" "home_chip_desk")))
+    )
+  -}}
+  {{- range $fallback -}}
+    {{- $fallbackChip := . -}}
+    {{- if ge (len $topTags) 5 -}}
+      {{- break -}}
+    {{- end -}}
+    {{- $exists := false -}}
+    {{- range $topTags -}}
+      {{- if eq .query $fallbackChip.query -}}
+        {{- $exists = true -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if not $exists -}}
+      {{- $topTags = $topTags | append $fallbackChip -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range $topTags -}}
+  <a href="{{ printf "%s?q=%s" $dealsBase (urlquery .query) | relURL }}">{{ .label | replaceRE "&amp;" "&" }}</a>
+{{- end -}}

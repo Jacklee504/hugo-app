@@ -1,0 +1,19 @@
+{{- $ctx := .context -}}
+{{- $key := .key -}}
+{{- $locale := partials.Include "func/market/locale.html" $ctx | strings.TrimSpace -}}
+{{- $message := "" -}}
+{{- $fallback := index hugo.Data.locales "en" -}}
+{{- with index hugo.Data.locales $locale -}}
+  {{- if isset . $key -}}
+    {{- $message = index . $key -}}
+  {{- end -}}
+{{- end -}}
+{{- if and (eq $message "") $fallback -}}
+  {{- if isset $fallback $key -}}
+    {{- $message = index $fallback $key -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $message "" -}}
+  {{- $message = $key -}}
+{{- end -}}
+{{- strings.TrimSpace (printf "%v" $message) -}}

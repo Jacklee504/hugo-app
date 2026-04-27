@@ -5,15 +5,7 @@
     <p>Pages with expiration windows, ordered so the most time-sensitive picks appear first.</p>
   </div>
   {{ $now := now }}
-  {{ $allDeals := where .Site.RegularPages "Section" "deals" }}
-  {{ $liveDeals := where $allDeals "Draft" false }}
-  {{ $deals := slice }}
-  {{ range $liveDeals }}
-    {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-    {{ if and $dealURL (or (in $dealURL "amazon.com/") (in $dealURL "amzn.to/")) }}
-      {{ $deals = $deals | append . }}
-    {{ end }}
-  {{ end }}
+  {{ $deals := partial "func/market/live-deals.html" . }}
   {{ $soon := sort (where (where $deals "Params.expires_at" "ne" nil) "Params.expires_at" "ge" $now) "Params.expires_at" "asc" }}
   {{ if gt (len $soon) 0 }}
     <div class="deal-grid">

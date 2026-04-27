@@ -1,18 +1,33 @@
 {{ $path := lower .RelPermalink }}
-{{ $is_market_home := or .IsHome (eq $path "/us/") (eq $path "/us") }}
-{{ $is_deals_hub := or (eq $path "/deals/") (eq $path "/deals") (eq $path "/us/deals/") (eq $path "/us/deals") }}
+{{ $marketHome := partials.Include "func/market/home-base-url.html" . | strings.TrimSpace | lower }}
+{{ $marketDeals := partials.Include "func/market/deals-base-url.html" . | strings.TrimSpace | lower }}
+{{ $marketHomeNoSlash := strings.TrimSuffix "/" $marketHome }}
+{{ $marketDealsNoSlash := strings.TrimSuffix "/" $marketDeals }}
+{{ $is_market_home := or .IsHome (eq $path $marketHome) (eq $path $marketHomeNoSlash) }}
+{{ $is_deals_hub := or (eq $path $marketDeals) (eq $path $marketDealsNoSlash) }}
 {{ $is_compact_header := or $is_market_home $is_deals_hub }}
 {{ $description := .Params.description }}
-{{ $hideDescription := or (eq $path "/about/") (eq $path "/privacy/") (eq $path "/disclosure/") }}
+{{ $isAlertsSignup := or
+  (eq $path "/alerts")
+  (eq $path "/alerts/")
+  (hasSuffix $path "/alerts")
+  (hasSuffix $path "/alerts/")
+}}
+{{ $contentBaseName := "" }}
+{{ with .File }}
+  {{ $contentBaseName = .ContentBaseName | lower }}
+{{ end }}
+{{ $isLegalPage := in (slice "about" "privacy" "disclosure") $contentBaseName }}
+{{ $hideDescription := $isLegalPage }}
 <header class="site-top {{ if $is_compact_header }}site-top--home{{ else }}site-top--section{{ end }}">
   <div class="site-top__backdrop">
     {{ partials.Include "site-navigation.html" . }}
     {{ if not $is_compact_header }}
-      <div class="site-top__intro">
+      <div class="site-top__intro{{ if $isAlertsSignup }} site-top__intro--alerts{{ end }}">
         <h1 class="site-top__title">
           {{ .Title | compare.Default .Site.Title }}
         </h1>
-        {{ if and (not $hideDescription) $description }}
+        {{ if and (not $hideDescription) (not $isAlertsSignup) $description }}
           <p class="site-top__description">
             {{ $description }}
           </p>

@@ -1,15 +1,16 @@
 <footer class="site-footer" role="contentinfo">
-  {{ $path := lower .RelPermalink }}
-  {{ $isUSSection := or (eq $path "/us/") (hasPrefix $path "/us/") }}
-  {{ $homeHref := .Site.Home.RelPermalink }}
-  {{ $aboutHref := "about/" | relURL }}
-  {{ $privacyHref := "privacy/" | relURL }}
-  {{ $disclosureHref := "disclosure/" | relURL }}
-  {{ if $isUSSection }}
-    {{ $homeHref = "/us/" }}
-    {{ $aboutHref = "/us/about/" }}
-    {{ $privacyHref = "/us/privacy/" }}
-    {{ $disclosureHref = "/us/disclosure/" }}
+  {{ $marketKey := partials.Include "func/market/key.html" . | strings.TrimSpace }}
+  {{ $labelAbout := partial "func/market/t.html" (dict "context" . "key" "footer_about") }}
+  {{ $labelPrivacy := partial "func/market/t.html" (dict "context" . "key" "footer_privacy") }}
+  {{ $labelDisclosure := partial "func/market/t.html" (dict "context" . "key" "footer_disclosure") }}
+  {{ $homeHref := partials.Include "func/market/home-base-url.html" . | strings.TrimSpace }}
+  {{ $aboutHref := "/about/" }}
+  {{ $privacyHref := "/privacy/" }}
+  {{ $disclosureHref := "/disclosure/" }}
+  {{ if ne $marketKey "ie" }}
+    {{ $aboutHref = printf "/%s/about/" $marketKey }}
+    {{ $privacyHref = printf "/%s/privacy/" $marketKey }}
+    {{ $disclosureHref = printf "/%s/disclosure/" $marketKey }}
   {{ end }}
   <div class="site-footer__inner">
     <div class="site-footer__brand">
@@ -18,9 +19,9 @@
       </a>
     </div>
     <nav class="site-footer__nav" aria-label="Footer">
-      <a href="{{ $aboutHref }}">About</a>
-      <a href="{{ $privacyHref }}">Privacy</a>
-      <a href="{{ $disclosureHref }}">Disclosure</a>
+      <a href="{{ $aboutHref }}">{{ $labelAbout }}</a>
+      <a href="{{ $privacyHref }}">{{ $labelPrivacy }}</a>
+      <a href="{{ $disclosureHref }}">{{ $labelDisclosure }}</a>
     </nav>
   </div>
   <div class="site-footer__meta site-footer__meta--sub">

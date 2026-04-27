@@ -1,14 +1,5 @@
 {{ define "main" }}
-{{ $deals := where .Site.RegularPages "Section" "deals" }}
-{{ $liveDeals := where $deals "Draft" false }}
-{{ $usDeals := slice }}
-{{ range $liveDeals }}
-  {{ $dealURL := lower (printf "%v" (or .Params.listing_url .Params.product_url .Params.affiliate_url)) }}
-  {{ if and $dealURL (or (in $dealURL "amazon.com/") (in $dealURL "amzn.to/")) }}
-    {{ $usDeals = $usDeals | append . }}
-  {{ end }}
-{{ end }}
-{{ $liveDeals = $usDeals }}
+{{ $liveDeals := partial "func/market/live-deals.html" . }}
 {{ $featured := first 4 (sort $liveDeals "Params.discount_pct" "desc") }}
 {{ $now := now }}
 {{ $expiringDeals := sort (where $liveDeals "Params.expires_at" "ne" nil) "Params.expires_at" "asc" }}
@@ -117,12 +108,7 @@
   <div class="home-filter-rail__row" data-home-filter-row>
     <button class="home-filter-rail__search-trigger" type="button" data-home-filter-search-toggle aria-expanded="false" aria-label="Open search">&#128269;</button>
     <div class="home-filter-rail__chips">
-      <a href="{{ printf "%s?q=audio" $dealsBase | relURL }}">Audio</a>
-      <a href="{{ printf "%s?q=laptop" $dealsBase | relURL }}">Laptops</a>
-      <a href="{{ printf "%s?q=monitor" $dealsBase | relURL }}">Monitors</a>
-      <a href="{{ printf "%s?q=accessories" $dealsBase | relURL }}">Accessories</a>
-      <a href="{{ printf "%s?q=gaming" $dealsBase | relURL }}">Gaming</a>
-      <a href="{{ printf "%s?q=desk" $dealsBase | relURL }}">Desk</a>
+      {{ partial "home-filter-chips.html" (dict "context" . "dealsBase" $dealsBase "liveDeals" $liveDeals) }}
     </div>
     <form class="home-filter-rail__search-form" action="{{ $dealsBase | relURL }}" method="get" role="search" data-home-filter-search-form>
       <input
