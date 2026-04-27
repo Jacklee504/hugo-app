@@ -79,7 +79,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1777327096">
+<link rel="stylesheet" href="/styles/site.css?v=1777327422">
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-apple-airpods-4-de">
     
@@ -121,7 +121,6 @@
           <option value="us" >US</option>
           <option value="de" selected>DE</option>
           <option value="nl" >NL</option>
-          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -197,12 +196,12 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl') {
         marketSelect.value = cookieMap.market;
       }
 
       marketSelect.addEventListener('change', () => {
-        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl']);
         const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
@@ -411,7 +410,7 @@
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="naspaluro ergonomischer bürostuhl" data-summary="naspaluro bürostuhl mit verstellbaren armlehnen und ergonomischer rückenstütze." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.110000" data-date="1777327008" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="naspaluro ergonomischer bürostuhl" data-summary="naspaluro bürostuhl mit verstellbaren armlehnen und ergonomischer rückenstütze." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.110000" data-date="1777327072" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -533,7 +532,7 @@
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="airchros ergonomischer bürostuhl" data-summary="ergonomischer bürostuhl von airchros mit hoher rückenlehne und starkem rabatt." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.310000" data-date="1777327008" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="airchros ergonomischer bürostuhl" data-summary="ergonomischer bürostuhl von airchros mit hoher rückenlehne und starkem rabatt." data-tags="homeoffice stuhl ergonomie büro" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.310000" data-date="1777327072" data-affiliate="true">
   
     <div class="deal-card__image">
       
@@ -655,7 +654,7 @@
   
   
 
-<article class="deal-card deal-card--list" data-filter-card="true" data-title="coleshome l-förmiger schreibtisch" data-summary="kompakter l-schreibtisch von coleshome für kleine räume und arbeitsplätze." data-tags="homeoffice schreibtisch l-form möbel" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.150000" data-date="1777327008" data-affiliate="true">
+<article class="deal-card deal-card--list" data-filter-card="true" data-title="coleshome l-förmiger schreibtisch" data-summary="kompakter l-schreibtisch von coleshome für kleine räume und arbeitsplätze." data-tags="homeoffice schreibtisch l-form möbel" data-top-savings="false" data-latest="false" data-expiring-soon="false" data-discount="0.150000" data-date="1777327072" data-affiliate="true">
   
     <div class="deal-card__image">
       

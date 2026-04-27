@@ -84,7 +84,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Organization","name":"Deal Ledger"},"dateModified":"2026-04-02T10:07:40+01:00","datePublished":"2026-03-25T00:00:00Z","description":"A case for concise, high-intent deal pages that help shoppers decide quickly without turning every listing into a full editorial review.","headline":"Why short deal pages can convert better than long reviews","mainEntityOfPage":"https://dealledger.eu/posts/why-short-deal-pages-can-convert-better-than-long-reviews/","publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/posts/why-short-deal-pages-can-convert-better-than-long-reviews/"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://dealledger.eu/","name":"Home","position":1},{"@type":"ListItem","item":"https://dealledger.eu/posts/","name":"Guides","position":2},{"@type":"ListItem","item":"https://dealledger.eu/posts/why-short-deal-pages-can-convert-better-than-long-reviews/","name":"Why short deal pages can convert better than long reviews","position":3}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1777327097">
+<link rel="stylesheet" href="/styles/site.css?v=1777327423">
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-why-short-deal-pages-can-convert-better-than-long-reviews">
     
@@ -119,7 +119,6 @@
           <option value="us" >US</option>
           <option value="de" >DE</option>
           <option value="nl" >NL</option>
-          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -195,12 +194,12 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl') {
         marketSelect.value = cookieMap.market;
       }
 
       marketSelect.addEventListener('change', () => {
-        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl']);
         const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
