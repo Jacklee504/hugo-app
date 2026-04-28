@@ -11,10 +11,10 @@ categories = ["electronics", "audio", "gamen"]
 summary = "Lichte multi-platform gamingheadset met sterke korting op Amazon NL."
 listing_url = "https://www.amazon.nl/dp/B089SSFV85"
 listing_title = "Razer BlackShark V2 X - Wired Esports Multi-Platform Headset (Triforce 50mm Drivers, Advanced Passive Noise Cancellation, 7.1 Surround Sound, Hyperclear Cardioid Microphone) Black : Razer: Amazon.nl: Electronics & Photo"
-listing_summary = ""
+listing_summary = "Razer BlackShark V2 X - Wired Esports Multi-Platform Headset (Triforce 50mm Drivers, Advanced Passive Noise Cancellation, 7.1 Surround Sound, Hyperclear Cardioid Microphone) Black : Razer: Amazon.nl: Electronics & Photo"
 listing_image = "https://m.media-amazon.com/images/I/71kY+ry+PwL._AC_SL1500_.jpg"
 listing_sale_price = 33.79
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 Razer BlackShark V2 X gaming headset deal on Amazon NL.

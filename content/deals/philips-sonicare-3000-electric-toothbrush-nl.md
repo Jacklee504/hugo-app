@@ -11,12 +11,12 @@ categories = ["home"]
 summary = "Philips Sonicare elektrische tandenborstel met grote korting op Amazon NL."
 listing_url = "https://www.amazon.nl/dp/B0G5YHD8VY"
 listing_title = "Philips Sonicare 3000 Series Electric Toothbrush – Sonic Toothbrush, Pressure Sensor, 3 Intensities, EasyStart, SmarTimer, 14 Day Operating Time, Travel Case, White, Set of 2, HX4072/41, [New] : Amazon.nl: Health & Personal Care"
-listing_summary = ""
+listing_summary = "Philips Sonicare 3000 Series Electric Toothbrush – Sonic Toothbrush, Pressure Sensor, 3 Intensities, EasyStart, SmarTimer, 14 Day Operating Time, Travel Case, White, Set of 2, HX4072/41, [New] : Amazon.nl: Health & Perso"
 listing_sale_price = 74.99
 listing_list_price = 159.99
 listing_discount_pct = 0.53
 listing_image = "https://m.media-amazon.com/images/I/71Hq1Uiyl1L._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 Philips Sonicare deal on Amazon NL.

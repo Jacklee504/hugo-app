@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "Kompakter L-Schreibtisch von Coleshome für kleine Räume und Arbeitsplätze."
 listing_url = "https://www.amazon.de/dp/B0FDB3Y1YT"
 listing_title = "Coleshome Gaming Table, 100 x 70 cm Corner Desk with Reversible Storage Compartment, Space-Saving L-shaped Desk, Suitable for Gaming Desk in Family Corners, Black : Amazon.de: Home & Kitchen"
-listing_summary = ""
+listing_summary = "Coleshome Gaming Table, 100 x 70 cm Corner Desk with Reversible Storage Compartment, Space-Saving L-shaped Desk, Suitable for Gaming Desk in Family Corners, Black : Amazon.de: Home & Kitchen"
 listing_image = "https://m.media-amazon.com/images/I/71zkBKbEWcL._AC_SL1500_.jpg"
 listing_sale_price = 34.28
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 Coleshome Schreibtisch-Angebot auf Amazon DE.

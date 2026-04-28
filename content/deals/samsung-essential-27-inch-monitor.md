@@ -11,12 +11,12 @@ categories = ["electronics"]
 summary = "27-inch Samsung monitor deal for desk setups and everyday productivity use."
 listing_url = "https://www.amazon.com/dp/B0DK44759Y"
 listing_title = "Amazon.com: Samsung 27\" (S30GD) Essential Monitor with IPS Panel and Tilt Only Stand, 100Hz Refresh Rate, Ergonomic Design, Advanced Eye Care, Game Mode, LS27D304GANXZA : Electronics"
-listing_summary = ""
+listing_summary = "Amazon.com: Samsung 27\" (S30GD) Essential Monitor with IPS Panel and Tilt Only Stand, 100Hz Refresh Rate, Ergonomic Design, Advanced Eye Care, Game Mode, LS27D304GANXZA : Electronics"
 listing_image = "https://m.media-amazon.com/images/I/61hW+rfpcML._AC_SL1500_.jpg"
-listing_sale_price = 109.99
+listing_sale_price = 149.99
 listing_list_price = 149.99
 listing_discount_pct = 0.266684
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 aliases = ["/deals/samsung-essential-27-monitor/"]
 +++
 

@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "Compact bureau in industriële stijl met flinke korting op Amazon NL."
 listing_url = "https://www.amazon.nl/dp/B08238V32L"
 listing_title = "VASAGLE desk, small computer desk, desk for study, bedroom, 100 x 50 x 76 cm, industrial design, metal frame, vintage brown-black LWD41X : Amazon.nl: Home & Kitchen"
-listing_summary = ""
+listing_summary = "VASAGLE desk, small computer desk, desk for study, bedroom, 100 x 50 x 76 cm, industrial design, metal frame, vintage brown-black LWD41X : Amazon.nl: Home & Kitchen"
 listing_image = "https://m.media-amazon.com/images/I/713zDjPHDwL._AC_SL1500_.jpg"
 listing_sale_price = 32.77
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 VASAGLE desk deal on Amazon NL.

@@ -11,10 +11,10 @@ categories = ["home", "productivity"]
 summary = "BONTEC Notebookständer für 10 bis 17,3 Zoll mit ergonomischer Arbeitshöhe."
 listing_url = "https://www.amazon.de/dp/B0B1V6WW4J"
 listing_title = "BONTEC Ergonomic Laptop Stand for Desk, Notebook Stand Compatible with Most 10-17.3 Inch Laptops, Silver: Amazon.de: Computer & Accessories"
-listing_summary = ""
+listing_summary = "BONTEC Ergonomic Laptop Stand for Desk, Notebook Stand Compatible with Most 10-17.3 Inch Laptops, Silver: Amazon.de: Computer & Accessories"
 listing_image = "https://m.media-amazon.com/images/I/71J8qndo-1L._AC_SL1500_.jpg"
 listing_sale_price = 13.58
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 BONTEC Laptopständer-Angebot auf Amazon DE.

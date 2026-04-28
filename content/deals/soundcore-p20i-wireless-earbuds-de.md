@@ -11,9 +11,9 @@ categories = ["electronics", "audio"]
 summary = "Preiswerte soundcore In-Ears mit Bluetooth und solider Ersparnis auf Amazon DE."
 listing_url = "https://www.amazon.de/dp/B0BTYCRJSS"
 listing_title = "soundcore by Anker P20i Wireless Bluetooth Headphones In-Ear, 10 mm Driver, Bluetooth 5.3, Adjustable EQ, 30 Hours Playtime, IPX5 Waterproof, 2 Micros with AI, Single Use: Amazon.de: Electronics & Photo"
-listing_summary = ""
+listing_summary = "soundcore by Anker P20i Wireless Bluetooth Headphones In-Ear, 10 mm Driver, Bluetooth 5.3, Adjustable EQ, 30 Hours Playtime, IPX5 Waterproof, 2 Micros with AI, Single Use: Amazon.de: Electronics & Photo"
 listing_image = "https://m.media-amazon.com/images/I/5181ILcyQJL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 soundcore P20i Angebot auf Amazon DE.

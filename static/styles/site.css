@@ -899,9 +899,16 @@ main.pb7 {
 
   .home-filter-rail__chips {
     order: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
-    justify-content: space-evenly;
     gap: 0.35rem;
+  }
+
+  .home-filter-rail__chips a {
+    flex: 0 1 calc((100% - 0.7rem) / 3);
+    max-width: calc((100% - 0.7rem) / 3);
   }
 
   .home-filter-rail__row.is-searching .home-filter-rail__search-form {

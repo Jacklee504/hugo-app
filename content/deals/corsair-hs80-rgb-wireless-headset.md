@@ -12,12 +12,12 @@ tags = ["audio", "gaming", "headset"]
 categories = ["electronics"]
 summary = "Wireless Dolby Atmos headset for console and PC."
 listing_url = "https://www.amazon.ie/dp/B09TTMBTY5"
-listing_title = "CORSAIR HS80 RGB Over ear WIRELESS Multiplatform Gaming Headset – Dolby Atmos – Omni-Directional Microphone – iCUE Compatible – PC, Mac, PS5, PS4 – White : Amazon.ie: Videogames"
-listing_summary = "CORSAIR HS80 RGB Over ear WIRELESS Multiplatform Gaming Headset – Dolby Atmos – Omni-Directional Microphone – iCUE Compatible – PC, Mac, PS5, PS4 – White : Amazon.ie: Videogames"
+listing_title = "Corsair HS80 RGB Over-Ear Wireless Multiplatform Gaming Headset, Dolby Atmos, Omni-Directional Microphone, iCUE Compatible, PC, Mac, PS5, PS4, White : Amazon.ie: Videogames"
+listing_summary = "Corsair HS80 RGB Over-Ear Wireless Multiplatform Gaming Headset, Dolby Atmos, Omni-Directional Microphone, iCUE Compatible, PC, Mac, PS5, PS4, White : Amazon.ie: Videogames"
 listing_sale_price = 108.88
 listing_list_price = 149.99
 listing_discount_pct = 0.2741
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 listing_image = "https://m.media-amazon.com/images/I/5197B5MV2TL._AC_SL1200_.jpg"
 aliases = ["/deals/4k-streaming-stick/"]
 +++

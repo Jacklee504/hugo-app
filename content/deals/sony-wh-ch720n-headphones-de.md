@@ -11,10 +11,10 @@ categories = ["electronics", "audio"]
 summary = "Sony Over-Ear-Kopfhörer mit Noise Cancelling und attraktivem Rabatt."
 listing_url = "https://www.amazon.de/dp/B0BTDX26B2"
 listing_title = "Sony WH-CH720N Wireless Bluetooth Headphones with Noise Cancelling - Up to 35 Hours Battery Life and Quick Charge Function - Black: Amazon.de: Electronics & Photo"
-listing_summary = ""
+listing_summary = "Sony WH-CH720N Wireless Bluetooth Headphones with Noise Cancelling - Up to 35 Hours Battery Life and Quick Charge Function - Black: Amazon.de: Electronics & Photo"
 listing_image = "https://m.media-amazon.com/images/I/615yUvf1BaL._AC_SL1500_.jpg"
 listing_sale_price = 64.99
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 Sony WH-CH720N Angebot auf Amazon DE.

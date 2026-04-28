@@ -1,0 +1,182 @@
+{{ define "main" }}
+{{ $liveDeals := partial "func/market/live-deals.html" . }}
+{{ $featured := first 4 (sort $liveDeals "Params.discount_pct" "desc") }}
+{{ $now := now }}
+{{ $expiringDeals := sort (where $liveDeals "Params.expires_at" "ne" nil) "Params.expires_at" "asc" }}
+{{ $expiringPaths := slice }}
+{{ range $expiringDeals }}
+  {{ if ge .Params.expires_at $now }}
+    {{ $expiringPaths = $expiringPaths | append .RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ $orderedDeals := slice }}
+{{ range $expiringDeals }}
+  {{ if ge .Params.expires_at $now }}
+    {{ $orderedDeals = $orderedDeals | append . }}
+  {{ end }}
+{{ end }}
+{{ range sort $liveDeals "Lastmod" "desc" }}
+  {{ if not (in $expiringPaths .RelPermalink) }}
+    {{ $orderedDeals = $orderedDeals | append . }}
+  {{ end }}
+{{ end }}
+{{ $affiliateOrdered := slice }}
+{{ $nonAffiliateOrdered := slice }}
+{{ range $orderedDeals }}
+  {{ $candidateURL := lower (printf "%v" (or .Params.listing_url .Params.affiliate_url .Params.product_url)) }}
+  {{ $isAffiliate := or .Params.affiliate_url (in $candidateURL "tag=") }}
+  {{ if $isAffiliate }}
+    {{ $affiliateOrdered = $affiliateOrdered | append . }}
+  {{ else }}
+    {{ $nonAffiliateOrdered = $nonAffiliateOrdered | append . }}
+  {{ end }}
+{{ end }}
+{{ $interleavedDeals := slice }}
+{{ $maxLen := len $affiliateOrdered }}
+{{ if gt (len $nonAffiliateOrdered) $maxLen }}
+  {{ $maxLen = len $nonAffiliateOrdered }}
+{{ end }}
+{{ if gt $maxLen 0 }}
+  {{ range seq 0 (sub $maxLen 1) }}
+    {{ $i := . }}
+    {{ if lt $i (len $affiliateOrdered) }}
+      {{ $interleavedDeals = $interleavedDeals | append (index $affiliateOrdered $i) }}
+    {{ end }}
+    {{ if lt $i (len $nonAffiliateOrdered) }}
+      {{ $interleavedDeals = $interleavedDeals | append (index $nonAffiliateOrdered $i) }}
+    {{ end }}
+  {{ end }}
+  {{ $orderedDeals = $interleavedDeals }}
+{{ end }}
+{{ $recent := first 4 (sort $orderedDeals "Lastmod" "desc") }}
+{{ $dealsBase := partials.Include "func/market/deals-base-url.html" . | strings.TrimSpace }}
+{{ $homeValueStrip := partial "func/market/t.html" (dict "context" . "key" "home_value_strip") }}
+{{ $homeFilterTitle := partial "func/market/t.html" (dict "context" . "key" "home_filter_title") }}
+{{ $homeFilterCopy := partial "func/market/t.html" (dict "context" . "key" "home_filter_copy") }}
+{{ $homeViewAll := partial "func/market/t.html" (dict "context" . "key" "home_view_all") }}
+{{ $homeChipAudio := partial "func/market/t.html" (dict "context" . "key" "home_chip_audio") }}
+{{ $homeChipMonitors := partial "func/market/t.html" (dict "context" . "key" "home_chip_monitors") }}
+{{ $homeChipAccessories := partial "func/market/t.html" (dict "context" . "key" "home_chip_accessories") }}
+{{ $homeChipGaming := partial "func/market/t.html" (dict "context" . "key" "home_chip_gaming") }}
+{{ $homeChipDesk := partial "func/market/t.html" (dict "context" . "key" "home_chip_desk") }}
+{{ $homeSearchOpen := partial "func/market/t.html" (dict "context" . "key" "home_search_open") }}
+{{ $homeSearchPlaceholder := partial "func/market/t.html" (dict "context" . "key" "home_search_placeholder") }}
+{{ $homeSearchLabel := partial "func/market/t.html" (dict "context" . "key" "home_search_label") }}
+{{ $homeSearchGo := partial "func/market/t.html" (dict "context" . "key" "home_search_go") }}
+{{ $homeSearchClose := partial "func/market/t.html" (dict "context" . "key" "home_search_close") }}
+{{ $homeFeaturedTitle := partial "func/market/t.html" (dict "context" . "key" "home_featured_title") }}
+{{ $homeFeaturedCopy := partial "func/market/t.html" (dict "context" . "key" "home_featured_copy") }}
+{{ $homeFeaturedEmpty := partial "func/market/t.html" (dict "context" . "key" "home_featured_empty") }}
+{{ $homeRecentTitle := partial "func/market/t.html" (dict "context" . "key" "home_recent_title") }}
+{{ $homeRecentCopy := partial "func/market/t.html" (dict "context" . "key" "home_recent_copy") }}
+{{ $homeRecentEmpty := partial "func/market/t.html" (dict "context" . "key" "home_recent_empty") }}
+{{ $featuredListItems := slice }}
+{{ range $index, $deal := $featured }}
+  {{ $featuredListItems = $featuredListItems | append (dict
+    "@type" "ListItem"
+    "position" (add $index 1)
+    "name" $deal.Title
+    "url" $deal.Permalink
+  ) }}
+{{ end }}
+{{ $recentListItems := slice }}
+{{ range $index, $deal := $recent }}
+  {{ $recentListItems = $recentListItems | append (dict
+    "@type" "ListItem"
+    "position" (add $index 1)
+    "name" $deal.Title
+    "url" $deal.Permalink
+  ) }}
+{{ end }}
+{{ if gt (len $featuredListItems) 0 }}
+  {{ $featuredSchema := dict
+    "@context" "https://schema.org"
+    "@type" "ItemList"
+    "name" "Featured deals"
+    "itemListOrder" "https://schema.org/ItemListOrderAscending"
+    "numberOfItems" (len $featuredListItems)
+    "itemListElement" $featuredListItems
+  }}
+  <script type="application/ld+json">{{ $featuredSchema | jsonify | safeJS }}</script>
+{{ end }}
+{{ if gt (len $recentListItems) 0 }}
+  {{ $recentSchema := dict
+    "@context" "https://schema.org"
+    "@type" "ItemList"
+    "name" "Recent deals"
+    "itemListOrder" "https://schema.org/ItemListOrderAscending"
+    "numberOfItems" (len $recentListItems)
+    "itemListElement" $recentListItems
+  }}
+  <script type="application/ld+json">{{ $recentSchema | jsonify | safeJS }}</script>
+{{ end }}
+
+<section class="home-value-strip" aria-label="Deal Ledger highlights">
+  <p>{{ $homeValueStrip }}</p>
+</section>
+
+<section class="home-filter-rail" aria-label="Sample deal filters">
+  <div class="home-filter-rail__top">
+    <div class="home-filter-rail__intro">
+      <h2>{{ $homeFilterTitle }}</h2>
+      <p>{{ $homeFilterCopy }}</p>
+    </div>
+    <div class="home-filter-rail__action">
+      <a class="button-link button-link--primary" href="{{ $dealsBase | relURL }}">{{ $homeViewAll }}</a>
+    </div>
+  </div>
+  <div class="home-filter-rail__row" data-home-filter-row>
+    <button class="home-filter-rail__search-trigger" type="button" data-home-filter-search-toggle aria-expanded="false" aria-label="{{ $homeSearchOpen }}">&#128269;</button>
+    <div class="home-filter-rail__chips">
+      {{ partial "home-filter-chips.html" (dict "context" . "dealsBase" $dealsBase "liveDeals" $liveDeals) }}
+    </div>
+    <form class="home-filter-rail__search-form" action="{{ $dealsBase | relURL }}" method="get" role="search" data-home-filter-search-form>
+      <input
+        type="search"
+        name="q"
+        class="home-filter-rail__search-input"
+        placeholder="{{ $homeSearchPlaceholder }}"
+        aria-label="{{ $homeSearchLabel }}"
+        data-home-filter-search-input
+      >
+      <button type="submit" class="home-filter-rail__search-submit">{{ $homeSearchGo }}</button>
+      <button type="button" class="home-filter-rail__search-close" data-home-filter-search-close>{{ $homeSearchClose }}</button>
+    </form>
+  </div>
+</section>
+
+<section class="home-section">
+  <div class="home-section__intro">
+    <h2>{{ $homeFeaturedTitle }}</h2>
+    <p>{{ $homeFeaturedCopy }}</p>
+  </div>
+  {{ if gt (len $featured) 0 }}
+    <div class="deal-grid deal-grid--browse">
+      {{ range $featured }}
+        {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>{{ $homeFeaturedEmpty }}</p>
+  {{ end }}
+</section>
+
+<section class="home-section">
+  <div class="home-section__intro">
+    <h2>{{ $homeRecentTitle }}</h2>
+    <p>{{ $homeRecentCopy }}</p>
+  </div>
+  {{ if gt (len $recent) 0 }}
+    <div class="deal-grid deal-grid--browse">
+      {{ range $recent }}
+        {{ partial "deal-card.html" (dict "page" . "variant" "list") }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>{{ $homeRecentEmpty }}</p>
+  {{ end }}
+</section>
+
+<script type="module" src="{{ "scripts/home-filter-rail.js" | relURL }}?v={{ now.Unix }}"></script>
+
+{{ end }}

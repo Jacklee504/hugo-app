@@ -11,10 +11,10 @@ categories = ["home", "productivity"]
 summary = "Ergonomischer BONTEC-Monitorständer mit verstellbarer Höhe für den Arbeitsplatz."
 listing_url = "https://www.amazon.de/dp/B08L1119NH"
 listing_title = "BONTEC Wooden Monitor Stand, Dual Monitor Stand Riser with Mobile Phone Holder, Adjustable Length and Swivel Angle, Ergonomic Monitor Stand for 2 Monitors, for Office and Home Work : Amazon.de: Computer & Accessories"
-listing_summary = ""
+listing_summary = "BONTEC Wooden Monitor Stand, Dual Monitor Stand Riser with Mobile Phone Holder, Adjustable Length and Swivel Angle, Ergonomic Monitor Stand for 2 Monitors, for Office and Home Work : Amazon.de: Computer & Accessories"
 listing_image = "https://m.media-amazon.com/images/I/817gEt8SIcL._AC_SL1500_.jpg"
 listing_sale_price = 28.47
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 BONTEC Monitorständer-Angebot auf Amazon DE.

@@ -11,12 +11,12 @@ categories = ["electronics", "gamen"]
 summary = "Snelle draadloze gamingmuis met next-gen sensorprestaties."
 listing_url = "https://www.amazon.nl/dp/B0CBCPB2T1"
 listing_title = "Razer Viper V3 HyperSpeed - Wireless Esports Mouse (Focus Pro 30K Optical Sensor, Up to 280hrs Battery, 2nd Generation Mechanical Mouse Switches, 4000Hz Wireless Scan Speed) Black : Amazon.nl: Sports & Outdoors"
-listing_summary = ""
+listing_summary = "Razer Viper V3 HyperSpeed - Wireless Esports Mouse (Focus Pro 30K Optical Sensor, Up to 280hrs Battery, 2nd Generation Mechanical Mouse Switches, 4000Hz Wireless Scan Speed) Black : Amazon.nl: Sports & Outdoors"
 listing_sale_price = 49.9
 listing_list_price = 79.99
 listing_discount_pct = 0.38
 listing_image = "https://m.media-amazon.com/images/I/61zqxqvq+3L._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 Razer wireless gaming mouse deal on Amazon NL.

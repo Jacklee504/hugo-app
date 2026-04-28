@@ -11,10 +11,10 @@ categories = ["electronics", "mobile"]
 summary = "UGREEN-Autolader mit ausziehbarem Ladekabel und starkem Preisnachlass auf Amazon DE."
 listing_url = "https://www.amazon.de/dp/B0DP1ZP9SM"
 listing_title = "UGREEN USB C Charger 65 W with 70 cm Retractable Charging Cable GaN Power Supply 3-Port Fast Charger PPS 45W Charger for Travel Compatible with MacBook Pro/Air, Galaxy S-A Series, iPhone 17-8 Series, iPads: Amazon.de: Electronics & Photo"
-listing_summary = ""
+listing_summary = "UGREEN USB C Charger 65 W with 70 cm Retractable Charging Cable GaN Power Supply 3-Port Fast Charger PPS 45W Charger for Travel Compatible with MacBook Pro/Air, Galaxy S-A Series, iPhone 17-8 Series, iPads: Amazon.de: El"
 listing_image = "https://m.media-amazon.com/images/I/51bXKwCJIqL._AC_SL1500_.jpg"
 listing_sale_price = 29.96
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
 +++
 
 UGREEN Autoladegerät-Angebot auf Amazon DE.
