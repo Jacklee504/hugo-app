@@ -13,7 +13,7 @@
       
     
     <meta name="description" content="Desk accessories organizer set for cleaner workspace storage.">
-    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Hugo 0.161.0">
     
     
     
@@ -79,7 +79,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1777327423">
+<link rel="stylesheet" href="/styles/site.css?v=1777411756">
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-spacrea-desk-organizer-set">
     
@@ -121,6 +121,7 @@
           <option value="us" selected>US</option>
           <option value="de" >DE</option>
           <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -196,12 +197,12 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
       }
 
       marketSelect.addEventListener('change', () => {
-        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl']);
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
         const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
@@ -346,6 +347,10 @@
   
     
   
+  
+    <div class="deal-single__content">
+      <p>Amazon.com: Spacrea Metal Desk Organizers and Accessories, Dual Monitor Stand Riser with Drawer and 2 Pen Holders, Book Racks, Desk Accessories &amp; Workspace Desktop Organizers for Office Supplies (Black) : Electronics</p>
+    </div>
   
 
   

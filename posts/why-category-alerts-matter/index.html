@@ -13,7 +13,7 @@
       
     
     <meta name="description" content="Why readers should be able to subscribe to specific product categories.">
-    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Hugo 0.161.0">
     
     
     
@@ -84,7 +84,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Organization","name":"Deal Ledger"},"dateModified":"2026-04-02T14:52:16+01:00","datePublished":"2026-03-28T00:00:00Z","description":"Why readers should be able to subscribe to specific product categories.","headline":"Why category alerts matter more than a generic newsletter","mainEntityOfPage":"https://dealledger.eu/posts/why-category-alerts-matter/","publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/posts/why-category-alerts-matter/"}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://dealledger.eu/","name":"Home","position":1},{"@type":"ListItem","item":"https://dealledger.eu/posts/","name":"Guides","position":2},{"@type":"ListItem","item":"https://dealledger.eu/posts/why-category-alerts-matter/","name":"Why category alerts matter more than a generic newsletter","position":3}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1777327423">
+<link rel="stylesheet" href="/styles/site.css?v=1777411756">
 
   </head><body class="ma0 avenir bg-near-white production is-page is-page page-why-category-alerts-matter">
     
@@ -119,6 +119,7 @@
           <option value="us" >US</option>
           <option value="de" >DE</option>
           <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -194,12 +195,12 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
       }
 
       marketSelect.addEventListener('change', () => {
-        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl']);
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
         const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;

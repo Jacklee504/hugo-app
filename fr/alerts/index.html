@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Alertes par catégorie | Deal Ledger</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    
+    
+      
+    
+    <meta name="description" content="Inscrivez-vous à des alertes e-mail ciblées par catégorie.">
+    <meta name="generator" content="Hugo 0.161.0">
+    
+    
+    
+    
+    
+    
+      <meta name="robots" content="index, follow, max-image-preview:large">
+    
+    
+
+    
+
+<link rel="stylesheet" href="/ananke/css/main.min.efe4d852f731d5d1fbb87718387202a97aafd768cdcdaed0662bbe6982e91824.css">
+
+
+
+
+    
+
+
+    
+      
+
+    
+
+    
+    
+      <link href="/fr/alerts/index.xml" rel="alternate" type="application/rss+xml" title="Deal Ledger" />
+      <link href="/fr/alerts/index.xml" rel="feed" type="application/rss+xml" title="Deal Ledger" />
+      
+    
+
+    
+    
+    
+      
+    
+    <link rel="canonical" href="https://dealledger.eu/fr/alerts/">
+
+    
+    
+    <meta property="og:title" content="Alertes par catégorie">
+<meta property="og:description" content="Inscrivez-vous à des alertes e-mail ciblées par catégorie.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dealledger.eu/fr/alerts/">
+<meta property="og:site_name" content="Deal Ledger">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Inscrivez-vous à des alertes e-mail ciblées par catégorie.","name":"Alertes par catégorie","url":"https://dealledger.eu/fr/alerts/"}</script>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Alertes par catégorie">
+<meta name="twitter:description" content="Inscrivez-vous à des alertes e-mail ciblées par catégorie.">
+
+      
+      
+    
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https: https://formspree.io https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io; upgrade-insecure-requests">
+
+
+
+
+
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
+
+<link rel="stylesheet" href="/styles/site.css?v=1777411756">
+
+  </head><body class="ma0 avenir bg-near-white production is-section is-section">
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+<header class="site-top site-top--section">
+  <div class="site-top__backdrop">
+    <nav class="pv3 ph3 ph4-ns" role="navigation">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="flex-l center items-center justify-between nav-shell">
+    <a href="/fr/" class="nav-brand no-underline" aria-label="Deal Ledger">
+      <img class="nav-brand__logo" src="/images/brand/deal-ledger-logo.svg" alt="Deal Ledger" width="220" height="56" loading="eager" decoding="async">
+    </a>
+    <div class="flex-l items-center nav-actions">
+      <div class="nav-market">
+        <select id="market-select" class="nav-market__select" name="market-select" aria-label="Sélectionner un marché">
+          <option value="eu" >EU</option>
+          <option value="us" >US</option>
+          <option value="de" >DE</option>
+          <option value="nl" >NL</option>
+          <option value="fr" selected>FR</option>
+        </select>
+      </div>
+      <div class="nav-menu" data-nav-menu>
+        <button class="nav-menu__toggle" type="button" aria-label="Basculer la navigation" aria-haspopup="true" aria-expanded="false" aria-controls="site-nav-links">
+          <span class="nav-menu__icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+          <span class="nav-menu__label">Menu</span>
+        </button>
+        <ul class="pl0 nav-links" id="site-nav-links">
+          <li class="list dib nav-links__item">
+            <a class="nav-links__anchor no-underline" href="/fr/deals/">Bons plans</a>
+          </li>
+          <li class="list dib nav-links__item">
+            <a class="nav-links__anchor no-underline" href="/fr/alerts/">Alertes e-mail</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nav-social"><div class="ananke-socials"></div>
+</div>
+    </div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menu = document.querySelector('[data-nav-menu]');
+    if (!menu) return;
+
+    const toggle = menu.querySelector('.nav-menu__toggle');
+    const links = menu.querySelector('.nav-links');
+    if (!toggle || !links) return;
+
+    const closeMenu = () => {
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    links.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960) closeMenu();
+    });
+
+    const marketSelect = document.getElementById('market-select');
+    if (marketSelect) {
+      const cookieMap = (document.cookie || '')
+        .split(';')
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .reduce((acc, item) => {
+          const eqIdx = item.indexOf('=');
+          if (eqIdx === -1) return acc;
+          const key = item.slice(0, eqIdx).trim();
+          const value = item.slice(eqIdx + 1).trim();
+          acc[key] = value;
+          return acc;
+        }, {});
+
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
+        marketSelect.value = cookieMap.market;
+      }
+
+      marketSelect.addEventListener('change', () => {
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
+        const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
+        const secure = window.location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
+        const targetPath = targetMarket === 'eu' ? '/' : `/${targetMarket}/`;
+        window.location.assign(`${window.location.origin}${targetPath}`);
+      });
+    }
+  });
+</script>
+
+    
+      <div class="site-top__intro site-top__intro--alerts">
+        <h1 class="site-top__title">
+          Alertes par catégorie
+        </h1>
+        
+      </div>
+    
+  </div>
+</header>
+
+    <main class="pb7" role="main">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="alerts-shell">
+  <h1 class="alerts-shell__title">Alertes e-mail</h1>
+  <p class="page-copy alerts-shell__intro">Indiquez la fréquence souhaitée, puis remplissez la section correspondante.</p>
+
+  <form class="alert-form" id="alert-request-form" name="alert-request" action="https://formspree.io/f/mgopnyjd" method="POST" data-formspree-endpoint="https://formspree.io/f/mgopnyjd">
+    <input type="hidden" name="_subject" value="Nouvelle demande d&amp;#39;alerte Deal Ledger">
+    <p hidden><label>Laissez ce champ vide si vous êtes humain : <input name="_gotcha"></label></p>
+
+    <section class="alert-form__section alert-form__split">
+      <h2 class="alert-form__heading alert-form__heading--span">Où devons-nous envoyer les mises à jour ?</h2>
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="alert-name">Nom</label>
+        <input id="alert-name" name="name" type="text" placeholder="Votre nom" autocomplete="name">
+      </div>
+
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="alert-email">Adresse e-mail</label>
+        <input id="alert-email" name="email" type="email" placeholder="vous@exemple.fr" autocomplete="email" required>
+      </div>
+
+      <div class="alert-form__field alert-form__field--country">
+        <div class="alert-form__label-row">
+          <label class="alert-form__label" for="country-search">Pays</label>
+          <button
+            type="button"
+            class="alert-info-button"
+            id="country-info-trigger"
+            aria-controls="country-info-popup"
+            aria-expanded="false"
+            aria-label="Infos de disponibilité par pays"
+            style="width:1rem;height:1rem;min-width:1rem;min-height:1rem;padding:0;line-height:1;"
+          ><span class="alert-info-button__glyph" aria-hidden="true">i</span></button>
+        </div>
+        <input type="hidden" id="country" name="country" value="">
+        <div class="country-combobox" id="country-combobox">
+          <input
+            id="country-search"
+            class="country-combobox__input"
+            type="text"
+            autocomplete="new-password"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
+            placeholder="Commencez à saisir votre pays"
+            aria-autocomplete="list"
+            aria-controls="country-options"
+            aria-expanded="false"
+            role="combobox"
+            required
+          >
+          <ul class="country-combobox__list" id="country-options" role="listbox" hidden></ul>
+        </div>
+        <div class="alert-inline-popup" id="country-info-popup" role="dialog" aria-modal="false" hidden>
+          <p>Certains pays ne sont pas encore totalement pris en charge pour tous les types d&amp;#39;alertes. Vous pouvez tout de même soumettre maintenant ; le déploiement continue activement.</p>
+          <button type="button" class="alert-inline-popup__close" id="country-info-close">Compris</button>
+        </div>
+      </div>
+
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="cadence">Fréquence</label>
+        <select id="cadence" class="alert-form__native-select" name="cadence" required>
+          <option>À chaque nouvelle sélection</option>
+          <option>Résumé hebdomadaire</option>
+          <option>Alertes instantanées article exact</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="alert-form__section" id="regular-alert-fields">
+      <h2 class="alert-form__heading">Que devons-nous suivre ?</h2>
+      <div class="alert-form__field">
+        <p class="alert-form__label">Catégories rapides</p>
+        <div class="alert-options">
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="audio"> Audio</span><small>Casques, enceintes et audio du quotidien.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="home_office"> Bureau à domicile</span><small>Moniteurs, souris, claviers et améliorations de setup.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="gaming"> Jeux vidéo</span><small>Accessoires et composants PC/console.</small></label>
+          <label><span class="alert-option__row"><input type="checkbox" name="categories" value="tv"> TV &amp;amp; streaming</span><small>Clés de streaming, barres de son et extras TV.</small></label>
+        </div>
+      </div>
+
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="keywords">Mots-clés ou termes</label>
+        <input id="keywords" name="keywords" type="text" placeholder="Exemples : casque circum-aural, moniteur ultrawide">
+        <p class="alert-field__hint">Utilisez des virgules pour décrire les produits, fonctions ou usages à suivre.</p>
+      </div>
+      <input type="hidden" name="inferred_categories" id="inferred-categories" value="">
+      <input type="hidden" name="effective_categories" id="effective-categories" value="">
+    </section>
+
+    <section class="alert-form__section" id="exact-alert-fields" hidden>
+      <h2 class="alert-form__heading">Article exact à suivre</h2>
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="exact-items">Nom exact de l&amp;#39;article ou URL</label>
+        <textarea class="alert-form__notes" id="exact-items" name="exact_items" rows="3" placeholder="Ajoutez un nom exact, un modèle, un ASIN ou une URL produit"></textarea>
+        <p class="alert-field__hint">Vous recevrez un e-mail instantané lorsqu&amp;#39;une réduction correspondante apparaît.</p>
+      </div>
+    </section>
+
+    <section class="alert-form__section" id="shared-notes-fields">
+      <h2 class="alert-form__heading">Notes facultatives</h2>
+      <div class="alert-form__field">
+        <label class="alert-form__label" for="notes">Notes pour vos alertes</label>
+        <textarea class="alert-form__notes" id="notes" name="notes" rows="3" placeholder="Exemples : moins de 200 €, au moins 20 % de remise, setup compact"></textarea>
+      </div>
+    </section>
+
+    <button type="submit" id="alert-submit-button">Envoyer la demande d&amp;#39;alerte</button>
+  </form>
+  <p class="alert-toast" id="alert-toast" role="status" aria-live="polite"></p>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('alert-request-form');
+    if (!form) return;
+
+    const emailInput = document.getElementById('alert-email');
+    const countryInput = document.getElementById('country');
+    const cadenceInput = document.getElementById('cadence');
+    const keywordsInput = document.getElementById('keywords');
+    const exactItemsInput = document.getElementById('exact-items');
+    const inferredCategoriesInput = document.getElementById('inferred-categories');
+    const effectiveCategoriesInput = document.getElementById('effective-categories');
+    const regularSection = document.getElementById('regular-alert-fields');
+    const exactSection = document.getElementById('exact-alert-fields');
+    const submitButton = document.getElementById('alert-submit-button');
+    const toast = document.getElementById('alert-toast');
+    const countryInfoTrigger = document.getElementById('country-info-trigger');
+    const countryInfoPopup = document.getElementById('country-info-popup');
+    const countryInfoClose = document.getElementById('country-info-close');
+    const countryCombobox = document.getElementById('country-combobox');
+    const countrySearchInput = document.getElementById('country-search');
+    const countryOptionsList = document.getElementById('country-options');
+    const mobileKeywordsMedia = window.matchMedia('(max-width: 42rem)');
+    const coarsePointerMedia = window.matchMedia('(hover: none) and (pointer: coarse)');
+    const defaultCountry = '';
+    const minCountryQueryChars = 2;
+    const locale = "fr";
+    const cadenceInstantValue = "Alertes instantanées article exact";
+    const defaultKeywordsPlaceholder = "Exemples : casque circum-aural, moniteur ultrawide";
+    const mobileKeywordsPlaceholder = "Ex : moniteur, casque";
+    const submitDefaultText = "Envoyer la demande d&#39;alerte";
+    const submitExactText = "Envoyer la demande article exact";
+    const notConfiguredToast = "Le formulaire n&#39;est pas encore configuré. Ajoutez l&#39;endpoint Formspree dans hugo.toml.";
+    const countryRequiredToast = "Veuillez choisir votre pays dans la liste.";
+    const exactRequiredToast = "Ajoutez au moins un article exact à suivre.";
+    const categoryOrKeywordsToast = "Choisissez une catégorie ou ajoutez des mots-clés.";
+    const savedToast = "Votre demande d&#39;alerte a été enregistrée.";
+    const failedToast = "Enregistrement impossible pour le moment. Veuillez réessayer.";
+    const emailMissingValidity = "Veuillez saisir votre adresse e-mail.";
+    const emailInvalidValidity = "Veuillez saisir une adresse e-mail valide.";
+    const countryValidityRequired = "Veuillez choisir votre pays.";
+    const countryValidityList = "Veuillez choisir un pays dans la liste.";
+
+    const closeCountryPopup = () => {
+      if (!countryInfoPopup || !countryInfoTrigger) return;
+      countryInfoPopup.hidden = true;
+      countryInfoTrigger.setAttribute('aria-expanded', 'false');
+    };
+
+    const openCountryPopup = () => {
+      if (!countryInfoPopup || !countryInfoTrigger) return;
+      countryInfoPopup.hidden = false;
+      countryInfoTrigger.setAttribute('aria-expanded', 'true');
+    };
+
+    if (countryInfoTrigger && countryInfoPopup) {
+      countryInfoTrigger.addEventListener('click', () => {
+        if (countryInfoPopup.hidden) {
+          openCountryPopup();
+        } else {
+          closeCountryPopup();
+        }
+      });
+    }
+
+    if (countryInfoClose) {
+      countryInfoClose.addEventListener('click', closeCountryPopup);
+    }
+
+    document.addEventListener('click', (event) => {
+      if (!countryInfoPopup || countryInfoPopup.hidden) return;
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      const clickedInsidePopup = countryInfoPopup.contains(target);
+      const clickedTrigger = countryInfoTrigger && countryInfoTrigger.contains(target);
+      if (!clickedInsidePopup && !clickedTrigger) closeCountryPopup();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeCountryPopup();
+        closeCountryOptions();
+      }
+    });
+
+    const applyKeywordsPlaceholder = () => {
+      if (!keywordsInput) return;
+      keywordsInput.placeholder = mobileKeywordsMedia.matches
+        ? mobileKeywordsPlaceholder
+        : defaultKeywordsPlaceholder;
+    };
+    applyKeywordsPlaceholder();
+    if (typeof mobileKeywordsMedia.addEventListener === 'function') {
+      mobileKeywordsMedia.addEventListener('change', applyKeywordsPlaceholder);
+    } else if (typeof mobileKeywordsMedia.addListener === 'function') {
+      mobileKeywordsMedia.addListener(applyKeywordsPlaceholder);
+    }
+
+    const categoryMeta = {
+      audio: {
+        label: "Audio",
+        terms: ['audio', 'headphones', 'earbuds', 'earphones', 'speaker', 'speakers', 'soundbar', 'bluetooth', 'noise', 'anc', 'music']
+      },
+      home_office: {
+        label: "Bureau à domicile",
+        terms: ['home office', 'office', 'desk', 'desk setup', 'workspace', 'productivity', 'monitor', 'ultrawide', 'display', 'mouse', 'keyboard', 'ergonomic']
+      },
+      gaming: {
+        label: "Jeux vidéo",
+        terms: ['gaming', 'gamer', 'headset', 'pc build', 'pc components', 'motherboard', 'psu', 'keyboard', 'laptop']
+      },
+      tv: {
+        label: "TV &amp; streaming",
+        terms: ['tv', 'television', 'streaming', 'fire tv', 'stick', 'soundbar', 'home theater']
+      }
+    };
+
+    const normalize = (value) => String(value || '')
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const tokenize = (value) => normalize(value).split(' ').filter(Boolean);
+
+    const fallbackCountries = [
+      ['AF', 'Afghanistan'], ['AL', 'Albania'], ['DZ', 'Algeria'], ['AD', 'Andorra'], ['AO', 'Angola'],
+      ['AG', 'Antigua and Barbuda'], ['AR', 'Argentina'], ['AM', 'Armenia'], ['AU', 'Australia'], ['AT', 'Austria'],
+      ['AZ', 'Azerbaijan'], ['BS', 'Bahamas'], ['BH', 'Bahrain'], ['BD', 'Bangladesh'], ['BB', 'Barbados'],
+      ['BY', 'Belarus'], ['BE', 'Belgium'], ['BZ', 'Belize'], ['BJ', 'Benin'], ['BT', 'Bhutan'],
+      ['BO', 'Bolivia'], ['BA', 'Bosnia and Herzegovina'], ['BW', 'Botswana'], ['BR', 'Brazil'], ['BN', 'Brunei'],
+      ['BG', 'Bulgaria'], ['BF', 'Burkina Faso'], ['BI', 'Burundi'], ['CV', 'Cabo Verde'], ['KH', 'Cambodia'],
+      ['CM', 'Cameroon'], ['CA', 'Canada'], ['CF', 'Central African Republic'], ['TD', 'Chad'], ['CL', 'Chile'],
+      ['CN', 'China'], ['CO', 'Colombia'], ['KM', 'Comoros'], ['CG', 'Congo'], ['CR', 'Costa Rica'],
+      ['CI', "Cote d'Ivoire"], ['HR', 'Croatia'], ['CU', 'Cuba'], ['CY', 'Cyprus'], ['CZ', 'Czechia'],
+      ['CD', 'Democratic Republic of the Congo'], ['DK', 'Denmark'], ['DJ', 'Djibouti'], ['DM', 'Dominica'],
+      ['DO', 'Dominican Republic'], ['EC', 'Ecuador'], ['EG', 'Egypt'], ['SV', 'El Salvador'], ['GQ', 'Equatorial Guinea'],
+      ['ER', 'Eritrea'], ['EE', 'Estonia'], ['SZ', 'Eswatini'], ['ET', 'Ethiopia'], ['FJ', 'Fiji'],
+      ['FI', 'Finland'], ['FR', 'France'], ['GA', 'Gabon'], ['GM', 'Gambia'], ['GE', 'Georgia'],
+      ['DE', 'Germany'], ['GH', 'Ghana'], ['GR', 'Greece'], ['GD', 'Grenada'], ['GT', 'Guatemala'],
+      ['GN', 'Guinea'], ['GW', 'Guinea-Bissau'], ['GY', 'Guyana'], ['HT', 'Haiti'], ['HN', 'Honduras'],
+      ['HU', 'Hungary'], ['IS', 'Iceland'], ['IN', 'India'], ['ID', 'Indonesia'], ['IR', 'Iran'],
+      ['IQ', 'Iraq'], ['IE', 'Ireland'], ['IL', 'Israel'], ['IT', 'Italy'], ['JM', 'Jamaica'],
+      ['JP', 'Japan'], ['JO', 'Jordan'], ['KZ', 'Kazakhstan'], ['KE', 'Kenya'], ['KI', 'Kiribati'],
+      ['KP', 'North Korea'], ['KR', 'South Korea'], ['KW', 'Kuwait'], ['KG', 'Kyrgyzstan'], ['LA', 'Laos'],
+      ['LV', 'Latvia'], ['LB', 'Lebanon'], ['LS', 'Lesotho'], ['LR', 'Liberia'], ['LY', 'Libya'],
+      ['LI', 'Liechtenstein'], ['LT', 'Lithuania'], ['LU', 'Luxembourg'], ['MG', 'Madagascar'], ['MW', 'Malawi'],
+      ['MY', 'Malaysia'], ['MV', 'Maldives'], ['ML', 'Mali'], ['MT', 'Malta'], ['MH', 'Marshall Islands'],
+      ['MR', 'Mauritania'], ['MU', 'Mauritius'], ['MX', 'Mexico'], ['FM', 'Micronesia'], ['MD', 'Moldova'],
+      ['MC', 'Monaco'], ['MN', 'Mongolia'], ['ME', 'Montenegro'], ['MA', 'Morocco'], ['MZ', 'Mozambique'],
+      ['MM', 'Myanmar'], ['NA', 'Namibia'], ['NR', 'Nauru'], ['NP', 'Nepal'], ['NL', 'Netherlands'],
+      ['NZ', 'New Zealand'], ['NI', 'Nicaragua'], ['NE', 'Niger'], ['NG', 'Nigeria'], ['MK', 'North Macedonia'],
+      ['NO', 'Norway'], ['OM', 'Oman'], ['PK', 'Pakistan'], ['PW', 'Palau'], ['PA', 'Panama'],
+      ['PG', 'Papua New Guinea'], ['PY', 'Paraguay'], ['PE', 'Peru'], ['PH', 'Philippines'], ['PL', 'Poland'],
+      ['PT', 'Portugal'], ['QA', 'Qatar'], ['RO', 'Romania'], ['RU', 'Russia'], ['RW', 'Rwanda'],
+      ['KN', 'Saint Kitts and Nevis'], ['LC', 'Saint Lucia'], ['VC', 'Saint Vincent and the Grenadines'],
+      ['WS', 'Samoa'], ['SM', 'San Marino'], ['ST', 'Sao Tome and Principe'], ['SA', 'Saudi Arabia'],
+      ['SN', 'Senegal'], ['RS', 'Serbia'], ['SC', 'Seychelles'], ['SL', 'Sierra Leone'], ['SG', 'Singapore'],
+      ['SK', 'Slovakia'], ['SI', 'Slovenia'], ['SB', 'Solomon Islands'], ['SO', 'Somalia'], ['ZA', 'South Africa'],
+      ['SS', 'South Sudan'], ['ES', 'Spain'], ['LK', 'Sri Lanka'], ['SD', 'Sudan'], ['SR', 'Suriname'],
+      ['SE', 'Sweden'], ['CH', 'Switzerland'], ['SY', 'Syria'], ['TJ', 'Tajikistan'], ['TZ', 'Tanzania'],
+      ['TH', 'Thailand'], ['TL', 'Timor-Leste'], ['TG', 'Togo'], ['TO', 'Tonga'], ['TT', 'Trinidad and Tobago'],
+      ['TN', 'Tunisia'], ['TR', 'Turkey'], ['TM', 'Turkmenistan'], ['TV', 'Tuvalu'], ['UG', 'Uganda'],
+      ['UA', 'Ukraine'], ['AE', 'United Arab Emirates'], ['GB', 'United Kingdom'], ['US', 'United States'],
+      ['UY', 'Uruguay'], ['UZ', 'Uzbekistan'], ['VU', 'Vanuatu'], ['VA', 'Vatican City'], ['VE', 'Venezuela'],
+      ['VN', 'Vietnam'], ['YE', 'Yemen'], ['ZM', 'Zambia'], ['ZW', 'Zimbabwe']
+    ].map(([code, name]) => ({ code, name }));
+
+    const toFlagEmoji = (code) => {
+      if (!/^[A-Z]{2}$/.test(code || '')) return '';
+      return code
+        .toUpperCase()
+        .split('')
+        .map((char) => String.fromCodePoint(127397 + char.charCodeAt(0)))
+        .join('');
+    };
+
+    const buildCountryList = () => {
+      try {
+        if (typeof Intl !== 'undefined' && typeof Intl.DisplayNames === 'function' && typeof Intl.supportedValuesOf === 'function') {
+          const displayNames = new Intl.DisplayNames([locale || 'en'], { type: 'region' });
+          const seen = new Set();
+          const built = Intl.supportedValuesOf('region')
+            .filter((code) => /^[A-Z]{2}$/.test(code))
+            .map((code) => ({ code, name: displayNames.of(code) || code }))
+            .filter((entry) => entry.name && !/^[A-Z]{2}$/.test(entry.name))
+            .filter((entry) => {
+              const key = `${entry.code}|${entry.name}`;
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            })
+            .sort((a, b) => a.name.localeCompare(b.name, locale || 'en', { sensitivity: 'base' }));
+          if (built.length >= 180) return built;
+        }
+      } catch (error) {
+        
+      }
+      return fallbackCountries;
+    };
+
+    const countries = buildCountryList();
+    let filteredCountries = countries.slice();
+    let activeCountryIndex = -1;
+
+    const renderCountryOptions = (query = '') => {
+      if (!countryOptionsList || !countrySearchInput) return;
+      const normalizedQuery = normalize(query);
+      if (normalizedQuery.length < minCountryQueryChars) {
+        filteredCountries = [];
+      } else {
+        filteredCountries = countries.filter((entry) => normalize(entry.name).includes(normalizedQuery));
+      }
+      filteredCountries.sort((a, b) => a.name.localeCompare(b.name, locale || 'en', { sensitivity: 'base' }));
+
+      const visibleCountries = filteredCountries;
+      countryOptionsList.innerHTML = '';
+
+      if (visibleCountries.length === 0) {
+        countryOptionsList.hidden = true;
+        countrySearchInput.setAttribute('aria-expanded', 'false');
+        activeCountryIndex = -1;
+        return;
+      }
+
+      visibleCountries.forEach((entry, index) => {
+        const option = document.createElement('li');
+        option.className = 'country-combobox__item';
+        option.setAttribute('role', 'option');
+        option.setAttribute('data-index', String(index));
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'country-combobox__option';
+        button.setAttribute('tabindex', '-1');
+        button.setAttribute('data-country-name', entry.name);
+        const flag = toFlagEmoji(entry.code);
+        button.innerHTML = `${flag ? `<span class="country-combobox__flag">${flag}</span>` : ''}<span>${entry.name}</span>`;
+        button.addEventListener('mousedown', (event) => event.preventDefault());
+        button.addEventListener('click', () => selectCountry(entry));
+
+        option.appendChild(button);
+        countryOptionsList.appendChild(option);
+      });
+
+      countryOptionsList.hidden = false;
+      countrySearchInput.setAttribute('aria-expanded', 'true');
+      activeCountryIndex = -1;
+      positionCountryOptions();
+    };
+
+    const closeCountryOptions = () => {
+      if (!countryOptionsList || !countrySearchInput) return;
+      countryOptionsList.hidden = true;
+      countrySearchInput.setAttribute('aria-expanded', 'false');
+      activeCountryIndex = -1;
+      countryOptionsList.classList.remove('is-upward');
+      countryOptionsList.style.maxHeight = '';
+      countryOptionsList.querySelectorAll('.country-combobox__item').forEach((item) => item.classList.remove('is-active'));
+    };
+
+    const positionCountryOptions = () => {
+      if (!countryOptionsList || !countrySearchInput || countryOptionsList.hidden) return;
+      const inputRect = countrySearchInput.getBoundingClientRect();
+      const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      const gap = 8;
+      const spaceBelow = Math.max(0, viewportHeight - inputRect.bottom - gap);
+      const spaceAbove = Math.max(0, inputRect.top - gap);
+      const openUpward = spaceBelow < 180 && spaceAbove > spaceBelow;
+      const available = openUpward ? spaceAbove : spaceBelow;
+      const maxHeight = Math.max(120, Math.min(260, available - gap));
+
+      countryOptionsList.classList.toggle('is-upward', openUpward);
+      countryOptionsList.style.maxHeight = `${maxHeight}px`;
+    };
+
+    const setActiveCountryIndex = (index) => {
+      if (!countryOptionsList || countryOptionsList.hidden) return;
+      const items = Array.from(countryOptionsList.querySelectorAll('.country-combobox__item'));
+      if (items.length === 0) return;
+      activeCountryIndex = Math.max(0, Math.min(index, items.length - 1));
+      items.forEach((item, idx) => {
+        item.classList.toggle('is-active', idx === activeCountryIndex);
+      });
+      const active = items[activeCountryIndex];
+      if (active) active.scrollIntoView({ block: 'nearest' });
+    };
+
+    const selectCountry = (entry) => {
+      if (!countryInput || !countrySearchInput || !entry) return;
+      countryInput.value = entry.name;
+      countrySearchInput.value = entry.name;
+      countrySearchInput.setCustomValidity('');
+      closeCountryOptions();
+    };
+
+    const clearCountryFields = () => {
+      if (countryInput) countryInput.value = '';
+      if (countrySearchInput) {
+        countrySearchInput.value = '';
+        countrySearchInput.setCustomValidity('');
+      }
+    };
+    clearCountryFields();
+    window.setTimeout(clearCountryFields, 60);
+    window.addEventListener('pageshow', clearCountryFields);
+
+    if (countrySearchInput) {
+      countrySearchInput.addEventListener('focus', () => {
+        if (!coarsePointerMedia.matches) {
+          renderCountryOptions(countrySearchInput.value);
+        }
+      });
+
+      countrySearchInput.addEventListener('input', () => {
+        if (!countryInput) return;
+        const typedValue = countrySearchInput.value.trim();
+        countryInput.value = coarsePointerMedia.matches ? typedValue : '';
+        countrySearchInput.setCustomValidity('');
+        if (!coarsePointerMedia.matches) {
+          renderCountryOptions(countrySearchInput.value);
+        } else {
+          closeCountryOptions();
+        }
+      });
+
+      countrySearchInput.addEventListener('keydown', (event) => {
+        if (coarsePointerMedia.matches) return;
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          if (countryOptionsList && countryOptionsList.hidden) renderCountryOptions(countrySearchInput.value);
+          setActiveCountryIndex(activeCountryIndex + 1);
+          return;
+        }
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (countryOptionsList && countryOptionsList.hidden) renderCountryOptions(countrySearchInput.value);
+          setActiveCountryIndex((activeCountryIndex < 1 ? 0 : activeCountryIndex - 1));
+          return;
+        }
+        if (event.key === 'Enter' && countryOptionsList && !countryOptionsList.hidden) {
+          event.preventDefault();
+          const selected = filteredCountries[Math.max(0, activeCountryIndex)];
+          if (selected) selectCountry(selected);
+          return;
+        }
+        if (event.key === 'Escape') {
+          closeCountryOptions();
+        }
+      });
+
+      countrySearchInput.addEventListener('blur', () => {
+        window.setTimeout(() => {
+          const typed = countrySearchInput.value.trim();
+          if (!typed) {
+            countrySearchInput.setCustomValidity(countryValidityRequired);
+            return;
+          }
+          if (coarsePointerMedia.matches) {
+            if (countryInput) countryInput.value = typed;
+            closeCountryOptions();
+            return;
+          }
+          const exact = countries.find((entry) => normalize(entry.name) === normalize(typed));
+          if (exact) {
+            selectCountry(exact);
+            return;
+          }
+          const first = filteredCountries[0];
+          if (first) {
+            selectCountry(first);
+          } else {
+            countrySearchInput.setCustomValidity(countryValidityList);
+          }
+          closeCountryOptions();
+        }, 100);
+      });
+    }
+
+    document.addEventListener('click', (event) => {
+      if (!countryCombobox || !countryOptionsList || countryOptionsList.hidden) return;
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (!countryCombobox.contains(target)) closeCountryOptions();
+    });
+
+    window.addEventListener('scroll', closeCountryOptions, { passive: true });
+    window.addEventListener('touchmove', closeCountryOptions, { passive: true });
+    window.addEventListener('resize', positionCountryOptions, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', positionCountryOptions);
+      window.visualViewport.addEventListener('scroll', positionCountryOptions);
+    }
+
+    const levenshtein = (a, b) => {
+      const matrix = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+      for (let i = 0; i <= a.length; i += 1) matrix[i][0] = i;
+      for (let j = 0; j <= b.length; j += 1) matrix[0][j] = j;
+      for (let i = 1; i <= a.length; i += 1) {
+        for (let j = 1; j <= b.length; j += 1) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j - 1] + cost
+          );
+        }
+      }
+      return matrix[a.length][b.length];
+    };
+
+    const fuzzyMatch = (token, term) => {
+      if (!token || !term) return false;
+      if (token === term) return true;
+      if (token.includes(term) || term.includes(token)) return true;
+      if (token.length >= 5 && term.length >= 5 && levenshtein(token, term) <= 1) return true;
+      return false;
+    };
+
+    const inferCategoryKeys = (sourceText) => {
+      const tokens = tokenize(sourceText);
+      if (tokens.length === 0) return [];
+
+      const scored = Object.entries(categoryMeta)
+        .map(([key, meta]) => {
+          let score = 0;
+          meta.terms.forEach((term) => {
+            if (tokens.some((token) => fuzzyMatch(token, term))) score += 1;
+          });
+          return { key, score };
+        })
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score);
+
+      return scored.slice(0, 4).map((entry) => entry.key);
+    };
+
+    const isInstantMode = () => (cadenceInput ? cadenceInput.value === cadenceInstantValue : false);
+
+    const toggleMode = () => {
+      const instant = isInstantMode();
+      if (regularSection) regularSection.hidden = instant;
+      if (exactSection) exactSection.hidden = !instant;
+
+      if (exactItemsInput) {
+        exactItemsInput.required = instant;
+        if (!instant) exactItemsInput.value = '';
+      }
+
+      if (!instant) {
+        if (inferredCategoriesInput) inferredCategoriesInput.value = '';
+        if (effectiveCategoriesInput) effectiveCategoriesInput.value = '';
+      }
+
+      if (submitButton) {
+        submitButton.textContent = instant ? submitExactText : submitDefaultText;
+      }
+    };
+
+    const bindEmailValidation = () => {
+      if (!emailInput) return;
+      emailInput.addEventListener('invalid', () => {
+        if (emailInput.validity.valueMissing) {
+          emailInput.setCustomValidity(emailMissingValidity);
+        } else if (emailInput.validity.typeMismatch) {
+          emailInput.setCustomValidity(emailInvalidValidity);
+        } else {
+          emailInput.setCustomValidity('');
+        }
+      });
+      emailInput.addEventListener('input', () => {
+        emailInput.setCustomValidity('');
+      });
+    };
+
+    let toastTimer;
+    const showToast = (message, isError = false) => {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.toggle('is-error', isError);
+      toast.classList.add('is-visible');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => {
+        toast.classList.remove('is-visible', 'is-error');
+      }, 2800);
+    };
+
+    bindEmailValidation();
+    if (cadenceInput) cadenceInput.addEventListener('change', toggleMode);
+    toggleMode();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const endpoint = (form.dataset.formspreeEndpoint || '').trim();
+
+      if (!endpoint || endpoint.includes('REPLACE_WITH_YOUR_FORM_ID')) {
+        showToast(notConfiguredToast, true);
+        return;
+      }
+
+      if (!form.reportValidity()) return;
+
+      if (countryInput && !countryInput.value.trim()) {
+        showToast(countryRequiredToast, true);
+        if (countrySearchInput) {
+          countrySearchInput.focus();
+          renderCountryOptions(countrySearchInput.value);
+        }
+        return;
+      }
+
+      if (isInstantMode()) {
+        const exactItems = exactItemsInput ? exactItemsInput.value.trim() : '';
+        if (!exactItems) {
+          showToast(exactRequiredToast, true);
+          return;
+        }
+        if (inferredCategoriesInput) inferredCategoriesInput.value = '';
+        if (effectiveCategoriesInput) effectiveCategoriesInput.value = '';
+      } else {
+        const selectedCategories = Array.from(form.querySelectorAll('input[name="categories"]:checked'));
+        const keywords = keywordsInput ? keywordsInput.value.trim() : '';
+        if (selectedCategories.length === 0 && !keywords) {
+          showToast(categoryOrKeywordsToast, true);
+          return;
+        }
+
+        const selectedKeys = selectedCategories.map((input) => input.value);
+        const inferredKeys = inferCategoryKeys(keywords).filter((key) => !selectedKeys.includes(key));
+        const inferredLabels = inferredKeys.map((key) => categoryMeta[key].label);
+        const effectiveLabels = Array.from(new Set([
+          ...selectedKeys.map((key) => (categoryMeta[key] ? categoryMeta[key].label : key)),
+          ...inferredLabels
+        ]));
+
+        if (inferredCategoriesInput) inferredCategoriesInput.value = inferredLabels.join(', ');
+        if (effectiveCategoriesInput) effectiveCategoriesInput.value = effectiveLabels.join(', ');
+      }
+
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error(`Submission failed (${response.status})`);
+        }
+
+        form.reset();
+        if (countryInput) countryInput.value = defaultCountry;
+        toggleMode();
+        showToast(savedToast);
+      } catch (error) {
+        console.error(error);
+        showToast(failedToast, true);
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  });
+</script>
+
+    </main>
+    <footer class="site-footer" role="contentinfo">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="site-footer__title" href="/fr/" aria-label="Deal Ledger">
+        <img class="site-footer__logo" src="/images/brand/deal-ledger-logo.svg" alt="Deal Ledger" width="186" height="48" loading="lazy" decoding="async">
+      </a>
+    </div>
+    <nav class="site-footer__nav" aria-label="Footer">
+      <a href="/fr/about/">À propos</a>
+      <a href="/fr/privacy/">Confidentialité</a>
+      <a href="/fr/disclosure/">Divulgation</a>
+    </nav>
+  </div>
+  <div class="site-footer__meta site-footer__meta--sub">
+    <span>&copy; Deal Ledger 2026</span>
+    <div class="site-footer__social"><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

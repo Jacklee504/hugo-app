@@ -13,7 +13,7 @@
       
     
     <meta name="description" content="A curated deals site focused on useful product picks, clear price context, and alerts shaped around reader intent.">
-    <meta name="generator" content="Hugo 0.160.1">
+    <meta name="generator" content="Hugo 0.161.0">
     
     
     
@@ -82,7 +82,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://dealledger.eu/#organization","@type":"Organization","logo":"https://dealledger.eu/images/brand/deal-ledger-logo.svg","name":"Deal Ledger","url":"https://dealledger.eu/"},{"@id":"https://dealledger.eu/#website","@type":"WebSite","name":"Deal Ledger","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://dealledger.eu/deals/?q={search_term_string}"},"publisher":{"@id":"https://dealledger.eu/#organization"},"url":"https://dealledger.eu/"}]}</script>
 
-<link rel="stylesheet" href="/styles/site.css?v=1777327422">
+<link rel="stylesheet" href="/styles/site.css?v=1777411754">
 
   </head><body class="ma0 avenir bg-near-white production is-taxonomy">
     
@@ -122,6 +122,7 @@
           <option value="us" >US</option>
           <option value="de" >DE</option>
           <option value="nl" >NL</option>
+          <option value="fr" >FR</option>
         </select>
       </div>
       <div class="nav-menu" data-nav-menu>
@@ -197,12 +198,12 @@
           return acc;
         }, {});
 
-      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl') {
+      if (cookieMap.market === 'us' || cookieMap.market === 'eu' || cookieMap.market === 'de' || cookieMap.market === 'nl' || cookieMap.market === 'fr') {
         marketSelect.value = cookieMap.market;
       }
 
       marketSelect.addEventListener('change', () => {
-        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl']);
+        const allowedMarkets = new Set(['eu', 'us', 'de', 'nl', 'fr']);
         const targetMarket = allowedMarkets.has(marketSelect.value) ? marketSelect.value : 'eu';
         const secure = window.location.protocol === 'https:' ? '; Secure' : '';
         document.cookie = `market=${targetMarket}; Path=/; Max-Age=31536000; SameSite=Lax${secure}`;
@@ -232,25 +233,11 @@
     
       <p>Results tagged with <strong>Categories</strong>, including related deal pages and editorial guides.</p>
     
-    <p class="list-shell__count">8 results</p>
+    <p class="list-shell__count">10 results</p>
   </div>
   
   
     <div class="deal-grid deal-grid--browse">
-      
-        
-          <article class="guide-card">
-            <h3><a href="/categories/home/">Home</a></h3>
-            <p>Home</p>
-          </article>
-        
-      
-        
-          <article class="guide-card">
-            <h3><a href="/categories/office/">Office</a></h3>
-            <p>Office</p>
-          </article>
-        
       
         
           <article class="guide-card">
@@ -268,8 +255,15 @@
       
         
           <article class="guide-card">
-            <h3><a href="/categories/productivity/">Productivity</a></h3>
-            <p>Productivity</p>
+            <h3><a href="/categories/gaming/">Gaming</a></h3>
+            <p>Gaming</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/home/">Home</a></h3>
+            <p>Home</p>
           </article>
         
       
@@ -277,6 +271,27 @@
           <article class="guide-card">
             <h3><a href="/categories/mobile/">Mobile</a></h3>
             <p>Mobile</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/monitors/">Monitors</a></h3>
+            <p>Monitors</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/office/">Office</a></h3>
+            <p>Office</p>
+          </article>
+        
+      
+        
+          <article class="guide-card">
+            <h3><a href="/categories/productivity/">Productivity</a></h3>
+            <p>Productivity</p>
           </article>
         
       
