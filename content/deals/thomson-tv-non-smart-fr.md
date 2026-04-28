@@ -11,10 +11,10 @@ categories = ["electronics", "home"]
 summary = "TV THOMSON non connectée avec réduction importante sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0CGY4N1RF"
 listing_title = "THOMSON 32 Inch (81 cm) HD Easy TV, LED TV (Non-Smart), Triple Tuner (DVB-T/T2/C/S/S2), Dolby Audio, Hotel Mode, Multimedia Player, Backlit Remote Control, 3X HDMI - 32HD2S13 : Amazon.fr: Home & Kitchen"
-listing_summary = "THOMSON 32 Inch (81 cm) HD Easy TV, LED TV (Non-Smart), Triple Tuner (DVB-T/T2/C/S/S2), Dolby Audio, Hotel Mode, Multimedia Player, Backlit Remote Control, 3X HDMI - 32HD2S13 : Amazon.fr: Home & Kitchen"
+listing_summary = ""
 listing_sale_price = 129.91
 listing_image = "https://m.media-amazon.com/images/I/919PuNH9X5L._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 +++
 
 Bon plan sur la TV THOMSON non connectée sur Amazon FR.

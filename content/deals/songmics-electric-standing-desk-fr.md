@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "Bureau assis-debout électrique SONGMICS avec réduction sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0CV4V22XL"
 listing_title = "SONGMICS Electric Height Adjustable Desk 160 x 70 cm Sit-Stand Table with 4 Height Memory Function for Office, Telework, Rustic Brown and Ink Black LSD136K01 : Amazon.fr: Home & Kitchen"
-listing_summary = "SONGMICS Electric Height Adjustable Desk 160 x 70 cm Sit-Stand Table with 4 Height Memory Function for Office, Telework, Rustic Brown and Ink Black LSD136K01 : Amazon.fr: Home & Kitchen"
+listing_summary = ""
 listing_sale_price = 118.99
 listing_image = "https://m.media-amazon.com/images/I/71nhQpnEUML._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 +++
 
 Bon plan sur le bureau assis-debout électrique SONGMICS sur Amazon FR.

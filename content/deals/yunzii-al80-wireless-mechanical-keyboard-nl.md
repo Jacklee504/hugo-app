@@ -11,12 +11,12 @@ categories = ["electronics", "home_office", "gamen"]
 summary = "YUNZII AL80 draadloos mechanisch toetsenbord met korting op Amazon NL."
 listing_url = "https://www.amazon.nl/dp/B0DT73C6VP"
 listing_title = "YUNZII AL80 Wireless Mechanical Keyboard, Full Aluminum CNC, LCD Display, Hot Swappable Gasket 75% Layout with Button, BT/2.4G/USB-C, QMK/VIA Support for Win/Mac (beige, zero linear) : Amazon.nl: PC & Video Games"
-listing_summary = "YUNZII AL80 Wireless Mechanical Keyboard, Full Aluminum CNC, LCD Display, Hot Swappable Gasket 75% Layout with Button, BT/2.4G/USB-C, QMK/VIA Support for Win/Mac (beige, zero linear) : Amazon.nl: PC & Video Games"
+listing_summary = ""
 listing_sale_price = 74.38
 listing_list_price = 119.99
 listing_discount_pct = 0.38
 listing_image = "https://m.media-amazon.com/images/I/71eY77qCbVL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 +++
 
 YUNZII AL80 keyboard deal for NL market.

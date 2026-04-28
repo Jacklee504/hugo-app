@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "VASAGLE Schreibtisch für Homeoffice-Setups mit gutem Preis-Leistungs-Rabatt."
 listing_url = "https://www.amazon.de/dp/B0FSQL53S6"
 listing_title = "VASAGLE LSD310WZ03 Height Adjustable Desk Standing Desk Computer Desk Memory 4 Height Adjustable Office Desk 100 x 60 cm Cloud White : Amazon.de: Home & Kitchen"
-listing_summary = "VASAGLE LSD310WZ03 Height Adjustable Desk Standing Desk Computer Desk Memory 4 Height Adjustable Office Desk 100 x 60 cm Cloud White : Amazon.de: Home & Kitchen"
+listing_summary = ""
 listing_image = "https://m.media-amazon.com/images/I/61mT7kKAvSL._AC_SL1500_.jpg"
 listing_sale_price = 58.99
-listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 +++
 
 VASAGLE Schreibtisch-Angebot auf Amazon DE.

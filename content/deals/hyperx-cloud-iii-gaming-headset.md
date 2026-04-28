@@ -14,9 +14,9 @@ listing_sale_price = 64.95
 listing_list_price = 99.99
 listing_discount_pct = 0.350435
 listing_title = "Amazon.com: HyperX Cloud III – Wired Gaming Headset, PC, PS5, Xbox Series X|S, Angled 53mm Drivers, DTS Spatial Audio, Memory Foam, Durable Frame, Ultra-Clear 10mm Mic, USB-C, USB-A, 3.5mm – Black : Video Games"
-listing_summary = "Amazon.com: HyperX Cloud III – Wired Gaming Headset, PC, PS5, Xbox Series X|S, Angled 53mm Drivers, DTS Spatial Audio, Memory Foam, Durable Frame, Ultra-Clear 10mm Mic, USB-C, USB-A, 3.5mm – Black : Video Games"
+listing_summary = ""
 listing_image = "https://m.media-amazon.com/images/I/71AMEEP3HLL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 aliases = ["/deals/hyperx-cloud-iii-headset/"]
 +++
 

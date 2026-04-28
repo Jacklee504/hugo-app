@@ -11,12 +11,12 @@ categories = ["electronics"]
 summary = "AM5 B650 motherboard deal for new Ryzen desktop builds."
 listing_url = "https://www.amazon.com/dp/B0BH7GTY9C"
 listing_title = "Amazon.com: GIGABYTE B650 AORUS Elite AX AMD AM5 ATX Motherboard, Support Ryzen 9000/8000/7000 Series, DDR5, 14+2+1 Power Phase, PCIe 5.0 M.2, USB-C 3.2 Gen 2, WIFI6E, 2.5GbE, EZ-Latch, Q-Flash, RGB Fusion : Electronics"
-listing_summary = ""
+listing_summary = "Buy GIGABYTE B650 AORUS Elite AX AMD AM5 ATX Motherboard, Support Ryzen 9000/8000/7000 Series, DDR5, 14+2+1 Power Phase, PCIe 5.0 M.2, USB-C 3.2 Gen 2, WIFI6E, 2.5GbE, EZ-Latch, Q-Flash, RGB Fusion: Motherboards - Amazon"
 listing_image = "https://m.media-amazon.com/images/I/81JFKzNyl+L._AC_SL1500_.jpg"
-listing_sale_price = 149.99
+listing_sale_price = 139.99
 listing_list_price = 219.99
 listing_discount_pct = 0.318196
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 aliases = ["/deals/gigabyte-b650-motherboard/"]
 +++
 

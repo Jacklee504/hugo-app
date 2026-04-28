@@ -11,10 +11,10 @@ categories = ["electronics", "gaming"]
 summary = "Souris gaming Razer DeathAdder Essential à prix promo sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B092R5MCB3"
 listing_title = "Razer DeathAdder Essential (2021) - Wired Gaming Mouse with 6400 DPI Optical Sensor (Ergonomic Design, 5 Programmable Buttons, Up to 10M of Clics) Black : Amazon.fr: Computers"
-listing_summary = "Razer DeathAdder Essential (2021) - Wired Gaming Mouse with 6400 DPI Optical Sensor (Ergonomic Design, 5 Programmable Buttons, Up to 10M of Clics) Black : Amazon.fr: Computers"
+listing_summary = ""
 listing_sale_price = 18.9
 listing_image = "https://m.media-amazon.com/images/I/81Wl3jXuL6L._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
+listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
 +++
 
 Bon plan sur la Razer DeathAdder Essential sur Amazon FR.
