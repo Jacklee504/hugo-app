@@ -15,9 +15,9 @@ listing_sale_price = 117.18
 listing_list_price = 200.56
 listing_discount_pct = 0.415746
 listing_title = "AOC Gaming 25G3ZM/BK - 24.5'' 240Hz FHD Monitor, 0.5ms MPRT, FreeSync Premium (1920x1080, HDMI 2.0 x 2, DisplayPort 1.2 x 1, Headphone out (3.5mm)) black/red : Amazon.ie: Electronics"
-listing_summary = ""
+listing_summary = "AOC Gaming 25G3ZM/BK - 24.5"
 listing_image = "https://m.media-amazon.com/images/I/610UddVp7LL._AC_SL1188_.jpg"
-listing_synced_at = "2026-04-29T14:06:39.386906+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Shown price is €200.56 with a current deal price of €117.18.

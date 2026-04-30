@@ -11,10 +11,10 @@ categories = ["electronics", "monitors"]
 summary = "Moniteur ASUS VY279HGR avec remise sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0DJTDVCVT"
 listing_title = "ASUS VY279HGR Eye Care Monitor – 27 Inch FHD (1920 x 1080), IPS, 120Hz (OC), SmoothMotion, 1ms, Adaptive Sync, Eye Care Plus Technology, Blue Light, Flicker Free : Amazon.fr: Computers"
-listing_summary = ""
+listing_summary = "ASUS VY279HGR Eye Care Monitor – 27 Inch FHD (1920 x 1080), IPS, 120Hz (OC), SmoothMotion, 1ms, Adaptive Sync, Eye Care Plus Technology, Blue Light, Flicker Free : Amazon.fr: Computers"
 listing_sale_price = 99
 listing_image = "https://m.media-amazon.com/images/I/81MrlTKJ8CL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T20:33:05.510242+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Bon plan sur le moniteur ASUS VY279HGR sur Amazon FR.

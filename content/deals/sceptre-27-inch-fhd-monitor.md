@@ -15,9 +15,9 @@ listing_sale_price = 97.97
 listing_list_price = 122.97
 listing_discount_pct = 0.203302
 listing_title = "Amazon.com: Sceptre 27-inch Prime Gaming Monitor 100Hz 1ms DisplayPort HDMI x2 100% sRGB AMD FreeSync Build-in Speakers, Eye Care Frameless Machine Black 2025 (E275W-FW100T Series) : Electronics"
-listing_summary = "Amazon.com: Sceptre 27-inch Prime Gaming Monitor 100Hz 1ms DisplayPort HDMI x2 100% sRGB AMD FreeSync Build-in Speakers, Eye Care Frameless Machine Black 2025 (E275W-FW100T Series) : Electronics"
+listing_summary = ""
 listing_image = "https://m.media-amazon.com/images/I/71jdr9u9YhL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Shown price is $122.97 with a current deal price of $97.97.

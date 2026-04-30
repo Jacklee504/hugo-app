@@ -14,9 +14,9 @@ listing_sale_price = 215.65
 listing_list_price = 269.65
 listing_discount_pct = 0.200260
 listing_title = "Angels Horn Vintage Record Player With Dual Bookshelf Speakers, Bluetooth Turntable Hifi System, Home Audio Vinyl 2 Speed Belt Drive, Built In Phono Preamp And At 3600L Cartridge : Amazon.ie: Musical Instruments"
-listing_summary = ""
+listing_summary = "Angels Horn Vintage Record Player With Dual Bookshelf Speakers, Bluetooth Turntable Hifi System, Home Audio Vinyl 2 Speed Belt Drive, Built In Phono Preamp And At 3600L Cartridge : Amazon.ie: Musical Instruments"
 listing_image = "https://m.media-amazon.com/images/I/61FHrb1t5bL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T20:33:05.510242+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Shown price is €269.65, with a €54 coupon applied on the listing to reach an effective €215.65 checkout price.

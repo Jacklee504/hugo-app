@@ -15,9 +15,9 @@ listing_sale_price = 70
 listing_list_price = 90.11
 listing_discount_pct = 0.22306
 listing_title = "ErGear Electric Standing Desk Height Adjustable 120 x 60cm, Sit Stand Desk with 4 Memory Smart Pannel, Home Office Desk with Splice Board : Amazon.ie: Home & Kitchen"
-listing_summary = ""
+listing_summary = "ErGear Electric Standing Desk Height Adjustable 120 x 60cm, Sit Stand Desk with 4 Memory Smart Pannel, Home Office Desk with Splice Board : Amazon.ie: Home & Kitchen"
 listing_image = "https://m.media-amazon.com/images/I/615nQaS3rvL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T20:33:05.510242+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Shown price is €90.11 with a current deal price of €70.00.

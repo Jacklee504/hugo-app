@@ -11,10 +11,10 @@ categories = ["electronics", "mobile"]
 summary = "iPhone 256 Go avec remise immédiate sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0FQHLZZLF"
 listing_title = "Apple iPhone 17 256GB: 6.3-inch Screen with ProMotion, A19 Chip, Center Stage Front Camera, Better Scratch Resistance, Day Life; Black : Amazon.fr: Electronics"
-listing_summary = ""
+listing_summary = "Apple iPhone 17 256GB: 6.3-inch Screen with ProMotion, A19 Chip, Center Stage Front Camera, Better Scratch Resistance, Day Life; Black : Amazon.fr: Electronics"
 listing_sale_price = 889
 listing_image = "https://m.media-amazon.com/images/I/61X5FknDWuL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T20:33:05.510242+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Bon plan sur l'Apple iPhone 256 Go sur Amazon FR.

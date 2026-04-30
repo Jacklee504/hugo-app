@@ -11,10 +11,10 @@ categories = ["electronics", "audio"]
 summary = "Draadloze JBL-koptelefoon met actieve ruisonderdrukking en flinke korting op Amazon NL."
 listing_url = "https://www.amazon.nl/dp/B0CHMN4KVN"
 listing_title = "JBL Live 770 NC Wireless Over-Ear Headphones with Noise Cancelling Technology and Up to 65 Hours of Battery Life in Black : Amazon.nl: Electronics & Photo"
-listing_summary = ""
+listing_summary = "JBL Live 770 NC Wireless Over-Ear Headphones with Noise Cancelling Technology and Up to 65 Hours of Battery Life in Black : Amazon.nl: Electronics & Photo"
 listing_image = "https://m.media-amazon.com/images/I/819GfPP8LHL._AC_SL1500_.jpg"
 listing_sale_price = 70
-listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 JBL wireless noise-cancelling headphones deal on Amazon NL.

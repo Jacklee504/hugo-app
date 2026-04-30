@@ -15,9 +15,9 @@ listing_sale_price = 235.46
 listing_list_price = 235.46
 listing_discount_pct = 0
 listing_title = "Sennheiser MOMENTUM 4 Wireless Special Edition Headphones, Bluetooth for Crystal-Clear Calls w/Adaptive Noise Cancellation, 60h Battery Life, Customizable Sound, Black/Copper : Amazon.ie"
-listing_summary = ""
+listing_summary = "Sennheiser MOMENTUM 4 Wireless Special Edition Headphones, Bluetooth for Crystal-Clear Calls w/Adaptive Noise Cancellation, 60h Battery Life, Customizable Sound, Black/Copper : Amazon.ie"
 listing_image = "https://m.media-amazon.com/images/I/71sLOtsK2UL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T20:33:05.510242+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Added as a watchlist pick for future discounts. Check the retailer page for current live pricing.

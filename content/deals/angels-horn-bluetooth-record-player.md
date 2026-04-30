@@ -14,9 +14,9 @@ listing_sale_price = 206.08
 listing_list_price = 251.08
 listing_discount_pct = 0.179226
 listing_title = "Angels Horn All-In-One Bluetooth Vinyl Record Player - High-Fidelity 2-Speed Turntable With Built-In Speakers - Includes Phono Preamp & Magnetic At-3600L Cartridge - Black Classic Edition : Amazon.ie: Electronics"
-listing_summary = ""
+listing_summary = "Angels Horn All-In-One Bluetooth Vinyl Record Player - High-Fidelity 2-Speed Turntable With Built-In Speakers - Includes Phono Preamp & Magnetic At-3600L Cartridge - Black Classic Edition : Amazon.ie: Electronics"
 listing_image = "https://m.media-amazon.com/images/I/717dC60IWKL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-30T20:33:05.510242+00:00"
+listing_synced_at = "2026-04-30T20:48:50.801749+00:00"
 +++
 
 Shown price is €251.08, with a €45 coupon applied on the listing to reach an effective €206.08 checkout price.
