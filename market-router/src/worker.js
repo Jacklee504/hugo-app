@@ -5,14 +5,18 @@ export default {
       const country = request.cf?.country || "";
       const cookies = parseCookies(request.headers.get("cookie") || "");
 
-      // Manual override via query ?market=us|eu|fr
+      // Manual override via query ?market=us|ie|fr
       const marketParam = url.searchParams.get("market");
+      const normalizedMarketParam = marketParam === "eu" ? "ie" : marketParam;
       const manualMarket =
-        marketParam === "us" || marketParam === "eu" || marketParam === "fr" ? marketParam : null;
+        normalizedMarketParam === "us" || normalizedMarketParam === "ie" || normalizedMarketParam === "fr"
+          ? normalizedMarketParam
+          : null;
 
       // Priority: manual override > cookie > geo
-      const inferredMarket = country === "US" ? "us" : "eu";
-      const market = manualMarket || cookies.market || inferredMarket;
+      const inferredMarket = country === "US" ? "us" : "ie";
+      const cookieMarket = cookies.market === "eu" ? "ie" : cookies.market;
+      const market = manualMarket || cookieMarket || inferredMarket;
 
       const isUsPath = url.pathname === "/us" || url.pathname.startsWith("/us/");
       const isFrPath = url.pathname === "/fr" || url.pathname.startsWith("/fr/");
@@ -30,7 +34,7 @@ export default {
         if (market === "us" && !isUsPath) {
           targetPath = url.pathname === "/" ? "/us/" : `/us${url.pathname}`;
         }
-        if (market === "eu" && (isUsPath || isFrPath)) {
+        if (market === "ie" && (isUsPath || isFrPath)) {
           targetPath = url.pathname.replace(/^\/(us|fr)(?=\/|$)/, "") || "/";
         }
         if (market === "fr" && !isFrPath) {

@@ -11,10 +11,10 @@ categories = ["home", "productivity"]
 summary = "Rutschfeste Leder-Schreibtischmatte von Aothia für ein aufgeräumtes Homeoffice."
 listing_url = "https://www.amazon.de/dp/B09X6T1RLM"
 listing_title = "Aothia Desk Mat, Mouse Mat with Leather and Non-Slip Suede, Multifunctional Office Mouse Mat, Laptop Desk Pad, Table Protection Mat for Office/Home (80 x 40 cm, Black) : Amazon.de: Computer & Accessories"
-listing_summary = ""
+listing_summary = "Aothia Desk Mat, Mouse Mat with Leather and Non-Slip Suede, Multifunctional Office Mouse Mat, Laptop Desk Pad, Table Protection Mat for Office/Home (80 x 40 cm, Black) : Amazon.de: Computer & Accessories"
 listing_image = "https://m.media-amazon.com/images/I/81A14OTXb9L._AC_SL1500_.jpg"
 listing_sale_price = 12.79
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Aothia Schreibtischunterlage-Angebot auf Amazon DE.

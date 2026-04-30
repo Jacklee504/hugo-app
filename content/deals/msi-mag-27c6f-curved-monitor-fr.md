@@ -11,10 +11,10 @@ categories = ["electronics", "monitors"]
 summary = "Écran incurvé MSI MAG 27C6F en promotion sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0CS3W1DMF"
 listing_title = "MSI MAG 27C6F 27 Inch Curved FHD Gaming Monitor – Rapid VA Panel 1920 x 1080 1500R, 180 Hz / 0.5 ms (GtG, Min.), Adaptive-Sync – DP 1.2a, HDMI CEC : Amazon.fr: Computers"
-listing_summary = ""
+listing_summary = "MSI MAG 27C6F 27 Inch Curved FHD Gaming Monitor – Rapid VA Panel 1920 x 1080 1500R, 180 Hz / 0.5 ms (GtG, Min.), Adaptive-Sync – DP 1.2a, HDMI CEC : Amazon.fr: Computers"
 listing_sale_price = 119.99
 listing_image = "https://m.media-amazon.com/images/I/71vdDjKJ7aL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Bon plan sur le moniteur incurvé MSI MAG 27C6F sur Amazon FR.

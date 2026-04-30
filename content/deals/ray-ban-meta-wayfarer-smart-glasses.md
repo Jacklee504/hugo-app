@@ -11,12 +11,12 @@ categories = ["electronics"]
 summary = "Ray-Ban Meta Wayfarer smart glasses with camera capture and open-ear audio."
 listing_url = "https://www.amazon.com/dp/B0CGXYVQ1P"
 listing_title = "Amazon.com: Ray-Ban Meta (Gen 1), Wayfarer, Matte Black | Smart AI Glasses for Men, Women — 12 MP Camera, Open-Ear Speakers, Video Recording, Bluetooth — Polarized Gradient Graphite Lenses — Wearable Technology : Clothing, Shoes & Jewelry"
-listing_summary = ""
+listing_summary = "Amazon.com: Ray-Ban Meta (Gen 1), Wayfarer, Matte Black | Smart AI Glasses for Men, Women — 12 MP Camera, Open-Ear Speakers, Video Recording, Bluetooth — Polarized Gradient Graphite Lenses — Wearable Technology : Clothin"
 listing_image = "https://m.media-amazon.com/images/I/51GYi1kNaBL._SL1500_.jpg"
 listing_sale_price = 246.75
 listing_list_price = 329.00
 listing_discount_pct = 0.25
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 aliases = ["/deals/ray-ban-meta-wayfarer-glasses/"]
 +++
 

@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "Chaise gaming SONGMICS réglable avec remise sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B086MC977H"
 listing_title = "SONGMICS Office Chair, Gaming Chair, Adjustable, Telescopic Footrest, Rocking, Headrest, Lumbar Support, Load 150 kg, Ink Black and Dove Grey OBG073B03 : Amazon.fr: Home & Kitchen"
-listing_summary = ""
+listing_summary = "SONGMICS Office Chair, Gaming Chair, Adjustable, Telescopic Footrest, Rocking, Headrest, Lumbar Support, Load 150 kg, Ink Black and Dove Grey OBG073B03 : Amazon.fr: Home & Kitchen"
 listing_sale_price = 94.99
 listing_image = "https://m.media-amazon.com/images/I/711vkcZQtxL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Bon plan sur la chaise gaming SONGMICS sur Amazon FR.

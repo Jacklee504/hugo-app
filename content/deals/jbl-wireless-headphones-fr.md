@@ -11,10 +11,10 @@ categories = ["electronics", "audio"]
 summary = "Casque JBL sans fil avec forte réduction sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0BHTJLFVP"
 listing_title = "JBL Wave Beam, Wireless In-Ear Headphones, IP54 and IPX2 Water Resistance, Hands-Free Calling and 32-Hour Battery Life in Black : Amazon.fr: Electronics"
-listing_summary = ""
-listing_sale_price = 35.32
+listing_summary = "JBL Wave Beam, Wireless In-Ear Headphones, IP54 and IPX2 Water Resistance, Hands-Free Calling and 32-Hour Battery Life in Black : Amazon.fr: Electronics"
+listing_sale_price = 35.31
 listing_image = "https://m.media-amazon.com/images/I/61p1-gm4RwL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Bon plan sur le casque JBL sans fil sur Amazon FR.

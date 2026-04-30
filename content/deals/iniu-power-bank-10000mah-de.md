@@ -11,9 +11,9 @@ categories = ["electronics", "mobile"]
 summary = "Kompakte INIU-Powerbank mit 10000 mAh und gutem Rabatt auf Amazon DE."
 listing_url = "https://www.amazon.de/dp/B0DS5ZFMXK"
 listing_title = "INIU Power Bank, Mini Power Bank for Apple Watch and iPhone with USB-C Cable, 5000 mAh 20 W Portable External Mobile Phone Batteries, Watch Stand Travel Gadgets Aeroplane for Apple Watch Ultra 11 10 9 SE, iPhone 17 16 : Amazon.de: Electronics & Photo"
-listing_summary = ""
+listing_summary = "INIU Power Bank, Mini Power Bank for Apple Watch and iPhone with USB-C Cable, 5000 mAh 20 W Portable External Mobile Phone Batteries, Watch Stand Travel Gadgets Aeroplane for Apple Watch Ultra 11 10 9 SE, iPhone 17 16 : "
 listing_image = "https://m.media-amazon.com/images/I/61vDCOjDoEL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 INIU Powerbank-Angebot auf Amazon DE.

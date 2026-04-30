@@ -11,10 +11,10 @@ categories = ["electronics", "audio"]
 summary = "AirPods Pro 2 avec réduction active du bruit à prix réduit sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0FQF32239"
 listing_title = "Apple AirPods Pro 3 Wireless Earbuds, Active Noise Cancelling, Heart Rate Detection, Bluetooth Earbuds, Space Audio, High-Fidelity Sound, USB-C Charging : Amazon.fr: Electronics"
-listing_summary = ""
+listing_summary = "Apple AirPods Pro 3 Wireless Earbuds, Active Noise Cancelling, Heart Rate Detection, Bluetooth Earbuds, Space Audio, High-Fidelity Sound, USB-C Charging : Amazon.fr: Electronics"
 listing_sale_price = 209
 listing_image = "https://m.media-amazon.com/images/I/61VHVpa4wvL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Bon plan sur les Apple AirPods Pro 2 sur Amazon FR.

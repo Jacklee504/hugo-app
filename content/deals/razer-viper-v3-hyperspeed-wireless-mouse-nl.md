@@ -16,7 +16,11 @@ listing_sale_price = 49.9
 listing_list_price = 79.99
 listing_discount_pct = 0.38
 listing_image = "https://m.media-amazon.com/images/I/61zqxqvq+3L._AC_SL1500_.jpg"
+<<<<<<< HEAD
 listing_synced_at = "2026-04-29T14:06:39.386906+00:00"
+=======
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
+>>>>>>> 9500587e (Refresh synced listing metadata)
 +++
 
 Razer wireless gaming mouse deal on Amazon NL.

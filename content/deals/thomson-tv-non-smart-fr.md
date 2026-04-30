@@ -14,7 +14,11 @@ listing_title = "THOMSON 32 Inch (81 cm) HD Easy TV, LED TV (Non-Smart), Triple 
 listing_summary = "THOMSON 32 Inch (81 cm) HD Easy TV, LED TV (Non-Smart), Triple Tuner (DVB-T/T2/C/S/S2), Dolby Audio, Hotel Mode, Multimedia Player, Backlit Remote Control, 3X HDMI - 32HD2S13 : Amazon.fr: Home & Kitchen"
 listing_sale_price = 129.91
 listing_image = "https://m.media-amazon.com/images/I/919PuNH9X5L._AC_SL1500_.jpg"
+<<<<<<< HEAD
 listing_synced_at = "2026-04-29T14:06:39.386906+00:00"
+=======
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
+>>>>>>> 9500587e (Refresh synced listing metadata)
 +++
 
 Bon plan sur la TV THOMSON non connectée sur Amazon FR.

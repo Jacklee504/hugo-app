@@ -13,8 +13,13 @@ listing_url = "https://www.amazon.nl/dp/B0CHMN4KVN"
 listing_title = "JBL Live 770 NC Wireless Over-Ear Headphones with Noise Cancelling Technology and Up to 65 Hours of Battery Life in Black : Amazon.nl: Electronics & Photo"
 listing_summary = ""
 listing_image = "https://m.media-amazon.com/images/I/819GfPP8LHL._AC_SL1500_.jpg"
+<<<<<<< HEAD
 listing_sale_price = 71
 listing_synced_at = "2026-04-29T14:06:39.386906+00:00"
+=======
+listing_sale_price = 70
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
+>>>>>>> 9500587e (Refresh synced listing metadata)
 +++
 
 JBL wireless noise-cancelling headphones deal on Amazon NL.

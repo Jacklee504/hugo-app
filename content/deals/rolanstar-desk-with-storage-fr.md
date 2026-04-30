@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "Bureau Rolanstar avec rangement à prix promo sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0CMCL7PD6"
 listing_title = "Rolanstar Desk with Storage 100 cm - Teenage Table with 3 Drawers, RGB LED and Power Outlets - Home Computer Desks, Black : Amazon.fr: Home & Kitchen"
-listing_summary = ""
+listing_summary = "Rolanstar Desk with Storage 100 cm - Teenage Table with 3 Drawers, RGB LED and Power Outlets - Home Computer Desks, Black : Amazon.fr: Home & Kitchen"
 listing_sale_price = 89.99
 listing_image = "https://m.media-amazon.com/images/I/71ALnXKD-zL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Bon plan sur le bureau Rolanstar avec rangement sur Amazon FR.

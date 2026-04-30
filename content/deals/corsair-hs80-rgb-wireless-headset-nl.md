@@ -11,12 +11,12 @@ categories = ["electronics", "gamen"]
 summary = "Corsair draadloze gamingheadset met scherpe korting op Amazon NL."
 listing_url = "https://www.amazon.nl/dp/B09B836TTQ"
 listing_title = "Corsair HS80 RGB WIRELESS High Quality Gaming Headset with Spatial Audio (Low Latency, Omnidirectional Microphone, Up to 20 Hours Battery Life, PS5 and PS4 Wireless Compatibility) Black : Amazon.nl: Electronics & Photo"
-listing_summary = ""
-listing_sale_price = 129
+listing_summary = "Corsair HS80 RGB WIRELESS High Quality Gaming Headset with Spatial Audio (Low Latency, Omnidirectional Microphone, Up to 20 Hours Battery Life, PS5 and PS4 Wireless Compatibility) Black : Amazon.nl: Electronics & Photo"
+listing_sale_price = 132.97
 listing_list_price = 149.99
 listing_discount_pct = 0.14
 listing_image = "https://m.media-amazon.com/images/I/61f68bSOlhL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Corsair HS80 RGB wireless headset deal for NL market.

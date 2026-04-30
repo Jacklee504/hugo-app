@@ -15,9 +15,9 @@ listing_sale_price = 29.95
 listing_list_price = 29.95
 listing_discount_pct = 0
 listing_title = "Amazon.com: JBL Vibe Beam - True Wireless JBL Deep Bass Sound Earbuds, Bluetooth 5.2, Water & Dust Resistant, Hands-Free Call with VoiceAware, Up to 32 Hours of Battery Life (Black) : Electronics"
-listing_summary = ""
+listing_summary = "Amazon.com: JBL Vibe Beam - True Wireless JBL Deep Bass Sound Earbuds, Bluetooth 5.2, Water & Dust Resistant, Hands-Free Call with VoiceAware, Up to 32 Hours of Battery Life (Black) : Electronics"
 listing_image = "https://m.media-amazon.com/images/I/41+1Csr1pSL._AC_SL1000_.jpg"
-listing_synced_at = "2026-04-27T21:57:00.724686+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Shown price is $29.95 with a current deal price of $29.95.

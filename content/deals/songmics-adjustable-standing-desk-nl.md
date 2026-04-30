@@ -11,10 +11,10 @@ categories = ["home", "office"]
 summary = "Verstelbaar bureau op Amazon NL. Geprijsd op 139,99 EUR, met voucher effectief rond 93 EUR."
 listing_url = "https://www.amazon.nl/dp/B09H2MXH82"
 listing_title = "SONGMICS height adjustable desk electric, 140 x 60 x (72-120) cm, steplessly adjustable, split plate, memory function with 4 heights, vintage brown-base black LSD016X01 : Amazon.nl: Home & Kitchen"
-listing_summary = ""
+listing_summary = "SONGMICS height adjustable desk electric, 140 x 60 x (72-120) cm, steplessly adjustable, split plate, memory function with 4 heights, vintage brown-base black LSD016X01 : Amazon.nl: Home & Kitchen"
 listing_image = "https://m.media-amazon.com/images/I/71AetqUvdCL._AC_SL1500_.jpg"
 listing_sale_price = 139.99
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 SONGMICS adjustable standing desk deal on Amazon NL.

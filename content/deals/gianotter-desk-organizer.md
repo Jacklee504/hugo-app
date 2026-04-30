@@ -10,13 +10,13 @@ tags = ["desk setup", "home office", "organization"]
 categories = ["electronics"]
 summary = "Compact desktop organizer for office accessories and stationery."
 listing_url = "https://www.amazon.com/dp/B0CSFH1R36"
-listing_sale_price = 16.99
+listing_sale_price = 16.24
 listing_list_price = 24.99
 listing_discount_pct = 0.320128
 listing_title = "Amazon.com: gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitories (Black) : Electronics"
-listing_summary = ""
+listing_summary = "Amazon.com: gianotter Desk Organizers and Accessories, Monitor Stand with Drawer and 2 Pen Holder, Desktop Organizer Suitable for Offices and Dormitories (Black) : Electronics"
 listing_image = "https://m.media-amazon.com/images/I/711rO4WnvOL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-21T20:35:57.000886+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Budget-friendly organizer for decluttering small desk essentials.

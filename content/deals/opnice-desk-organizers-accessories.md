@@ -15,9 +15,9 @@ listing_sale_price = 19.99
 listing_list_price = 29.99
 listing_discount_pct = 0.333444
 listing_title = "Amazon.com : OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accessories for Office Supplies, Black : Office Products"
-listing_summary = ""
+listing_summary = "Amazon.com : OPNICE Desk Organizer and Accessories, 2-Tier Computer Monitor Stand Riser with Drawer and 2 Pen Holders, Laptop Stand, Office Desk Accessories for Office Supplies, Black : Office Products"
 listing_image = "https://m.media-amazon.com/images/I/81MeUftFm8L._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Shown price is $29.99 with a current deal price of $19.99.

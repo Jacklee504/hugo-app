@@ -11,9 +11,9 @@ categories = ["home", "office"]
 summary = "naspaluro Bürostuhl mit verstellbaren Armlehnen und ergonomischer Rückenstütze."
 listing_url = "https://www.amazon.de/dp/B0CTT7Q8WQ"
 listing_title = "naspaluro Office Chair with Adjustable Armrests, Ergonomic Desk Chair with Mesh Cover, Lumbar Support, Height Adjustable, Padded Seat Cushion, 360° Swivel Chair, Black : Amazon.de: Home & Kitchen"
-listing_summary = ""
+listing_summary = "naspaluro Office Chair with Adjustable Armrests, Ergonomic Desk Chair with Mesh Cover, Lumbar Support, Height Adjustable, Padded Seat Cushion, 360° Swivel Chair, Black : Amazon.de: Home & Kitchen"
 listing_image = "https://m.media-amazon.com/images/I/71QkeDzUZCL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 naspaluro Bürostuhl-Angebot auf Amazon DE.

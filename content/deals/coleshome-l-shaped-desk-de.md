@@ -13,8 +13,13 @@ listing_url = "https://www.amazon.de/dp/B0FDB3Y1YT"
 listing_title = "Coleshome Gaming Table, 100 x 70 cm Corner Desk with Reversible Storage Compartment, Space-Saving L-shaped Desk, Suitable for Gaming Desk in Family Corners, Black : Amazon.de: Home & Kitchen"
 listing_summary = ""
 listing_image = "https://m.media-amazon.com/images/I/71zkBKbEWcL._AC_SL1500_.jpg"
+<<<<<<< HEAD
 listing_sale_price = 34.28
 listing_synced_at = "2026-04-29T14:06:39.386906+00:00"
+=======
+listing_sale_price = 39.99
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
+>>>>>>> 9500587e (Refresh synced listing metadata)
 +++
 
 Coleshome Schreibtisch-Angebot auf Amazon DE.

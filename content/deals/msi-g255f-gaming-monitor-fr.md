@@ -11,10 +11,10 @@ categories = ["electronics", "monitors"]
 summary = "Moniteur gaming MSI G255F 24,5 pouces avec grosse remise sur Amazon FR."
 listing_url = "https://www.amazon.fr/dp/B0CPM45WF7"
 listing_title = "MSI G255F 24.5 Inch FHD Gaming Monitor – Rapid IPS Panel 1920 x 1080, 180 Hz/1ms (GtG), 99% sRGB Color Game, Adaptive-Sync – DP 1.2a, HDMI 2.0b CEC : Amazon.fr: Computers"
-listing_summary = ""
+listing_summary = "MSI G255F 24.5 Inch FHD Gaming Monitor – Rapid IPS Panel 1920 x 1080, 180 Hz/1ms (GtG), 99% sRGB Color Game, Adaptive-Sync – DP 1.2a, HDMI 2.0b CEC : Amazon.fr: Computers"
 listing_sale_price = 84.99
 listing_image = "https://m.media-amazon.com/images/I/71YYYrdJSAL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T21:28:28.979548+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 +++
 
 Bon plan sur le moniteur gaming MSI G255F sur Amazon FR.

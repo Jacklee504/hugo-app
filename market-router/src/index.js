@@ -4,14 +4,18 @@ export default {
     const country = request.cf?.country || "";
     const cookies = parseCookies(request.headers.get("cookie") || "");
 
-    // Manual override: ?market=us or ?market=eu or ?market=fr
+    // Manual override: ?market=us or ?market=ie or ?market=fr
     const marketParam = url.searchParams.get("market");
+    const normalizedMarketParam = marketParam === "eu" ? "ie" : marketParam;
     const manualMarket =
-      marketParam === "us" || marketParam === "eu" || marketParam === "fr" ? marketParam : null;
+      normalizedMarketParam === "us" || normalizedMarketParam === "ie" || normalizedMarketParam === "fr"
+        ? normalizedMarketParam
+        : null;
 
     // Priority: manual > cookie > geo
-    const inferredMarket = country === "US" ? "us" : "eu";
-    const market = manualMarket || cookies.market || inferredMarket;
+    const inferredMarket = country === "US" ? "us" : "ie";
+    const cookieMarket = cookies.market === "eu" ? "ie" : cookies.market;
+    const market = manualMarket || cookieMarket || inferredMarket;
 
     const isUsPath = url.pathname === "/us" || url.pathname.startsWith("/us/");
     const isFrPath = url.pathname === "/fr" || url.pathname.startsWith("/fr/");
@@ -29,7 +33,7 @@ export default {
     if (!isAsset) {
       if (market === "us" && !isUsPath) {
         targetPath = url.pathname === "/" ? "/us/" : `/us${url.pathname}`;
-      } else if (market === "eu" && (isUsPath || isFrPath)) {
+      } else if (market === "ie" && (isUsPath || isFrPath)) {
         targetPath = url.pathname.replace(/^\/(us|fr)(?=\/|$)/, "") || "/";
       } else if (market === "fr" && !isFrPath) {
         targetPath = url.pathname === "/" ? "/fr/" : `/fr${url.pathname}`;

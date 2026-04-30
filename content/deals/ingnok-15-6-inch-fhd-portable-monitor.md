@@ -14,9 +14,9 @@ listing_sale_price = 65.97
 listing_list_price = 89.99
 listing_discount_pct = 0.27
 listing_title = "Amazon.com: Ingnok Portable Monitor, Ultra Slim 15.6 Inch FHD IPS Laptop Screen Extender with Adjustable Stand, USB C Compatible, Ideal for Travel and Office : Electronics"
-listing_summary = ""
+listing_summary = "Amazon.com: Ingnok Portable Monitor, Ultra Slim 15.6 Inch FHD IPS Laptop Screen Extender with Adjustable Stand, USB C Compatible, Ideal for Travel and Office : Electronics"
 listing_image = "https://m.media-amazon.com/images/I/71mqjfuT4HL._AC_SL1500_.jpg"
-listing_synced_at = "2026-04-28T20:44:40.150142+00:00"
+listing_synced_at = "2026-04-30T17:47:01.180707+00:00"
 aliases = ["/deals/ingnok-15-6-portable-monitor/"]
 +++
 
